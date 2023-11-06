@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 function POS() {
   return (
     <div
@@ -33,13 +34,13 @@ function POS() {
                   data-skip-mobile="true"
                 >
                   <ul className="nav nav-tabs" id="menuNav">
-                    {/* <li class="nav-item">
-                <a class="nav-link active" href="#" data-filter="all">
-                  <div class="card">
-                    <div class="card-body" >Wraps</div>
-                  </div>
-                </a>
-              </li> */}
+                    <li class="nav-item">
+                      <a class="nav-link active" href="#" data-filter="all">
+                        <div class="card">
+                          <div class="card-body">Wraps</div>
+                        </div>
+                      </a>
+                    </li>
                     {/* <li class="nav-item">
                 <a class="nav-link" href="#" data-filter="pizza">
                   <div class="card">
@@ -182,306 +183,240 @@ function POS() {
                   />
                 </div>
                 <div className="row gx-4" id="productCardsContainer">
-                  {/* <div
-              class="col-xxl-3 col-xl-4 col-lg-6 col-md-4 col-sm-6 pb-4"
-              data-type="meat"
-            >
-              <div class="card h-100">
-                <div class="card-body h-100 p-1">
-                  <a
-                    href="#"
-                    class="pos-product"
-                    data-bs-toggle="modal"
-                    data-bs-target="#modalPosItem"
+                  <div
+                    class="col-xxl-3 col-xl-4 col-lg-6 col-md-4 col-sm-6 pb-4"
+                    data-type="meat"
                   >
-                    <div
-                      class="img"
-                      style="
-                        background-image: url(../assets/img/pos/countryside.jpg);
-                      "
-                    ></div>
-                    <div class="info">
-                      <div class="title">Grill Chicken Chop&reg;</div>
+                    <div class="card h-100">
+                      <div class="card-body h-100 p-1">
+                        <a
+                          href="#"
+                          class="pos-product"
+                          data-bs-toggle="modal"
+                          data-bs-target="#modalPosItem"
+                        >
+                          <div
+                            class="img"
+                            style={{
+                              backgroundImage:
+                                "url(./assets/img/pos/countryside.jpg",
+                            }}
+                          ></div>
+                          <div class="info">
+                            <div class="title">Grill Chicken Chop&reg;</div>
+                          </div>
+                        </a>
+                      </div>
                     </div>
-                  </a>
-                </div>
-              </div>
-            </div> */}
-                  {/* <div class="col-xxl-3 col-xl-4 col-lg-6 col-md-4 col-sm-6 pb-4" data-type="meat">
-
-    <div class="card h-100">
-    <div class="card-body h-100 p-1">
-    <a href="#" class="pos-product" data-bs-toggle="modal" data-bs-target="#modalPosItem">
-    <div class="img" style="background-image: url(../assets/img/pos/product-2.html)"></div>
-    <div class="info">
-    <div class="title">Grill Pork Chop&reg;</div>
-    <div class="desc">pork, egg, mushroom, salad</div>
-    <div class="price">$12.99</div>
-    </div>
-    </a>
-    </div>
-
-    </div>
-
-    </div>
-    <div class="col-xxl-3 col-xl-4 col-lg-6 col-md-4 col-sm-6 pb-4" data-type="meat">
-
-    <div class="card h-100">
-    <div class="card-body h-100 p-1">
-    <a href="#" class="pos-product" data-bs-toggle="modal" data-bs-target="#modalPosItem">
-    <div class="img" style="background-image: url(../assets/img/pos/product-3.html)"></div>
-    <div class="info">
-    <div class="title">Capellini Tomato Sauce&reg;</div>
-    <div class="desc">spaghetti, tomato, mushroom </div>
-    <div class="price">$11.99</div>
-    </div>
-    </a>
-    </div>
-
-    </div>
-
-    </div>
-    <div class="col-xxl-3 col-xl-4 col-lg-6 col-md-4 col-sm-6 pb-4" data-type="meat">
-
-    <div class="card h-100">
-    <div class="card-body h-100 p-1">
-    <a href="#" class="pos-product" data-bs-toggle="modal" data-bs-target="#modalPosItem">
-    <div class="img" style="background-image: url(../assets/img/pos/product-4.html)"></div>
-    <div class="info">
-    <div class="title">Vegan Salad Bowl&reg;</div>
-    <div class="desc">apple, carrot, tomato </div>
-    <div class="price">$6.99</div>
-    </div>
-    </a>
-    </div>
-
-    </div>
-
-    </div>
-    <div class="col-xxl-3 col-xl-4 col-lg-6 col-md-4 col-sm-6 pb-4" data-type="pizza">
-
-    <div class="card h-100">
-    <div class="card-body h-100 p-1">
-    <div class="pos-product not-available">
-    <div class="img" style="background-image: url(../assets/img/pos/product-5.html)"></div>
-    <div class="info">
-    <div class="title">Hawaiian Pizza&reg;</div>
-    <div class="desc">pizza, crab meat, pineapple </div>
-    <div class="price">$20.99</div>
-    </div>
-    <div class="not-available-text">
-    <div>Not Available</div>
-    </div>
-    </div>
-    </div>
-
-    </div>
-
-    </div>
-    <div class="col-xxl-3 col-xl-4 col-lg-6 col-md-4 col-sm-6 pb-4" data-type="burger">
-
-    <div class="card h-100">
-    <div class="card-body h-100 p-1">
-    <a href="#" class="pos-product" data-bs-toggle="modal" data-bs-target="#modalPosItem">
-    <div class="img" style="background-image: url(../assets/img/pos/product-17.html)"></div>
-    <div class="info">
-    <div class="title">Perfect Burger</div>
-    <div class="desc">Dill pickle, cheddar cheese, tomato, red onion, ground chuck beef</div>
-    <div class="price">$8.99</div>
-    </div>
-    </a>
-    </div>
-
-    </div>
-
-    </div> */}
-                  {/* <div class="col-xxl-3 col-xl-4 col-lg-6 col-md-4 col-sm-6 pb-4" data-type="drinks">
-
-<div class="card h-100">
-<div class="card-body h-100 p-1">
-<a href="#" class="pos-product" data-bs-toggle="modal" data-bs-target="#modalPosItem">
-<div class="img" style="background-image: url(../assets/img/pos/product-6.html)"></div>
-<div class="info">
-<div class="title">Avocado Shake</div>
-<div class="desc">avocado, milk, vanilla</div>
-<div class="price">$3.99</div>
-</div>
-</a>
-</div>
-
-</div>
-
-</div>
-<div class="col-xxl-3 col-xl-4 col-lg-6 col-md-4 col-sm-6 pb-4" data-type="drinks">
-
-<div class="card h-100">
-<div class="card-body h-100 p-1">
-<a href="#" class="pos-product" data-bs-toggle="modal" data-bs-target="#modalPosItem">
-<div class="img" style="background-image: url(../assets/img/pos/product-7.html)"></div>
-<div class="info">
-<div class="title">Coffee Latte</div>
-<div class="desc">espresso, milk</div>
-<div class="price">$2.99</div>
-</div>
-</a>
-</div>
-
-</div>
-
-</div>
-<div class="col-xxl-3 col-xl-4 col-lg-6 col-md-4 col-sm-6 pb-4" data-type="drinks">
-
-<div class="card h-100">
-<div class="card-body h-100 p-1">
-<a href="#" class="pos-product" data-bs-toggle="modal" data-bs-target="#modalPosItem">
-<div class="img" style="background-image: url(../assets/img/pos/product-8.html)"></div>
-<div class="info">
-<div class="title">Vita C Detox Juice</div>
-<div class="desc">apricot, apple, carrot and ginger juice</div>
-<div class="price">$2.99</div>
-</div>
-</a>
-</div>
-
-</div>
-
-</div>
-<div class="col-xxl-3 col-xl-4 col-lg-6 col-md-4 col-sm-6 pb-4" data-type="snacks">
-
-<div class="card h-100">
-<div class="card-body h-100 p-1">
-<a href="#" class="pos-product" data-bs-toggle="modal" data-bs-target="#modalPosItem">
-<div class="img" style="background-image: url(../assets/img/pos/product-9.html)"></div>
-<div class="info">
-<div class="title">Pancake</div>
-<div class="desc">Non dairy, egg, baking soda, sugar, all purpose flour</div>
-<div class="price">$5.99</div>
-</div>
-</a>
-</div>
-
-</div>
-
-</div>
-<div class="col-xxl-3 col-xl-4 col-lg-6 col-md-4 col-sm-6 pb-4" data-type="snacks">
-
-<div class="card h-100">
-<div class="card-body h-100 p-1">
-<a href="#" class="pos-product" data-bs-toggle="modal" data-bs-target="#modalPosItem">
-<div class="img" style="background-image: url(../assets/img/pos/product-10.html)"></div>
-<div class="info">
-<div class="title">Mushroom soup</div>
-<div class="desc">Evaporated milk, marsala wine, beef cubes, chicken broth, butter</div>
-<div class="price">$3.99</div>
-</div>
-</a>
-</div>
-
-</div>
-
-</div>
-<div class="col-xxl-3 col-xl-4 col-lg-6 col-md-4 col-sm-6 pb-4" data-type="snacks">
-
-<div class="card h-100">
-<div class="card-body h-100 p-1">
-<a href="#" class="pos-product" data-bs-toggle="modal" data-bs-target="#modalPosItem">
-<div class="img" style="background-image: url(../assets/img/pos/product-11.html)"></div>
-<div class="info">
-<div class="title">Baked chicken wing</div>
-<div class="desc">Chicken wings, a1 steak sauce, honey, cayenne pepper</div>
-<div class="price">$6.99</div>
-</div>
-</a>
-</div>
-
-</div>
-
-</div>
-<div class="col-xxl-3 col-xl-4 col-lg-6 col-md-4 col-sm-6 pb-4" data-type="meat">
-
-<div class="card h-100">
-<div class="card-body h-100 p-1">
-<a href="#" class="pos-product" data-bs-toggle="modal" data-bs-target="#modalPosItem">
-<div class="img" style="background-image: url(../assets/img/pos/product-12.html)"></div>
-<div class="info">
-<div class="title">Veggie Spaghetti</div>
-<div class="desc">Yellow squash, pasta, roasted red peppers, zucchini</div>
-<div class="price">$12.99</div>
-</div>
-</a>
-</div>
-
-</div>
-
-</div>
-<div class="col-xxl-3 col-xl-4 col-lg-6 col-md-4 col-sm-6 pb-4" data-type="desserts">
-
-<div class="card h-100">
-<div class="card-body h-100 p-1">
-<a href="#" class="pos-product" data-bs-toggle="modal" data-bs-target="#modalPosItem">
-<div class="img" style="background-image: url(../assets/img/pos/product-13.html)"></div>
-<div class="info">
-<div class="title">Vanilla Ice Cream</div>
-<div class="desc">Heavy whipping cream, white sugar, vanilla extract</div>
-<div class="price">$3.99</div>
-</div>
-</a>
-</div>
-
-</div>
-
-</div>
-<div class="col-xxl-3 col-xl-4 col-lg-6 col-md-4 col-sm-6 pb-4" data-type="desserts">
-
-<div class="card h-100">
-<div class="card-body h-100 p-1">
-<a href="#" class="pos-product" data-bs-toggle="modal" data-bs-target="#modalPosItem">
-<div class="img" style="background-image: url(../assets/img/pos/product-15.html)"></div>
-<div class="info">
-<div class="title">Perfect Yeast Doughnuts</div>
-<div class="desc">Chocolate hazelnut spread, bread flour, doughnuts, quick rise yeast, butter</div>
-<div class="price">$2.99</div>
-</div>
-</a>
-</div>
-
-</div>
-
-</div>
-<div class="col-xxl-3 col-xl-4 col-lg-6 col-md-4 col-sm-6 pb-4" data-type="desserts">
-
-<div class="card h-100">
-<div class="card-body h-100 p-1">
-<a href="#" class="pos-product" data-bs-toggle="modal" data-bs-target="#modalPosItem">
-<div class="img" style="background-image: url(../assets/img/pos/product-14.html)"></div>
-<div class="info">
-<div class="title">Macarons</div>
-<div class="desc">Almond flour, egg whites, heavy cream, food coloring, powdered sugar</div>
-<div class="price">$4.99</div>
-</div>
-</a>
-</div>
-
-</div>
-
-</div>
-<div class="col-xxl-3 col-xl-4 col-lg-6 col-md-4 col-sm-6 pb-4" data-type="desserts">
-
-<div class="card h-100">
-<div class="card-body h-100 p-1">
-<a href="#" class="pos-product" data-bs-toggle="modal" data-bs-target="#modalPosItem">
-<div class="img" style="background-image: url(../assets/img/pos/product-16.html)"></div>
-<div class="info">
-<div class="title">Perfect Vanilla Cupcake</div>
-<div class="desc">Baking powder, all purpose flour, plain kefir, vanilla extract</div>
-<div class="price">$2.99</div>
-</div>
-</a>
-</div>
-
-</div>
-
-</div> */}
+                  </div>
+                  <div
+                    class="col-xxl-3 col-xl-4 col-lg-6 col-md-4 col-sm-6 pb-4"
+                    data-type="meat"
+                  >
+                    <div class="card h-100">
+                      <div class="card-body h-100 p-1">
+                        <a
+                          href="#"
+                          class="pos-product"
+                          data-bs-toggle="modal"
+                          data-bs-target="#modalPosItem"
+                        >
+                          <div
+                            class="img"
+                            style={{
+                              backgroundImage:
+                                "url(./assets/img/pos/countryside.jpg",
+                            }}
+                          ></div>
+                          <div class="info">
+                            <div class="title">Grill Chicken Chop&reg;</div>
+                          </div>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class="col-xxl-3 col-xl-4 col-lg-6 col-md-4 col-sm-6 pb-4"
+                    data-type="meat"
+                  >
+                    <div class="card h-100">
+                      <div class="card-body h-100 p-1">
+                        <a
+                          href="#"
+                          class="pos-product"
+                          data-bs-toggle="modal"
+                          data-bs-target="#modalPosItem"
+                        >
+                          <div
+                            class="img"
+                            style={{
+                              backgroundImage:
+                                "url(./assets/img/pos/countryside.jpg",
+                            }}
+                          ></div>
+                          <div class="info">
+                            <div class="title">Grill Chicken Chop&reg;</div>
+                          </div>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class="col-xxl-3 col-xl-4 col-lg-6 col-md-4 col-sm-6 pb-4"
+                    data-type="meat"
+                  >
+                    <div class="card h-100">
+                      <div class="card-body h-100 p-1">
+                        <a
+                          href="#"
+                          class="pos-product"
+                          data-bs-toggle="modal"
+                          data-bs-target="#modalPosItem"
+                        >
+                          <div
+                            class="img"
+                            style={{
+                              backgroundImage:
+                                "url(./assets/img/pos/countryside.jpg",
+                            }}
+                          ></div>
+                          <div class="info">
+                            <div class="title">Grill Chicken Chop&reg;</div>
+                          </div>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class="col-xxl-3 col-xl-4 col-lg-6 col-md-4 col-sm-6 pb-4"
+                    data-type="meat"
+                  >
+                    <div class="card h-100">
+                      <div class="card-body h-100 p-1">
+                        <a
+                          href="#"
+                          class="pos-product"
+                          data-bs-toggle="modal"
+                          data-bs-target="#modalPosItem"
+                        >
+                          <div
+                            class="img"
+                            style={{
+                              backgroundImage:
+                                "url(./assets/img/pos/countryside.jpg",
+                            }}
+                          ></div>
+                          <div class="info">
+                            <div class="title">Grill Chicken Chop&reg;</div>
+                          </div>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class="col-xxl-3 col-xl-4 col-lg-6 col-md-4 col-sm-6 pb-4"
+                    data-type="meat"
+                  >
+                    <div class="card h-100">
+                      <div class="card-body h-100 p-1">
+                        <a
+                          href="#"
+                          class="pos-product"
+                          data-bs-toggle="modal"
+                          data-bs-target="#modalPosItem"
+                        >
+                          <div
+                            class="img"
+                            style={{
+                              backgroundImage:
+                                "url(./assets/img/pos/countryside.jpg",
+                            }}
+                          ></div>
+                          <div class="info">
+                            <div class="title">Grill Chicken Chop&reg;</div>
+                          </div>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class="col-xxl-3 col-xl-4 col-lg-6 col-md-4 col-sm-6 pb-4"
+                    data-type="meat"
+                  >
+                    <div class="card h-100">
+                      <div class="card-body h-100 p-1">
+                        <a
+                          href="#"
+                          class="pos-product"
+                          data-bs-toggle="modal"
+                          data-bs-target="#modalPosItem"
+                        >
+                          <div
+                            class="img"
+                            style={{
+                              backgroundImage:
+                                "url(./assets/img/pos/countryside.jpg",
+                            }}
+                          ></div>
+                          <div class="info">
+                            <div class="title">Grill Chicken Chop&reg;</div>
+                          </div>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class="col-xxl-3 col-xl-4 col-lg-6 col-md-4 col-sm-6 pb-4"
+                    data-type="meat"
+                  >
+                    <div class="card h-100">
+                      <div class="card-body h-100 p-1">
+                        <a
+                          href="#"
+                          class="pos-product"
+                          data-bs-toggle="modal"
+                          data-bs-target="#modalPosItem"
+                        >
+                          <div
+                            class="img"
+                            style={{
+                              backgroundImage:
+                                "url(./assets/img/pos/countryside.jpg",
+                            }}
+                          ></div>
+                          <div class="info">
+                            <div class="title">Grill Chicken Chop&reg;</div>
+                          </div>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class="col-xxl-3 col-xl-4 col-lg-6 col-md-4 col-sm-6 pb-4"
+                    data-type="meat"
+                  >
+                    <div class="card h-100">
+                      <div class="card-body h-100 p-1">
+                        <a
+                          href="#"
+                          class="pos-product"
+                          data-bs-toggle="modal"
+                          data-bs-target="#modalPosItem"
+                        >
+                          <div
+                            class="img"
+                            style={{
+                              backgroundImage:
+                                "url(./assets/img/pos/countryside.jpg",
+                            }}
+                          ></div>
+                          <div class="info">
+                            <div class="title">Grill Chicken Chop&reg;</div>
+                          </div>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -676,7 +611,7 @@ function POS() {
       <div className="app-theme-panel">
         <div className="app-theme-panel-container">
           <a
-            href="javascript:;"
+            href=""
             data-toggle="theme-panel-expand"
             className="app-theme-toggle-btn"
           >
@@ -689,7 +624,7 @@ function POS() {
                 <div className="app-theme-list">
                   <div className="app-theme-list-item">
                     <a
-                      href="javascript:;"
+                      href=""
                       className="app-theme-list-link bg-pink"
                       data-theme-class="theme-pink"
                       data-toggle="theme-selector"
@@ -703,7 +638,7 @@ function POS() {
                   </div>
                   <div className="app-theme-list-item">
                     <a
-                      href="javascript:;"
+                      href=""
                       className="app-theme-list-link bg-red"
                       data-theme-class="theme-red"
                       data-toggle="theme-selector"
@@ -717,7 +652,7 @@ function POS() {
                   </div>
                   <div className="app-theme-list-item">
                     <a
-                      href="javascript:;"
+                      href=""
                       className="app-theme-list-link bg-warning"
                       data-theme-class="theme-warning"
                       data-toggle="theme-selector"
@@ -731,7 +666,7 @@ function POS() {
                   </div>
                   <div className="app-theme-list-item">
                     <a
-                      href="javascript:;"
+                      href=""
                       className="app-theme-list-link bg-yellow"
                       data-theme-class="theme-yellow"
                       data-toggle="theme-selector"
@@ -745,7 +680,7 @@ function POS() {
                   </div>
                   <div className="app-theme-list-item">
                     <a
-                      href="javascript:;"
+                      href=""
                       className="app-theme-list-link bg-lime"
                       data-theme-class="theme-lime"
                       data-toggle="theme-selector"
@@ -759,7 +694,7 @@ function POS() {
                   </div>
                   <div className="app-theme-list-item">
                     <a
-                      href="javascript:;"
+                      href=""
                       className="app-theme-list-link bg-green"
                       data-theme-class="theme-green"
                       data-toggle="theme-selector"
@@ -773,7 +708,7 @@ function POS() {
                   </div>
                   <div className="app-theme-list-item active">
                     <a
-                      href="javascript:;"
+                      href=""
                       className="app-theme-list-link bg-teal"
                       data-theme-class=""
                       data-toggle="theme-selector"
@@ -787,7 +722,7 @@ function POS() {
                   </div>
                   <div className="app-theme-list-item">
                     <a
-                      href="javascript:;"
+                      href=""
                       className="app-theme-list-link bg-info"
                       data-theme-class="theme-info"
                       data-toggle="theme-selector"
@@ -801,7 +736,7 @@ function POS() {
                   </div>
                   <div className="app-theme-list-item">
                     <a
-                      href="javascript:;"
+                      href=""
                       className="app-theme-list-link bg-primary"
                       data-theme-class="theme-primary"
                       data-toggle="theme-selector"
@@ -815,7 +750,7 @@ function POS() {
                   </div>
                   <div className="app-theme-list-item">
                     <a
-                      href="javascript:;"
+                      href=""
                       className="app-theme-list-link bg-purple"
                       data-theme-class="theme-purple"
                       data-toggle="theme-selector"
@@ -829,7 +764,7 @@ function POS() {
                   </div>
                   <div className="app-theme-list-item">
                     <a
-                      href="javascript:;"
+                      href=""
                       className="app-theme-list-link bg-indigo"
                       data-theme-class="theme-indigo"
                       data-toggle="theme-selector"
@@ -843,7 +778,7 @@ function POS() {
                   </div>
                   <div className="app-theme-list-item">
                     <a
-                      href="javascript:;"
+                      href=""
                       className="app-theme-list-link bg-gray-100"
                       data-theme-class="theme-gray-200"
                       data-toggle="theme-selector"
@@ -864,7 +799,7 @@ function POS() {
                 <div className="app-theme-cover">
                   <div className="app-theme-cover-item active">
                     <a
-                      href="javascript:;"
+                      href=""
                       className="app-theme-cover-link"
                       style={{
                         backgroundImage:
@@ -882,7 +817,7 @@ function POS() {
                   </div>
                   <div className="app-theme-cover-item">
                     <a
-                      href="javascript:;"
+                      href=""
                       className="app-theme-cover-link"
                       style={{
                         backgroundImage:
@@ -900,7 +835,7 @@ function POS() {
                   </div>
                   <div className="app-theme-cover-item">
                     <a
-                      href="javascript:;"
+                      href=""
                       className="app-theme-cover-link"
                       style={{
                         backgroundImage:
@@ -918,7 +853,7 @@ function POS() {
                   </div>
                   <div className="app-theme-cover-item">
                     <a
-                      href="javascript:;"
+                      href=""
                       className="app-theme-cover-link"
                       style={{
                         backgroundImage:
@@ -936,7 +871,7 @@ function POS() {
                   </div>
                   <div className="app-theme-cover-item">
                     <a
-                      href="javascript:;"
+                      href=""
                       className="app-theme-cover-link"
                       style={{
                         backgroundImage:
