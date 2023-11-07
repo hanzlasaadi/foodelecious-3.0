@@ -1,5 +1,51 @@
+import axios from "axios";
+import { apiUrl } from "./assets/utils/env";
+import React, { useState } from "react";
+import {
+  dummyProductsList,
+  dummyProductCategory,
+} from "./assets/utils/dummyData";
+
+// Components
+import NavList from "./components/NavList";
+import ProductCard from "./components/ProductCard";
+
 /* eslint-disable jsx-a11y/anchor-is-valid */
 function POS() {
+  // states
+  const [showProductCards, setShowProductCards] = useState(false);
+  const [currentProduct, setCurrentProduct] = useState({});
+  const [productsList, setProductsList] = useState(dummyProductsList);
+  const [productCategories, setProductCategories] =
+    useState(dummyProductCategory);
+  const [pizzaList, setPizzaList] = useState([]);
+
+  React.useEffect(() => {
+    axios
+      .get(`${apiUrl}/api/v1/product?limit=100`)
+      .then((res) => {
+        console.log("Products: ", res.data.data);
+        setProductsList(res.data.data);
+      })
+      .catch((err) => console.log(err));
+
+    axios
+      .get(`${apiUrl}/api/v1/productCategory?limit=100`)
+      .then((res) => {
+        console.log("Categories: ", res.data.data);
+        setProductCategories(res.data.data);
+      })
+      .catch((err) => console.log(err));
+  }, []);
+
+  // Product Card Click
+  const handleProductCardClick = (subcategoryId) => {
+    const [filteredProduct] = productsList.filter(
+      (listEl) => listEl.productCategory === subcategoryId
+    );
+    setCurrentProduct(filteredProduct);
+    console.log("currentProduct", filteredProduct);
+  };
   return (
     <div
       id="app"
@@ -34,132 +80,17 @@ function POS() {
                   data-skip-mobile="true"
                 >
                   <ul className="nav nav-tabs" id="menuNav">
-                    <li class="nav-item">
-                      <a class="nav-link active" href="#" data-filter="all">
-                        <div class="card">
-                          <div class="card-body">Wraps</div>
-                        </div>
-                      </a>
-                    </li>
-                    {/* <li class="nav-item">
-                <a class="nav-link" href="#" data-filter="pizza">
-                  <div class="card">
-                    <div class="card-body">Pizza</div>
-                    <div class="card-arrow">
-                      <div class="card-arrow-top-left"></div>
-                      <div class="card-arrow-top-right"></div>
-                      <div class="card-arrow-bottom-left"></div>
-                      <div class="card-arrow-bottom-right"></div>
-                    </div>
-                  </div>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#" data-filter="burger">
-                  <div class="card">
-                    <div class="card-body">Burger</div>
-                  </div>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#" data-filter="milkshakes">
-                  <div class="card">
-                    <div class="card-body">Milkshakes</div>
-                    <div class="card-arrow">
-                      <div class="card-arrow-top-left"></div>
-                      <div class="card-arrow-top-right"></div>
-                      <div class="card-arrow-bottom-left"></div>
-                      <div class="card-arrow-bottom-right"></div>
-                    </div>
-                  </div>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#" data-filter="Waffles">
-                  <div class="card">
-                    <div class="card-body">Waffles</div>
-                  </div>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#" data-filter="bubble">
-                  <div class="card">
-                    <div class="card-body">Bubble Tea</div>
-                  </div>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#" data-filter="cookie">
-                  <div class="card">
-                    <div class="card-body">Cookie Dough</div>
-                  </div>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#" data-filter="icecream">
-                  <div class="card">
-                    <div class="card-body">Ice Creams</div>
-                    <div class="card-arrow">
-                      <div class="card-arrow-top-left"></div>
-                      <div class="card-arrow-top-right"></div>
-                      <div class="card-arrow-bottom-left"></div>
-                      <div class="card-arrow-bottom-right"></div>
-                    </div>
-                  </div>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#" data-filter="classic">
-                  <div class="card">
-                    <div class="card-body">Classic Gelato</div>
-                    <div class="card-arrow">
-                      <div class="card-arrow-top-left"></div>
-                      <div class="card-arrow-top-right"></div>
-                      <div class="card-arrow-bottom-left"></div>
-                      <div class="card-arrow-bottom-right"></div>
-                    </div>
-                  </div>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#" data-filter="kids">
-                  <div class="card">
-                    <div class="card-body">Kids Gelato</div>
-                    <div class="card-arrow">
-                      <div class="card-arrow-top-left"></div>
-                      <div class="card-arrow-top-right"></div>
-                      <div class="card-arrow-bottom-left"></div>
-                      <div class="card-arrow-bottom-right"></div>
-                    </div>
-                  </div>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#" data-filter="savers">
-                  <div class="card">
-                    <div class="card-body">Savers Menu</div>
-                    <div class="card-arrow">
-                      <div class="card-arrow-top-left"></div>
-                      <div class="card-arrow-top-right"></div>
-                      <div class="card-arrow-bottom-left"></div>
-                      <div class="card-arrow-bottom-right"></div>
-                    </div>
-                  </div>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#" data-filter="drinks">
-                  <div class="card">
-                    <div class="card-body">Drinks</div>
-                    <div class="card-arrow">
-                      <div class="card-arrow-top-left"></div>
-                      <div class="card-arrow-top-right"></div>
-                      <div class="card-arrow-bottom-left"></div>
-                      <div class="card-arrow-bottom-right"></div>
-                    </div>
-                  </div>
-                </a>
-              </li> */}
+                    {productCategories.map((cat) => {
+                      return (
+                        <NavList
+                          key={cat._id}
+                          category={cat}
+                          setShowProductCards={setShowProductCards}
+                          setCurrentProduct={setCurrentProduct}
+                          handleProductCardClick={handleProductCardClick}
+                        />
+                      );
+                    })}
                   </ul>
                 </div>
               </div>
@@ -183,240 +114,9 @@ function POS() {
                   />
                 </div>
                 <div className="row gx-4" id="productCardsContainer">
-                  <div
-                    class="col-xxl-3 col-xl-4 col-lg-6 col-md-4 col-sm-6 pb-4"
-                    data-type="meat"
-                  >
-                    <div class="card h-100">
-                      <div class="card-body h-100 p-1">
-                        <a
-                          href="#"
-                          class="pos-product"
-                          data-bs-toggle="modal"
-                          data-bs-target="#modalPosItem"
-                        >
-                          <div
-                            class="img"
-                            style={{
-                              backgroundImage:
-                                "url(./assets/img/pos/countryside.jpg",
-                            }}
-                          ></div>
-                          <div class="info">
-                            <div class="title">Grill Chicken Chop&reg;</div>
-                          </div>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                  <div
-                    class="col-xxl-3 col-xl-4 col-lg-6 col-md-4 col-sm-6 pb-4"
-                    data-type="meat"
-                  >
-                    <div class="card h-100">
-                      <div class="card-body h-100 p-1">
-                        <a
-                          href="#"
-                          class="pos-product"
-                          data-bs-toggle="modal"
-                          data-bs-target="#modalPosItem"
-                        >
-                          <div
-                            class="img"
-                            style={{
-                              backgroundImage:
-                                "url(./assets/img/pos/countryside.jpg",
-                            }}
-                          ></div>
-                          <div class="info">
-                            <div class="title">Grill Chicken Chop&reg;</div>
-                          </div>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                  <div
-                    class="col-xxl-3 col-xl-4 col-lg-6 col-md-4 col-sm-6 pb-4"
-                    data-type="meat"
-                  >
-                    <div class="card h-100">
-                      <div class="card-body h-100 p-1">
-                        <a
-                          href="#"
-                          class="pos-product"
-                          data-bs-toggle="modal"
-                          data-bs-target="#modalPosItem"
-                        >
-                          <div
-                            class="img"
-                            style={{
-                              backgroundImage:
-                                "url(./assets/img/pos/countryside.jpg",
-                            }}
-                          ></div>
-                          <div class="info">
-                            <div class="title">Grill Chicken Chop&reg;</div>
-                          </div>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                  <div
-                    class="col-xxl-3 col-xl-4 col-lg-6 col-md-4 col-sm-6 pb-4"
-                    data-type="meat"
-                  >
-                    <div class="card h-100">
-                      <div class="card-body h-100 p-1">
-                        <a
-                          href="#"
-                          class="pos-product"
-                          data-bs-toggle="modal"
-                          data-bs-target="#modalPosItem"
-                        >
-                          <div
-                            class="img"
-                            style={{
-                              backgroundImage:
-                                "url(./assets/img/pos/countryside.jpg",
-                            }}
-                          ></div>
-                          <div class="info">
-                            <div class="title">Grill Chicken Chop&reg;</div>
-                          </div>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                  <div
-                    class="col-xxl-3 col-xl-4 col-lg-6 col-md-4 col-sm-6 pb-4"
-                    data-type="meat"
-                  >
-                    <div class="card h-100">
-                      <div class="card-body h-100 p-1">
-                        <a
-                          href="#"
-                          class="pos-product"
-                          data-bs-toggle="modal"
-                          data-bs-target="#modalPosItem"
-                        >
-                          <div
-                            class="img"
-                            style={{
-                              backgroundImage:
-                                "url(./assets/img/pos/countryside.jpg",
-                            }}
-                          ></div>
-                          <div class="info">
-                            <div class="title">Grill Chicken Chop&reg;</div>
-                          </div>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                  <div
-                    class="col-xxl-3 col-xl-4 col-lg-6 col-md-4 col-sm-6 pb-4"
-                    data-type="meat"
-                  >
-                    <div class="card h-100">
-                      <div class="card-body h-100 p-1">
-                        <a
-                          href="#"
-                          class="pos-product"
-                          data-bs-toggle="modal"
-                          data-bs-target="#modalPosItem"
-                        >
-                          <div
-                            class="img"
-                            style={{
-                              backgroundImage:
-                                "url(./assets/img/pos/countryside.jpg",
-                            }}
-                          ></div>
-                          <div class="info">
-                            <div class="title">Grill Chicken Chop&reg;</div>
-                          </div>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                  <div
-                    class="col-xxl-3 col-xl-4 col-lg-6 col-md-4 col-sm-6 pb-4"
-                    data-type="meat"
-                  >
-                    <div class="card h-100">
-                      <div class="card-body h-100 p-1">
-                        <a
-                          href="#"
-                          class="pos-product"
-                          data-bs-toggle="modal"
-                          data-bs-target="#modalPosItem"
-                        >
-                          <div
-                            class="img"
-                            style={{
-                              backgroundImage:
-                                "url(./assets/img/pos/countryside.jpg",
-                            }}
-                          ></div>
-                          <div class="info">
-                            <div class="title">Grill Chicken Chop&reg;</div>
-                          </div>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                  <div
-                    class="col-xxl-3 col-xl-4 col-lg-6 col-md-4 col-sm-6 pb-4"
-                    data-type="meat"
-                  >
-                    <div class="card h-100">
-                      <div class="card-body h-100 p-1">
-                        <a
-                          href="#"
-                          class="pos-product"
-                          data-bs-toggle="modal"
-                          data-bs-target="#modalPosItem"
-                        >
-                          <div
-                            class="img"
-                            style={{
-                              backgroundImage:
-                                "url(./assets/img/pos/countryside.jpg",
-                            }}
-                          ></div>
-                          <div class="info">
-                            <div class="title">Grill Chicken Chop&reg;</div>
-                          </div>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                  <div
-                    class="col-xxl-3 col-xl-4 col-lg-6 col-md-4 col-sm-6 pb-4"
-                    data-type="meat"
-                  >
-                    <div class="card h-100">
-                      <div class="card-body h-100 p-1">
-                        <a
-                          href="#"
-                          class="pos-product"
-                          data-bs-toggle="modal"
-                          data-bs-target="#modalPosItem"
-                        >
-                          <div
-                            class="img"
-                            style={{
-                              backgroundImage:
-                                "url(./assets/img/pos/countryside.jpg",
-                            }}
-                          ></div>
-                          <div class="info">
-                            <div class="title">Grill Chicken Chop&reg;</div>
-                          </div>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
+                  {showProductCards ? (
+                    <ProductCard currentProduct={currentProduct} />
+                  ) : null}
                 </div>
               </div>
             </div>
