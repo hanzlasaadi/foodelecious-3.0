@@ -2,19 +2,21 @@
 function POS() {
   return (
     <div
+    
       id="app"
-      className="app app-content-full-height app-without-sidebar app-without-header"
+      className="app app-content-full-height app-without-sidebar app-without-header" 
     >
-      <div
+      <div 
         id="content"
         className="app-content p-1 ps-xl-4 pe-xl-4 pt-xl-3 pb-xl-3"
-        style={{ color: "#ff4a17" }}
+        style={{ color: "#ff4a17",  }}
       >
-        <div className="pos card" id="pos" style={{ border: "none" }}>
-          <div className="pos-container card-body">
+        <div className="pos card " id="pos" >
+          <div className="pos-container card-body"  
+         >
             <div
               className="pos-menu"
-              style={{ backgroundColor: "white", borderRadius: 15 }}
+              style={{ backgroundColor: "white", borderRadius: 15,}}
             >
               <div className="logo">
                 <a href="index-2.html">
@@ -34,10 +36,10 @@ function POS() {
                   data-skip-mobile="true"
                 >
                   <ul className="nav nav-tabs" id="menuNav">
-                    <li class="nav-item">
+                    <li class="nav-item" >
                       <a class="nav-link active" href="#" data-filter="all">
-                        <div class="card">
-                          <div class="card-body">Wraps</div>
+                        <div class="card"  >
+                          <div class="card-body" >Wraps</div>
                         </div>
                       </a>
                     </li>
@@ -165,7 +167,7 @@ function POS() {
               </div>
             </div>
             <div className="pos-content">
-              <div
+              <div 
                 className="pos-content-container h-100 p-4"
                 data-scrollbar="true"
                 data-height="100%"
@@ -199,7 +201,7 @@ function POS() {
                             class="img"
                             style={{
                               backgroundImage:
-                                "url(./assets/img/pos/countryside.jpg",
+                                "url(./assets/img/pos/countryside.jpg", borderRadius:"15px",
                             }}
                           ></div>
                           <div class="info">
@@ -443,21 +445,21 @@ function POS() {
                     <div className="icon">
                       <img src="../assets/img/pos/countryside.jpgg" alt="" />
                     </div>
-                    <div className="my-btn">
+                    <div className="">
                       <button
-                        style={{ borderRadius: "15px !important" }}
-                        className="btn active"
+                        style={{ borderRadius: "15px !important", marginRight:'5px' }}
+                        className="btn active "
                       >
                         Eat
                       </button>
                       <button
-                        style={{ borderRadius: "15px !important" }}
+                        style={{ borderRadius: "15px !important ", marginRight:'5px' }}
                         className="btn active"
                       >
                         Taken
                       </button>
                       <button
-                        style={{ borderRadius: "15px !important" }}
+                        style={{ borderRadius: "15px !important", marginRight:'5px' }}
                         className="btn active"
                       >
                         Delivery
