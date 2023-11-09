@@ -11,7 +11,7 @@ function POS() {
         className="app-content p-1 ps-xl-4 pe-xl-4 pt-xl-3 pb-xl-3"
         style={{ color: "#ff4a17",  }}
       >
-        <div className="pos card " id="pos" >
+        <div className="pos card " id="pos"  style={{border:"none",}}>
           <div className="pos-container card-body"  
          >
             <div
