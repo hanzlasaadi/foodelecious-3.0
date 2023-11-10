@@ -24,7 +24,7 @@ function POS() {
                       style={{ fontSize: "2.1rem" }}
                     />
                   </div>
-                  <div className="logo-text">Dashboard</div>
+                  <div className="logo-text">motherboard</div>
                 </a>
               </div>
               <div className="nav-container">
