@@ -1,4 +1,4 @@
-function ProductCard({ currentProduct, setShowModal, set }) {
+function ProductCard({ currentProduct, setShowModal, setProductClicked }) {
   return (
     <>
       {currentProduct.productsList.map((curr) => {
@@ -17,6 +17,7 @@ function ProductCard({ currentProduct, setShowModal, set }) {
                   setShowModal(true);
                   const modalEl = document.getElementById("modalPosItem");
                   console.log(e.currentTarget.dataset.productId, "id");
+                  setProductClicked(e.currentTarget.dataset.productId);
                   // const modalChild = modalEl.querySelector(".modal-dialog");
                   // modalEl.style.display = "block";
                   // modalEl.style.opacity = "100";
