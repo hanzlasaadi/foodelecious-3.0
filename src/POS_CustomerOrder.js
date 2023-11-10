@@ -113,6 +113,120 @@ function POS() {
                   data-scrollbar="true"
                   data-height="100%"
                 >
+{/*
+<<<<<<
+                  <ul className="nav nav-tabs" id="menuNav">
+                    <li class="nav-item" >
+                      <a class="nav-link active" href="#" data-filter="all">
+                        <div class="card"  >
+                          <div class="card-body" >Wraps</div>
+                        </div>
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="#" data-filter="pizza">
+                  <div class="card">
+                    <div class="card-body">Pizza</div>
+                    <div class="card-arrow">
+                      <div class="card-arrow-top-left"></div>
+                      <div class="card-arrow-top-right"></div>
+                      <div class="card-arrow-bottom-left"></div>
+                      <div class="card-arrow-bottom-right"></div>
+                    </div>
+                  </div>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#" data-filter="burger">
+                  <div class="card">
+                    <div class="card-body">Burger</div>
+                  </div>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#" data-filter="milkshakes">
+                  <div class="card">
+                    <div class="card-body">Milkshakes</div>
+                    <div class="card-arrow">
+                      <div class="card-arrow-top-left"></div>
+                      <div class="card-arrow-top-right"></div>
+                      <div class="card-arrow-bottom-left"></div>
+                      <div class="card-arrow-bottom-right"></div>
+                    </div>
+                  </div>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#" data-filter="Waffles">
+                  <div class="card">
+                    <div class="card-body">Waffles</div>
+                  </div>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#" data-filter="bubble">
+                  <div class="card">
+                    <div class="card-body">Bubble Tea</div>
+                  </div>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#" data-filter="cookie">
+                  <div class="card">
+                    <div class="card-body">Cookie Dough</div>
+                  </div>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#" data-filter="icecream">
+                  <div class="card">
+                    <div class="card-body">Ice Creams</div>
+                    <div class="card-arrow">
+                      <div class="card-arrow-top-left"></div>
+                      <div class="card-arrow-top-right"></div>
+                      <div class="card-arrow-bottom-left"></div>
+                      <div class="card-arrow-bottom-right"></div>
+                    </div>
+                  </div>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#" data-filter="classic">
+                  <div class="card">
+                    <div class="card-body">Classic Gelato</div>
+                    <div class="card-arrow">
+                      <div class="card-arrow-top-left"></div>
+                      <div class="card-arrow-top-right"></div>
+                      <div class="card-arrow-bottom-left"></div>
+                      <div class="card-arrow-bottom-right"></div>
+                    </div>
+                  </div>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#" data-filter="kids">
+                  <div class="card">
+                    <div class="card-body">Kids Gelato</div>
+                    <div class="card-arrow">
+                      <div class="card-arrow-top-left"></div>
+                      <div class="card-arrow-top-right"></div>
+                      <div class="card-arrow-bottom-left"></div>
+                      <div class="card-arrow-bottom-right"></div>
+                    </div>
+                  </div>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#" data-filter="savers">
+                  <div class="card">
+                    <div class="card-body">Savers Menu</div>
+                    <div class="card-arrow">
+                      <div class="card-arrow-top-left"></div>
+                      <div class="card-arrow-top-right"></div>
+                      <div class="card-arrow-bottom-left"></div>
+                      <div class="card-arrow-bottom-right"></div>
+                    </div>
+======
                   <div>
                     <img
                       src="../assets/img/pos/logo.png"
@@ -124,6 +238,7 @@ function POS() {
                       }}
                       alt=""
                     />
+>>>>>>
                   </div>
                   <div className="row gx-4" id="productCardsContainer">
                     {showProductCards ? (
@@ -136,12 +251,21 @@ function POS() {
                   </div>
                 </div>
               </div>
+<<<<<<
+            </div>
+            <div className="pos-content">
+              <div 
+                className="pos-content-container h-100 p-4"
+                data-scrollbar="true"
+                data-height="100%"
+=======
               <div
                 style={{
                   borderRadius: "4%",
                   backgroundColor: "white",
                   boxShadow: "lightgrey 0px 0px 0px 0px",
                 }}
+>>>>>
               >
                 <div className="pos-sidebar" id="pos-sidebar">
                   <div className="h-100 d-flex flex-column p-0">
@@ -153,8 +277,22 @@ function POS() {
                           data-toggle-target="#pos"
                           className="btn"
                         >
+<<<<<<
+                          <div
+                            class="img"
+                            style={{
+                              backgroundImage:
+                                "url(./assets/img/pos/countryside.jpg", borderRadius:"15px",
+                            }}
+                          ></div>
+                          <div class="info">
+                            <div class="title">Grill Chicken Chop&reg;</div>
+                          </div>
+                        </a>
+=======
                           <i className="bi bi-chevron-left" />
                         </button>
+>>>>>>
                       </div>
                       <div className="icon">
                         <img src="../assets/img/pos/countryside.jpgg" alt="" />
@@ -380,6 +518,24 @@ function POS() {
                         &nbsp;
                       </a>
                     </div>
+<<<<<<
+                    <div className="">
+                      <button
+                        style={{ borderRadius: "15px !important", marginRight:'5px' }}
+                        className="btn active "
+                      >
+                        Eat
+                      </button>
+                      <button
+                        style={{ borderRadius: "15px !important ", marginRight:'5px' }}
+                        className="btn active"
+                      >
+                        Taken
+                      </button>
+                      <button
+                        style={{ borderRadius: "15px !important", marginRight:'5px' }}
+                        className="btn active"
+=======
                     <div className="app-theme-list-item">
                       <a
                         href=""
@@ -418,6 +574,7 @@ function POS() {
                         data-bs-trigger="hover"
                         data-bs-container="body"
                         data-bs-title="Green"
+>>>>>>
                       >
                         &nbsp;
                       </a>

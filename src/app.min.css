@@ -1,6 +1,7 @@
 @charset "UTF-8";
 @import url(https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@300;500&amp;display=swap);
 
+#eee5e5
 :root {
     --bs-blue: #4e9cff;
     --bs-indigo: #bba4ff;
@@ -22923,7 +22924,7 @@ fieldset:disabled .btn {
 }
 
 .text-opacity-75 {
-    --bs-text-opacity: 0.75
+    /* --bs-text-opacity: 0 */
 }
 
 .bg-opacity-70 {
@@ -23100,8 +23101,8 @@ fieldset:disabled .btn {
 }
 
 .btn-outline-theme {
-    color: var(--bs-theme);
-    border-color: var(--bs-theme)
+    color: #e57c35;
+    border-color: #e57c35;
 }
 
 .btn-outline-theme.active,
@@ -23386,7 +23387,7 @@ body:before {
 
 .app-header .menu .menu-item .menu-link {
     text-decoration: none;
-    color: #fff;
+    color: black;
     position: relative;
     padding: .5rem 1rem;
     display: flex;
@@ -23543,14 +23544,14 @@ body:before {
     padding: 1rem 1rem .5rem;
     font-size: .65625rem;
     font-weight: 600;
-    color: rgba(255, 255, 255, .3)
+    color: grey
 }
 
 .app-sidebar .app-sidebar-content .menu .menu-item .menu-link {
     text-decoration: none;
     position: relative;
     padding: .3rem 1rem;
-    color: rgba(255, 255, 255, .5);
+    color: black;
     display: flex;
     align-items: center;
     justify-content: flex-end;
@@ -23579,7 +23580,7 @@ body:before {
 
 .app-sidebar .app-sidebar-content .menu .menu-item .menu-link:focus,
 .app-sidebar .app-sidebar-content .menu .menu-item .menu-link:hover {
-    color: #fff
+    color: #e57c35
 }
 
 .app-sidebar .app-sidebar-content .menu .menu-item .menu-submenu {
@@ -24398,6 +24399,8 @@ body:before {
 
 .card {
     position: relative;
+    border-color: #e57c35;
+    border-radius: 15px;
     
 }
 
@@ -24766,13 +24769,13 @@ a:hover {
     border: none;
     border-bottom: 3px solid transparent;
     padding: 1rem 0;
-    color: rgba(255, 255, 255, .5)
+    color: black
 }
 
 .nav.nav-tabs.nav-tabs-v2>.nav-item>.nav-link.active,
 .nav.nav-tabs.nav-tabs-v2>.nav-item>.nav-link:hover {
-    color: #fff;
-    border-bottom-color: var(--bs-theme)
+    color: #e57c35;
+    border-bottom-color: #e57c35
 }
 
 .nav.nav-tabs.nav-tabs-v2>.nav-item.show>.nav-link {
@@ -25027,7 +25030,7 @@ a:hover {
 }
 
 .page-header {
-    color: #fff;
+    color: black;
     padding: 0;
     border: none;
     margin-bottom: 1rem;
