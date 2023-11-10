@@ -3,9 +3,9 @@ function SalesReport() {
     return (
 
 
-        <div id="app" class="app" style={{backgroundColor:'white'}}>
+        <div id="app" class="app" >
 
-            <div id="header" class="app-header"  style={{backgroundColor:'white', boxShadow:'2px 1px 2px 0px'}}>
+            <div id="header" class="app-header"  style={{backgroundColor:'white', }}>
 
                 <div class="desktop-toggler">
                     <button type="button" class="menu-toggler" data-toggle-class="app-sidebar-collapsed" data-dismiss-class="app-sidebar-toggled" data-toggle-target=".app">
@@ -213,7 +213,7 @@ function SalesReport() {
 
                 <div class="app-sidebar-content" data-scrollbar="true" data-height="100%">
 
-                    <div class="menu">
+                    <div class="menu" style={{backgroundColor:'white', marginTop:'10px',marginLeft:'5px',  borderRadius:'15px'}}>
                         <div class="menu-header">Navigation</div>
                         <div class="menu-item">
                             <a href="index-2.html" class="menu-link">
@@ -557,9 +557,9 @@ function SalesReport() {
                     </div> */}
                 </div>
                 <div class="mb-md-4 mb-3 d-md-flex">
-                    <div class="mt-md-0 mt-2"><a href="#" class="text-white text-opacity-75 text-decoration-none"><i class="fa fa-download fa-fw me-1 text-theme"></i> Export</a></div>
+                    <div class="mt-md-0 mt-2"><a href="#" class="text-black  text-opacity-75 text-decoration-none"><i class="fa fa-download fa-fw me-1 text-theme"></i> Export</a></div>
                     <div class="ms-md-4 mt-md-0 mt-2 dropdown-toggle">
-                        <a href="#" data-bs-toggle="dropdown" class="text-white text-opacity-75 text-decoration-none">More Actions</a>
+                        <a href="#" data-bs-toggle="dropdown" class="text-black text-decoration-none">More Actions</a>
                         <div class="dropdown-menu">
                             <a class="dropdown-item" href="#">Action</a>
                             <a class="dropdown-item" href="#">Another action</a>
@@ -569,14 +569,14 @@ function SalesReport() {
                         </div>
                     </div>
                 </div>
-                <div class="card" > 
+                <div class="card" style={{backgroundColor:'white' , border:'none' , borderRadius:'8px'}} > 
                     <ul class="nav nav-tabs nav-tabs-v2 px-4" >
-                        <li class="nav-item me-3"><a href="#allTab" class="nav-link active px-2" data-bs-toggle="tab">All</a></li>
-                        <li class="nav-item me-3"><a href="#publishedTab" class="nav-link px-2" data-bs-toggle="tab">Unfulfilled</a></li>
-                        <li class="nav-item me-3"><a href="#expiredTab" class="nav-link px-2" data-bs-toggle="tab">Unpaid</a></li>
-                        <li class="nav-item me-3"><a href="#deletedTab" class="nav-link px-2" data-bs-toggle="tab">Open</a></li>
-                        <li class="nav-item me-3"><a href="#deletedTab" class="nav-link px-2" data-bs-toggle="tab">Closed</a></li>
-                        <li class="nav-item me-3"><a href="#deletedTab" class="nav-link px-2" data-bs-toggle="tab">Local delivery</a></li>
+                        <li class="nav-item me-3"><a href="#allTab" class="nav-link active px-2" data-bs-toggle="tab">Data Range</a>
+                            </li>
+                        <li class="nav-item me-3"><a href="#publishedTab" class="nav-link px-2" data-bs-toggle="tab">Payment Method</a></li>
+                        <li class="nav-item me-3"><a href="#expiredTab" class="nav-link px-2" data-bs-toggle="tab">Staff</a></li>
+                        <li class="nav-item me-3"><a href="#deletedTab" class="nav-link px-2" data-bs-toggle="tab">Product</a></li>
+                        <li class="nav-item me-3"><a href="#deletedTab" class="nav-link px-2" data-bs-toggle="tab">Sales type</a></li>
                     </ul>
                     <div class="tab-content p-4">
                         <div class="tab-pane fade show active" id="allTab">
@@ -590,212 +590,121 @@ function SalesReport() {
                                         </div>
                                     </div>
                                 </div>
-                                <button class="btn btn-outline-default dropdown-toggle rounded-0" type="button" data-bs-toggle="dropdown"><span class="d-none d-md-inline">Payment Status</span><span class="d-inline d-md-none"><i class="fa fa-credit-card"></i></span> &nbsp;</button>
-                                <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="#">Action</a>
-                                    <a class="dropdown-item" href="#">Another action</a>
-                                    <a class="dropdown-item" href="#">Something else here</a>
-                                    <div role="separator" class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="#">Separated link</a>
-                                </div>
-                                <button class="btn btn-outline-default dropdown-toggle" type="button" data-bs-toggle="dropdown"><span class="d-none d-md-inline">Fulfillment status</span><span class="d-inline d-md-none"><i class="fa fa-check"></i></span> &nbsp;</button>
-                                <div class="dropdown-menu dropdown-menu-end">
-                                    <a class="dropdown-item" href="#">Action</a>
-                                    <a class="dropdown-item" href="#">Another action</a>
-                                    <a class="dropdown-item" href="#">Something else here</a>
-                                    <div role="separator" class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="#">Separated link</a>
-                                </div>
+                                <button class="btn btn-outline-default  rounded-0" type="button"><span class="d-none d-md-inline "> <input type="checkbox" class="form-check-input" id="product1"/>
+                                                        <label class="form-check-label" for="product1"></label> &nbsp;Vat</span><span class="d-inline d-md-none"></span> &nbsp;</button>
+                              
+                                                        <button class="btn btn-outline-default  rounded-0" type="button"><span class="d-none d-md-inline "> <input type="checkbox" class="form-check-input" id="product1"/>
+                                                        <label class="form-check-label" for="product1"></label>&nbsp;Discount</span><span class="d-inline d-md-none"></span> &nbsp;</button>
+                               
                             </div>
 
 
                             <div class="table-responsive">
                                 <table class="table table-hover text-nowrap">
                                     <thead>
-                                        <tr>
+                                        <tr  style={{textAlign:'center',}}>
                                             <th class="border-top-0 pt-0 pb-2"></th>
-                                            <th class="border-top-0 pt-0 pb-2">Order</th>
-                                            <th class="border-top-0 pt-0 pb-2">Date</th>
-                                            <th class="border-top-0 pt-0 pb-2">Customer</th>
-                                            <th class="border-top-0 pt-0 pb-2">Total</th>
-                                            <th class="border-top-0 pt-0 pb-2">Payment status</th>
-                                            <th class="border-top-0 pt-0 pb-2">Fulfillment status</th>
-                                            <th class="border-top-0 pt-0 pb-2">Items</th>
-                                            <th class="border-top-0 pt-0 pb-2">Delivery method</th>
+                                            <th class="border-top-0 pt-0 pb-2">Order#</th>
+                                            <th class="border-top-0 pt-0 pb-2">Date&Time</th>
+                                            <th class="border-top-0 pt-0 pb-2">Staff</th>
+                                            <th class="border-top-0 pt-0 pb-2">Payment Method</th>
+                                            <th class="border-top-0 pt-0 pb-2"> Sales Type</th>
+                                            <th class="border-top-0 pt-0 pb-2">Amount</th>
+                                            <th class="border-top-0 pt-0 pb-2">Vat</th>
+                                            <th class="border-top-0 pt-0 pb-2">Discount</th>
+                                            <th class="border-top-0 pt-0 pb-2">Paid</th>
+
+
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
+                                        <tr  style={{textAlign:'center'}}>
                                             <td class="w-10px align-middle">
                                                 <div class="form-check">
                                                     <input type="checkbox" class="form-check-input" id="product1"/>
                                                         <label class="form-check-label" for="product1"></label>
                                                 </div>
                                             </td>
-                                            <td class="align-middle"><a href="#">#1950</a></td>
+                                            <td class="align-middle" ><a href="#">0001</a></td>
                                             <td class="align-middle">Thu 26 Nov, 12:23pm</td>
-                                            <td class="align-middle">Amanda Lee</td>
-                                            <td>$398.00</td>
-                                            <td class="py-1 align-middle"><span class="badge border border-success text-success px-2 pt-5px pb-5px rounded fs-12px d-inline-flex align-items-center"><i class="fa fa-circle fs-9px fa-fw me-5px"></i> Paid</span></td>
-                                            <td class="align-middle"><span class="badge border border-success text-success px-2 pt-5px pb-5px rounded fs-12px d-inline-flex align-items-center"><i class="fa fa-circle fs-9px fa-fw me-5px"></i> Fulfilled</span></td>
-                                            <td class="align-middle">3 items</td>
-                                            <td class="align-middle">Free shipping</td>
+                                            <td class="align-middle"> Lee</td>
+                                            <td>Cash</td>
+                                            <td class="py-1 align-middle"><span > Eat in</span></td>
+                                            <td class="align-middle"><span> £34.99</span></td>
+                                            <td class="align-middle">£0</td>
+                                            <td class="align-middle">£2.99</td>
+                                            <td class="align-middle">£34.99</td>
+
                                         </tr>
-                                        <tr>
+                                       
+                                        <tr  style={{textAlign:'center'}}>
                                             <td class="w-10px align-middle">
                                                 <div class="form-check">
-                                                    <input type="checkbox" class="form-check-input" id="product2"/>
-                                                        <label class="form-check-label" for="product2"></label>
+                                                    <input type="checkbox" class="form-check-input" id="product1"/>
+                                                        <label class="form-check-label" for="product1"></label>
                                                 </div>
                                             </td>
-                                            <td class="align-middle"><a href="#">#1949</a></td>
-                                            <td class="align-middle">Thu 26 Nov, 11:54am</td>
-                                            <td class="align-middle">Leonard Oii</td>
-                                            <td>$496.00</td>
-                                            <td class="py-1 align-middle"><span class="badge border border-success text-success px-2 pt-5px pb-5px rounded fs-12px d-inline-flex align-items-center"><i class="fa fa-circle fs-9px fa-fw me-5px"></i> Paid</span></td>
-                                            <td class="align-middle"><span class="badge border border-success text-success px-2 pt-5px pb-5px rounded fs-12px d-inline-flex align-items-center"><i class="fa fa-circle fs-9px fa-fw me-5px"></i> Fulfilled</span></td>
-                                            <td class="align-middle">1 item</td>
-                                            <td class="align-middle">Local pickup</td>
+                                            <td class="align-middle" ><a href="#">0002</a></td>
+                                            <td class="align-middle">Thu 26 Nov, 12:23pm</td>
+                                            <td class="align-middle"> Lee</td>
+                                            <td>Online</td>
+                                            <td class="py-1 align-middle"><span> Deliviero</span></td>
+                                            <td class="align-middle"><span > £34.99</span></td>
+                                            <td class="align-middle">£0</td>
+                                            <td class="align-middle">£2.99</td>
+                                            <td class="align-middle">£34.99</td>
+
                                         </tr>
-                                        <tr>
+
+                                        <tr  style={{textAlign:'center'}}>
                                             <td class="w-10px align-middle">
                                                 <div class="form-check">
-                                                    <input type="checkbox" class="form-check-input" id="product3"/>
-                                                        <label class="form-check-label" for="product3"></label>
+                                                    <input type="checkbox" class="form-check-input" id="product1"/>
+                                                        <label class="form-check-label" for="product1"></label>
                                                 </div>
                                             </td>
-                                            <td class="align-middle"><a href="#">#1948</a></td>
-                                            <td class="align-middle">Thu 25 Nov, 11:54pm</td>
-                                            <td class="align-middle">John Doe</td>
-                                            <td>$195.00</td>
-                                            <td class="py-1 align-middle"><span class="badge border border-warning text-warning px-2 pt-5px pb-5px rounded fs-12px d-inline-flex align-items-center"><i class="fa fa-circle fs-9px fa-fw me-5px"></i> Pending</span></td>
-                                            <td class="align-middle"><span class="badge border border-warning text-warning px-2 pt-5px pb-5px rounded fs-12px d-inline-flex align-items-center"><i class="fa fa-circle fs-9px fa-fw me-5px"></i> Unfulfilled</span></td>
-                                            <td class="align-middle">2 items</td>
-                                            <td class="align-middle">Express</td>
+                                            <td class="align-middle" ><a href="#">0003</a></td>
+                                            <td class="align-middle">Thu 26 Nov, 12:23pm</td>
+                                            <td class="align-middle"> Lee</td>
+                                            <td>Online</td>
+                                            <td class="py-1 align-middle"><span > JustEat</span></td>
+                                            <td class="align-middle"><span > £34.99</span></td>
+                                            <td class="align-middle">£0</td>
+                                            <td class="align-middle">£2.99</td>
+                                            <td class="align-middle">£34.99</td>
+
                                         </tr>
-                                        <tr>
+
+                                        <tr  style={{textAlign:'center'}}>
                                             <td class="w-10px align-middle">
                                                 <div class="form-check">
-                                                    <input type="checkbox" class="form-check-input" id="product4"/>
-                                                        <label class="form-check-label" for="product4"></label>
+                                                    <input type="checkbox" class="form-check-input" id="product1"/>
+                                                        <label class="form-check-label" for="product1"></label>
                                                 </div>
                                             </td>
-                                            <td class="align-middle"><a href="#">#1947</a></td>
-                                            <td class="align-middle">Thu 25 Nov, 11:53pm</td>
-                                            <td class="align-middle">Terry Ng</td>
-                                            <td>$195.00</td>
-                                            <td class="py-1 align-middle"><span class="badge border border-warning text-warning px-2 pt-5px pb-5px rounded fs-12px d-inline-flex align-items-center"><i class="fa fa-circle fs-9px fa-fw me-5px"></i> Pending</span></td>
-                                            <td class="align-middle"><span class="badge border border-warning text-warning px-2 pt-5px pb-5px rounded fs-12px d-inline-flex align-items-center"><i class="fa fa-circle fs-9px fa-fw me-5px"></i> Unfulfilled</span></td>
-                                            <td class="align-middle">2 items</td>
-                                            <td class="align-middle">Express</td>
+                                            <td class="align-middle" ><a href="#">0004</a></td>
+                                            <td class="align-middle">Thu 26 Nov, 12:23pm</td>
+                                            <td class="align-middle"> Lee</td>
+                                            <td>Card</td>
+                                            <td class="py-1 align-middle"><span > Take Away</span></td>
+                                            <td class="align-middle"><span > £34.99</span></td>
+                                            <td class="align-middle">£0</td>
+                                            <td class="align-middle">£2.99</td>
+                                            <td class="align-middle">£34.99</td>
+
                                         </tr>
-                                        <tr>
-                                            <td class="w-10px align-middle">
-                                                <div class="form-check">
-                                                    <input type="checkbox" class="form-check-input" id="product5"/>
-                                                        <label class="form-check-label" for="product5"></label>
-                                                </div>
-                                            </td>
-                                            <td class="align-middle"><a href="#">#1946</a></td>
-                                            <td class="align-middle">Thu 25 Nov, 11:52pm</td>
-                                            <td class="align-middle">Terry Ng</td>
-                                            <td>$195.00</td>
-                                            <td class="py-1 align-middle"><span class="badge border border-warning text-warning px-2 pt-5px pb-5px rounded fs-12px d-inline-flex align-items-center"><i class="fa fa-circle fs-9px fa-fw me-5px"></i> Pending</span></td>
-                                            <td class="align-middle"><span class="badge border border-yellow text-warning px-2 pt-5px pb-5px rounded fs-12px d-inline-flex align-items-center"><i class="fa fa-circle fs-9px fa-fw me-5px"></i> Unfulfilled</span></td>
-                                            <td class="align-middle">2 items</td>
-                                            <td class="align-middle">Express</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="w-10px align-middle">
-                                                <div class="form-check">
-                                                    <input type="checkbox" class="form-check-input" id="product6"/>
-                                                        <label class="form-check-label" for="product6"></label>
-                                                </div>
-                                            </td>
-                                            <td class="align-middle"><a href="#">#1945</a></td>
-                                            <td class="align-middle">Thu 24 Nov, 2:43pm</td>
-                                            <td class="align-middle">Lelouch Wong</td>
-                                            <td>$900.00</td>
-                                            <td class="py-1 align-middle"><span class="badge border border-success text-success px-2 pt-5px pb-5px rounded fs-12px d-inline-flex align-items-center"><i class="fa fa-circle fs-9px fa-fw me-5px"></i> Paid</span></td>
-                                            <td class="align-middle"><span class="badge border border-primary text-primary px-2 pt-5px pb-5px rounded fs-12px d-inline-flex align-items-center"><i class="fa fa-circle fs-9px fa-fw me-5px"></i> Ready for pickup</span></td>
-                                            <td class="align-middle">2 items</td>
-                                            <td class="align-middle">Local pickup</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="w-10px align-middle">
-                                                <div class="form-check">
-                                                    <input type="checkbox" class="form-check-input" id="product7"/>
-                                                        <label class="form-check-label" for="product7"></label>
-                                                </div>
-                                            </td>
-                                            <td class="align-middle"><a href="#">#1944</a></td>
-                                            <td class="align-middle">Thu 23 Nov, 2:43pm</td>
-                                            <td class="align-middle">Cynthia Ting</td>
-                                            <td>$625.00</td>
-                                            <td class="py-1 align-middle"><span class="badge border border-success text-success px-2 pt-5px pb-5px rounded fs-12px d-inline-flex align-items-center"><i class="fa fa-circle fs-9px fa-fw me-5px"></i> Paid</span></td>
-                                            <td class="align-middle"><span class="badge border border-primary text-primary px-2 pt-5px pb-5px rounded fs-12px d-inline-flex align-items-center"><i class="fa fa-circle fs-9px fa-fw me-5px"></i> Ready for delivery</span></td>
-                                            <td class="align-middle">1 item</td>
-                                            <td class="align-middle">Local pickup</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="w-10px align-middle">
-                                                <div class="form-check">
-                                                    <input type="checkbox" class="form-check-input" id="product8"/>
-                                                        <label class="form-check-label" for="product8"></label>
-                                                </div>
-                                            </td>
-                                            <td class="align-middle"><a href="#">#1943</a></td>
-                                            <td class="align-middle">Thu 23 Nov, 11:59am</td>
-                                            <td class="align-middle">Richard Leong</td>
-                                            <td>$195.00</td>
-                                            <td class="py-1 align-middle"><span class="badge border border-gray-300 text-gray-300 px-2 pt-5px pb-5px rounded fs-12px d-inline-flex align-items-center"><i class="fa fa-circle fs-9px fa-fw me-5px"></i> Partially refunded</span></td>
-                                            <td class="align-middle"><span class="badge border border-danger text-danger px-2 pt-5px pb-5px rounded fs-12px d-inline-flex align-items-center"><i class="fa fa-circle fs-9px fa-fw me-5px"></i> Partially fulfilled</span></td>
-                                            <td class="align-middle">2 items</td>
-                                            <td class="align-middle">Express</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="w-10px align-middle">
-                                                <div class="form-check">
-                                                    <input type="checkbox" class="form-check-input" id="product9"/>
-                                                        <label class="form-check-label" for="product9"></label>
-                                                </div>
-                                            </td>
-                                            <td class="align-middle"><a href="#">#1942</a></td>
-                                            <td class="align-middle">Thu 22 Nov, 8:12am</td>
-                                            <td class="align-middle">Clement Tang</td>
-                                            <td>$195.00</td>
-                                            <td class="py-1 align-middle"><span class="badge border border-success text-success px-2 pt-5px pb-5px rounded fs-12px d-inline-flex align-items-center"><i class="fa fa-circle fs-9px fa-fw me-5px"></i> Paid</span></td>
-                                            <td class="align-middle"><span class="badge border border-success text-success px-2 pt-5px pb-5px rounded fs-12px d-inline-flex align-items-center"><i class="fa fa-circle fs-9px fa-fw me-5px"></i> Fulfilled</span></td>
-                                            <td class="align-middle">1 item</td>
-                                            <td class="align-middle">Express</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="w-10px align-middle">
-                                                <div class="form-check">
-                                                    <input type="checkbox" class="form-check-input" id="product10"/>
-                                                        <label class="form-check-label" for="product10"></label>
-                                                </div>
-                                            </td>
-                                            <td class="align-middle"><a href="#">#1941</a></td>
-                                            <td class="align-middle">Thu 22 Nov, 7:42am</td>
-                                            <td class="align-middle">Richard Leong</td>
-                                            <td>$195.00</td>
-                                            <td class="py-1 align-middle"><span class="badge border border-success text-success px-2 pt-5px pb-5px rounded fs-12px d-inline-flex align-items-center"><i class="fa fa-circle fs-9px fa-fw me-5px"></i> Paid</span></td>
-                                            <td class="align-middle"><span class="badge border border-success text-success px-2 pt-5px pb-5px rounded fs-12px d-inline-flex align-items-center"><i class="fa fa-circle fs-9px fa-fw me-5px"></i> Fulfilled</span></td>
-                                            <td class="align-middle">1 item</td>
-                                            <td class="align-middle">Express</td>
-                                        </tr>
+
                                     </tbody>
                                 </table>
                             </div>
 
-                            <div class="d-md-flex align-items-center">
-                                <div class="me-md-auto text-md-left text-center mb-2 mb-md-0">
+                            <div class="d-md-flex align-items-center" >
+                                <div class="me-md-auto text-md-left text-center mb-2 mb-md-0" >
                                     Showing 1 to 10 of 57 entries
                                 </div>
-                                <ul class="pagination mb-0 justify-content-center">
+                                <ul class="pagination mb-0 justify-content-center" style={{border: '1px solid lightgrey', borderRadius:'10px'}}>
                                     <li class="page-item disabled"><a class="page-link">Previous</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                    <li class="page-item"><a class="page-link" href="#" >1</a></li>
                                     <li class="page-item active"><a class="page-link" href="#">2</a></li>
                                     <li class="page-item"><a class="page-link" href="#">3</a></li>
                                     <li class="page-item"><a class="page-link" href="#">4</a></li>
