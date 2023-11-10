@@ -1,6 +1,18 @@
-function Modal({ currentProduct, currentProductCategory }) {
+import React from "react";
+import Step from "./options";
+
+function Modal({ currentProduct, currentProductCategory, productClicked }) {
+  // React States
+  const [stepsPrice, setStepsPrice] = React.useState(0);
+
   console.log(currentProduct, "currP");
   console.log(currentProductCategory, "currC");
+  console.log(productClicked, "product clicked");
+
+  const [filteredProduct] = currentProduct.productsList.filter(
+    (item) => item._id === productClicked
+  );
+  console.log("filteredProduct", filteredProduct);
   return (
     <div className="modal modal-pos fade" id="modalPosItem">
       <div className="modal-dialog modal-lg">
@@ -26,11 +38,11 @@ function Modal({ currentProduct, currentProductCategory }) {
                     id="modal-title"
                     style={{ color: "grey" }}
                   >
-                    Title
+                    {filteredProduct.name}
                   </div>
                   <div className="text-white text-opacity-50 mb-2">
                     <p id="modal-description" style={{ color: "grey" }}>
-                      blah blah blah
+                      {filteredProduct.description}
                     </p>
                   </div>
                   <div
@@ -38,7 +50,7 @@ function Modal({ currentProduct, currentProductCategory }) {
                     className="h4 mb-3"
                     style={{ color: "#ff4a17" }}
                   >
-                    price
+                    {filteredProduct.price + stepsPrice} £
                   </div>
                   <div className="d-flex mb-3">
                     <a href="#" className="btn btn-outline-theme">
@@ -56,7 +68,10 @@ function Modal({ currentProduct, currentProductCategory }) {
                   </div>
                   <hr className="mx-n4" />
                   <span id="modal-steps">
-                    <div className="mb-2">
+                    {currentProductCategory.stepsToChoose.map((step) => (
+                      <Step stepToChoose={step} key={step._id} />
+                    ))}
+                    {/* <div className="mb-2">
                       <div className="fw-bold" style={{ color: "black" }}>
                         Size:
                       </div>
@@ -129,7 +144,7 @@ function Modal({ currentProduct, currentProductCategory }) {
                           </label>
                         </div>
                       </div>
-                    </div>
+                    </div> */}
                   </span>
                   <hr className="mx-n4" />
                   <div className="row">
