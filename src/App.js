@@ -1,15 +1,18 @@
-// import logo from './logo.svg';
-// import './App.css';
-import Modal from "./Modal";
+import ReactDOM from "react-dom/client";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import POS from "./POS_CustomerOrder";
+import SalesReport from "./sales";
 import "./app.min.css";
-
 function App() {
   return (
-    <>
-      <POS></POS>
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<POS />} />
+        <Route path="/SalesReport" element={<SalesReport />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
 export default App;
+
