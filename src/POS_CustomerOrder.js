@@ -11,6 +11,7 @@ import {
 import NavList from "./components/NavList";
 import ProductCard from "./components/ProductCard";
 import Modal from "./components/Modal";
+import NewOrder from "./components/NewOrder";
 
 function POS() {
   // states
@@ -25,6 +26,9 @@ function POS() {
   // modal hooks
   const [showModal, setShowModal] = useState(false);
   const [productClicked, setProductClicked] = useState("");
+
+  // commodity / newOrder Hook
+  const [commodityList, setCommodityList] = useState([]);
 
   React.useEffect(() => {
     axios
@@ -568,7 +572,7 @@ function POS() {
                             data-bs-target="#newOrderTab"
                             style={{ color: "grey" }}
                           >
-                            New Order (5)
+                            New Order
                           </a>
                         </li>
                         <li className="nav-item">
@@ -579,7 +583,7 @@ function POS() {
                             data-bs-toggle="tab"
                             data-bs-target="#orderHistoryTab"
                           >
-                            Order History (0)
+                            Order History
                           </a>
                         </li>
                       </ul>
@@ -592,7 +596,11 @@ function POS() {
                       <div
                         className="tab-pane fade h-100 show active"
                         id="newOrderTab"
-                      />
+                      >
+                        {commodityList?.map((commodity, i) => (
+                          <NewOrder commodity={commodity} key={i} />
+                        ))}
+                      </div>
                       <div className="tab-pane fade h-100" id="orderHistoryTab">
                         <div className="h-100 d-flex align-items-center justify-content-center text-center p-20">
                           <div>
@@ -628,7 +636,10 @@ function POS() {
                           style={{ color: "#e57c35" }}
                           id="grandTotal"
                         >
-                          £0
+                          £
+                          {commodityList
+                            .map((comm) => comm.productPrice)
+                            .reduce((prev, curr) => prev + curr, 0)}
                         </div>
                       </div>
                       <div className="d-flex align-items-center">
@@ -648,7 +659,10 @@ function POS() {
                           style={{ color: "#e57c35" }}
                           id="grandTotal2"
                         >
-                          £0
+                          £
+                          {commodityList
+                            .map((comm) => comm.productPrice)
+                            .reduce((prev, curr) => prev + curr, 0)}
                         </div>
                       </div>
                       <div className="mt-3">
@@ -990,6 +1004,8 @@ function POS() {
           currentProductCategory={currentProductCategory}
           currentProduct={currentProduct}
           productClicked={productClicked}
+          setCommodityList={setCommodityList}
+          setShowModal={setShowModal}
         />
       ) : null}
     </>

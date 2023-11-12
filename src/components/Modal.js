@@ -1,7 +1,13 @@
 import React from "react";
 import Step from "./options";
 
-function Modal({ currentProduct, currentProductCategory, productClicked }) {
+function Modal({
+  currentProduct,
+  currentProductCategory,
+  productClicked,
+  setCommodityList,
+  setShowModal,
+}) {
   // React States
   const [stepsPrice, setStepsPrice] = React.useState(0);
 
@@ -26,12 +32,29 @@ function Modal({ currentProduct, currentProductCategory, productClicked }) {
         if (arrMain.includes(opt._id)) {
           choosedOptions.push({
             stepName: step.stepName,
-            selectedOption: opt,
+            type: opt.type,
+            price: opt.price,
+            selected: true,
           });
         }
       })
     );
-    console.log(choosedOptions);
+    // console.log(choosedOptions);
+    // console.log(filteredProduct);
+    // console.log(stepsPrice);
+    // console.log(currentProduct._id);
+
+    const tempCommodity = {
+      barcode: "testBarcode",
+      name: filteredProduct.name,
+      subCategory: currentProduct._id,
+      productPrice: stepsPrice,
+      options: choosedOptions,
+      unit: 1,
+    };
+    // console.log(tempCommodity);
+    setCommodityList((comm) => [...comm, tempCommodity]);
+    setShowModal(false);
   };
   return (
     <div className="modal modal-pos fade" id="modalPosItem">
@@ -43,11 +66,14 @@ function Modal({ currentProduct, currentProductCategory, productClicked }) {
           <div className="card">
             <div className="card-body p-0">
               <a
-                href="#"
+                href
                 data-bs-dismiss="modal"
                 className="btn-close position-absolute top-0 end-0 m-4"
-                style={{ backgroundColor: "black" }}
-              />
+                style={{ backgroundColor: "black", cursor: "pointer" }}
+                onClick={() => setShowModal(false)}
+              >
+                &nbsp;
+              </a>
               <div className="modal-pos-product">
                 {/* <div class="modal-pos-product-img">
 <div class="img" style="background-image: url(../assets/img/pos/product-1.html)"></div>
@@ -177,6 +203,7 @@ function Modal({ currentProduct, currentProductCategory, productClicked }) {
                         href
                         className="btn btn-default h4 mb-0 d-block rounded-0 py-3"
                         data-bs-dismiss="modal"
+                        onClick={() => setShowModal(false)}
                       >
                         Cancel
                       </a>
