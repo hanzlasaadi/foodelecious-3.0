@@ -1,4 +1,7 @@
-function NewOrder({ commodity }) {
+import React from "react";
+
+function NewOrder({ commodity, setCommodityList }) {
+  const [showRemoveItem, setShowRemoveItem] = React.useState(false);
   return (
     <div className="pos-order">
       <div className="pos-order-product">
@@ -37,11 +40,41 @@ function NewOrder({ commodity }) {
           <button className="btn btn-sm btn-outline-gray-500">
             <i className="fa fa-pencil" />
           </button>
-          <button className="btn btn-sm btn-outline-gray-500">
+          <button
+            className="btn btn-sm btn-outline-gray-500"
+            onClick={() => setShowRemoveItem(true)}
+          >
             <i className="fa fa-trash" />
           </button>
         </div>
       </div>
+      {showRemoveItem ? (
+        <div className="pos-order-confirmation text-center d-flex flex-column justify-content-center">
+          <div className="mb-1">
+            <i className="bi bi-trash fs-36px lh-1" />
+          </div>
+          <div className="mb-2">Remove this item?</div>
+          <div>
+            <button
+              onClick={() => setShowRemoveItem(false)}
+              className="btn btn-outline-white btn-sm ms-auto me-2 width-100px"
+            >
+              No
+            </button>
+            <button
+              onClick={() => {
+                setShowRemoveItem(false);
+                setCommodityList((comm) =>
+                  comm.filter((el) => el.name !== commodity.name)
+                );
+              }}
+              className="btn btn-outline-theme btn-sm width-100px"
+            >
+              Yes
+            </button>
+          </div>
+        </div>
+      ) : null}
     </div>
   );
 }
