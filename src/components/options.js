@@ -1,15 +1,16 @@
 import React from "react";
 
-function Option({ options, stepName }) {
+function Option({ options, stepName, setStepsPrice }) {
   const [selectedCheckboxes, setSelectedCheckboxes] = React.useState([]);
 
-  const handleCheckboxChange = (value, stepNm) => {
+  const handleCheckboxChange = (value, stepNm, optPrice) => {
     let max = 1;
     if (stepNm.toLowerCase().includes("any"))
       max = Number(stepNm.replace(/[^0-9]/g, ""));
     // Check if the checkbox is already selected
     if (selectedCheckboxes.includes(value)) {
       // If selected, remove it from the array
+      setStepsPrice((stepsPrices) => stepsPrices - optPrice);
       setSelectedCheckboxes(
         selectedCheckboxes.filter((checkbox) => checkbox !== value)
       );
@@ -17,6 +18,7 @@ function Option({ options, stepName }) {
       // If not selected, check if the maximum limit is reached
       if (selectedCheckboxes.length < max) {
         // If not reached, add the checkbox to the array
+        setStepsPrice((stepsPrices) => stepsPrices + optPrice);
         setSelectedCheckboxes([...selectedCheckboxes, value]);
       }
     }
@@ -34,7 +36,9 @@ function Option({ options, stepName }) {
               value={option._id}
               className="option-input"
               checked={selectedCheckboxes.includes(option._id)}
-              onChange={() => handleCheckboxChange(option._id, stepName)}
+              onChange={() =>
+                handleCheckboxChange(option._id, stepName, option.price)
+              }
             />
             <label className="option-label" htmlFor={option._id}>
               <span className="option-text" style={{ color: "black" }}>
@@ -51,7 +55,7 @@ function Option({ options, stepName }) {
   );
 }
 
-function Step({ stepToChoose }) {
+function Step({ stepToChoose, setStepsPrice }) {
   return (
     <div className="mb-2">
       <div className="fw-bold" style={{ color: "black" }}>
@@ -61,6 +65,7 @@ function Step({ stepToChoose }) {
         <Option
           options={stepToChoose.options}
           stepName={stepToChoose.stepName}
+          setStepsPrice={setStepsPrice}
         />
         {/* <div className="option">
           <input
