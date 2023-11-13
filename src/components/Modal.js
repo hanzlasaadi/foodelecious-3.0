@@ -1,7 +1,13 @@
 import React from "react";
 import Step from "./options";
 
-function Modal({ currentProduct, currentProductCategory, productClicked }) {
+function Modal({
+  currentProduct,
+  currentProductCategory,
+  productClicked,
+  setCommodityList,
+  setShowModal,
+}) {
   // React States
   const [stepsPrice, setStepsPrice] = React.useState(0);
 
@@ -13,6 +19,43 @@ function Modal({ currentProduct, currentProductCategory, productClicked }) {
     (item) => item._id === productClicked
   );
   console.log("filteredProduct", filteredProduct);
+
+  const handleAddToCart = (e) => {
+    e.preventDefault();
+    let arrMain = [];
+    let choosedOptions = [];
+    document
+      .querySelectorAll("input[type=checkbox]:checked")
+      .forEach((inp) => arrMain.push(inp.id));
+    currentProductCategory.stepsToChoose.forEach((step) =>
+      step.options.forEach((opt) => {
+        if (arrMain.includes(opt._id)) {
+          choosedOptions.push({
+            stepName: step.stepName,
+            type: opt.type,
+            price: opt.price,
+            selected: true,
+          });
+        }
+      })
+    );
+    // console.log(choosedOptions);
+    // console.log(filteredProduct);
+    // console.log(stepsPrice);
+    // console.log(currentProduct._id);
+
+    const tempCommodity = {
+      barcode: "testBarcode",
+      name: filteredProduct.name,
+      subCategory: currentProduct._id,
+      productPrice: stepsPrice,
+      options: choosedOptions,
+      unit: 1,
+    };
+    // console.log(tempCommodity);
+    setCommodityList((comm) => [...comm, tempCommodity]);
+    setShowModal(false);
+  };
   return (
     <div className="modal modal-pos fade" id="modalPosItem">
       <div className="modal-dialog modal-lg">
@@ -23,11 +66,14 @@ function Modal({ currentProduct, currentProductCategory, productClicked }) {
           <div className="card">
             <div className="card-body p-0">
               <a
-                href="#"
+                href
                 data-bs-dismiss="modal"
                 className="btn-close position-absolute top-0 end-0 m-4"
-                style={{ backgroundColor: "black" }}
-              />
+                style={{ backgroundColor: "black", cursor: "pointer" }}
+                onClick={() => setShowModal(false)}
+              >
+                &nbsp;
+              </a>
               <div className="modal-pos-product">
                 {/* <div class="modal-pos-product-img">
 <div class="img" style="background-image: url(../assets/img/pos/product-1.html)"></div>
@@ -69,7 +115,11 @@ function Modal({ currentProduct, currentProductCategory, productClicked }) {
                   <hr className="mx-n4" />
                   <span id="modal-steps">
                     {currentProductCategory.stepsToChoose.map((step) => (
-                      <Step stepToChoose={step} key={step._id} />
+                      <Step
+                        stepToChoose={step}
+                        setStepsPrice={setStepsPrice}
+                        key={step._id}
+                      />
                     ))}
                     {/* <div className="mb-2">
                       <div className="fw-bold" style={{ color: "black" }}>
@@ -150,18 +200,21 @@ function Modal({ currentProduct, currentProductCategory, productClicked }) {
                   <div className="row">
                     <div className="col-4">
                       <a
-                        href="#"
+                        href
                         className="btn btn-default h4 mb-0 d-block rounded-0 py-3"
                         data-bs-dismiss="modal"
+                        onClick={() => setShowModal(false)}
                       >
                         Cancel
                       </a>
                     </div>
                     <div className="col-8">
                       <a
-                        href="#"
+                        href
                         id="addToCart"
                         className="btn btn-success d-flex justify-content-center align-items-center rounded-0 py-3 h4 m-0"
+                        onClick={handleAddToCart}
+                        data-bs-dismiss="modal"
                       >
                         Add to cart{" "}
                         <i className="bi bi-plus fa-2x ms-2 my-n3" />
