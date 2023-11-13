@@ -12,6 +12,7 @@ import NavList from "./components/NavList";
 import ProductCard from "./components/ProductCard";
 import Modal from "./components/Modal";
 import NewOrder from "./components/NewOrder";
+import Loader from "./components/loader";
 
 function POS() {
   // states
@@ -29,6 +30,9 @@ function POS() {
 
   // commodity / newOrder Hook
   const [commodityList, setCommodityList] = useState([]);
+  const [typeOfOrder, setTypeOfOrder] = useState("eatin");
+  const [tax, setTax] = useState(20);
+  const [totalPriceCommodities, setTotalPriceCommodities] = useState(0);
 
   React.useEffect(() => {
     axios
@@ -48,6 +52,19 @@ function POS() {
       .catch((err) => console.log(err));
   }, []);
 
+  React.useEffect(() => {
+    setTotalPriceCommodities(
+      commodityList
+        .map((comm) => comm.productPrice)
+        .reduce((prev, curr) => prev + curr, 0)
+    );
+  }, [commodityList]);
+
+  React.useEffect(() => {
+    if (typeOfOrder === "eatin") setTax(20);
+    if (typeOfOrder === "takeaway") setTax(0);
+  }, [typeOfOrder]);
+
   // Product Card Click
   const handleProductCardClick = (subcategoryId) => {
     const [filteredProduct] = productsList.filter(
@@ -60,6 +77,25 @@ function POS() {
     setCurrentProductCategory(filteredCategory);
     // console.log("currentProduct", filteredProduct);
     // console.log("currentCategory", filteredCategory);
+  };
+
+  // submit order funcntion
+  const handleSubmitOrder = () => {
+    const orderObj = {
+      workerId: "654111bab8f20fc4157388f0",
+      paymentType: "Cash",
+      totalPrice: totalPriceCommodities,
+      clientPay: 100,
+      status: "pending",
+      typeOfOrder: typeOfOrder,
+      tax: tax,
+      commodityList,
+    };
+    // console.log(orderObj);
+    axios
+      .post(`${apiUrl}/api/v1/order`, orderObj)
+      .then((res) => console.log(res.data))
+      .catch((err) => console.log("error=> ", err));
   };
 
   return (
@@ -108,133 +144,6 @@ function POS() {
                           />
                         );
                       })}
-                      {/* 
-                  <li class="nav-item">
-                      <a class="nav-link active" href="#" data-filter="all">
-                        <div class="card">
-                          <div class="card-body">Wraps</div>
-                        </div>
-                      </a>
-                  </li>
-                  <li class="nav-item">
-                  <a class="nav-link" href="#" data-filter="pizza">
-                  <div class="card">
-                    <div class="card-body">Pizza</div>
-                    <div class="card-arrow">
-                      <div class="card-arrow-top-left"></div>
-                      <div class="card-arrow-top-right"></div>
-                      <div class="card-arrow-bottom-left"></div>
-                      <div class="card-arrow-bottom-right"></div>
-                    </div>
-                  </div>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#" data-filter="burger">
-                  <div class="card">
-                    <div class="card-body">Burger</div>
-                  </div>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#" data-filter="milkshakes">
-                  <div class="card">
-                    <div class="card-body">Milkshakes</div>
-                    <div class="card-arrow">
-                      <div class="card-arrow-top-left"></div>
-                      <div class="card-arrow-top-right"></div>
-                      <div class="card-arrow-bottom-left"></div>
-                      <div class="card-arrow-bottom-right"></div>
-                    </div>
-                  </div>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#" data-filter="Waffles">
-                  <div class="card">
-                    <div class="card-body">Waffles</div>
-                  </div>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#" data-filter="bubble">
-                  <div class="card">
-                    <div class="card-body">Bubble Tea</div>
-                  </div>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#" data-filter="cookie">
-                  <div class="card">
-                    <div class="card-body">Cookie Dough</div>
-                  </div>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#" data-filter="icecream">
-                  <div class="card">
-                    <div class="card-body">Ice Creams</div>
-                    <div class="card-arrow">
-                      <div class="card-arrow-top-left"></div>
-                      <div class="card-arrow-top-right"></div>
-                      <div class="card-arrow-bottom-left"></div>
-                      <div class="card-arrow-bottom-right"></div>
-                    </div>
-                  </div>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#" data-filter="classic">
-                  <div class="card">
-                    <div class="card-body">Classic Gelato</div>
-                    <div class="card-arrow">
-                      <div class="card-arrow-top-left"></div>
-                      <div class="card-arrow-top-right"></div>
-                      <div class="card-arrow-bottom-left"></div>
-                      <div class="card-arrow-bottom-right"></div>
-                    </div>
-                  </div>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#" data-filter="kids">
-                  <div class="card">
-                    <div class="card-body">Kids Gelato</div>
-                    <div class="card-arrow">
-                      <div class="card-arrow-top-left"></div>
-                      <div class="card-arrow-top-right"></div>
-                      <div class="card-arrow-bottom-left"></div>
-                      <div class="card-arrow-bottom-right"></div>
-                    </div>
-                  </div>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#" data-filter="savers">
-                  <div class="card">
-                    <div class="card-body">Savers Menu</div>
-                    <div class="card-arrow">
-                      <div class="card-arrow-top-left"></div>
-                      <div class="card-arrow-top-right"></div>
-                      <div class="card-arrow-bottom-left"></div>
-                      <div class="card-arrow-bottom-right"></div>
-                    </div>
-                  </div>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#" data-filter="drinks">
-                  <div class="card">
-                    <div class="card-body">Drinks</div>
-                    <div class="card-arrow">
-                      <div class="card-arrow-top-left"></div>
-                      <div class="card-arrow-top-right"></div>
-                      <div class="card-arrow-bottom-left"></div>
-                      <div class="card-arrow-bottom-right"></div>
-                    </div>
-                  </div>
-                </a>
-              </li> */}
                     </ul>
                   </div>
                 </div>
@@ -265,241 +174,6 @@ function POS() {
                         setShowModal={setShowModal}
                       />
                     ) : null}
-                    {/* <div
-                    class="col-xxl-3 col-xl-4 col-lg-6 col-md-4 col-sm-6 pb-4"
-                    data-type="meat"
-                  >
-                    <div class="card h-100">
-                      <div class="card-body h-100 p-1">
-                        <a
-                          href="#"
-                          class="pos-product"
-                          data-bs-toggle="modal"
-                          data-bs-target="#modalPosItem"
-                        >
-                          <div
-                            class="img"
-                            style={{
-                              backgroundImage:
-                                "url(./assets/img/pos/countryside.jpg",
-                              borderRadius: "15px",
-                            }}
-                          ></div>
-                          <div class="info">
-                            <div class="title">Grill Chicken Chop&reg;</div>
-                          </div>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                  <div
-                    class="col-xxl-3 col-xl-4 col-lg-6 col-md-4 col-sm-6 pb-4"
-                    data-type="meat"
-                  >
-                    <div class="card h-100">
-                      <div class="card-body h-100 p-1">
-                        <a
-                          href="#"
-                          class="pos-product"
-                          data-bs-toggle="modal"
-                          data-bs-target="#modalPosItem"
-                        >
-                          <div
-                            class="img"
-                            style={{
-                              backgroundImage:
-                                "url(./assets/img/pos/countryside.jpg",
-                            }}
-                          ></div>
-                          <div class="info">
-                            <div class="title">Grill Chicken Chop&reg;</div>
-                          </div>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                  <div
-                    class="col-xxl-3 col-xl-4 col-lg-6 col-md-4 col-sm-6 pb-4"
-                    data-type="meat"
-                  >
-                    <div class="card h-100">
-                      <div class="card-body h-100 p-1">
-                        <a
-                          href="#"
-                          class="pos-product"
-                          data-bs-toggle="modal"
-                          data-bs-target="#modalPosItem"
-                        >
-                          <div
-                            class="img"
-                            style={{
-                              backgroundImage:
-                                "url(./assets/img/pos/countryside.jpg",
-                            }}
-                          ></div>
-                          <div class="info">
-                            <div class="title">Grill Chicken Chop&reg;</div>
-                          </div>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                  <div
-                    class="col-xxl-3 col-xl-4 col-lg-6 col-md-4 col-sm-6 pb-4"
-                    data-type="meat"
-                  >
-                    <div class="card h-100">
-                      <div class="card-body h-100 p-1">
-                        <a
-                          href="#"
-                          class="pos-product"
-                          data-bs-toggle="modal"
-                          data-bs-target="#modalPosItem"
-                        >
-                          <div
-                            class="img"
-                            style={{
-                              backgroundImage:
-                                "url(./assets/img/pos/countryside.jpg",
-                            }}
-                          ></div>
-                          <div class="info">
-                            <div class="title">Grill Chicken Chop&reg;</div>
-                          </div>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                  <div
-                    class="col-xxl-3 col-xl-4 col-lg-6 col-md-4 col-sm-6 pb-4"
-                    data-type="meat"
-                  >
-                    <div class="card h-100">
-                      <div class="card-body h-100 p-1">
-                        <a
-                          href="#"
-                          class="pos-product"
-                          data-bs-toggle="modal"
-                          data-bs-target="#modalPosItem"
-                        >
-                          <div
-                            class="img"
-                            style={{
-                              backgroundImage:
-                                "url(./assets/img/pos/countryside.jpg",
-                            }}
-                          ></div>
-                          <div class="info">
-                            <div class="title">Grill Chicken Chop&reg;</div>
-                          </div>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                  <div
-                    class="col-xxl-3 col-xl-4 col-lg-6 col-md-4 col-sm-6 pb-4"
-                    data-type="meat"
-                  >
-                    <div class="card h-100">
-                      <div class="card-body h-100 p-1">
-                        <a
-                          href="#"
-                          class="pos-product"
-                          data-bs-toggle="modal"
-                          data-bs-target="#modalPosItem"
-                        >
-                          <div
-                            class="img"
-                            style={{
-                              backgroundImage:
-                                "url(./assets/img/pos/countryside.jpg",
-                            }}
-                          ></div>
-                          <div class="info">
-                            <div class="title">Grill Chicken Chop&reg;</div>
-                          </div>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                  <div
-                    class="col-xxl-3 col-xl-4 col-lg-6 col-md-4 col-sm-6 pb-4"
-                    data-type="meat"
-                  >
-                    <div class="card h-100">
-                      <div class="card-body h-100 p-1">
-                        <a
-                          href="#"
-                          class="pos-product"
-                          data-bs-toggle="modal"
-                          data-bs-target="#modalPosItem"
-                        >
-                          <div
-                            class="img"
-                            style={{
-                              backgroundImage:
-                                "url(./assets/img/pos/countryside.jpg",
-                            }}
-                          ></div>
-                          <div class="info">
-                            <div class="title">Grill Chicken Chop&reg;</div>
-                          </div>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                  <div
-                    class="col-xxl-3 col-xl-4 col-lg-6 col-md-4 col-sm-6 pb-4"
-                    data-type="meat"
-                  >
-                    <div class="card h-100">
-                      <div class="card-body h-100 p-1">
-                        <a
-                          href="#"
-                          class="pos-product"
-                          data-bs-toggle="modal"
-                          data-bs-target="#modalPosItem"
-                        >
-                          <div
-                            class="img"
-                            style={{
-                              backgroundImage:
-                                "url(./assets/img/pos/countryside.jpg",
-                            }}
-                          ></div>
-                          <div class="info">
-                            <div class="title">Grill Chicken Chop&reg;</div>
-                          </div>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                  <div
-                    class="col-xxl-3 col-xl-4 col-lg-6 col-md-4 col-sm-6 pb-4"
-                    data-type="meat"
-                  >
-                    <div class="card h-100">
-                      <div class="card-body h-100 p-1">
-                        <a
-                          href="#"
-                          class="pos-product"
-                          data-bs-toggle="modal"
-                          data-bs-target="#modalPosItem"
-                        >
-                          <div
-                            class="img"
-                            style={{
-                              backgroundImage:
-                                "url(./assets/img/pos/countryside.jpg",
-                            }}
-                          ></div>
-                          <div class="info">
-                            <div class="title">Grill Chicken Chop&reg;</div>
-                          </div>
-                        </a>
-                      </div>
-                    </div>
-                  </div> */}
                   </div>
                 </div>
               </div>
@@ -528,32 +202,52 @@ function POS() {
                       </div>
                       <div className="">
                         <button
+                          onClick={() => setTypeOfOrder("eatin")}
+                          style={
+                            typeOfOrder === "eatin"
+                              ? {
+                                  borderRadius: "15px !important",
+                                  marginRight: "5px",
+                                  backgroundColor: "#e57c35",
+                                  color: "#fff",
+                                }
+                              : {
+                                  borderRadius: "15px !important",
+                                  marginRight: "5px",
+                                }
+                          }
+                          className="btn active"
+                        >
+                          Eat In
+                        </button>
+                        <button
+                          onClick={() => setTypeOfOrder("takeaway")}
+                          style={
+                            typeOfOrder === "takeaway"
+                              ? {
+                                  borderRadius: "15px !important",
+                                  marginRight: "5px",
+                                  backgroundColor: "#e57c35",
+                                  color: "#fff",
+                                }
+                              : {
+                                  borderRadius: "15px !important",
+                                  marginRight: "5px",
+                                }
+                          }
+                          className="btn active"
+                        >
+                          Take Away
+                        </button>
+                        {/* <button
                           style={{
                             borderRadius: "15px !important",
                             marginRight: "5px",
                           }}
-                          className="btn active "
-                        >
-                          Eat
-                        </button>
-                        <button
-                          style={{
-                            borderRadius: "15px !important ",
-                            marginRight: "5px",
-                          }}
-                          className="btn active"
-                        >
-                          Taken
-                        </button>
-                        <button
-                          style={{
-                            borderRadius: "15px !important",
-                            marginRight: "5px",
-                          }}
-                          className="btn active"
+                          className="btn"
                         >
                           Delivery
-                        </button>
+                        </button> */}
                       </div>
                       <div
                         className="order"
@@ -598,7 +292,11 @@ function POS() {
                         id="newOrderTab"
                       >
                         {commodityList?.map((commodity, i) => (
-                          <NewOrder commodity={commodity} key={i} />
+                          <NewOrder
+                            commodity={commodity}
+                            setCommodityList={setCommodityList}
+                            key={i}
+                          />
                         ))}
                       </div>
                       <div className="tab-pane fade h-100" id="orderHistoryTab">
@@ -636,19 +334,16 @@ function POS() {
                           style={{ color: "#e57c35" }}
                           id="grandTotal"
                         >
-                          £
-                          {commodityList
-                            .map((comm) => comm.productPrice)
-                            .reduce((prev, curr) => prev + curr, 0)}
+                          £{totalPriceCommodities}
                         </div>
                       </div>
                       <div className="d-flex align-items-center">
-                        <div style={{ color: "grey" }}>Taxes (0%)</div>
+                        <div style={{ color: "grey" }}>Taxes ({tax}%)</div>
                         <div
                           className="flex-1 text-end h6 mb-0"
                           style={{ color: "#e57c35" }}
                         >
-                          £0
+                          £{(tax * totalPriceCommodities) / 100}
                         </div>
                       </div>
                       <hr />
@@ -659,10 +354,9 @@ function POS() {
                           style={{ color: "#e57c35" }}
                           id="grandTotal2"
                         >
-                          £
-                          {commodityList
-                            .map((comm) => comm.productPrice)
-                            .reduce((prev, curr) => prev + curr, 0)}
+                          £{" "}
+                          {totalPriceCommodities +
+                            (tax * totalPriceCommodities) / 100}
                         </div>
                       </div>
                       <div className="mt-3">
@@ -684,9 +378,10 @@ function POS() {
                             <span className="small">Bill</span>
                           </a>
                           <a
-                            href="#"
+                            href
                             className="btn btn-outline-theme rounded-0 w-150px submitOrder"
                             id="showModalBtn"
+                            onClick={handleSubmitOrder}
                           >
                             <i className="bi bi-send-check fa-lg" />
                             <br />
@@ -710,291 +405,6 @@ function POS() {
             <span className="badge">5</span>
           </a>
         </div>
-        <div className="app-theme-panel">
-          <div className="app-theme-panel-container">
-            <a
-              href=""
-              data-toggle="theme-panel-expand"
-              className="app-theme-toggle-btn"
-            >
-              <i className="bi bi-sliders" />
-            </a>
-            <div className="app-theme-panel-content">
-              <div className="small fw-bold text-white mb-1">Theme Color</div>
-              <div className="card mb-3">
-                <div className="card-body p-2">
-                  <div className="app-theme-list">
-                    <div className="app-theme-list-item">
-                      <a
-                        href=""
-                        className="app-theme-list-link bg-pink"
-                        data-theme-class="theme-pink"
-                        data-toggle="theme-selector"
-                        data-bs-toggle="tooltip"
-                        data-bs-trigger="hover"
-                        data-bs-container="body"
-                        data-bs-title="Pink"
-                      >
-                        &nbsp;
-                      </a>
-                    </div>
-                    <div className="app-theme-list-item">
-                      <a
-                        href=""
-                        className="app-theme-list-link bg-red"
-                        data-theme-class="theme-red"
-                        data-toggle="theme-selector"
-                        data-bs-toggle="tooltip"
-                        data-bs-trigger="hover"
-                        data-bs-container="body"
-                        data-bs-title="Red"
-                      >
-                        &nbsp;
-                      </a>
-                    </div>
-                    <div className="app-theme-list-item">
-                      <a
-                        href=""
-                        className="app-theme-list-link bg-warning"
-                        data-theme-class="theme-warning"
-                        data-toggle="theme-selector"
-                        data-bs-toggle="tooltip"
-                        data-bs-trigger="hover"
-                        data-bs-container="body"
-                        data-bs-title="Orange"
-                      >
-                        &nbsp;
-                      </a>
-                    </div>
-                    <div className="app-theme-list-item">
-                      <a
-                        href=""
-                        className="app-theme-list-link bg-yellow"
-                        data-theme-class="theme-yellow"
-                        data-toggle="theme-selector"
-                        data-bs-toggle="tooltip"
-                        data-bs-trigger="hover"
-                        data-bs-container="body"
-                        data-bs-title="Yellow"
-                      >
-                        &nbsp;
-                      </a>
-                    </div>
-                    <div className="app-theme-list-item">
-                      <a
-                        href=""
-                        className="app-theme-list-link bg-lime"
-                        data-theme-class="theme-lime"
-                        data-toggle="theme-selector"
-                        data-bs-toggle="tooltip"
-                        data-bs-trigger="hover"
-                        data-bs-container="body"
-                        data-bs-title="Lime"
-                      >
-                        &nbsp;
-                      </a>
-                    </div>
-                    <div className="app-theme-list-item">
-                      <a
-                        href=""
-                        className="app-theme-list-link bg-green"
-                        data-theme-class="theme-green"
-                        data-toggle="theme-selector"
-                        data-bs-toggle="tooltip"
-                        data-bs-trigger="hover"
-                        data-bs-container="body"
-                        data-bs-title="Green"
-                      >
-                        &nbsp;
-                      </a>
-                    </div>
-                    <div className="app-theme-list-item active">
-                      <a
-                        href=""
-                        className="app-theme-list-link bg-teal"
-                        data-theme-class=""
-                        data-toggle="theme-selector"
-                        data-bs-toggle="tooltip"
-                        data-bs-trigger="hover"
-                        data-bs-container="body"
-                        data-bs-title="Default"
-                      >
-                        &nbsp;
-                      </a>
-                    </div>
-                    <div className="app-theme-list-item">
-                      <a
-                        href=""
-                        className="app-theme-list-link bg-info"
-                        data-theme-class="theme-info"
-                        data-toggle="theme-selector"
-                        data-bs-toggle="tooltip"
-                        data-bs-trigger="hover"
-                        data-bs-container="body"
-                        data-bs-title="Cyan"
-                      >
-                        &nbsp;
-                      </a>
-                    </div>
-                    <div className="app-theme-list-item">
-                      <a
-                        href=""
-                        className="app-theme-list-link bg-primary"
-                        data-theme-class="theme-primary"
-                        data-toggle="theme-selector"
-                        data-bs-toggle="tooltip"
-                        data-bs-trigger="hover"
-                        data-bs-container="body"
-                        data-bs-title="Blue"
-                      >
-                        &nbsp;
-                      </a>
-                    </div>
-                    <div className="app-theme-list-item">
-                      <a
-                        href=""
-                        className="app-theme-list-link bg-purple"
-                        data-theme-class="theme-purple"
-                        data-toggle="theme-selector"
-                        data-bs-toggle="tooltip"
-                        data-bs-trigger="hover"
-                        data-bs-container="body"
-                        data-bs-title="Purple"
-                      >
-                        &nbsp;
-                      </a>
-                    </div>
-                    <div className="app-theme-list-item">
-                      <a
-                        href=""
-                        className="app-theme-list-link bg-indigo"
-                        data-theme-class="theme-indigo"
-                        data-toggle="theme-selector"
-                        data-bs-toggle="tooltip"
-                        data-bs-trigger="hover"
-                        data-bs-container="body"
-                        data-bs-title="Indigo"
-                      >
-                        &nbsp;
-                      </a>
-                    </div>
-                    <div className="app-theme-list-item">
-                      <a
-                        href=""
-                        className="app-theme-list-link bg-gray-100"
-                        data-theme-class="theme-gray-200"
-                        data-toggle="theme-selector"
-                        data-bs-toggle="tooltip"
-                        data-bs-trigger="hover"
-                        data-bs-container="body"
-                        data-bs-title="Gray"
-                      >
-                        &nbsp;
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="small fw-bold text-white mb-1">Theme Cover</div>
-              <div className="card">
-                <div className="card-body p-2">
-                  <div className="app-theme-cover">
-                    <div className="app-theme-cover-item active">
-                      <a
-                        href=""
-                        className="app-theme-cover-link"
-                        style={{
-                          backgroundImage:
-                            "url(assets/img/cover/cover-thumb-1.jpg)",
-                        }}
-                        data-theme-cover-class=""
-                        data-toggle="theme-cover-selector"
-                        data-bs-toggle="tooltip"
-                        data-bs-trigger="hover"
-                        data-bs-container="body"
-                        data-bs-title="Default"
-                      >
-                        &nbsp;
-                      </a>
-                    </div>
-                    <div className="app-theme-cover-item">
-                      <a
-                        href=""
-                        className="app-theme-cover-link"
-                        style={{
-                          backgroundImage:
-                            "url(assets/img/cover/cover-thumb-2.jpg)",
-                        }}
-                        data-theme-cover-class="bg-cover-2"
-                        data-toggle="theme-cover-selector"
-                        data-bs-toggle="tooltip"
-                        data-bs-trigger="hover"
-                        data-bs-container="body"
-                        data-bs-title="Cover 2"
-                      >
-                        &nbsp;
-                      </a>
-                    </div>
-                    <div className="app-theme-cover-item">
-                      <a
-                        href=""
-                        className="app-theme-cover-link"
-                        style={{
-                          backgroundImage:
-                            "url(assets/img/cover/cover-thumb-3.jpg)",
-                        }}
-                        data-theme-cover-class="bg-cover-3"
-                        data-toggle="theme-cover-selector"
-                        data-bs-toggle="tooltip"
-                        data-bs-trigger="hover"
-                        data-bs-container="body"
-                        data-bs-title="Cover 3"
-                      >
-                        &nbsp;
-                      </a>
-                    </div>
-                    <div className="app-theme-cover-item">
-                      <a
-                        href=""
-                        className="app-theme-cover-link"
-                        style={{
-                          backgroundImage:
-                            "url(assets/img/cover/cover-thumb-4.jpg)",
-                        }}
-                        data-theme-cover-class="bg-cover-4"
-                        data-toggle="theme-cover-selector"
-                        data-bs-toggle="tooltip"
-                        data-bs-trigger="hover"
-                        data-bs-container="body"
-                        data-bs-title="Cover 4"
-                      >
-                        &nbsp;
-                      </a>
-                    </div>
-                    <div className="app-theme-cover-item">
-                      <a
-                        href=""
-                        className="app-theme-cover-link"
-                        style={{
-                          backgroundImage:
-                            "url(assets/img/cover/cover-thumb-5.jpg)",
-                        }}
-                        data-theme-cover-class="bg-cover-5"
-                        data-toggle="theme-cover-selector"
-                        data-bs-toggle="tooltip"
-                        data-bs-trigger="hover"
-                        data-bs-container="body"
-                        data-bs-title="Cover 5"
-                      >
-                        &nbsp;
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
         <a href="#" data-toggle="scroll-to-top" className="btn-scroll-top fade">
           <i className="fa fa-arrow-up" />
         </a>
@@ -1008,6 +418,7 @@ function POS() {
           setShowModal={setShowModal}
         />
       ) : null}
+      <Loader showLoader={false} />
     </>
   );
 }
