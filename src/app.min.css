@@ -29469,3 +29469,21 @@ body .note-modal-backdrop {
 .conbor{
     border: none!important;
 }
+
+
+
+.NavList {
+    width: 200px;
+    height: 100%;
+    background: rgba(255, 0, 0, 0.1);
+    margin-left: 10px;
+    display: inline-block;
+  }
+  
+  .scroll1 { 
+    height: 100vh;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;
+    width: auto;
+  }
