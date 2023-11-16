@@ -1,7 +1,8 @@
 function ProductCard({ currentProduct, setShowModal, setProductClicked }) {
+  console.log(currentProduct, "currProduct Test");
   return (
     <>
-      {currentProduct.productsList.map((curr) => {
+      {currentProduct?.productsList?.map((curr) => {
         return (
           <div
             class="col-xxl-3 col-xl-4 col-lg-6 col-md-4 col-sm-6 pb-4"
@@ -9,22 +10,19 @@ function ProductCard({ currentProduct, setShowModal, setProductClicked }) {
             key={curr._id}
           >
             <div class="card h-100">
-              <div
-                class="card-body h-100 p-1"
-                style={{ cursor: "pointer" }}
-                data-product-id={`${curr._id}`}
-                onClick={(e) => {
-                  setShowModal(true);
-                  const modalEl = document.getElementById("modalPosItem");
-                  console.log(e.currentTarget.dataset.productId, "id");
-                  setProductClicked(e.currentTarget.dataset.productId);
-                  // const modalChild = modalEl.querySelector(".modal-dialog");
-                  // modalEl.style.display = "block";
-                  // modalEl.style.opacity = "100";
-                  // modalChild.style.marginTop = "155px";
-                }}
-              >
+              <div class="card-body h-100 p-1" style={{ cursor: "pointer" }}>
                 <a
+                  data-product-id={`${curr._id}`}
+                  onClick={(e) => {
+                    setShowModal(true);
+                    const modalEl = document.getElementById("modalPosItem");
+                    console.log(e.currentTarget.dataset.productId, "id");
+                    setProductClicked(e.currentTarget.dataset.productId);
+                    // const modalChild = modalEl.querySelector(".modal-dialog");
+                    // modalEl.style.display = "block";
+                    // modalEl.style.opacity = "100";
+                    // modalChild.style.marginTop = "155px";
+                  }}
                   href
                   class="pos-product"
                   data-bs-toggle="modal"

@@ -1,6 +1,15 @@
-function NavList({ category, setShowProductCards, handleProductCardClick }) {
+function NavList({
+  setCurrentProduct,
+  category,
+  setShowProductCards,
+  handleProductCardClick,
+}) {
   return (
-    <li class="nav-item" style={{ minWidth: "max-content" }} data-categoryId={category._id}>
+    <li
+      class="nav-item"
+      style={{ minWidth: "max-content" }}
+      data-categoryId={category._id}
+    >
       <a
         class="nav-link active"
         href
