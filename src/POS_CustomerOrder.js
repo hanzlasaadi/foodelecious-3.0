@@ -13,6 +13,7 @@ import ProductCard from "./components/ProductCard";
 import Modal from "./components/Modal";
 import NewOrder from "./components/NewOrder";
 import Loader from "./components/loader";
+import PaymentModal from "./payment";
 
 function POS() {
   // states
@@ -27,6 +28,9 @@ function POS() {
   // modal hooks
   const [showModal, setShowModal] = useState(false);
   const [productClicked, setProductClicked] = useState("");
+
+  // payment modal hook
+  const [showPaymentModal, setShowPaymentModal] = useState(true);
 
   // commodity / newOrder Hook
   const [commodityList, setCommodityList] = useState([]);
@@ -206,15 +210,15 @@ function POS() {
                           style={
                             typeOfOrder === "eatin"
                               ? {
-                                  borderRadius: "15px !important",
-                                  marginRight: "5px",
-                                  backgroundColor: "#e57c35",
-                                  color: "#fff",
-                                }
+                                borderRadius: "15px !important",
+                                marginRight: "5px",
+                                backgroundColor: "#e57c35",
+                                color: "#fff",
+                              }
                               : {
-                                  borderRadius: "15px !important",
-                                  marginRight: "5px",
-                                }
+                                borderRadius: "15px !important",
+                                marginRight: "5px",
+                              }
                           }
                           className="btn active"
                         >
@@ -225,15 +229,15 @@ function POS() {
                           style={
                             typeOfOrder === "takeaway"
                               ? {
-                                  borderRadius: "15px !important",
-                                  marginRight: "5px",
-                                  backgroundColor: "#e57c35",
-                                  color: "#fff",
-                                }
+                                borderRadius: "15px !important",
+                                marginRight: "5px",
+                                backgroundColor: "#e57c35",
+                                color: "#fff",
+                              }
                               : {
-                                  borderRadius: "15px !important",
-                                  marginRight: "5px",
-                                }
+                                borderRadius: "15px !important",
+                                marginRight: "5px",
+                              }
                           }
                           className="btn active"
                         >
@@ -381,11 +385,15 @@ function POS() {
                             href
                             className="btn btn-outline-theme rounded-0 w-150px submitOrder"
                             id="showModalBtn"
-                            onClick={handleSubmitOrder}
+                            onClick={() => {
+                              setShowPaymentModal(true);
+                              handleSubmitOrder();
+                            }}
                           >
                             <i className="bi bi-send-check fa-lg" />
                             <br />
-                            <span className="small">Submit Order</span>
+
+                            <span className="small" data-bs-toggle="modal" data-bs-target="#exampleModalpayment">Submit Order</span>
                           </a>
                         </div>
                       </div>
@@ -417,6 +425,9 @@ function POS() {
           setCommodityList={setCommodityList}
           setShowModal={setShowModal}
         />
+      ) : null}
+      {showPaymentModal ? (
+        <PaymentModal />
       ) : null}
       <Loader showLoader={false} />
     </>
