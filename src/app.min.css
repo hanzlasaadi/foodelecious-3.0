@@ -2776,13 +2776,13 @@ textarea.form-control-lg {
     font-size: .875rem;
     font-weight: 300;
     line-height: 1.5;
-    color: rgba(255, 255, 255, .75);
+    color: rgba(15, 14, 14, 0.75);
     background-color: transparent;
     background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='rgba%28255, 255, 255, 0.75%29' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
     background-repeat: no-repeat;
     background-position: right .75rem center;
     background-size: 16px 12px;
-    border: 1px solid rgba(255, 255, 255, .3);
+    border: 1px solid grey;
     border-radius: 4px;
     transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
     -webkit-appearance: none;
@@ -2797,9 +2797,9 @@ textarea.form-control-lg {
 }
 
 .form-select:focus {
-    border-color: rgba(255, 255, 255, .5);
+    border-color: grey;
     outline: 0;
-    box-shadow: 0 0 0 .25rem rgba(255, 255, 255, .25)
+    box-shadow: 0 0 0 .25rem rgba(138, 135, 135, 0.25)
 }
 
 .form-select[multiple],
@@ -7696,11 +7696,11 @@ fieldset:disabled .btn {
     --bs-modal-header-padding-x: 1rem;
     --bs-modal-header-padding-y: 1rem;
     --bs-modal-header-padding: 1rem 1rem;
-    --bs-modal-header-border-color: rgba(255, 255, 255, 0.3);
+    --bs-modal-header-border-color: grey;
     --bs-modal-header-border-width: 1px;
     --bs-modal-title-line-height: 1.5;
     --bs-modal-footer-gap: 0.5rem;
-    --bs-modal-footer-border-color: rgba(255, 255, 255, 0.3);
+    --bs-modal-footer-border-color: grey;
     --bs-modal-footer-border-width: 1px;
     position: fixed;
     top: 0;
@@ -7764,11 +7764,11 @@ fieldset:disabled .btn {
     display: flex;
     flex-direction: column;
     width: 100%;
-    color: var(--bs-modal-color);
+    color: black;
     pointer-events: auto;
-    background-color: var(--bs-modal-bg);
+    background-color: white;
     background-clip: padding-box;
-    border: var(--bs-modal-border-width) solid var(--bs-modal-border-color);
+    border: var(--bs-modal-border-width) solid grey;
     border-radius: var(--bs-modal-border-radius);
     outline: 0
 }
@@ -24478,10 +24478,7 @@ body:before {
 
 }
 
-.card>:not(.card-arrow):not(.card-img-overlay):not(.card-img):not(.hljs-container) {
-    position: relative;
-    z-index: 10
-}
+
 
 .card .card-arrow {
     position: absolute;
@@ -29470,20 +29467,100 @@ body .note-modal-backdrop {
     border: none!important;
 }
 
-
-
-.NavList {
-    width: 200px;
-    height: 100%;
-    background: rgba(255, 0, 0, 0.1);
-    margin-left: 10px;
-    display: inline-block;
-  }
-  
   .scroll1 { 
     height: 100vh;
     overflow-x: scroll;
     overflow-y: hidden;
     white-space: nowrap;
     width: auto;
+  }
+
+  .dropdownin {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .dropdown-contentin {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    padding: 12px 16px;
+    z-index: 1;
+  }
+  
+  .dropdownin:hover .dropdown-contentin {
+    display: block;
+  }
+
+/* Reset */
+
+* {
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+  }
+  
+  
+  
+  .ulnum {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  /* Reset */
+  
+  #wrap {
+    
+    top: 50%;
+    left: 50%;
+    width: 206px;
+    margin-left: -100px;
+    margin-top: -150px;
+  }
+  
+  #display {
+    
+    top: -10px;
+    padding: 10px;
+    text-align: center;
+    border-bottom: 1px solid #00D881;
+  }
+  
+  #numpad {
+    position: relative;
+  }
+  
+  #display li {
+    display: inline-block;
+    font-family: monospace;
+    font-size: 50%;
+    padding: 5px 12px;
+    background: #e57c35;
+    color: black;
+    margin-right: 1px;
+  }
+  
+  #numpad li {
+    font-family: monospace;
+    font-size: 14px;
+    border-radius: 8%;
+    float: left;
+    padding: 12px 20px;
+    background: #e57c35;
+    color: black;
+    margin: 5px;
+    cursor: pointer;
+    -webkit-transition: box-shadow 0.3s ease-in-out;
+    -moz-transition: box-shadow 0.3s ease-in-out;
+    -o-transition: box-shadow 0.3s ease-in-out;
+    -ms-transition: box-shadow 0.3s ease-in-out;
+    transition: box-shadow 0.3s ease-in-out; 
+  }
+  
+  .pressed {
+    box-shadow: inset 2px 2px 12px 5px rgba(0,0,0,0.5);
+  }
+  
+  .clear {
+    clear: both;
   }
