@@ -31,6 +31,7 @@ function POS() {
 
   // payment modal hook
   const [showPaymentModal, setShowPaymentModal] = useState(true);
+  const [showLoader, setShowLoader] = useState(false);
 
   // commodity / newOrder Hook
   const [commodityList, setCommodityList] = useState([]);
@@ -83,22 +84,30 @@ function POS() {
     // console.log("currentCategory", filteredCategory);
   };
 
+  // payment modal hooks
+  const [tenderedAmount, setTenderedAmount] = React.useState(0);
+  const [paymentType, setPaymentType] = React.useState("Cash");
+
   // submit order funcntion
   const handleSubmitOrder = () => {
+    // setShowLoader(true);
     const orderObj = {
       workerId: "654111bab8f20fc4157388f0",
-      paymentType: "Cash",
+      paymentType: paymentType,
       totalPrice: totalPriceCommodities,
-      clientPay: 100,
-      status: "pending",
+      clientPay: tenderedAmount,
+      status: "completed",
       typeOfOrder: typeOfOrder,
       tax: tax,
       commodityList,
     };
-    // console.log(orderObj);
+    console.log(orderObj, "obj");
     axios
       .post(`${apiUrl}/api/v1/order`, orderObj)
-      .then((res) => console.log(res.data))
+      .then((res) => {
+        console.log(res.data);
+        // setShowLoader(false);
+      })
       .catch((err) => console.log("error=> ", err));
   };
 
@@ -392,14 +401,19 @@ function POS() {
                           </a>
                           <a
                             href
-                            className="btn btn-outline-theme rounded-0 w-150px submitOrder" data-bs-toggle="modal" data-bs-target="#exampleModalpayment"
+                            className="btn btn-outline-theme rounded-0 w-150px submitOrder"
+                            data-bs-toggle="modal"
+                            data-bs-target="#exampleModalpayment"
                             id="showModalBtn"
                             onClick={() => {
                               setShowPaymentModal(true);
-                              handleSubmitOrder();
                             }}
                           >
-                            <i className="bi bi-send-check fa-lg" data-bs-toggle="modal" data-bs-target="#exampleModalpayment" />
+                            <i
+                              className="bi bi-send-check fa-lg"
+                              data-bs-toggle="modal"
+                              data-bs-target="#exampleModalpayment"
+                            />
                             <br />
 
                             <span
@@ -441,7 +455,16 @@ function POS() {
           setShowModal={setShowModal}
         />
       ) : null}
-      {showPaymentModal ? <PaymentModal /> : null}
+      {showPaymentModal ? (
+        <PaymentModal
+          totalPrice={totalPriceCommodities}
+          handleSubmitOrder={handleSubmitOrder}
+          tenderedAmount={tenderedAmount}
+          setTenderedAmount={setTenderedAmount}
+          paymentType={paymentType}
+          setPaymentType={setPaymentType}
+        />
+      ) : null}
       <Loader showLoader={false} />
     </>
   );

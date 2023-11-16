@@ -39,9 +39,9 @@ function NewOrder({ commodity, setCommodityList }) {
           £{Math.round(Number(commodity.productPrice) * 100) / 100}
         </div>
         <div className="mt-auto d-flex flex-column gap-2">
-          <button className="btn btn-sm btn-outline-gray-500">
+          {/* <button className="btn btn-sm btn-outline-gray-500">
             <i className="fa fa-pencil" />
-          </button>
+          </button> */}
           <button
             className="btn btn-sm btn-outline-gray-500"
             onClick={() => setShowRemoveItem(true)}
