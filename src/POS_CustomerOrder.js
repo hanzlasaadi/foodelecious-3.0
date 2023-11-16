@@ -210,15 +210,15 @@ function POS() {
                           style={
                             typeOfOrder === "eatin"
                               ? {
-                                borderRadius: "15px !important",
-                                marginRight: "5px",
-                                backgroundColor: "#e57c35",
-                                color: "#fff",
-                              }
+                                  borderRadius: "15px !important",
+                                  marginRight: "5px",
+                                  backgroundColor: "#e57c35",
+                                  color: "#fff",
+                                }
                               : {
-                                borderRadius: "15px !important",
-                                marginRight: "5px",
-                              }
+                                  borderRadius: "15px !important",
+                                  marginRight: "5px",
+                                }
                           }
                           className="btn active"
                         >
@@ -229,15 +229,15 @@ function POS() {
                           style={
                             typeOfOrder === "takeaway"
                               ? {
-                                borderRadius: "15px !important",
-                                marginRight: "5px",
-                                backgroundColor: "#e57c35",
-                                color: "#fff",
-                              }
+                                  borderRadius: "15px !important",
+                                  marginRight: "5px",
+                                  backgroundColor: "#e57c35",
+                                  color: "#fff",
+                                }
                               : {
-                                borderRadius: "15px !important",
-                                marginRight: "5px",
-                              }
+                                  borderRadius: "15px !important",
+                                  marginRight: "5px",
+                                }
                           }
                           className="btn active"
                         >
@@ -338,7 +338,12 @@ function POS() {
                           style={{ color: "#e57c35" }}
                           id="grandTotal"
                         >
-                          £{totalPriceCommodities}
+                          £
+                          {Math.round(
+                            (totalPriceCommodities -
+                              (tax * totalPriceCommodities) / 100) *
+                              100
+                          ) / 100}
                         </div>
                       </div>
                       <div className="d-flex align-items-center">
@@ -347,7 +352,11 @@ function POS() {
                           className="flex-1 text-end h6 mb-0"
                           style={{ color: "#e57c35" }}
                         >
-                          £{(tax * totalPriceCommodities) / 100}
+                          {/* £{(tax * totalPriceCommodities) / 100} */}£
+                          {Math.round(
+                            ((tax * totalPriceCommodities) / 100) * 100
+                          ) / 100}
+                          {/* £{0} */}
                         </div>
                       </div>
                       <hr />
@@ -358,9 +367,9 @@ function POS() {
                           style={{ color: "#e57c35" }}
                           id="grandTotal2"
                         >
-                          £{" "}
-                          {totalPriceCommodities +
-                            (tax * totalPriceCommodities) / 100}
+                          £
+                          {/* {totalPriceCommodities + (tax * totalPriceCommodities) / 100} */}
+                          {Math.round(totalPriceCommodities * 100) / 100}
                         </div>
                       </div>
                       <div className="mt-3">
@@ -393,7 +402,13 @@ function POS() {
                             <i className="bi bi-send-check fa-lg" />
                             <br />
 
-                            <span className="small" data-bs-toggle="modal" data-bs-target="#exampleModalpayment">Submit Order</span>
+                            <span
+                              className="small"
+                              data-bs-toggle="modal"
+                              data-bs-target="#exampleModalpayment"
+                            >
+                              Submit Order
+                            </span>
                           </a>
                         </div>
                       </div>
@@ -426,9 +441,7 @@ function POS() {
           setShowModal={setShowModal}
         />
       ) : null}
-      {showPaymentModal ? (
-        <PaymentModal />
-      ) : null}
+      {showPaymentModal ? <PaymentModal /> : null}
       <Loader showLoader={false} />
     </>
   );

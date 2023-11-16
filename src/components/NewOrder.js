@@ -35,7 +35,9 @@ function NewOrder({ commodity, setCommodityList }) {
         </div>
       </div>
       <div className="pos-order-price d-flex flex-column">
-        <div style={{ fontWeight: "bold" }}>£{commodity.productPrice}</div>
+        <div style={{ fontWeight: "bold" }}>
+          £{Math.round(Number(commodity.productPrice) * 100) / 100}
+        </div>
         <div className="mt-auto d-flex flex-column gap-2">
           <button className="btn btn-sm btn-outline-gray-500">
             <i className="fa fa-pencil" />
