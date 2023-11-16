@@ -10,6 +10,7 @@ import ProductReport from "./productSales";
 import "./app.min.css";
 import Stockis from "./StockKeeping";
 import PaymentModal from "./payment";
+import OrderList from "./order";
 
 function App() {
   return (
@@ -20,6 +21,8 @@ function App() {
         <Route path="/ProductReport" element={<ProductReport />} />
         <Route path="/Stockis" element={<Stockis />} />
         <Route path="/PaymentModal" element={<PaymentModal />} />
+        <Route path="/OrderList" element={<OrderList />} />
+
 
 
 
