@@ -9,6 +9,8 @@ import SalesReport from "./sales";
 import ProductReport from "./productSales";
 import "./app.min.css";
 import Stockis from "./StockKeeping";
+import PaymentModal from "./payment";
+
 function App() {
   return (
     <BrowserRouter>
@@ -17,6 +19,9 @@ function App() {
         <Route path="/SalesReport" element={<SalesReport />} />
         <Route path="/ProductReport" element={<ProductReport />} />
         <Route path="/Stockis" element={<Stockis />} />
+        <Route path="/PaymentModal" element={<PaymentModal />} />
+
+
 
       </Routes>
     </BrowserRouter>

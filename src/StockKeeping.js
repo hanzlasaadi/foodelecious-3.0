@@ -15,10 +15,12 @@ import {
 function Stockis() {
 
 
-     const [editMode, setEditMode] = useState(false);
+     const [editMode, setEditMode] = useState(true);
   const [name, setName] = useState('Grill Chicken Chop');
   const [description, setDescription] = useState('chicken, egg, mushroom, salad');
   const [stock, setStock] = useState(20);
+  const [price, setPrice] = useState(9.66);
+
   const [availability, setAvailability] = useState(true);
 
   const handleEditClick = () => {
@@ -134,91 +136,427 @@ function Stockis() {
                                 </div>
 
 
-
+{/* card for stock  */}
                                 <div class="pos-content">
                                     <div class="pos-content-container h-100 p-3" data-scrollbar="true" data-height="100%">
-                                        <div class="row gx-3">
-                                            <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 pb-3">
-                                                <div class="card h-100">
-                                                    <div class="card-body h-100 p-1">
-                                                        <div class="pos-product">
+                                        <div class="row gx-3 ">
+                                            <div class="col-xl-12 col-lg-3 col-md-4 col-sm-6 pb-3 d-flex flex-wrap gap-4">
+                                                <div class="card d"style={{width:'250px'}}>
+                                                    <div class="card-body p-1" >
+                                                        <div class="pos-product" >
 
-                                                        <div className="info">
-      <div className={`title text-truncate ${editMode ? 'editable' : ''}`} onClick={handleEditClick}>
-        {editMode ? (
-          <input
-            type="text"
-            className="form-control"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-          />
-        ) : (
-          name
-        )}
-      </div>
-      <div className={`desc text-truncate ${editMode ? 'editable' : ''}`} onClick={handleEditClick}>
-        {editMode ? (
-          <input
-            type="text"
-            className="form-control"
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-          />
-        ) : (
-          description
-        )}
-      </div>
-      <div className="d-flex align-items-center mb-3">
-        <div className="w-100px">Stock:</div>
-        <div className={`flex-1 ${editMode ? 'editable' : ''}`}>
-          {editMode ? (
-            <input
-              type="text"
-              className="form-control"
-              value={stock}
-              onChange={(e) => setStock(e.target.value)}
-            />
-          ) : (
-            stock
-          )}
-        </div>
-      </div>
-      <div className="d-flex align-items-center mb-3">
-        <div className="w-100px">Availability:</div>
-        <div className={`flex-1 ${editMode ? 'editable' : ''}`}>
-          {editMode ? (
-            <input
-              type="checkbox"
-              className="form-check-input"
-              checked={availability}
-              onChange={(e) => setAvailability(e.target.checked)}
-            />
-          ) : (
-            availability ? 'Available' : 'Not Available'
-          )}
-        </div>
-      </div>
-      <div>
-        {editMode ? (
-          <>
-            <button className="btn btn-success d-block mb-2" onClick={handleUpdateClick}>
-              <i className="fa fa-check fa-fw"></i> Update
-            </button>
-            <button className="btn btn-default d-block" onClick={handleCancelClick}>
-              <i className="fa fa-times fa-fw"></i> Cancel
-            </button>
-          </>
-        ) : null}
-      </div>
-    </div>
-                                                        </div>
-                                                    </div>
+                                        <div className="info"style={{lineHeight:'2'}} >
+
+                                        <div className="w-100px"style={{color:'black',}}>Name:</div>
+                                        <div className={`title text-truncate editable ${editMode ? 'editable' : ''}`} onClick={handleEditClick}>
+                                            {editMode ? (
+                                            <input
+                                                type="text"
+                                                className="form-control"
+                                                value={name}
+                                                onChange={(e) => setName(e.target.value)}
+                                            />
+                                            ) : (
+                                            name
+                                            )}
+                                        </div>
+                                        <div className="w-100px"style={{color:'black'}}>Description:</div>
+                                        <div className={`desc text-truncate ${editMode ? 'editable' : ''}`} onClick={handleEditClick}>
+                                            {editMode ? (
+                                            <input
+                                                type="text"
+                                                className="form-control"
+                                                value={description}
+                                                onChange={(e) => setDescription(e.target.value)}
+                                            />
+                                            ) : (
+                                            description
+                                            )}
+                                        </div>
+
+
+                                        <div className="d-flex align-items-center mb-3">
+                                            <div className="w-100px"style={{color:'black'}}>Price:</div>
+                                            <div className={`flex-1 ${editMode ? 'editable' : ''}`}>
+                                            {editMode ? (
+                                                <input
+                                                type="text"
+                                                className="form-control"
+                                                value={price}
+                                                onChange={(e) => setPrice(e.target.value)}
+                                                />
+                                            ) : (
+                                                price
+                                            )}
+                                            </div>
+                                                                                </div>
+
+
+                                        <div className="d-flex align-items-center mb-3">
+                                            <div className="w-100px"style={{color:'black'}}>Stock:</div>
+                                            <div className={`flex-1 ${editMode ? 'editable' : ''}`}>
+                                            {editMode ? (
+                                                <input
+                                                type="text"
+                                                className="form-control"
+                                                value={stock}
+                                                onChange={(e) => setStock(e.target.value)}
+                                                />
+                                            ) : (
+                                                stock
+                                            )}
+                                            </div>
+                                                                                </div>
+                                            <div className="d-flex align-items-center mb-3">
+                                                <div className="w-100px"style={{color:'black'}}>Availability:</div>
+                                                <div className={`flex-1 ${editMode ? 'editable' : ''}`}>
+                                                {editMode ? (
+                                                    <input
+                                                    type="checkbox"
+                                                    className="form-check-input"
+                                                    checked={availability}
+                                                    onChange={(e) => setAvailability(e.target.checked)}
+                                                    />
+                                                ) : (
+                                                    availability ? 'Available' : 'Not Available'
+                                                )}
                                                 </div>
                                             </div>
+                                            <div>
+                                                {editMode ? (
+                                                     <>
+                                                <button className="btn btn-success d-block mb-2" onClick={handleUpdateClick}>
+                                                <i className="fa fa-check fa-fw"></i> Update
+                                                </button>
+                                                <button className="btn btn-default d-block" onClick={handleCancelClick}>
+                                                <i className="fa fa-times fa-fw"></i> Cancel
+                                                </button>
+                                            </>
+                                            ) : null}
                                         </div>
+                                        </div>
+                                                                                            </div>
+
+                                                                                            
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="card "style={{width:'250px'}}>
+                                                    <div class="card-body p-1" >
+                                                        <div class="pos-product" >
+
+                                        <div className="info"style={{lineHeight:'2'}} >
+
+                                        <div className="w-100px"style={{color:'black',}}>Name:</div>
+                                        <div className={`title text-truncate editable ${editMode ? 'editable' : ''}`} onClick={handleEditClick}>
+                                            {editMode ? (
+                                            <input
+                                                type="text"
+                                                className="form-control"
+                                                value={name}
+                                                onChange={(e) => setName(e.target.value)}
+                                            />
+                                            ) : (
+                                            name
+                                            )}
+                                        </div>
+                                        <div className="w-100px"style={{color:'black'}}>Description:</div>
+                                        <div className={`desc text-truncate ${editMode ? 'editable' : ''}`} onClick={handleEditClick}>
+                                            {editMode ? (
+                                            <input
+                                                type="text"
+                                                className="form-control"
+                                                value={description}
+                                                onChange={(e) => setDescription(e.target.value)}
+                                            />
+                                            ) : (
+                                            description
+                                            )}
+                                        </div>
+
+
+                                        <div className="d-flex align-items-center mb-3">
+                                            <div className="w-100px"style={{color:'black'}}>Price:</div>
+                                            <div className={`flex-1 ${editMode ? 'editable' : ''}`}>
+                                            {editMode ? (
+                                                <input
+                                                type="text"
+                                                className="form-control"
+                                                value={price}
+                                                onChange={(e) => setPrice(e.target.value)}
+                                                />
+                                            ) : (
+                                                price
+                                            )}
+                                            </div>
+                                                                                </div>
+
+
+                                        <div className="d-flex align-items-center mb-3">
+                                            <div className="w-100px"style={{color:'black'}}>Stock:</div>
+                                            <div className={`flex-1 ${editMode ? 'editable' : ''}`}>
+                                            {editMode ? (
+                                                <input
+                                                type="text"
+                                                className="form-control"
+                                                value={stock}
+                                                onChange={(e) => setStock(e.target.value)}
+                                                />
+                                            ) : (
+                                                stock
+                                            )}
+                                            </div>
+                                                                                </div>
+                                            <div className="d-flex align-items-center mb-3">
+                                                <div className="w-100px"style={{color:'black'}}>Availability:</div>
+                                                <div className={`flex-1 ${editMode ? 'editable' : ''}`}>
+                                                {editMode ? (
+                                                    <input
+                                                    type="checkbox"
+                                                    className="form-check-input"
+                                                    checked={availability}
+                                                    onChange={(e) => setAvailability(e.target.checked)}
+                                                    />
+                                                ) : (
+                                                    availability ? 'Available' : 'Not Available'
+                                                )}
+                                                </div>
+                                            </div>
+                                            <div>
+                                                {editMode ? (
+                                                     <>
+                                                <button className="btn btn-success d-block mb-2" onClick={handleUpdateClick}>
+                                                <i className="fa fa-check fa-fw"></i> Update
+                                                </button>
+                                                <button className="btn btn-default d-block" onClick={handleCancelClick}>
+                                                <i className="fa fa-times fa-fw"></i> Cancel
+                                                </button>
+                                            </>
+                                            ) : null}
+                                        </div>
+                                        </div>
+                                                                                            </div>
+
+                                                                                            
+                                                    </div>
+                                                </div>
+
+                                                <div class="card "style={{width:'250px'}}>
+                                                    <div class="card-body p-1" >
+                                                        <div class="pos-product" >
+
+                                        <div className="info"style={{lineHeight:'2'}} >
+
+                                        <div className="w-100px"style={{color:'black',}}>Name:</div>
+                                        <div className={`title text-truncate editable ${editMode ? 'editable' : ''}`} onClick={handleEditClick}>
+                                            {editMode ? (
+                                            <input
+                                                type="text"
+                                                className="form-control"
+                                                value={name}
+                                                onChange={(e) => setName(e.target.value)}
+                                            />
+                                            ) : (
+                                            name
+                                            )}
+                                        </div>
+                                        <div className="w-100px"style={{color:'black'}}>Description:</div>
+                                        <div className={`desc text-truncate ${editMode ? 'editable' : ''}`} onClick={handleEditClick}>
+                                            {editMode ? (
+                                            <input
+                                                type="text"
+                                                className="form-control"
+                                                value={description}
+                                                onChange={(e) => setDescription(e.target.value)}
+                                            />
+                                            ) : (
+                                            description
+                                            )}
+                                        </div>
+
+
+                                        <div className="d-flex align-items-center mb-3">
+                                            <div className="w-100px"style={{color:'black'}}>Price:</div>
+                                            <div className={`flex-1 ${editMode ? 'editable' : ''}`}>
+                                            {editMode ? (
+                                                <input
+                                                type="text"
+                                                className="form-control"
+                                                value={price}
+                                                onChange={(e) => setPrice(e.target.value)}
+                                                />
+                                            ) : (
+                                                price
+                                            )}
+                                            </div>
+                                                                                </div>
+
+
+                                        <div className="d-flex align-items-center mb-3">
+                                            <div className="w-100px"style={{color:'black'}}>Stock:</div>
+                                            <div className={`flex-1 ${editMode ? 'editable' : ''}`}>
+                                            {editMode ? (
+                                                <input
+                                                type="text"
+                                                className="form-control"
+                                                value={stock}
+                                                onChange={(e) => setStock(e.target.value)}
+                                                />
+                                            ) : (
+                                                stock
+                                            )}
+                                            </div>
+                                                                                </div>
+                                            <div className="d-flex align-items-center mb-3">
+                                                <div className="w-100px"style={{color:'black'}}>Availability:</div>
+                                                <div className={`flex-1 ${editMode ? 'editable' : ''}`}>
+                                                {editMode ? (
+                                                    <input
+                                                    type="checkbox"
+                                                    className="form-check-input"
+                                                    checked={availability}
+                                                    onChange={(e) => setAvailability(e.target.checked)}
+                                                    />
+                                                ) : (
+                                                    availability ? 'Available' : 'Not Available'
+                                                )}
+                                                </div>
+                                            </div>
+                                            <div>
+                                                {editMode ? (
+                                                     <>
+                                                <button className="btn btn-success d-block mb-2" onClick={handleUpdateClick}>
+                                                <i className="fa fa-check fa-fw"></i> Update
+                                                </button>
+                                                <button className="btn btn-default d-block" onClick={handleCancelClick}>
+                                                <i className="fa fa-times fa-fw"></i> Cancel
+                                                </button>
+                                            </>
+                                            ) : null}
+                                        </div>
+                                        </div>
+                                                                                            </div>
+
+                                                                                            
+                                                    </div>
+                                                </div>
+
+                                                <div class="card "style={{width:'250px'}}>
+                                                    <div class="card-body p-1" >
+                                                        <div class="pos-product" >
+
+                                        <div className="info"style={{lineHeight:'2'}} >
+
+                                        <div className="w-100px"style={{color:'black',}}>Name:</div>
+                                        <div className={`title text-truncate editable ${editMode ? 'editable' : ''}`} onClick={handleEditClick}>
+                                            {editMode ? (
+                                            <input
+                                                type="text"
+                                                className="form-control"
+                                                value={name}
+                                                onChange={(e) => setName(e.target.value)}
+                                            />
+                                            ) : (
+                                            name
+                                            )}
+                                        </div>
+                                        <div className="w-100px"style={{color:'black'}}>Description:</div>
+                                        <div className={`desc text-truncate ${editMode ? 'editable' : ''}`} onClick={handleEditClick}>
+                                            {editMode ? (
+                                            <input
+                                                type="text"
+                                                className="form-control"
+                                                value={description}
+                                                onChange={(e) => setDescription(e.target.value)}
+                                            />
+                                            ) : (
+                                            description
+                                            )}
+                                        </div>
+
+
+                                        <div className="d-flex align-items-center mb-3">
+                                            <div className="w-100px"style={{color:'black'}}>Price:</div>
+                                            <div className={`flex-1 ${editMode ? 'editable' : ''}`}>
+                                            {editMode ? (
+                                                <input
+                                                type="text"
+                                                className="form-control"
+                                                value={price}
+                                                onChange={(e) => setPrice(e.target.value)}
+                                                />
+                                            ) : (
+                                                price
+                                            )}
+                                            </div>
+                                                                                </div>
+
+
+                                        <div className="d-flex align-items-center mb-3">
+                                            <div className="w-100px"style={{color:'black'}}>Stock:</div>
+                                            <div className={`flex-1 ${editMode ? 'editable' : ''}`}>
+                                            {editMode ? (
+                                                <input
+                                                type="text"
+                                                className="form-control"
+                                                value={stock}
+                                                onChange={(e) => setStock(e.target.value)}
+                                                />
+                                            ) : (
+                                                stock
+                                            )}
+                                            </div>
+                                                                                </div>
+                                            <div className="d-flex align-items-center mb-3">
+                                                <div className="w-100px"style={{color:'black'}}>Availability:</div>
+                                                <div className={`flex-1 ${editMode ? 'editable' : ''}`}>
+                                                {editMode ? (
+                                                    <input
+                                                    type="checkbox"
+                                                    className="form-check-input"
+                                                    checked={availability}
+                                                    onChange={(e) => setAvailability(e.target.checked)}
+                                                    />
+                                                ) : (
+                                                    availability ? 'Available' : 'Not Available'
+                                                )}
+                                                </div>
+                                            </div>
+                                            <div>
+                                                {editMode ? (
+                                                     <>
+                                                <button className="btn btn-success d-block mb-2" onClick={handleUpdateClick}>
+                                                <i className="fa fa-check fa-fw"></i> Update
+                                                </button>
+                                                <button className="btn btn-default d-block" onClick={handleCancelClick}>
+                                                <i className="fa fa-times fa-fw"></i> Cancel
+                                                </button>
+                                            </>
+                                            ) : null}
+                                        </div>
+                                        </div>
+                                                                                            </div>
+
+                                                                                            
+                                                    </div>
+                                                </div>
+
+
+                                            </div>
+
+                                            
+                                        </div>
+                                        
                                     </div>
 
                                 </div>
+
+
+
+
+
+
                             </div>
 
                         </div>
