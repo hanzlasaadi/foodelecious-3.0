@@ -392,14 +392,14 @@ function POS() {
                           </a>
                           <a
                             href
-                            className="btn btn-outline-theme rounded-0 w-150px submitOrder"
+                            className="btn btn-outline-theme rounded-0 w-150px submitOrder" data-bs-toggle="modal" data-bs-target="#exampleModalpayment"
                             id="showModalBtn"
                             onClick={() => {
                               setShowPaymentModal(true);
                               handleSubmitOrder();
                             }}
                           >
-                            <i className="bi bi-send-check fa-lg" />
+                            <i className="bi bi-send-check fa-lg" data-bs-toggle="modal" data-bs-target="#exampleModalpayment" />
                             <br />
 
                             <span

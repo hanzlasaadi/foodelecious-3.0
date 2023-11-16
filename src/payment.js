@@ -66,16 +66,16 @@ function PaymentModal() {
 
             <div className="input-group d-flex" style={{ width: '60%', border: '#e57c35' }}>
               {/* Tendered */}
-              <input type="text" className="form-control" id="tenderAmount" placeholder="0.00" readOnly />
+              <input type="text" className="form-control" style={{backgroundColor:'lightgray'}} id="tenderAmount" placeholder="0.00"  />
               {/* Change */}
-              <input type="text" className="form-control" id="changeAmount" placeholder="0.00" readOnly />
+              <input type="text" className="form-control" style={{backgroundColor:'lightgray'}} id="changeAmount" placeholder="0.00" readOnly />
             </div>
 
             <div className="d-flex" style={{ marginTop: '3%' }}></div>
 
             <div>
-              <br></br>
-              <ul className="ulnum" id="numpad">
+             
+              <ul className="ulnum" id="numpad" style={{width:'50%', marginLeft:'10%'}}>
                 <li>1</li>
                 <li>2</li>
                 <li>3</li>
@@ -95,8 +95,7 @@ function PaymentModal() {
 
           </div>
           <div className="modal-footer">
-            <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="button" className="btn btn-primary" onClick={() => calculateChange()}>Save changes</button>
+            <button type="button" className="btn btn-primary" style={{height:'80px', width:'20%',fontSize:' 25px', backgroundColor:'#e57c35'}} onClick={() => calculateChange()}>Pay</button>
           </div>
         </div>
       </div>
