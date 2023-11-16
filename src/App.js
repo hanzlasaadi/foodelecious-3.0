@@ -11,6 +11,7 @@ import "./app.min.css";
 import Stockis from "./StockKeeping";
 import PaymentModal from "./payment";
 import OrderList from "./order";
+import ReceiptBill from "./receipt";
 
 function App() {
   return (
@@ -22,6 +23,8 @@ function App() {
         <Route path="/Stockis" element={<Stockis />} />
         <Route path="/PaymentModal" element={<PaymentModal />} />
         <Route path="/OrderList" element={<OrderList />} />
+        <Route path="/ReceiptBill" element={<ReceiptBill />} />
+
 
 
 
