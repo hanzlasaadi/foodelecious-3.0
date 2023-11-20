@@ -13,7 +13,11 @@ function NewOrder({ commodity, setCommodityList }) {
               if (opt.type == "no") return null;
               return (
                 <div>
-                  {opt.stepName}: {opt.type} - £{opt.price}
+                  <span style={{ color: "grey" }}>
+                    {" "}
+                    {opt.stepName}: {opt.type}{" "}
+                  </span>{" "}
+                  - £{opt.price}
                 </div>
               );
             })}

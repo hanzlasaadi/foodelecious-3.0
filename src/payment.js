@@ -162,6 +162,7 @@ function PaymentModal({
               }}
               onClick={() => {
                 handleSubmitOrder();
+                window.open("http://localhost:3000/ReceiptBill");
               }}
             >
               Pay

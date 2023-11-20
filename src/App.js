@@ -12,27 +12,26 @@ import Stockis from "./StockKeeping";
 import PaymentModal from "./payment";
 import OrderList from "./order";
 import ReceiptBill from "./receipt";
+import React from "react";
 
 function App() {
+  const [orderData, setOrderData] = React.useState(null);
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<POS />} />
+        <Route path="/" element={<POS setOrderData={setOrderData} />} />
         <Route path="/SalesReport" element={<SalesReport />} />
         <Route path="/ProductReport" element={<ProductReport />} />
         <Route path="/Stockis" element={<Stockis />} />
         <Route path="/PaymentModal" element={<PaymentModal />} />
         <Route path="/OrderList" element={<OrderList />} />
-        <Route path="/ReceiptBill" element={<ReceiptBill />} />
-
-
-
-
-
+        <Route
+          path="/ReceiptBill"
+          element={<ReceiptBill orderData={orderData} />}
+        />
       </Routes>
     </BrowserRouter>
   );
 }
 
 export default App;
-
