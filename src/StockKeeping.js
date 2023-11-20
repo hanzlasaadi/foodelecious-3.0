@@ -69,7 +69,7 @@ function Stockis() {
   }, []);
 
   // Product Card Click
-  const handleProductCardClick = (subcategoryId) => {
+  const handleNavItemClick = (subcategoryId) => {
     const [filteredProduct] = productsList.filter(
       (listEl) => listEl.productCategory === subcategoryId
     );
@@ -150,7 +150,7 @@ function Stockis() {
                           category={cat}
                           setShowProductCards={setShowProductCards}
                           setCurrentProduct={setCurrentProduct}
-                          handleProductCardClick={handleProductCardClick}
+                          handleNavItemClick={handleNavItemClick}
                         />
                       );
                     })}

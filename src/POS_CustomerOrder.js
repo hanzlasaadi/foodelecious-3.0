@@ -15,15 +15,16 @@ import NewOrder from "./components/NewOrder";
 import Loader from "./components/loader";
 import PaymentModal from "./payment";
 
-function POS() {
+function POS({ setOrderData }) {
   // states
   const [showProductCards, setShowProductCards] = useState(false);
-  const [currentProduct, setCurrentProduct] = useState({});
+  const [currentProducts, setCurrentProducts] = useState({});
   const [currentProductCategory, setCurrentProductCategory] = useState({});
   const [productsList, setProductsList] = useState(dummyProductsList);
   const [productCategories, setProductCategories] =
     useState(dummyProductCategory);
   // const [pizzaList, setPizzaList] = useState([]);
+  const [subcategoryClicked, setSubcategoryClicked] = useState({});
 
   // modal hooks
   const [showModal, setShowModal] = useState(false);
@@ -49,7 +50,7 @@ function POS() {
       .catch((err) => console.log(err));
 
     axios
-      .get(`${apiUrl}/api/v1/productCategory?limit=100`)
+      .get(`${apiUrl}/api/v1/productCategory?limit=100&sort=priority`)
       .then((res) => {
         console.log("Categories: ", res.data.data);
         setProductCategories(res.data.data);
@@ -71,16 +72,16 @@ function POS() {
   }, [typeOfOrder]);
 
   // Product Card Click
-  const handleProductCardClick = (subcategoryId) => {
-    const [filteredProduct] = productsList.filter(
+  const handleNavItemClick = (subcategoryId) => {
+    const filteredProducts = productsList.filter(
       (listEl) => listEl.productCategory === subcategoryId
     );
     const [filteredCategory] = productCategories.filter(
       (cat) => cat._id === subcategoryId
     );
-    setCurrentProduct(filteredProduct);
+    setCurrentProducts(filteredProducts);
     setCurrentProductCategory(filteredCategory);
-    // console.log("currentProduct", filteredProduct);
+    // console.log("currentProducts", filteredProduct);
     // console.log("currentCategory", filteredCategory);
   };
 
@@ -106,6 +107,7 @@ function POS() {
       .post(`${apiUrl}/api/v1/order`, orderObj)
       .then((res) => {
         console.log(res.data);
+        setOrderData(res.data.data);
         // setShowLoader(false);
       })
       .catch((err) => console.log("error=> ", err));
@@ -152,8 +154,8 @@ function POS() {
                             key={cat._id}
                             category={cat}
                             setShowProductCards={setShowProductCards}
-                            setCurrentProduct={setCurrentProduct}
-                            handleProductCardClick={handleProductCardClick}
+                            // setCurrentProduct={setCurrentProducts}
+                            handleNavItemClick={handleNavItemClick}
                           />
                         );
                       })}
@@ -180,13 +182,18 @@ function POS() {
                     />
                   </div>
                   <div className="row gx-4" id="productCardsContainer">
-                    {showProductCards ? (
-                      <ProductCard
-                        currentProduct={currentProduct}
-                        setProductClicked={setProductClicked}
-                        setShowModal={setShowModal}
-                      />
-                    ) : null}
+                    {showProductCards
+                      ? currentProducts.map((currentProduct) => {
+                          return (
+                            <ProductCard
+                              currentProduct={currentProduct}
+                              setProductClicked={setProductClicked}
+                              setShowModal={setShowModal}
+                              setSubcategoryClicked={setSubcategoryClicked}
+                            />
+                          );
+                        })
+                      : null}
                   </div>
                 </div>
               </div>
@@ -449,8 +456,9 @@ function POS() {
       {showModal ? (
         <Modal
           currentProductCategory={currentProductCategory}
-          currentProduct={currentProduct}
+          currentProducts={currentProducts}
           productClicked={productClicked}
+          subcategoryClicked={subcategoryClicked}
           setCommodityList={setCommodityList}
           setShowModal={setShowModal}
         />

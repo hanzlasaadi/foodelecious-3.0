@@ -1,8 +1,8 @@
 function NavList({
-  setCurrentProduct,
+  // setCurrentProduct,s
   category,
   setShowProductCards,
-  handleProductCardClick,
+  handleNavItemClick,
 }) {
   return (
     <li
@@ -16,7 +16,7 @@ function NavList({
         data-filter="all"
         onClick={(e) => {
           e.preventDefault();
-          handleProductCardClick(category._id);
+          handleNavItemClick(category._id);
           setShowProductCards(true);
         }}
       >

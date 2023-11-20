@@ -1,7 +1,13 @@
-function ProductCard({ currentProduct, setShowModal, setProductClicked }) {
+function ProductCard({
+  currentProduct,
+  setShowModal,
+  setProductClicked,
+  setSubcategoryClicked,
+}) {
   console.log(currentProduct, "currProduct Test");
   return (
     <>
+      <h2>{currentProduct.name}</h2>
       {currentProduct?.productsList?.map((curr) => {
         return (
           <div
@@ -17,7 +23,9 @@ function ProductCard({ currentProduct, setShowModal, setProductClicked }) {
                     setShowModal(true);
                     const modalEl = document.getElementById("modalPosItem");
                     console.log(e.currentTarget.dataset.productId, "id");
+                    // setProductClicked();
                     setProductClicked(e.currentTarget.dataset.productId);
+                    setSubcategoryClicked(currentProduct);
                     // const modalChild = modalEl.querySelector(".modal-dialog");
                     // modalEl.style.display = "block";
                     // modalEl.style.opacity = "100";

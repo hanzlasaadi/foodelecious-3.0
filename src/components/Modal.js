@@ -2,20 +2,24 @@ import React from "react";
 import Step from "./options";
 
 function Modal({
-  currentProduct,
+  currentProducts,
   currentProductCategory,
   productClicked,
+  subcategoryClicked,
   setCommodityList,
   setShowModal,
 }) {
   // React States
   const [stepsPrice, setStepsPrice] = React.useState(0);
 
-  console.log(currentProduct, "currP");
+  console.log(currentProducts, "currP");
   console.log(currentProductCategory, "currC");
   console.log(productClicked, "product clicked");
 
-  const [filteredProduct] = currentProduct.productsList.filter(
+  // const [filteredProduct] = currentProducts.filter((currProduct) =>
+  //   currProduct.productsList.forEach((item) => item._id === productClicked)
+  // );
+  const [filteredProduct] = subcategoryClicked.productsList.filter(
     (item) => item._id === productClicked
   );
   console.log("filteredProduct", filteredProduct);
@@ -42,12 +46,12 @@ function Modal({
     // console.log(choosedOptions);
     // console.log(filteredProduct);
     // console.log(stepsPrice);
-    // console.log(currentProduct._id);
+    // console.log(currentProducts._id);
 
     const tempCommodity = {
       barcode: "testBarcode",
       name: filteredProduct.name,
-      subCategory: currentProduct._id,
+      subCategory: subcategoryClicked._id,
       productPrice: stepsPrice,
       options: choosedOptions,
       unit: 1,
