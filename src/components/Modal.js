@@ -118,13 +118,27 @@ function Modal({
                   </div>
                   <hr className="mx-n4" />
                   <span id="modal-steps">
-                    {currentProductCategory.stepsToChoose.map((step) => (
-                      <Step
-                        stepToChoose={step}
-                        setStepsPrice={setStepsPrice}
-                        key={step._id}
-                      />
-                    ))}
+                    {filteredProduct.custom
+                      ? currentProductCategory.stepsToChoose.map((step) => {
+                          return filteredProduct.customType ===
+                            step.customType ? (
+                            <Step
+                              stepToChoose={step}
+                              setStepsPrice={setStepsPrice}
+                              key={step._id}
+                            />
+                          ) : null;
+                        })
+                      : null}
+                    {currentProductCategory.stepsToChoose.map((step) => {
+                      return !step.custom ? (
+                        <Step
+                          stepToChoose={step}
+                          setStepsPrice={setStepsPrice}
+                          key={step._id}
+                        />
+                      ) : null;
+                    })}
                     {/* <div className="mb-2">
                       <div className="fw-bold" style={{ color: "black" }}>
                         Size:
