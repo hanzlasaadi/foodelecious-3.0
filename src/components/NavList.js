@@ -6,13 +6,13 @@ function NavList({
 }) {
   return (
     <li
-      class="nav-item"
+      className="nav-item"
       style={{ minWidth: "max-content" }}
-      data-categoryId={category._id}
+      data-categoryid={category._id}
     >
       <a
-        class="nav-link active"
-        href
+        className="nav-link"
+        href="/#"
         data-filter="all"
         onClick={(e) => {
           e.preventDefault();
@@ -20,8 +20,8 @@ function NavList({
           setShowProductCards(true);
         }}
       >
-        <div class="card">
-          <div class="card-body">{category.name}</div>
+        <div className="card">
+          <div className="card-body">{category.name}</div>
         </div>
       </a>
     </li>

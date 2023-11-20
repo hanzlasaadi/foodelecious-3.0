@@ -183,9 +183,10 @@ function POS({ setOrderData }) {
                   </div>
                   <div className="row gx-4" id="productCardsContainer">
                     {showProductCards
-                      ? currentProducts.map((currentProduct) => {
+                      ? currentProducts.map((currentProduct, i) => {
                           return (
                             <ProductCard
+                              key={i}
                               currentProduct={currentProduct}
                               setProductClicked={setProductClicked}
                               setShowModal={setShowModal}
