@@ -29692,3 +29692,8 @@ tfoot tr:first-child td:first-child, tfoot tr:first-child td:last-child {
     text-align: center;
     text-transform: uppercase;
 }
+/* 
+.active, .btn:hover {
+    background-color: #e57c35!important;
+    color: white!important;
+  } */
