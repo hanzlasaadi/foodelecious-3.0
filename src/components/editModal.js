@@ -145,6 +145,7 @@ function EditModal({
             type: opt.type,
             price: opt.price,
             selected: true,
+            optId: opt._id,
           });
         }
       })
