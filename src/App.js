@@ -12,7 +12,7 @@ import Stockis from "./StockKeeping";
 import PaymentModal from "./payment";
 import OrderList from "./order";
 import ReceiptBill from "./receipt";
-
+import OrderSubmit from "./submit";
 function App() {
   return (
     <BrowserRouter>
@@ -24,6 +24,9 @@ function App() {
         <Route path="/PaymentModal" element={<PaymentModal />} />
         <Route path="/OrderList" element={<OrderList />} />
         <Route path="/ReceiptBill" element={<ReceiptBill />} />
+        <Route path="/OrderSubmit" element={<OrderSubmit />} />
+
+
 
 
 

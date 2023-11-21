@@ -7,53 +7,35 @@ function PaymentModal({
   setTenderedAmount,
   paymentType,
   setPaymentType,
+
+
 }) {
-  const pin_code = "your_pin_code";
-  const link = "your_link";
-  let num_pos = 0;
+
+
 
   const calculateChange = () => {
     // Your implementation for calculateChange function
     console.log("Calculating change...");
   };
 
-  function press(command) {
-    switch (command) {
-      case "E":
-        document.querySelectorAll("#display li").forEach(function (v) {
-          pin_code += v.textContent;
-        });
-        window.location.href = "http://cppt.su/" + link + "/" + pin_code;
-        break;
-      case "C":
-        document.querySelectorAll("#display li").forEach(function (v) {
-          v.textContent = "+";
-        });
-        break;
-      default:
-        document.querySelector(
-          "#display li:nth-child(" + num_pos + ")"
-        ).textContent = command;
-        num_pos++;
-        num_pos = num_pos > 4 ? 1 : num_pos;
-    }
-  }
+
 
   return (
-    <div
+    <div 
       className="modal fade"
       id="exampleModalpayment"
       tabIndex="-1"
       aria-labelledby="exampleModalLabel"
       aria-hidden="true"
     >
-      <div className="modal-dialog">
-        <div className="modal-content">
+      <div className="modal-dialog" >
+        <div className="modal-content"style={{borderRadius:'15px'}}>
           <div className="modal-header">
             <h1 className="modal-title fs-5" id="exampleModalLabel">
               Payment
             </h1>
-            <button
+            <button 
+            style={{backgroundColor:'lightgrey'}}
               type="button"
               className="btn-close"
               data-bs-dismiss="modal"
@@ -112,13 +94,14 @@ function PaymentModal({
                 placeholder={0.0}
                 value={tenderedAmount}
                 onChange={(e) => setTenderedAmount(Number(e.target.value))}
+
               />
               {/* Change */}
               <input
                 value={Math.round((tenderedAmount - totalPrice) * 100) / 100}
                 type="text"
                 className="form-control"
-                style={{ backgroundColor: "lightgray" }}
+
                 id="changeAmount"
                 placeholder={0.0}
                 readOnly
@@ -128,23 +111,36 @@ function PaymentModal({
             <div className="d-flex" style={{ marginTop: "3%" }}></div>
 
             <div>
+
               <ul
                 className="ulnum"
                 id="numpad"
                 style={{ width: "50%", marginLeft: "10%" }}
               >
-                <li>1</li>
-                <li>2</li>
-                <li>3</li>
-                <li>4</li>
-                <li>5</li>
-                <li>6</li>
-                <li>7</li>
-                <li>8</li>
-                <li>9</li>
-                <li>C</li>
-                <li>0</li>
-                <li>E</li>
+                <li value={1}
+                  onClick={(e) => setTenderedAmount(Number(  String(tenderedAmount)+String(1)))}>1</li>
+                <li value={2}
+                  onClick={(e) => setTenderedAmount(Number( String(tenderedAmount)+String(2) ))}>2</li>
+                 <li value={3}
+                  onClick={(e) => setTenderedAmount(Number( String(tenderedAmount)+String(3) ))}>3</li>
+               <li value={4}
+                  onClick={(e) => setTenderedAmount(Number( String(tenderedAmount)+String(4) ))}>4</li>
+                <li value={5}
+                  onClick={(e) => setTenderedAmount(Number( String(tenderedAmount)+String(5) ))}>5</li>
+                <li value={6}
+                  onClick={(e) => setTenderedAmount(Number( String(tenderedAmount)+String(6) ))}>6</li>
+                 <li value={7}
+                  onClick={(e) => setTenderedAmount(Number( String(tenderedAmount)+String(7) ))}>7</li>
+                 <li value={8}
+                  onClick={(e) => setTenderedAmount(Number( String(tenderedAmount)+String(8) ))}>8</li>
+                 <li value={9}
+                  onClick={(e) => setTenderedAmount(Number( String(tenderedAmount)+String(9) ))}>9</li>
+                <li 
+                 onClick={(e) => { e.preventDefault(); setTenderedAmount(''); }}>C</li>
+                <li value={0}
+                  onClick={(e) => setTenderedAmount(Number( String(tenderedAmount)+String(0) ))}>0</li>
+                 <li value={"."}
+                  onClick={(e) => setTenderedAmount(Number( String(tenderedAmount)+String(".") ))}>.</li>
               </ul>
             </div>
 
@@ -159,17 +155,20 @@ function PaymentModal({
                 width: "20%",
                 fontSize: " 25px",
                 backgroundColor: "#e57c35",
-              }}
+                }}
               onClick={() => {
                 handleSubmitOrder();
               }}
             >
-              Pay
+              <span style={{color:'white'}}>Pay</span>
             </button>
           </div>
         </div>
       </div>
     </div>
+
+              
+
   );
 }
 

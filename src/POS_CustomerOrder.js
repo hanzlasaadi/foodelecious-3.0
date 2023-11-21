@@ -31,7 +31,6 @@ function POS() {
 
   // payment modal hook
   const [showPaymentModal, setShowPaymentModal] = useState(true);
-  const [showLoader, setShowLoader] = useState(false);
 
   // commodity / newOrder Hook
   const [commodityList, setCommodityList] = useState([]);
@@ -84,30 +83,22 @@ function POS() {
     // console.log("currentCategory", filteredCategory);
   };
 
-  // payment modal hooks
-  const [tenderedAmount, setTenderedAmount] = React.useState(0);
-  const [paymentType, setPaymentType] = React.useState("Cash");
-
   // submit order funcntion
   const handleSubmitOrder = () => {
-    // setShowLoader(true);
     const orderObj = {
       workerId: "654111bab8f20fc4157388f0",
-      paymentType: paymentType,
+      paymentType: "Cash",
       totalPrice: totalPriceCommodities,
-      clientPay: tenderedAmount,
-      status: "completed",
+      clientPay: 100,
+      status: "pending",
       typeOfOrder: typeOfOrder,
       tax: tax,
       commodityList,
     };
-    console.log(orderObj, "obj");
+    // console.log(orderObj);
     axios
       .post(`${apiUrl}/api/v1/order`, orderObj)
-      .then((res) => {
-        console.log(res.data);
-        // setShowLoader(false);
-      })
+      .then((res) => console.log(res.data))
       .catch((err) => console.log("error=> ", err));
   };
 
@@ -219,15 +210,15 @@ function POS() {
                           style={
                             typeOfOrder === "eatin"
                               ? {
-                                  borderRadius: "15px !important",
-                                  marginRight: "5px",
-                                  backgroundColor: "#e57c35",
-                                  color: "#fff",
-                                }
+                                borderRadius: "15px !important",
+                                marginRight: "5px",
+                                backgroundColor: "#e57c35",
+                                color: "#fff",
+                              }
                               : {
-                                  borderRadius: "15px !important",
-                                  marginRight: "5px",
-                                }
+                                borderRadius: "15px !important",
+                                marginRight: "5px",
+                              }
                           }
                           className="btn active"
                         >
@@ -238,15 +229,15 @@ function POS() {
                           style={
                             typeOfOrder === "takeaway"
                               ? {
-                                  borderRadius: "15px !important",
-                                  marginRight: "5px",
-                                  backgroundColor: "#e57c35",
-                                  color: "#fff",
-                                }
+                                borderRadius: "15px !important",
+                                marginRight: "5px",
+                                backgroundColor: "#e57c35",
+                                color: "#fff",
+                              }
                               : {
-                                  borderRadius: "15px !important",
-                                  marginRight: "5px",
-                                }
+                                borderRadius: "15px !important",
+                                marginRight: "5px",
+                              }
                           }
                           className="btn active"
                         >
@@ -347,12 +338,7 @@ function POS() {
                           style={{ color: "#e57c35" }}
                           id="grandTotal"
                         >
-                          £
-                          {Math.round(
-                            (totalPriceCommodities -
-                              (tax * totalPriceCommodities) / 100) *
-                              100
-                          ) / 100}
+                          £{totalPriceCommodities}
                         </div>
                       </div>
                       <div className="d-flex align-items-center">
@@ -361,11 +347,7 @@ function POS() {
                           className="flex-1 text-end h6 mb-0"
                           style={{ color: "#e57c35" }}
                         >
-                          {/* £{(tax * totalPriceCommodities) / 100} */}£
-                          {Math.round(
-                            ((tax * totalPriceCommodities) / 100) * 100
-                          ) / 100}
-                          {/* £{0} */}
+                          £{(tax * totalPriceCommodities) / 100}
                         </div>
                       </div>
                       <hr />
@@ -376,9 +358,9 @@ function POS() {
                           style={{ color: "#e57c35" }}
                           id="grandTotal2"
                         >
-                          £
-                          {/* {totalPriceCommodities + (tax * totalPriceCommodities) / 100} */}
-                          {Math.round(totalPriceCommodities * 100) / 100}
+                          £{" "}
+                          {totalPriceCommodities +
+                            (tax * totalPriceCommodities) / 100}
                         </div>
                       </div>
                       <div className="mt-3">
@@ -402,27 +384,16 @@ function POS() {
                           <a
                             href
                             className="btn btn-outline-theme rounded-0 w-150px submitOrder"
-                            data-bs-toggle="modal"
-                            data-bs-target="#exampleModalpayment"
                             id="showModalBtn"
                             onClick={() => {
                               setShowPaymentModal(true);
+                              handleSubmitOrder();
                             }}
                           >
-                            <i
-                              className="bi bi-send-check fa-lg"
-                              data-bs-toggle="modal"
-                              data-bs-target="#exampleModalpayment"
-                            />
+                            <i className="bi bi-send-check fa-lg" />
                             <br />
 
-                            <span
-                              className="small"
-                              data-bs-toggle="modal"
-                              data-bs-target="#exampleModalpayment"
-                            >
-                              Submit Order
-                            </span>
+                            <span className="small" data-bs-toggle="modal" data-bs-target="#exampleModalpayment">Submit Order</span>
                           </a>
                         </div>
                       </div>
@@ -456,14 +427,7 @@ function POS() {
         />
       ) : null}
       {showPaymentModal ? (
-        <PaymentModal
-          totalPrice={totalPriceCommodities}
-          handleSubmitOrder={handleSubmitOrder}
-          tenderedAmount={tenderedAmount}
-          setTenderedAmount={setTenderedAmount}
-          paymentType={paymentType}
-          setPaymentType={setPaymentType}
-        />
+        <PaymentModal />
       ) : null}
       <Loader showLoader={false} />
     </>

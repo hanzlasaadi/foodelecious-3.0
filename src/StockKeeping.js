@@ -147,10 +147,10 @@ function Stockis() {
 
                                                             <div className="info" style={{ lineHeight: '2' }} >
 
-                                                                <div className="w-100px" style={{ color: 'black', }}>Name:</div>
+                                                                <div className="w-100px" style={{ color: 'black',}}>Name:</div>
                                                                 <div className={`title text-truncate editable ${editMode ? 'editable' : ''}`} onClick={handleEditClick}>
                                                                     {editMode ? (
-                                                                        <input
+                                                                        <input style={{  color:'#e57c35' }}
                                                                             type="text"
                                                                             className="form-control"
                                                                             value={name}

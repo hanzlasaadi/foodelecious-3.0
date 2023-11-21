@@ -61,10 +61,10 @@ function SalesReport() {
                                     </div>
                                 </div>
                                 <button class="btn btn-outline-default  rounded-0" type="button"><span class="d-none d-md-inline "> <input type="checkbox" class="form-check-input" id="product1" />
-                                    <label class="form-check-label" for="product1"></label> &nbsp;Vat</span><span class="d-inline d-md-none"></span> &nbsp;</button>
+                                    <label class="form-check-label" ></label> &nbsp;Vat</span><span class="d-inline d-md-none"></span> &nbsp;</button>
 
                                 <button class="btn btn-outline-default  rounded-0" type="button"><span class="d-none d-md-inline "> <input type="checkbox" class="form-check-input" id="product1" />
-                                    <label class="form-check-label" for="product1"></label>&nbsp;Discount</span><span class="d-inline d-md-none"></span> &nbsp;</button>
+                                    <label class="form-check-label" ></label>&nbsp;Discount</span><span class="d-inline d-md-none"></span> &nbsp;</button>
 
                             </div>
 
@@ -92,7 +92,7 @@ function SalesReport() {
                                             <td class="w-10px align-middle">
                                                 <div class="form-check">
                                                     <input type="checkbox" class="form-check-input" id="product1" />
-                                                    <label class="form-check-label" for="product1"></label>
+                                                    <label class="form-check-label" ></label>
                                                 </div>
                                             </td>
                                             <td class="align-middle" ><a href="#">0001</a></td>
@@ -111,7 +111,7 @@ function SalesReport() {
                                             <td class="w-10px align-middle">
                                                 <div class="form-check">
                                                     <input type="checkbox" class="form-check-input" id="product1" />
-                                                    <label class="form-check-label" for="product1"></label>
+                                                    <label class="form-check-label" ></label>
                                                 </div>
                                             </td>
                                             <td class="align-middle" ><a href="#">0002</a></td>
@@ -130,7 +130,7 @@ function SalesReport() {
                                             <td class="w-10px align-middle">
                                                 <div class="form-check">
                                                     <input type="checkbox" class="form-check-input" id="product1" />
-                                                    <label class="form-check-label" for="product1"></label>
+                                                    <label class="form-check-label" ></label>
                                                 </div>
                                             </td>
                                             <td class="align-middle" ><a href="#">0003</a></td>
@@ -149,7 +149,7 @@ function SalesReport() {
                                             <td class="w-10px align-middle">
                                                 <div class="form-check">
                                                     <input type="checkbox" class="form-check-input" id="product1" />
-                                                    <label class="form-check-label" for="product1"></label>
+                                                    <label class="form-check-label" ></label>
                                                 </div>
                                             </td>
                                             <td class="align-middle" ><a href="#">0004</a></td>
@@ -186,8 +186,8 @@ function SalesReport() {
                         </div>
                     </div>
 
-                    <div class="tab-content ">
-                    <div class="tab-pane fade show active" id="paymentTab">
+                    <div class="tab-content p-1">
+                    <div class="tab-pane fade  active" id="paymentTab">
 
                             <div class="input-group mb-4">
                                 <div class="flex-fill position-relative">
@@ -199,10 +199,10 @@ function SalesReport() {
                                     </div>
                                 </div>
                                 <button class="btn btn-outline-default  rounded-0" type="button"><span class="d-none d-md-inline "> <input type="checkbox" class="form-check-input" id="product1" />
-                                    <label class="form-check-label" for="product1"></label> &nbsp;Vat</span><span class="d-inline d-md-none"></span> &nbsp;</button>
+                                    <label class="form-check-label" ></label> &nbsp;Vat</span><span class="d-inline d-md-none"></span> &nbsp;</button>
 
                                 <button class="btn btn-outline-default  rounded-0" type="button"><span class="d-none d-md-inline "> <input type="checkbox" class="form-check-input" id="product1" />
-                                    <label class="form-check-label" for="product1"></label>&nbsp;Discount</span><span class="d-inline d-md-none"></span> &nbsp;</button>
+                                    <label class="form-check-label" ></label>&nbsp;Discount</span><span class="d-inline d-md-none"></span> &nbsp;</button>
 
                             </div>
 
@@ -230,7 +230,7 @@ function SalesReport() {
                                             <td class="w-10px align-middle">
                                                 <div class="form-check">
                                                     <input type="checkbox" class="form-check-input" id="product1" />
-                                                    <label class="form-check-label" for="product1"></label>
+                                                    <label class="form-check-label" ></label>
                                                 </div>
                                             </td>
                                             <td class="align-middle" ><a href="#">0001</a></td>
@@ -249,7 +249,7 @@ function SalesReport() {
                                             <td class="w-10px align-middle">
                                                 <div class="form-check">
                                                     <input type="checkbox" class="form-check-input" id="product1" />
-                                                    <label class="form-check-label" for="product1"></label>
+                                                    <label class="form-check-label" ></label>
                                                 </div>
                                             </td>
                                             <td class="align-middle" ><a href="#">0002</a></td>
@@ -268,7 +268,7 @@ function SalesReport() {
                                             <td class="w-10px align-middle">
                                                 <div class="form-check">
                                                     <input type="checkbox" class="form-check-input" id="product1" />
-                                                    <label class="form-check-label" for="product1"></label>
+                                                    <label class="form-check-label" ></label>
                                                 </div>
                                             </td>
                                             <td class="align-middle" ><a href="#">0003</a></td>
@@ -287,7 +287,7 @@ function SalesReport() {
                                             <td class="w-10px align-middle">
                                                 <div class="form-check">
                                                     <input type="checkbox" class="form-check-input" id="product1" />
-                                                    <label class="form-check-label" for="product1"></label>
+                                                    <label class="form-check-label" ></label>
                                                 </div>
                                             </td>
                                             <td class="align-middle" ><a href="#">0004</a></td>
@@ -325,7 +325,7 @@ function SalesReport() {
                     </div>
 
                     <div class="tab-content ">
-                    <div class="tab-pane fade show active" id="staffTab">
+                    <div class="tab-pane fade  active" id="staffTab">
 
                             <div class="input-group mb-4">
                                 <div class="flex-fill position-relative">
@@ -337,10 +337,10 @@ function SalesReport() {
                                     </div>
                                 </div>
                                 <button class="btn btn-outline-default  rounded-0" type="button"><span class="d-none d-md-inline "> <input type="checkbox" class="form-check-input" id="product1" />
-                                    <label class="form-check-label" for="product1"></label> &nbsp;Vat</span><span class="d-inline d-md-none"></span> &nbsp;</button>
+                                    <label class="form-check-label" ></label> &nbsp;Vat</span><span class="d-inline d-md-none"></span> &nbsp;</button>
 
                                 <button class="btn btn-outline-default  rounded-0" type="button"><span class="d-none d-md-inline "> <input type="checkbox" class="form-check-input" id="product1" />
-                                    <label class="form-check-label" for="product1"></label>&nbsp;Discount</span><span class="d-inline d-md-none"></span> &nbsp;</button>
+                                    <label class="form-check-label" ></label>&nbsp;Discount</span><span class="d-inline d-md-none"></span> &nbsp;</button>
 
                             </div>
 
@@ -368,7 +368,7 @@ function SalesReport() {
                                             <td class="w-10px align-middle">
                                                 <div class="form-check">
                                                     <input type="checkbox" class="form-check-input" id="product1" />
-                                                    <label class="form-check-label" for="product1"></label>
+                                                    <label class="form-check-label" ></label>
                                                 </div>
                                             </td>
                                             <td class="align-middle" ><a href="#">0001</a></td>
@@ -387,7 +387,7 @@ function SalesReport() {
                                             <td class="w-10px align-middle">
                                                 <div class="form-check">
                                                     <input type="checkbox" class="form-check-input" id="product1" />
-                                                    <label class="form-check-label" for="product1"></label>
+                                                    <label class="form-check-label" ></label>
                                                 </div>
                                             </td>
                                             <td class="align-middle" ><a href="#">0002</a></td>
@@ -406,7 +406,7 @@ function SalesReport() {
                                             <td class="w-10px align-middle">
                                                 <div class="form-check">
                                                     <input type="checkbox" class="form-check-input" id="product1" />
-                                                    <label class="form-check-label" for="product1"></label>
+                                                    <label class="form-check-label" ></label>
                                                 </div>
                                             </td>
                                             <td class="align-middle" ><a href="#">0003</a></td>
@@ -425,7 +425,7 @@ function SalesReport() {
                                             <td class="w-10px align-middle">
                                                 <div class="form-check">
                                                     <input type="checkbox" class="form-check-input" id="product1" />
-                                                    <label class="form-check-label" for="product1"></label>
+                                                    <label class="form-check-label" ></label>
                                                 </div>
                                             </td>
                                             <td class="align-middle" ><a href="#">0004</a></td>
@@ -462,8 +462,8 @@ function SalesReport() {
                         </div>
                     </div>
 
-                    <div class="tab-content ">
-                    <div class="tab-pane fade show active" id="saleTab">
+                    <div class="tab-content  ">
+                    <div class="tab-pane fade  active" id="saleTab">
 
                             <div class="input-group mb-4">
                                 <div class="flex-fill position-relative">
@@ -475,10 +475,10 @@ function SalesReport() {
                                     </div>
                                 </div>
                                 <button class="btn btn-outline-default  rounded-0" type="button"><span class="d-none d-md-inline "> <input type="checkbox" class="form-check-input" id="product1" />
-                                    <label class="form-check-label" for="product1"></label> &nbsp;Vat</span><span class="d-inline d-md-none"></span> &nbsp;</button>
+                                    <label class="form-check-label" ></label> &nbsp;Vat</span><span class="d-inline d-md-none"></span> &nbsp;</button>
 
                                 <button class="btn btn-outline-default  rounded-0" type="button"><span class="d-none d-md-inline "> <input type="checkbox" class="form-check-input" id="product1" />
-                                    <label class="form-check-label" for="product1"></label>&nbsp;Discount</span><span class="d-inline d-md-none"></span> &nbsp;</button>
+                                    <label class="form-check-label" ></label>&nbsp;Discount</span><span class="d-inline d-md-none"></span> &nbsp;</button>
 
                             </div>
 
@@ -506,7 +506,7 @@ function SalesReport() {
                                             <td class="w-10px align-middle">
                                                 <div class="form-check">
                                                     <input type="checkbox" class="form-check-input" id="product1" />
-                                                    <label class="form-check-label" for="product1"></label>
+                                                    <label class="form-check-label" ></label>
                                                 </div>
                                             </td>
                                             <td class="align-middle" ><a href="#">0001</a></td>
@@ -525,7 +525,7 @@ function SalesReport() {
                                             <td class="w-10px align-middle">
                                                 <div class="form-check">
                                                     <input type="checkbox" class="form-check-input" id="product1" />
-                                                    <label class="form-check-label" for="product1"></label>
+                                                    <label class="form-check-label" ></label>
                                                 </div>
                                             </td>
                                             <td class="align-middle" ><a href="#">0002</a></td>
@@ -544,7 +544,7 @@ function SalesReport() {
                                             <td class="w-10px align-middle">
                                                 <div class="form-check">
                                                     <input type="checkbox" class="form-check-input" id="product1" />
-                                                    <label class="form-check-label" for="product1"></label>
+                                                    <label class="form-check-label" ></label>
                                                 </div>
                                             </td>
                                             <td class="align-middle" ><a href="#">0003</a></td>
@@ -563,7 +563,7 @@ function SalesReport() {
                                             <td class="w-10px align-middle">
                                                 <div class="form-check">
                                                     <input type="checkbox" class="form-check-input" id="product1" />
-                                                    <label class="form-check-label" for="product1"></label>
+                                                    <label class="form-check-label" ></label>
                                                 </div>
                                             </td>
                                             <td class="align-middle" ><a href="#">0004</a></td>
