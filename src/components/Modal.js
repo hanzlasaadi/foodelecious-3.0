@@ -11,6 +11,7 @@ function Modal({
 }) {
   // React States
   const [stepsPrice, setStepsPrice] = React.useState(0);
+  const [units, setUnits] = React.useState(1);
 
   console.log(currentProducts, "currP");
   console.log(currentProductCategory, "currC");
@@ -55,7 +56,7 @@ function Modal({
       subCategory: subcategoryClicked._id,
       productPrice: stepsPrice,
       options: choosedOptions,
-      unit: 1,
+      unit: units,
     };
     // console.log(tempCommodity);
     setCommodityList((comm) => [...comm, tempCommodity]);
@@ -104,16 +105,25 @@ function Modal({
                     {filteredProduct.price + stepsPrice} £
                   </div>
                   <div className="d-flex mb-3">
-                    <a href="#" className="btn btn-outline-theme">
+                    <a
+                      href="/#"
+                      className="btn btn-outline-theme"
+                      onClick={() => setUnits((u) => u - 1)}
+                    >
                       <i className="fa fa-minus" />
                     </a>
                     <input
                       type="text"
                       className="form-control w-50px fw-bold mx-2 bg-grey border-0 text-center"
                       name="qty"
-                      defaultValue={1}
+                      value={units}
+                      // defaultValue={units}
                     />
-                    <a href="#" className="btn btn-outline-theme">
+                    <a
+                      href="/#"
+                      className="btn btn-outline-theme"
+                      onClick={() => setUnits((u) => u + 1)}
+                    >
                       <i className="fa fa-plus" />
                     </a>
                   </div>

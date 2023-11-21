@@ -110,6 +110,7 @@ function EditModal({
   const [stepsPrice, setStepsPrice] = React.useState(
     clickedCommodity.productPrice
   );
+  const [units, setUnits] = React.useState(clickedCommodity.unit);
   // console.log(commodityList, "commieList");
   // console.log(clickedEditProduct, "clickedName");
 
@@ -157,7 +158,7 @@ function EditModal({
       subCategory: filteredSubCategory._id,
       productPrice: stepsPrice,
       options: choosedOptions,
-      unit: 1,
+      unit: units,
     };
     const newCommodityList = commodityList.map((commie) => {
       if (commie.name !== clickedCommodity.name) return commie;
@@ -207,16 +208,24 @@ function EditModal({
                     {filteredProduct.price + stepsPrice} £
                   </div>
                   <div className="d-flex mb-3">
-                    <a href="/#" className="btn btn-outline-theme">
+                    <a
+                      href="/#"
+                      className="btn btn-outline-theme"
+                      onClick={() => setUnits((u) => u - 1)}
+                    >
                       <i className="fa fa-minus" />
                     </a>
                     <input
                       type="text"
                       className="form-control w-50px fw-bold mx-2 bg-grey border-0 text-center"
                       name="qty"
-                      defaultValue={1}
+                      value={units}
                     />
-                    <a href="/#" className="btn btn-outline-theme">
+                    <a
+                      href="/#"
+                      className="btn btn-outline-theme"
+                      onClick={() => setUnits((u) => u + 1)}
+                    >
                       <i className="fa fa-plus" />
                     </a>
                   </div>
