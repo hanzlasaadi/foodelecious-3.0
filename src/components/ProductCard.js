@@ -1,41 +1,52 @@
-function ProductCard({ currentProduct, setShowModal, setProductClicked }) {
+function ProductCard({
+  currentProduct,
+  setShowModal,
+  setProductClicked,
+  setSubcategoryClicked,
+}) {
   console.log(currentProduct, "currProduct Test");
   return (
     <>
+      <h2>{currentProduct.name}</h2>
       {currentProduct?.productsList?.map((curr) => {
         return (
           <div
-            class="col-xxl-3 col-xl-4 col-lg-6 col-md-4 col-sm-6 pb-4"
+            className="col-xxl-3 col-xl-4 col-lg-6 col-md-4 col-sm-6 pb-4"
             data-type="meat"
             key={curr._id}
           >
-            <div class="card h-100">
-              <div class="card-body h-100 p-1" style={{ cursor: "pointer" }}>
+            <div className="card h-100">
+              <div
+                className="card-body h-100 p-1"
+                style={{ cursor: "pointer" }}
+              >
                 <a
                   data-product-id={`${curr._id}`}
                   onClick={(e) => {
                     setShowModal(true);
                     const modalEl = document.getElementById("modalPosItem");
                     console.log(e.currentTarget.dataset.productId, "id");
+                    // setProductClicked();
                     setProductClicked(e.currentTarget.dataset.productId);
+                    setSubcategoryClicked(currentProduct);
                     // const modalChild = modalEl.querySelector(".modal-dialog");
                     // modalEl.style.display = "block";
                     // modalEl.style.opacity = "100";
                     // modalChild.style.marginTop = "155px";
                   }}
                   href
-                  class="pos-product"
+                  className="pos-product"
                   data-bs-toggle="modal"
                   data-bs-target="#modalPosItem"
                 >
                   {/* <div
-                    class="img"
+                    className="img"
                     style={{
                       backgroundImage: "url(./assets/img/pos/countryside.jpg",
                     }}
                   ></div> */}
-                  <div class="info">
-                    <div class="title">{curr.name}</div>
+                  <div className="info">
+                    <div className="title">{curr.name}</div>
                   </div>
                 </a>
               </div>

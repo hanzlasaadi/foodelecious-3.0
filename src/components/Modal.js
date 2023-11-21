@@ -2,20 +2,24 @@ import React from "react";
 import Step from "./options";
 
 function Modal({
-  currentProduct,
+  currentProducts,
   currentProductCategory,
   productClicked,
+  subcategoryClicked,
   setCommodityList,
   setShowModal,
 }) {
   // React States
   const [stepsPrice, setStepsPrice] = React.useState(0);
 
-  console.log(currentProduct, "currP");
+  console.log(currentProducts, "currP");
   console.log(currentProductCategory, "currC");
   console.log(productClicked, "product clicked");
 
-  const [filteredProduct] = currentProduct.productsList.filter(
+  // const [filteredProduct] = currentProducts.filter((currProduct) =>
+  //   currProduct.productsList.forEach((item) => item._id === productClicked)
+  // );
+  const [filteredProduct] = subcategoryClicked.productsList.filter(
     (item) => item._id === productClicked
   );
   console.log("filteredProduct", filteredProduct);
@@ -35,6 +39,7 @@ function Modal({
             type: opt.type,
             price: opt.price,
             selected: true,
+            optId: opt._id,
           });
         }
       })
@@ -42,12 +47,12 @@ function Modal({
     // console.log(choosedOptions);
     // console.log(filteredProduct);
     // console.log(stepsPrice);
-    // console.log(currentProduct._id);
+    // console.log(currentProducts._id);
 
     const tempCommodity = {
       barcode: "testBarcode",
       name: filteredProduct.name,
-      subCategory: currentProduct._id,
+      subCategory: subcategoryClicked._id,
       productPrice: stepsPrice,
       options: choosedOptions,
       unit: 1,
@@ -114,13 +119,27 @@ function Modal({
                   </div>
                   <hr className="mx-n4" />
                   <span id="modal-steps">
-                    {currentProductCategory.stepsToChoose.map((step) => (
-                      <Step
-                        stepToChoose={step}
-                        setStepsPrice={setStepsPrice}
-                        key={step._id}
-                      />
-                    ))}
+                    {filteredProduct.custom
+                      ? currentProductCategory.stepsToChoose.map((step) => {
+                          return filteredProduct.customType ===
+                            step.customType ? (
+                            <Step
+                              stepToChoose={step}
+                              setStepsPrice={setStepsPrice}
+                              key={step._id}
+                            />
+                          ) : null;
+                        })
+                      : null}
+                    {currentProductCategory.stepsToChoose.map((step) => {
+                      return !step.custom ? (
+                        <Step
+                          stepToChoose={step}
+                          setStepsPrice={setStepsPrice}
+                          key={step._id}
+                        />
+                      ) : null;
+                    })}
                     {/* <div className="mb-2">
                       <div className="fw-bold" style={{ color: "black" }}>
                         Size:

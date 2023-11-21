@@ -158,6 +158,7 @@ function PaymentModal({
                 }}
               onClick={() => {
                 handleSubmitOrder();
+                window.open("http://localhost:3000/ReceiptBill");
               }}
             >
               <span style={{color:'white'}}>Pay</span>
