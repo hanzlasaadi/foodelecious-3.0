@@ -28,18 +28,19 @@ function NewOrder({
             })}
           </div>
           <div className="d-flex">
-            <a href="#/" className="btn btn-outline-theme btn-sm">
+            {/* <a href="#/" className="btn btn-outline-theme btn-sm">
               <i className="fa fa-minus" />
             </a>
             <input
               type="text"
               className="form-control w-50px form-control-sm mx-2 bg-white bg-opacity-25 bg-white bg-opacity-25 text-center"
-              readOnly=""
+              readOnly
               defaultValue={1}
             />
             <a href="#/" className="btn btn-outline-theme btn-sm">
               <i className="fa fa-plus" />
-            </a>
+            </a> */}
+            <h5>Unit(s): {commodity.unit}</h5>
           </div>
         </div>
       </div>

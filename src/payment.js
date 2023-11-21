@@ -76,86 +76,109 @@ function PaymentModal({
                   <option value="Cash">Cash</option>
                 </select>
               </div>
-              <div>
-                <label
-                  htmlFor="paymentMethod"
-                  style={{ fontWeight: "bold", marginLeft: "100px" }}
-                >
-                  Total={" "}
-                </label>
-                <label style={{ fontWeight: "bold", color: "red" }}>
-                  £ {totalPrice}
-                </label>
+              <div style={{ textAlign: "center" }}>
+                <div>
+                  <label
+                    htmlFor="paymentMethod"
+                    style={{ fontWeight: "bold", marginLeft: "80px" }}
+                  >
+                    Total=
+                  </label>
+                  <label style={{ fontWeight: "bold", color: "red" }}>
+                    £{totalPrice}
+                  </label>
+                </div>
+                <div>
+                  <label style={{ fontWeight: "bold", marginLeft: "80px" }}>
+                    Paid=
+                  </label>
+                  <label style={{ fontWeight: "bold", color: "red" }}>
+                    £{paymentType === "Credit" ? totalPrice : tenderedAmount}
+                  </label>
+                </div>
+                <div>
+                  <label style={{ fontWeight: "bold", marginLeft: "80px" }}>
+                    Change=
+                  </label>
+                  <label style={{ fontWeight: "bold", color: "red" }}>
+                    £
+                    {paymentType === "Credit"
+                      ? 0
+                      : Math.sign(tenderedAmount - totalPrice) === "-"
+                      ? 0
+                      : Math.round((tenderedAmount - totalPrice) * 100) / 100}
+                  </label>
+                </div>
               </div>
             </div>
 
-            <div className="d-flex" style={{ marginTop: "3%" }}>
-              <label htmlFor="tenderAmount" style={{ marginLeft: "7%" }}>
-                Tendered{" "}
-              </label>
-              <label htmlFor="changeAmount" style={{ marginLeft: "17%" }}>
-                {" "}
-                Change
-              </label>
-            </div>
-      
-          <div className="group-input d-flex">
 
-            <div
-              className="input-group d-flex"
-              style={{ width: "60%", border: "#e57c35" }}
-            >
-              {/* Tendered */}
-              <input
-                type="text"
-                className="form-control"
-                style={{ backgroundColor: "lightgray" }}
-                id="tenderAmount"
-                placeholder={0.0}
-                value={tenderedAmount}
-                onChange={(e) => setTenderedAmount(Number(e.target.value))}
-              />
-              {/* Change */}
-              <input
-                value={Math.round((tenderedAmount - totalPrice) * 100) / 100}
-                type="text"
-                className="form-control"
-                style={{ backgroundColor: "lightgray" }}
-                id="changeAmount"
-                placeholder={0.0}
-                readOnly
-              />
-            </div>
-                    <div class="form__privacy " style={{marginLeft:'5%'}}>
-          <input  id="checkbox" name="checkbox" type="checkbox" required/>
-          <label for="checkbox"  style={{marginLeft:'5px'}}>Overwrite </label>
-        </div>
+            {paymentType === "Credit" ? null : (
+              <>
+                <div className="d-flex" style={{ marginTop: "3%" }}>
+                  <label htmlFor="tenderAmount" style={{ marginLeft: "0" }}>
+                    Tendered Amount:
+                  </label>
+                  {/* <label htmlFor="changeAmount" style={{ marginLeft: "17%" }}>
+                    {" "}
+                    Change
+                  </label> */}
+                </div>
 
-            </div>
+                <div
+                  className="input-group d-flex"
+                  style={{ width: "60%", border: "#e57c35" }}
+                >
+                  {/* Tendered */}
+                  <input
+                    type="text"
+                    className="form-control"
+                    style={{ backgroundColor: "lightgray" }}
+                    id="tenderAmount"
+                    placeholder={0.0}
+                    value={tenderedAmount}
+                    onChange={(e) => setTenderedAmount(Number(e.target.value))}
+                  />
+                  {/* Change */}
+                  {/* <input
+                    value={
+                      Math.round((tenderedAmount - totalPrice) * 100) / 100
+                    }
+                    type="text"
+                    className="form-control"
+                    style={{ backgroundColor: "lightgray" }}
+                    id="changeAmount"
+                    placeholder={0.0}
+                    readOnly
+                  /> */}
+                </div>
 
-<br></br>
-            <div>
-              <ul
-                className="ulnum"
-                id="numpad"
-                style={{ width: "50%", marginLeft: "10%" }}
-              >
-                <li>1</li>
-                <li>2</li>
-                <li>3</li>
-                <li>4</li>
-                <li>5</li>
-                <li>6</li>
-                <li>7</li>
-                <li>8</li>
-                <li>9</li>
-                <li>C</li>
-                <li>0</li>
-                <li>E</li>
-              </ul>
-            </div>
+                <div className="d-flex" style={{ marginTop: "3%" }}></div>
 
-            <div></div>
+                <div>
+                  <ul
+                    className="ulnum"
+                    id="numpad"
+                    style={{ width: "50%", marginLeft: "10%" }}
+                  >
+                    <li>1</li>
+                    <li>2</li>
+                    <li>3</li>
+                    <li>4</li>
+                    <li>5</li>
+                    <li>6</li>
+                    <li>7</li>
+                    <li>8</li>
+                    <li>9</li>
+                    <li>C</li>
+                    <li>0</li>
+                    <li>E</li>
+                  </ul>
+                </div>
+
+                <div></div>
+              </>
+            )}
           </div>
           <div className="modal-footer">
             <button

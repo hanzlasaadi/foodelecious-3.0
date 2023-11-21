@@ -101,7 +101,8 @@ function POS({ setOrderData }) {
       workerId: "654111bab8f20fc4157388f0",
       paymentType: paymentType,
       totalPrice: totalPriceCommodities,
-      clientPay: tenderedAmount,
+      clientPay:
+        paymentType === "Credit" ? totalPriceCommodities : tenderedAmount,
       status: "completed",
       typeOfOrder: typeOfOrder,
       tax: tax,
