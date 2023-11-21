@@ -41,7 +41,7 @@ function PaymentModal({
 
   return (
     <div
-      className="modal fade"
+      className="modal fade "
       id="exampleModalpayment"
       tabIndex="-1"
       aria-labelledby="exampleModalLabel"
@@ -55,7 +55,7 @@ function PaymentModal({
             </h1>
             <button
               type="button"
-              className="btn-close"
+              className="btn-close bg-dark"
               data-bs-dismiss="modal"
               aria-label="Close"
             ></button>
@@ -98,6 +98,8 @@ function PaymentModal({
                 Change
               </label>
             </div>
+      
+          <div className="group-input d-flex">
 
             <div
               className="input-group d-flex"
@@ -124,9 +126,14 @@ function PaymentModal({
                 readOnly
               />
             </div>
+                    <div class="form__privacy " style={{marginLeft:'5%'}}>
+          <input  id="checkbox" name="checkbox" type="checkbox" required/>
+          <label for="checkbox"  style={{marginLeft:'5px'}}>Overwrite </label>
+        </div>
 
-            <div className="d-flex" style={{ marginTop: "3%" }}></div>
+            </div>
 
+<br></br>
             <div>
               <ul
                 className="ulnum"
@@ -153,7 +160,7 @@ function PaymentModal({
           <div className="modal-footer">
             <button
               type="button"
-              className="btn btn-primary"
+              className="btn btn-primary bg-white"
               style={{
                 height: "80px",
                 width: "20%",
