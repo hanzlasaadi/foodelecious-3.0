@@ -12,8 +12,9 @@ import Stockis from "./StockKeeping";
 import PaymentModal from "./payment";
 import OrderList from "./order";
 import ReceiptBill from "./receipt";
-import React from "react";
+import OrderSubmit from "./submit";
 
+import React from "react";
 function App() {
   const [orderData, setOrderData] = React.useState(null);
   return (
@@ -25,6 +26,14 @@ function App() {
         <Route path="/Stockis" element={<Stockis />} />
         <Route path="/PaymentModal" element={<PaymentModal />} />
         <Route path="/OrderList" element={<OrderList />} />
+        <Route path="/OrderSubmit" element={<OrderSubmit />} />
+
+
+
+
+
+
+
         <Route
           path="/ReceiptBill"
           element={<ReceiptBill orderData={orderData} />}

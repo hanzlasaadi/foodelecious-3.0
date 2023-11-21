@@ -20,8 +20,9 @@ function NavList({
           setShowProductCards(true);
         }}
       >
-        <div className="card">
-          <div className="card-body">{category.name}</div>
+        <div class="card active">
+          <div class="card-body active">{category.name}</div>
+
         </div>
       </a>
     </li>
