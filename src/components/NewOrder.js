@@ -18,7 +18,6 @@ function NewOrder({
               if (opt.type == "no") return null;
               return (
                 <div>
-
                   <span style={{ color: "grey" }}>
                     {" "}
                     {opt.stepName}: {opt.type}{" "}
