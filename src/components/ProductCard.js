@@ -11,12 +11,15 @@ function ProductCard({
       {currentProduct?.productsList?.map((curr) => {
         return (
           <div
-            class="col-xxl-3 col-xl-4 col-lg-6 col-md-4 col-sm-6 pb-4"
+            className="col-xxl-3 col-xl-4 col-lg-6 col-md-4 col-sm-6 pb-4"
             data-type="meat"
             key={curr._id}
           >
-            <div class="card h-100">
-              <div class="card-body h-100 p-1" style={{ cursor: "pointer" }}>
+            <div className="card h-100">
+              <div
+                className="card-body h-100 p-1"
+                style={{ cursor: "pointer" }}
+              >
                 <a
                   data-product-id={`${curr._id}`}
                   onClick={(e) => {
@@ -32,18 +35,18 @@ function ProductCard({
                     // modalChild.style.marginTop = "155px";
                   }}
                   href
-                  class="pos-product"
+                  className="pos-product"
                   data-bs-toggle="modal"
                   data-bs-target="#modalPosItem"
                 >
                   {/* <div
-                    class="img"
+                    className="img"
                     style={{
                       backgroundImage: "url(./assets/img/pos/countryside.jpg",
                     }}
                   ></div> */}
-                  <div class="info">
-                    <div class="title">{curr.name}</div>
+                  <div className="info">
+                    <div className="title">{curr.name}</div>
                   </div>
                 </a>
               </div>

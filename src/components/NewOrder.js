@@ -1,6 +1,11 @@
 import React from "react";
 
-function NewOrder({ commodity, setCommodityList }) {
+function NewOrder({
+  commodity,
+  setCommodityList,
+  setShowEditModal,
+  setClickedEditProduct,
+}) {
   const [showRemoveItem, setShowRemoveItem] = React.useState(false);
   return (
     <div className="pos-order">
@@ -43,9 +48,18 @@ function NewOrder({ commodity, setCommodityList }) {
           £{Math.round(Number(commodity.productPrice) * 100) / 100}
         </div>
         <div className="mt-auto d-flex flex-column gap-2">
-          {/* <button className="btn btn-sm btn-outline-gray-500">
+          <button
+            onClick={(e) => {
+              setClickedEditProduct(e.currentTarget.dataset.product);
+              setShowEditModal(true);
+            }}
+            data-product={commodity.name}
+            className="btn btn-sm btn-outline-gray-500"
+            data-bs-toggle="modal"
+            data-bs-target="#modalCartItem"
+          >
             <i className="fa fa-pencil" />
-          </button> */}
+          </button>
           <button
             className="btn btn-sm btn-outline-gray-500"
             onClick={() => setShowRemoveItem(true)}

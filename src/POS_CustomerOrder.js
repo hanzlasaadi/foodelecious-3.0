@@ -14,12 +14,14 @@ import Modal from "./components/Modal";
 import NewOrder from "./components/NewOrder";
 import Loader from "./components/loader";
 import PaymentModal from "./payment";
+import EditModal from "./components/editModal";
 
 function POS({ setOrderData }) {
   // states
   const [showProductCards, setShowProductCards] = useState(false);
   const [currentProducts, setCurrentProducts] = useState({});
   const [currentProductCategory, setCurrentProductCategory] = useState({});
+  const [categoryId, setCategoryId] = useState("");
   const [productsList, setProductsList] = useState(dummyProductsList);
   const [productCategories, setProductCategories] =
     useState(dummyProductCategory);
@@ -28,6 +30,8 @@ function POS({ setOrderData }) {
 
   // modal hooks
   const [showModal, setShowModal] = useState(false);
+  const [showEditModal, setShowEditModal] = useState(false);
+  const [clickedEditProduct, setClickedEditProduct] = useState("");
   const [productClicked, setProductClicked] = useState("");
 
   // payment modal hook
@@ -79,9 +83,10 @@ function POS({ setOrderData }) {
     const [filteredCategory] = productCategories.filter(
       (cat) => cat._id === subcategoryId
     );
+    setCategoryId(subcategoryId);
     setCurrentProducts(filteredProducts);
     setCurrentProductCategory(filteredCategory);
-    // console.log("currentProducts", filteredProduct);
+    // console.log("currentProducts", filteredProducts);
     // console.log("currentCategory", filteredCategory);
   };
 
@@ -316,6 +321,9 @@ function POS({ setOrderData }) {
                           <NewOrder
                             commodity={commodity}
                             setCommodityList={setCommodityList}
+                            setShowEditModal={setShowEditModal}
+                            setClickedEditProduct={setClickedEditProduct}
+                            categoryId={categoryId}
                             key={i}
                           />
                         ))}
@@ -462,6 +470,16 @@ function POS({ setOrderData }) {
           subcategoryClicked={subcategoryClicked}
           setCommodityList={setCommodityList}
           setShowModal={setShowModal}
+        />
+      ) : null}
+      {showEditModal ? (
+        <EditModal
+          commodityList={commodityList}
+          setCommodityList={setCommodityList}
+          setShowEditModal={setShowEditModal}
+          clickedEditProduct={clickedEditProduct}
+          productsList={productsList}
+          categories={productCategories}
         />
       ) : null}
       {showPaymentModal ? (
