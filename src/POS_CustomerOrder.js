@@ -147,13 +147,13 @@ function POS({ setOrderData }) {
                     <div className="logo-text">Dashboard</div>
                   </a>
                 </div>
-                <div className="nav-container">
+                <div className="nav-container" style={{overflow:'auto',}}>
                   <div
                     data-scrollbar="true"
                     data-height="100%"
                     data-skip-mobile="true"
                   >
-                    <ul className="nav nav-tabs" id="menuNav">
+                    <ul className="nav nav-tabs active" id="menuNav" >
                       {productCategories.map((cat) => {
                         return (
                           <NavList
@@ -245,7 +245,7 @@ function POS({ setOrderData }) {
                           }
                           className="btn active"
                         >
-                          Eat In
+                         <span style={{color:'white'}}> Eat In</span>
                         </button>
                         <button
                           onClick={() => setTypeOfOrder("takeaway")}
@@ -264,7 +264,7 @@ function POS({ setOrderData }) {
                           }
                           className="btn active"
                         >
-                          Take Away
+                          <span style={{color:'white'}}></span>Take Away
                         </button>
                         {/* <button
                           style={{

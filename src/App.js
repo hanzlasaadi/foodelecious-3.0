@@ -13,6 +13,7 @@ import PaymentModal from "./payment";
 import OrderList from "./order";
 import ReceiptBill from "./receipt";
 import OrderSubmit from "./submit";
+import HomePage from "./home";
 
 import React from "react";
 function App() {
@@ -21,12 +22,14 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<POS setOrderData={setOrderData} />} />
+        <Route path="/HomePage" element={<HomePage />} />
         <Route path="/SalesReport" element={<SalesReport />} />
         <Route path="/ProductReport" element={<ProductReport />} />
         <Route path="/Stockis" element={<Stockis />} />
         <Route path="/PaymentModal" element={<PaymentModal />} />
         <Route path="/OrderList" element={<OrderList />} />
         <Route path="/OrderSubmit" element={<OrderSubmit />} />
+
 
 
 

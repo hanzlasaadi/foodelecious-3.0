@@ -41,7 +41,7 @@ function PaymentModal({
 
   return (
     <div
-      className="modal fade"
+      className="modal fade "
       id="exampleModalpayment"
       tabIndex="-1"
       aria-labelledby="exampleModalLabel"
@@ -55,7 +55,7 @@ function PaymentModal({
             </h1>
             <button
               type="button"
-              className="btn-close"
+              className="btn-close bg-dark"
               data-bs-dismiss="modal"
               aria-label="Close"
             ></button>
@@ -111,6 +111,7 @@ function PaymentModal({
                 </div>
               </div>
             </div>
+
 
             {paymentType === "Credit" ? null : (
               <>
@@ -182,7 +183,7 @@ function PaymentModal({
           <div className="modal-footer">
             <button
               type="button"
-              className="btn btn-primary"
+              className="btn btn-primary bg-white"
               style={{
                 height: "80px",
                 width: "20%",

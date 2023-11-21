@@ -5886,7 +5886,7 @@ fieldset:disabled .btn {
 .card-body {
     flex: 1 1 auto;
     padding: var(--bs-card-spacer-y) var(--bs-card-spacer-x);
-    color: #e57c35
+    color: #e57c35;
 }
 
 
@@ -28030,7 +28030,8 @@ body .note-modal-backdrop {
 }
 
 .pos .pos-menu .nav-container {
-    flex: 1
+    flex: 1;
+    
 }
 
 @media (min-width:992px) {
@@ -29697,3 +29698,6 @@ tfoot tr:first-child td:first-child, tfoot tr:first-child td:last-child {
     background-color: #e57c35!important;
     color: white!important;
   } */
+
+
+  
