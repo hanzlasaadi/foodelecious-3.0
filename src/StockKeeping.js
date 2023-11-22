@@ -1,7 +1,7 @@
 import MenuBar from "./menu";
 import Navbar from "./navbar";
-import NavList from "./components/NavList";
-import Modal from "./components/Modal";
+import StockNav from "./components/StockNav";
+// import Modal from "./components/Modal";
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import axios from "axios";
 import { apiUrl } from "./assets/utils/env";
@@ -69,15 +69,15 @@ function Stockis() {
   }, []);
 
   // Product Card Click
-  const handleNavItemClick = (subcategoryId) => {
+  const handleEditNavClicked = (subcategoryId) => {
     const [filteredProduct] = productsList.filter(
-      (listEl) => listEl.productCategory === subcategoryId
+      (listEl) => listEl._id === subcategoryId
     );
-    const [filteredCategory] = productCategories.filter(
-      (cat) => cat._id === subcategoryId
-    );
+    // const [filteredCategory] = productCategories.filter(
+    //   (cat) => cat._id === subcategoryId
+    // );
     setCurrentProduct(filteredProduct);
-    setCurrentProductCategory(filteredCategory);
+    // setCurrentProductCategory(filteredCategory);
     // console.log("currentProduct", filteredProduct);
     // console.log("currentCategory", filteredCategory);
   };
@@ -118,7 +118,10 @@ function Stockis() {
                   <div class="time" id="time">
                     7:57pm
                   </div>
-                  <div class="nav">
+                  <div class="time" style={{ color: "#000" }} id="save">
+                    <button className="btn btn-light">Save</button>
+                  </div>
+                  {/* <div class="nav">
                     <div class="nav-item">
                       <a class="nav-link" href="/hud-react/pos/kitchen-order">
                         <i class="bi bi-bootstrap-reboot nav-icon"></i>
@@ -134,7 +137,7 @@ function Stockis() {
                         <i class="bi bi-pie-chart nav-icon"></i>
                       </a>
                     </div>
-                  </div>
+                  </div> */}
                 </div>
 
                 <div>
@@ -143,14 +146,14 @@ function Stockis() {
                     style={{ overflow: "auto", listStyle: "none" }}
                     id="menuNav"
                   >
-                    {productCategories.map((cat) => {
+                    {productsList.map((cat) => {
                       return (
-                        <NavList
+                        <StockNav
                           key={cat._id}
-                          category={cat}
+                          subCategory={cat}
                           setShowProductCards={setShowProductCards}
                           setCurrentProduct={setCurrentProduct}
-                          handleNavItemClick={handleNavItemClick}
+                          setSubcatClicked={handleEditNavClicked}
                         />
                       );
                     })}
@@ -169,8 +172,8 @@ function Stockis() {
                         {showProductCards ? (
                           <ProductEdit
                             currentProduct={currentProduct}
-                            setProductClicked={setProductClicked}
-                            setShowModal={setShowModal}
+                            // setProductClicked={setProductClicked}
+                            // setShowModal={setShowModal}
                           />
                         ) : null}
                       </div>
