@@ -40,7 +40,7 @@ function NewOrder({
             <a href="#/" className="btn btn-outline-theme btn-sm">
               <i className="fa fa-plus" />
             </a> */}
-            <h5>Unit(s): {commodity.unit}</h5>
+            <p style={{fontSize:'13px',color:'black'}}>Qty(s) <span style={{color:'#e57300'}}>- {commodity.unit}</span></p>
           </div>
         </div>
       </div>
