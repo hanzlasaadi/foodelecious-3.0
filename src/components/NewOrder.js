@@ -46,7 +46,7 @@ function NewOrder({
       </div>
       <div className="pos-order-price d-flex flex-column">
         <div style={{ fontWeight: "bold" }}>
-          £{Math.round(Number(commodity.productPrice) * 100) / 100}
+          £{(Math.round(Number(commodity.productPrice) * 100) / 100)*commodity.unit}
         </div>
         <div className="mt-auto d-flex flex-column gap-2">
           <button
