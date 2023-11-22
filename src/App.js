@@ -14,6 +14,7 @@ import OrderList from "./order";
 import ReceiptBill from "./receipt";
 import OrderSubmit from "./submit";
 import HomePage from "./home";
+import CatogeryEdit from "./catogery";
 // import Receipt from "./billpay";
 
 import React from "react";
@@ -30,6 +31,8 @@ function App() {
         <Route path="/PaymentModal" element={<PaymentModal />} />
         <Route path="/OrderList" element={<OrderList />} />
         <Route path="/OrderSubmit" element={<OrderSubmit />} />
+        <Route path="/CatogeryEdit" element={<CatogeryEdit />} />
+
         {/* <Route path="/Receipt" element={<Receipt />} /> */}
 
 
