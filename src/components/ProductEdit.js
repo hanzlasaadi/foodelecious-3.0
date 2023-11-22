@@ -149,12 +149,22 @@ function Card({ item, handleUpdateProduct }) {
             </>
           ) : null}
         </div>
+        <div className="d-flex">
+          {!editMode ? (
+            <button
+              className="btn btn-default d-block w-100"
+              onClick={handleEditClick}
+            >
+              <i className="fa fa-pencil fa-fw"></i> Edit
+            </button>
+          ) : null}
+        </div>
       </div>
     </div>
   );
 }
 
-function ProductEdit({ currentProduct }) {
+function ProductEdit({ currentProduct, setCurrentProduct, refreshData }) {
   const [showLoader, setShowLoader] = useState(false);
   // const [currentSubcatData, setCurrentSubcatData] = useState(currentProduct);
   // console.log(currentProduct, "currProduct Test");
@@ -181,10 +191,12 @@ function ProductEdit({ currentProduct }) {
     axios
       .patch(`${apiUrl}/api/v1/product/${copySubcategory._id}`, copySubcategory)
       .then((res) => {
-        // console.log(res.data);
-        // setCurrentSubcatData(res.data.data);
+        console.log(res.data.data);
+        // setCurrentProduct(res.data.data);
         setShowLoader(false);
-        window.location.reload();
+        refreshData();
+        // window.location.reload();
+        // handleEditNavClicked()
       })
       .catch((err) => {
         setShowLoader(false);

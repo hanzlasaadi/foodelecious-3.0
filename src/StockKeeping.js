@@ -40,17 +40,17 @@ function Stockis() {
   // states
   const [showProductCards, setShowProductCards] = useState(false);
   const [currentProduct, setCurrentProduct] = useState({});
-  const [currentProductCategory, setCurrentProductCategory] = useState({});
+  // const [currentProductCategory, setCurrentProductCategory] = useState({});
   const [productsList, setProductsList] = useState(dummyProductsList);
-  const [productCategories, setProductCategories] =
-    useState(dummyProductCategory);
+  // const [productCategories, setProductCategories] =
+  //   useState(dummyProductCategory);
   // const [pizzaList, setPizzaList] = useState([]);
 
   // modal hooks
-  const [showModal, setShowModal] = useState(false);
-  const [productClicked, setProductClicked] = useState("");
+  // const [showModal, setShowModal] = useState(false);
+  // const [productClicked, setProductClicked] = useState("");
 
-  React.useEffect(() => {
+  function getProductsList() {
     axios
       .get(`${apiUrl}/api/v1/product?limit=100`)
       .then((res) => {
@@ -58,14 +58,18 @@ function Stockis() {
         setProductsList(res.data.data);
       })
       .catch((err) => console.log(err));
+  }
 
-    axios
-      .get(`${apiUrl}/api/v1/productCategory?limit=100`)
-      .then((res) => {
-        console.log("Categories: ", res.data.data);
-        setProductCategories(res.data.data);
-      })
-      .catch((err) => console.log(err));
+  React.useEffect(() => {
+    getProductsList();
+
+    // axios
+    //   .get(`${apiUrl}/api/v1/productCategory?limit=100`)
+    //   .then((res) => {
+    //     console.log("Categories: ", res.data.data);
+    //     setProductCategories(res.data.data);
+    //   })
+    //   .catch((err) => console.log(err));
   }, []);
 
   // Product Card Click
@@ -111,16 +115,20 @@ function Stockis() {
                         ></i>
                       </div>
                       <div class="logo-text" style={{ color: "black" }}>
-                        Stock
+                        Edit Products
                       </div>
                     </a>
                   </div>
                   <div class="time" id="time">
-                    7:57pm
+                    {new Date().toLocaleString("en-US", {
+                      hour: "numeric",
+                      minute: "numeric",
+                      hour12: true,
+                    })}
                   </div>
-                  <div class="time" style={{ color: "#000" }} id="save">
+                  {/* <div class="time" style={{ color: "#000" }} id="save">
                     <button className="btn btn-light">Save</button>
-                  </div>
+                  </div> */}
                   {/* <div class="nav">
                     <div class="nav-item">
                       <a class="nav-link" href="/hud-react/pos/kitchen-order">
@@ -172,6 +180,8 @@ function Stockis() {
                         {showProductCards ? (
                           <ProductEdit
                             currentProduct={currentProduct}
+                            setCurrentProduct={setCurrentProduct}
+                            refreshData={getProductsList}
                             // setProductClicked={setProductClicked}
                             // setShowModal={setShowModal}
                           />
