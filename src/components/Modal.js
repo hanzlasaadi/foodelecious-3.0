@@ -102,7 +102,7 @@ function Modal({
                     className="h4 mb-3"
                     style={{ color: "#ff4a17" }}
                   >
-                    {filteredProduct.price + stepsPrice} £
+                    {(filteredProduct.price + stepsPrice)*units} £
                   </div>
                   <div className="d-flex mb-3">
                     <a
