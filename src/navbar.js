@@ -1,7 +1,8 @@
-import Login from "./Login";
+import {useNavigate} from "react-router-dom";
 
 
 function Navbar() {
+    const navigate = useNavigate();
     
     return (
 
@@ -27,7 +28,7 @@ function Navbar() {
 
 
             <div class="brand">
-                <a href="index-2.html" class="brand-logo">
+                <a href="" class="brand-logo" onClick={() => navigate('/HomePage')}>
 
                     <span class="">   <img
                         src="../assets/img/pos/logo.png"
@@ -135,7 +136,7 @@ function Navbar() {
                         <a class="dropdown-item d-flex align-items-center" href="profile.html">PROFILE <i class="bi bi-person-circle ms-auto text-theme fs-16px my-n1"></i></a>
                         <a class="dropdown-item d-flex align-items-center" href="settings.html">SETTINGS <i class="bi bi-gear ms-auto text-theme fs-16px my-n1"></i></a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item d-flex align-items-center" href="">LOGOUT <i class="bi bi-toggle-off ms-auto text-theme fs-16px my-n1"></i></a>
+                        <a class="dropdown-item d-flex align-items-center" href="" onClick={() => navigate('/Login')}>LOGOUT <i class="bi bi-toggle-off ms-auto text-theme fs-16px my-n1"></i></a>
                     </div>
                 </div>
             </div>

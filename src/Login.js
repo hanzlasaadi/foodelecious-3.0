@@ -1,5 +1,8 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
+import {useNavigate} from "react-router-dom";
+
 function Login() {
+  const navigate = useNavigate();
   return (
     <div id="app" className="app app-full-height app-without-header">
       <div className="login">
@@ -64,7 +67,7 @@ function Login() {
             </button>
             <div className="text-center text-white text-opacity-50">
            <span style={{color:'black'}}>   Don't have an account yet?</span>
-              <a href="page_register.html"style={{color:'#e75300'}}>Sign up</a>.
+              <a href=""style={{color:'#e75300'}} onClick={() => navigate('/Register')}>Sign up</a>.
             </div>
           </form>
         </div>

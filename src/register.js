@@ -1,5 +1,9 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
+import {useNavigate} from "react-router-dom";
+
 function Register() {
+    const navigate = useNavigate();
+
     return (
       <div id="app" className="app app-full-height app-without-header">
         
@@ -79,7 +83,7 @@ function Register() {
       </div>
 
       <div class="text-inverse text-opacity-50 text-center">
-        Already have an Admin ID? <a href="/hud-react/pages/login"style={{color:'#e75300'}}>Sign In</a>
+        Already have an Admin ID? <a href=""style={{color:'#e75300'}} onClick={() => navigate('/Login')}>Sign In</a>
       </div>
     </form>
   </div>
