@@ -1,5 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import axios from "axios";
+import {useNavigate} from "react-router-dom";
 import { apiUrl } from "./assets/utils/env";
 import React, { useState } from "react";
 import {
@@ -16,7 +17,10 @@ import Loader from "./components/loader";
 import PaymentModal from "./payment";
 import EditModal from "./components/editModal";
 
+
 function POS({ setOrderData }) {
+  const navigate = useNavigate();
+
   // states
   const [showProductCards, setShowProductCards] = useState(false);
   const [currentProducts, setCurrentProducts] = useState({});
@@ -137,7 +141,7 @@ function POS({ setOrderData }) {
                 style={{ backgroundColor: "white", borderRadius: 15 }}
               >
                 <div className="logo">
-                  <a href="index-2.html">
+                  <a href="" onClick={() => navigate('/HomePage')}>
                     <div className="logo-img">
                       <i
                         className="bi bi-x-diamond"

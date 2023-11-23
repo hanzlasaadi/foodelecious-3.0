@@ -1,6 +1,10 @@
 import MenuBar from "./menu";
 import Navbar from "./navbar";
+import {useNavigate} from "react-router-dom";
+
 function HomePage() {
+    const navigate = useNavigate();
+
     return (
 
 

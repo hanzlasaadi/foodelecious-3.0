@@ -137,14 +137,14 @@ function Card({ item, handleUpdateProduct }) {
                   });
                 }}
               >
-                <i className="fa fa-check fa-fw"></i> Update
+                <i className="fa fa-check fa-fw text-white"></i> <span style={{color:'white'}}> Update </span>
               </button>
               &nbsp;&nbsp;
               <button
                 className="btn btn-default d-block"
                 onClick={handleCancelClick}
               >
-                <i className="fa fa-times fa-fw"></i> Cancel
+                <i className="fa fa-times fa-fw text-white"></i> <span style={{color:'white'}}>Cancel </span> 
               </button>
             </>
           ) : null}
@@ -152,10 +152,10 @@ function Card({ item, handleUpdateProduct }) {
         <div className="d-flex">
           {!editMode ? (
             <button
-              className="btn btn-default d-block w-100"
+              className="btn btn-default bg-dark d-block w-100"
               onClick={handleEditClick}
             >
-              <i className="fa fa-pencil fa-fw"></i> Edit
+              <i className="fa fa-pencil fa-fw text-white"></i> <span style={{color:'white'}}> Edit </span>
             </button>
           ) : null}
         </div>

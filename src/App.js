@@ -25,10 +25,10 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<POS setOrderData={setOrderData} />} />
+        <Route path="/POS" element={<POS setOrderData={setOrderData} />} />
         <Route path="/Login" element={<Login />} />
         <Route path="/Register" element={<Register />} />
-        <Route path="/HomePage" element={<HomePage />} />
+        <Route path="/" element={<HomePage />} />
         <Route path="/SalesReport" element={<SalesReport />} />
         <Route path="/ProductReport" element={<ProductReport />} />
         <Route path="/Stockis" element={<Stockis />} />
