@@ -28,7 +28,7 @@ function Navbar() {
 
 
             <div class="brand">
-                <a href="" class="brand-logo" onClick={() => navigate('/HomePage')}>
+                <a href="" class="brand-logo" onClick={() => navigate('/')}>
 
                     <span class="">   <img
                         src="../assets/img/pos/logo.png"
