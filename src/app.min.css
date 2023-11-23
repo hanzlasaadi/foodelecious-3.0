@@ -6809,7 +6809,7 @@ fieldset:disabled .btn {
     color: var(--bs-list-group-color);
     text-decoration: none;
     background-color: var(--bs-list-group-bg);
-    border: var(--bs-list-group-border-width) solid var(--bs-list-group-border-color)
+    border: var(--bs-list-group-border-width) solid lightgrey;
 }
 
 .list-group-item:first-child {

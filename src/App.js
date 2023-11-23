@@ -17,6 +17,8 @@ import OrderSubmit from "./submit";
 import HomePage from "./home";
 import CatogeryEdit from "./catogery";
 import Error404 from "./404";
+import Setting from "./setting";
+import ProfileModal from "./components/profileModal";
 // import Receipt from "./billpay";
 
 import React from "react";
@@ -37,6 +39,10 @@ function App() {
         <Route path="/OrderSubmit" element={<OrderSubmit />} />
         <Route path="/CatogeryEdit" element={<CatogeryEdit />} />
         <Route path="/Error404" element={<Error404 />} />
+        <Route path="/Setting" element={<Setting />} />
+        <Route path="/ProfileModal" element={<ProfileModal />} />
+
+
 
 
         {/* <Route path="/Receipt" element={<Receipt />} /> */}
