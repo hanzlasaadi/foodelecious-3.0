@@ -26,9 +26,8 @@ function Card({ item, handleUpdateProduct }) {
           Name:
         </div>
         <div
-          className={`title text-truncate editable ${
-            editMode ? "editable" : ""
-          }`}
+          className={`title text-truncate editable ${editMode ? "editable" : ""
+            }`}
           onClick={handleEditClick}
         >
           {editMode ? (
@@ -72,6 +71,7 @@ function Card({ item, handleUpdateProduct }) {
               <input
                 type="text"
                 className="form-control"
+                placeholder="£"
                 data-price
                 value={price}
                 onChange={(e) => setPrice(e.target.value)}
@@ -100,6 +100,14 @@ function Card({ item, handleUpdateProduct }) {
             )}
           </div>
         </div>
+
+        <div>
+          <button
+            className="btn btn-success d-block"
+          >
+            <i className="fa fa-pencil fa-fw text-white"></i> <span style={{ color: 'white' }}> Edit Catogery </span>
+          </button>
+        </div><br></br>
         <div className="d-flex align-items-center mb-3">
           <div className="w-100px" style={{ color: "black" }}>
             Availability:
@@ -137,14 +145,14 @@ function Card({ item, handleUpdateProduct }) {
                   });
                 }}
               >
-                <i className="fa fa-check fa-fw text-white"></i> <span style={{color:'white'}}> Update </span>
+                <i className="fa fa-check fa-fw text-white"></i> <span style={{ color: 'white' }}> Update </span>
               </button>
               &nbsp;&nbsp;
               <button
                 className="btn btn-default d-block"
                 onClick={handleCancelClick}
               >
-                <i className="fa fa-times fa-fw text-white"></i> <span style={{color:'white'}}>Cancel </span> 
+                <i className="fa fa-times fa-fw text-white"></i> <span style={{ color: 'white' }}>Cancel </span>
               </button>
             </>
           ) : null}
@@ -155,7 +163,7 @@ function Card({ item, handleUpdateProduct }) {
               className="btn btn-default bg-dark d-block w-100"
               onClick={handleEditClick}
             >
-              <i className="fa fa-pencil fa-fw text-white"></i> <span style={{color:'white'}}> Edit </span>
+              <i className="fa fa-pencil fa-fw text-white"></i> <span style={{ color: 'white' }}> Edit </span>
             </button>
           ) : null}
         </div>
@@ -216,6 +224,8 @@ function ProductEdit({ currentProduct, setCurrentProduct, refreshData }) {
           </div>
         );
       })}
+
+
     </>
   );
 }

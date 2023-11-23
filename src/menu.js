@@ -62,7 +62,7 @@ function MenuBar() {
                     <div class="menu-item has-sub">
                         <a href="#" class="menu-link" data-bs-toggle="dropdown">
                             <span class="menu-icon"><i class="bi bi-collection"></i></span>
-                            <span class="menu-text"onClick={() => navigate('/Stockis')}>Stock</span>
+                            <span class="menu-text"onClick={() => navigate('/Stockis')}>Products</span>
                         </a>
                     </div>
 

@@ -105,7 +105,7 @@ function Stockis() {
               style={{ backgroundColor: "white", border: "none" }}
             >
               <div class="card-body pos-container">
-                <div class="pos-header">
+                <div class="pos-header" style={{justifyContent:"space-between "}}>
                   <div class="logo">
                     <a href="/hud-react/pos/counter-checkout">
                       <div class="logo-img" style={{ color: "black" }}>
@@ -119,13 +119,7 @@ function Stockis() {
                       </div>
                     </a>
                   </div>
-                  <div class="time" id="time">
-                    {new Date().toLocaleString("en-US", {
-                      hour: "numeric",
-                      minute: "numeric",
-                      hour12: true,
-                    })}
-                  </div>
+                 
                   {/* <div class="time" style={{ color: "#000" }} id="save">
                     <button className="btn btn-light">Save</button>
                   </div> */}
@@ -146,7 +140,11 @@ function Stockis() {
                       </a>
                     </div>
                   </div> */}
+                  <div class="" style={{ color: "black" }}>
+                        <button class="btn btn-dark text-white">+Add</button>
+                      </div>
                 </div>
+                
 
                 <div>
                   <ul
@@ -200,6 +198,9 @@ function Stockis() {
         <i class="fa fa-arrow-up"></i>
       </a>
     </div>
+
+
+
   );
 }
 
