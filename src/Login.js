@@ -62,7 +62,7 @@ function Login() {
             <button
               type="submit"
               className="btn btn-outline-theme btn-lg d-block w-100 fw-500 mb-3"
-            >
+              onClick={() => navigate('/')}>
               Sign In
             </button>
             <div className="text-center text-white text-opacity-50">

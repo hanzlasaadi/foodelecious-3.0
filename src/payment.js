@@ -190,10 +190,11 @@ function PaymentModal({
                 fontSize: " 25px",
                 backgroundColor: "#e57c35",
               }}
-              onClick={() => {
-                handleSubmitOrder();
-                window.open("http://localhost:3000/ReceiptBill");
-              }}
+              // onClick={() => {
+              //   handleSubmitOrder();
+              //   window.open("http://localhost:3000/ReceiptBill");
+              // }}
+              data-bs-toggle="modal" data-bs-target="#exampleModalsubmit"
             >
               Pay
             </button>

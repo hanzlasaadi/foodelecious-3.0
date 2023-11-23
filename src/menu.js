@@ -76,9 +76,9 @@ function MenuBar() {
                     </div>
 
                     <div class="menu-item">
-                        <a href="settings.html" class="menu-link">
+                        <a href="" class="menu-link">
                             <span class="menu-icon"><i class="bi bi-gear"></i></span>
-                            <span class="menu-text">Settings</span>
+                            <span class="menu-text"onClick={() => navigate('/Setting')}>Settings</span>
                         </a><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br>
                     </div>
 

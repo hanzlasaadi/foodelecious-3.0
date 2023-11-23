@@ -16,6 +16,7 @@ import NewOrder from "./components/NewOrder";
 import Loader from "./components/loader";
 import PaymentModal from "./payment";
 import EditModal from "./components/editModal";
+import OrderSubmit from "./submit";
 
 
 function POS({ setOrderData }) {
@@ -498,6 +499,7 @@ function POS({ setOrderData }) {
         />
       ) : null}
       <Loader showLoader={false} />
+      <OrderSubmit/>
     </>
   );
 }
