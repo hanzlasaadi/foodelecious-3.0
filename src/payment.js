@@ -80,23 +80,23 @@ function PaymentModal({
                 <div>
                   <label
                     htmlFor="paymentMethod"
-                    style={{ fontWeight: "bold", marginLeft: "80px" }}
+                    style={{ fontWeight: "bold", marginLeft: "80px", }}
                   >
-                    Total=
+                    Total=  
                   </label>
-                  <label style={{ fontWeight: "bold", color: "red" }}>
-                    £{totalPrice}
+                  <label style={{ fontWeight: "bold", color: "#e57300" }}><span>
+                      £ {totalPrice}</span>
                   </label>
                 </div>
-                <div>
+                {/* <div>
                   <label style={{ fontWeight: "bold", marginLeft: "80px" }}>
                     Paid=
                   </label>
                   <label style={{ fontWeight: "bold", color: "red" }}>
                     £{paymentType === "Credit" ? totalPrice : tenderedAmount}
                   </label>
-                </div>
-                <div>
+                </div> */}
+                {/* <div>
                   <label style={{ fontWeight: "bold", marginLeft: "80px" }}>
                     Change=
                   </label>
@@ -108,7 +108,7 @@ function PaymentModal({
                       ? 0
                       : Math.round((tenderedAmount - totalPrice) * 100) / 100}
                   </label>
-                </div>
+                </div> */}
               </div>
             </div>
 
@@ -116,13 +116,13 @@ function PaymentModal({
             {paymentType === "Credit" ? null : (
               <>
                 <div className="d-flex" style={{ marginTop: "3%" }}>
-                  <label htmlFor="tenderAmount" style={{ marginLeft: "0" }}>
-                    Tendered Amount:
+                  <label htmlFor="tenderAmount" style={{ marginLeft: "5%" }}>
+                    Tendered  
                   </label>
-                  {/* <label htmlFor="changeAmount" style={{ marginLeft: "17%" }}>
+                  <label htmlFor="changeAmount" style={{ marginLeft: "17%" }}>
                     {" "}
                     Change
-                  </label> */}
+                  </label>
                 </div>
 
                 <div
@@ -133,14 +133,14 @@ function PaymentModal({
                   <input
                     type="text"
                     className="form-control"
-                    style={{ backgroundColor: "lightgray" }}
+                    style={{ backgroundColor: "white" }}
                     id="tenderAmount"
                     placeholder={0.0}
                     value={tenderedAmount}
                     onChange={(e) => setTenderedAmount(Number(e.target.value))}
                   />
                   {/* Change */}
-                  {/* <input
+                  <input
                     value={
                       Math.round((tenderedAmount - totalPrice) * 100) / 100
                     }
@@ -150,7 +150,7 @@ function PaymentModal({
                     id="changeAmount"
                     placeholder={0.0}
                     readOnly
-                  /> */}
+                  />
                 </div>
 
                 <div className="d-flex" style={{ marginTop: "3%" }}></div>
