@@ -15,9 +15,9 @@ function MenuBar() {
                 <div class="menu" style={{ backgroundColor: 'white', marginTop: '10px', marginLeft: '5px', borderRadius: '15px' }}>
                     <div class="menu-header">Navigation</div>
                     <div class="menu-item">
-                        <a href="index-2.html" class="menu-link">
+                        <a href="" class="menu-link">
                             <span class="menu-icon"><i class="bi bi-cpu"></i></span>
-                            <span class="menu-text" onClick={() => navigate('/HomePage')}>Dashboard</span>
+                            <span class="menu-text" onClick={() => navigate('/')}>Dashboard</span>
                         </a>
                     </div>
 

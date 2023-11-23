@@ -141,7 +141,7 @@ function POS({ setOrderData }) {
                 style={{ backgroundColor: "white", borderRadius: 15 }}
               >
                 <div className="logo">
-                  <a href="" onClick={() => navigate('/HomePage')}>
+                  <a href="" onClick={() => navigate('/')}>
                     <div className="logo-img">
                       <i
                         className="bi bi-x-diamond"
