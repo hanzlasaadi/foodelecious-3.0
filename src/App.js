@@ -3,7 +3,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 // import logo from './logo.svg';
 // import './App.css';
 // import Modal from "./Modal";
-// import Login from "./Login";
+import Login from "./Login";
+import Register from "./register";
 import POS from "./POS_CustomerOrder";
 import SalesReport from "./sales";
 import ProductReport from "./productSales";
@@ -15,6 +16,7 @@ import ReceiptBill from "./receipt";
 import OrderSubmit from "./submit";
 import HomePage from "./home";
 import CatogeryEdit from "./catogery";
+import Error404 from "./404";
 // import Receipt from "./billpay";
 
 import React from "react";
@@ -24,6 +26,8 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<POS setOrderData={setOrderData} />} />
+        <Route path="/Login" element={<Login />} />
+        <Route path="/Register" element={<Register />} />
         <Route path="/HomePage" element={<HomePage />} />
         <Route path="/SalesReport" element={<SalesReport />} />
         <Route path="/ProductReport" element={<ProductReport />} />
@@ -32,6 +36,8 @@ function App() {
         <Route path="/OrderList" element={<OrderList />} />
         <Route path="/OrderSubmit" element={<OrderSubmit />} />
         <Route path="/CatogeryEdit" element={<CatogeryEdit />} />
+        <Route path="/Error404" element={<Error404 />} />
+
 
         {/* <Route path="/Receipt" element={<Receipt />} /> */}
 
