@@ -3,7 +3,7 @@ function StockNav({ subCategory, setShowProductCards, setSubcatClicked }) {
     <li className="nav-item" style={{ minWidth: "max-content" }}>
       <a
         className="nav-link"
-        href="/#"
+        href="/"
         data-filter="all"
         onClick={(e) => {
           e.preventDefault();
@@ -15,7 +15,10 @@ function StockNav({ subCategory, setShowProductCards, setSubcatClicked }) {
           <div className="card-body">{subCategory.name}</div>
         </div>
       </a>
+      
     </li>
+
+    
   );
 }
 

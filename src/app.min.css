@@ -28097,11 +28097,14 @@ body .note-modal-backdrop {
 }
 
 .pos .pos-menu .nav.nav-tabs .nav-item .nav-link:hover {
-    color: #e57c35!important;
+    background-color: lightgrey;
+    color: white!important  ;
 }
 
 .pos .pos-menu .nav.nav-tabs .nav-item .nav-link.active {
     color: #e57c35!important;
+    background-color: lightgrey!important;
+
 }
 
 .pos .pos-menu .nav.nav-tabs .nav-item .nav-link.active .card .card-arrow,

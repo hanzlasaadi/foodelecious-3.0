@@ -76,18 +76,20 @@ function PaymentModal({
                   <option value="Cash">Cash</option>
                 </select>
               </div>
-              <div style={{ textAlign: "center" }}>
-                <div>
+              <div style={{ textAlign: "center", }}>
+
+                <div style={{ border: "1px solid #ccc", marginLeft: '90px', padding: "15px", borderRadius: "10px", boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)" }}>
                   <label
                     htmlFor="paymentMethod"
-                    style={{ fontWeight: "bold", marginLeft: "80px", }}
+                    style={{ fontWeight: "bold", }}
                   >
-                    Total=  
+                    Total:
                   </label>
-                  <label style={{ fontWeight: "bold", color: "#e57300" }}><span>
-                      £ {totalPrice}</span>
+                  <label style={{ fontWeight: "bold", fontSize: '20px', color: "#e57300", marginLeft: "40px" }}>
+                    <span>£ {totalPrice}</span>
                   </label>
                 </div>
+
                 {/* <div>
                   <label style={{ fontWeight: "bold", marginLeft: "80px" }}>
                     Paid=
@@ -117,7 +119,7 @@ function PaymentModal({
               <>
                 <div className="d-flex" style={{ marginTop: "3%" }}>
                   <label htmlFor="tenderAmount" style={{ marginLeft: "5%" }}>
-                    Tendered  
+                    Tendered
                   </label>
                   <label htmlFor="changeAmount" style={{ marginLeft: "17%" }}>
                     {" "}
@@ -133,7 +135,7 @@ function PaymentModal({
                   <input
                     type="text"
                     className="form-control"
-                    style={{ backgroundColor: "white" }}
+                    style={{ backgroundColor: "white", width: '40%' }}
                     id="tenderAmount"
                     placeholder={0.0}
                     value={tenderedAmount}
@@ -146,14 +148,24 @@ function PaymentModal({
                     }
                     type="text"
                     className="form-control"
-                    style={{ backgroundColor: "lightgray" }}
+                    style={{ backgroundColor: "lightgray", width: '40%' }}
                     id="changeAmount"
                     placeholder={0.0}
                     readOnly
                   />
+                  <div className="form-check mt-3">
+                    <input
+                      type="checkbox"
+                      className="form-check-input"
+                      id="product1"
+                    />
+                    <label className="form-check-label ">Overide</label>
+                  </div>
                 </div>
 
-                <div className="d-flex" style={{ marginTop: "3%" }}></div>
+                <div className="d-flex" style={{ marginTop: "3%" }}>
+
+                </div>
 
                 <div>
                   <ul
@@ -161,17 +173,17 @@ function PaymentModal({
                     id="numpad"
                     style={{ width: "50%", marginLeft: "10%" }}
                   >
-                    <li>1</li>
-                    <li>2</li>
-                    <li>3</li>
-                    <li>4</li>
-                    <li>5</li>
-                    <li>6</li>
-                    <li>7</li>
-                    <li>8</li>
-                    <li>9</li>
-                    <li>C</li>
-                    <li>0</li>
+                    <li value={1} onClick={(e) => setTenderedAmount(ten => Number(`${ten}${e.target.value}`))}>1</li>
+                    <li value={2} onClick={(e) => setTenderedAmount(ten => Number(`${ten}${e.target.value}`))}>2</li>
+                    <li value={3} onClick={(e) => setTenderedAmount(ten => Number(`${ten}${e.target.value}`))}>3</li>
+                    <li value={4} onClick={(e) => setTenderedAmount(ten => Number(`${ten}${e.target.value}`))}>4</li>
+                    <li value={5} onClick={(e) => setTenderedAmount(ten => Number(`${ten}${e.target.value}`))}>5</li>
+                    <li value={6} onClick={(e) => setTenderedAmount(ten => Number(`${ten}${e.target.value}`))}>6</li>
+                    <li value={7} onClick={(e) => setTenderedAmount(ten => Number(`${ten}${e.target.value}`))}>7</li>
+                    <li value={8} onClick={(e) => setTenderedAmount(ten => Number(`${ten}${e.target.value}`))}>8</li>
+                    <li value={9} onClick={(e) => setTenderedAmount(ten => Number(`${ten}${e.target.value}`))}>9</li>
+                    <li value={0} onClick={(e) => setTenderedAmount(ten => Number(`${ten}${e.target.value}`))}>0</li>
+                    <li onClick={(e) => setTenderedAmount(0)}>C</li>
                     <li>E</li>
                   </ul>
                 </div>
@@ -179,6 +191,13 @@ function PaymentModal({
                 <div></div>
               </>
             )}
+          </div>
+          <div class="my gap-2" style={{ marginLeft: '25%', }}>
+            <button className="btn btn-light" value={5} onClick={(e) => setTenderedAmount(Number(e.target.value))}>£ 5</button>&nbsp;
+            <button className="btn btn-light" value={10} onClick={(e) => setTenderedAmount(Number(e.target.value))}>£ 10</button>&nbsp;
+            <button className="btn btn-light" value={15} onClick={(e) => setTenderedAmount(Number(e.target.value))}>£ 15</button>&nbsp;
+            <button className="btn btn-light" value={20} onClick={(e) => setTenderedAmount(Number(e.target.value))}>£ 20</button>
+
           </div>
           <div className="modal-footer">
             <button
@@ -190,10 +209,10 @@ function PaymentModal({
                 fontSize: " 25px",
                 backgroundColor: "#e57c35",
               }}
-              // onClick={() => {
-              //   handleSubmitOrder();
-              //   window.open("http://localhost:3000/ReceiptBill");
-              // }}
+              onClick={() => {
+                handleSubmitOrder();
+                // window.open("http://localhost:3000/ReceiptBill");
+              }}
               data-bs-toggle="modal" data-bs-target="#exampleModalsubmit"
             >
               Pay

@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import axios from "axios";
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { apiUrl } from "./assets/utils/env";
 import React, { useState } from "react";
 import {
@@ -103,7 +103,7 @@ function POS({ setOrderData }) {
   const handleSubmitOrder = () => {
     // setShowLoader(true);
     const orderObj = {
-      workerId: "654111bab8f20fc4157388f0",
+      workerId: "655e76863f5f31062ebd0c30",
       paymentType: paymentType,
       totalPrice: totalPriceCommodities,
       clientPay:
@@ -152,13 +152,13 @@ function POS({ setOrderData }) {
                     <div className="logo-text">Dashboard</div>
                   </a>
                 </div>
-                <div className="nav-container" style={{overflow:'auto',}}>
+                <div className="nav-container" style={{ overflow: 'auto', }}>
                   <div
                     data-scrollbar="true"
                     data-height="100%"
                     data-skip-mobile="true"
                   >
-                    <ul className="nav nav-tabs active" id="menuNav" >
+                    <ul className="nav nav-tabs " id="menuNav" >
                       {productCategories.map((cat) => {
                         return (
                           <NavList
@@ -195,16 +195,16 @@ function POS({ setOrderData }) {
                   <div className="row gx-4" id="productCardsContainer">
                     {showProductCards
                       ? currentProducts.map((currentProduct, i) => {
-                          return (
-                            <ProductCard
-                              key={i}
-                              currentProduct={currentProduct}
-                              setProductClicked={setProductClicked}
-                              setShowModal={setShowModal}
-                              setSubcategoryClicked={setSubcategoryClicked}
-                            />
-                          );
-                        })
+                        return (
+                          <ProductCard
+                            key={i}
+                            currentProduct={currentProduct}
+                            setProductClicked={setProductClicked}
+                            setShowModal={setShowModal}
+                            setSubcategoryClicked={setSubcategoryClicked}
+                          />
+                        );
+                      })
                       : null}
                   </div>
                 </div>
@@ -238,38 +238,39 @@ function POS({ setOrderData }) {
                           style={
                             typeOfOrder === "eatin"
                               ? {
-                                  borderRadius: "15px !important",
-                                  marginRight: "5px",
-                                  backgroundColor: "#e57c35",
-                                  color: "#fff",
-                                }
+                                borderRadius: "15px !important",
+                                marginRight: "5px",
+                                backgroundColor: "#e57c35",
+                                color: "#fff",
+                              }
                               : {
-                                  borderRadius: "15px !important",
-                                  marginRight: "5px",
-                                }
+                                borderRadius: "15px !important",
+                                marginRight: "5px",
+                              }
                           }
                           className="btn active"
                         >
-                         <span style={{color:'white'}}> Eat In</span>
+                          <span > Eat In</span>
                         </button>
                         <button
                           onClick={() => setTypeOfOrder("takeaway")}
                           style={
                             typeOfOrder === "takeaway"
                               ? {
-                                  borderRadius: "15px !important",
-                                  marginRight: "5px",
-                                  backgroundColor: "#e57c35",
-                                  color: "#fff",
-                                }
+
+                                borderRadius: "15px !important",
+                                marginRight: "5px",
+                                backgroundColor: "#e57c35",
+                                color: "#fff",
+                              }
                               : {
-                                  borderRadius: "15px !important",
-                                  marginRight: "5px",
-                                }
+                                borderRadius: "15px !important",
+                                marginRight: "5px",
+                              }
                           }
                           className="btn active"
                         >
-                          <span style={{color:'white'}}></span>Take Away
+                          <span style={{ color: 'white' }}></span>Take Away
                         </button>
                         {/* <button
                           style={{
@@ -373,7 +374,7 @@ function POS({ setOrderData }) {
                           {Math.round(
                             (totalPriceCommodities -
                               (tax * totalPriceCommodities) / 100) *
-                              100
+                            100
                           ) / 100}
                         </div>
                       </div>
@@ -499,7 +500,7 @@ function POS({ setOrderData }) {
         />
       ) : null}
       <Loader showLoader={false} />
-      <OrderSubmit/>
+      <OrderSubmit />
     </>
   );
 }

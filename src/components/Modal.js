@@ -106,7 +106,6 @@ function Modal({
                   </div>
                   <div className="d-flex mb-3">
                     <a
-                      href="/#"
                       className="btn btn-outline-theme"
                       onClick={() => setUnits((u) => u - 1)}
                     >
@@ -120,7 +119,6 @@ function Modal({
                       // defaultValue={units}
                     />
                     <a
-                      href="/#"
                       className="btn btn-outline-theme"
                       onClick={() => setUnits((u) => u + 1)}
                     >
@@ -134,7 +132,7 @@ function Modal({
                           return filteredProduct.customType ===
                             step.customType ? (
                             <Step
-                              stepToChoose={step}
+                              stepToChoose={step} 
                               setStepsPrice={setStepsPrice}
                               key={step._id}
                             />

@@ -68,12 +68,7 @@ function MenuBar() {
 
                     <div class="menu-divider"></div>
                     <div class="menu-header">Users</div>
-                    <div class="menu-item">
-                        <a href="profile.html" class="menu-link">
-                            <span class="menu-icon"><i class="bi bi-people"></i></span>
-                            <span class="menu-text">Profile</span>
-                        </a>
-                    </div>
+                   
 
                     <div class="menu-item">
                         <a href="" class="menu-link">
