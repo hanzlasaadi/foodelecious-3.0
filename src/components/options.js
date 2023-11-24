@@ -47,10 +47,29 @@ function Option({ options, stepName, setStepsPrice }) {
               <span className="option-price" style={{ color: "darkgrey" }}>
                 +{option.price}£
               </span>
+
             </label>
+
+
           </div>
         );
       })}
+      <div className="option">
+        <input
+          type="checkbox"
+          value="add"
+          className="option-input"
+          checked={false}
+        />
+        <label className="option-label">
+          <span className="option-text" style={{ color: "black" }}>
+          <i class="bi bi-plus-lg " style={{fontSize:'20px',}}></i>          </span>
+          
+
+        </label>
+
+
+      </div>
     </>
   );
 }

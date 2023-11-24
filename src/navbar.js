@@ -133,8 +133,7 @@ function Navbar() {
                         <div class="menu-text d-sm-block d-none"><span class="__cf_email__" data-cfemail="f2878197809c939f97b29391919d879c86dc919d9f">Abdullah</span></div>
                     </a>
                     <div class="dropdown-menu dropdown-menu-end me-lg-3 fs-11px mt-1">
-                        <a class="dropdown-item d-flex align-items-center" href="profile.html">PROFILE <i class="bi bi-person-circle ms-auto text-theme fs-16px my-n1"></i></a>
-                        <a class="dropdown-item d-flex align-items-center" href="settings.html">SETTINGS <i class="bi bi-gear ms-auto text-theme fs-16px my-n1"></i></a>
+                        <a class="dropdown-item d-flex align-items-center" href=""onClick={() => navigate('/Setting')}>SETTINGS <i class="bi bi-gear ms-auto text-theme fs-16px my-n1"></i></a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item d-flex align-items-center" href="" onClick={() => navigate('/Login')}>LOGOUT <i class="bi bi-toggle-off ms-auto text-theme fs-16px my-n1"></i></a>
                     </div>
