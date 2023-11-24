@@ -104,7 +104,7 @@ function SalesReport() {
             borderRadius: "8px",
           }}
         >
-          <ul className="nav nav-tabs nav-tabs-v2 px-4 bg-dark">
+          <ul className="nav nav-tabs nav-tabs-v2 px-4 ">
             <li className="nav-item me-3">
               <a href className="nav-link px-2" data-bs-toggle="tab">
                 Date Range
