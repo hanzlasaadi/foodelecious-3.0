@@ -1,6 +1,28 @@
+import React from "react";
+import SaleRow from "./components/SaleRow";
 import MenuBar from "./menu";
 import Navbar from "./navbar";
+import axios from "axios";
+import { apiUrl } from "./assets/utils/env";
 function SalesReport() {
+  const [allSales, setAllSales] = React.useState(null);
+  const [period, setPeriod] = React.useState("today");
+
+  function getSales(timeFrame) {
+    axios
+      .get(`${apiUrl}/api/v1/order/stats?period=${timeFrame}`)
+      .then((res) => {
+        console.log(res.data);
+        setAllSales(res.data.orderData);
+      })
+      .catch((err) => {
+        console.log("error: ", err);
+      });
+  }
+
+  React.useEffect(() => {
+    getSales(period);
+  }, [period]);
   return (
     <div id="app" className="app">
       <Navbar />
@@ -43,22 +65,34 @@ function SalesReport() {
               data-bs-toggle="dropdown"
               className="text-black text-decoration-none"
             >
-              More Actions
+              Time Range
             </a>
             <div className="dropdown-menu">
-              <a className="dropdown-item" href>
-                Action
+              <a
+                className="dropdown-item"
+                href
+                onClick={() => setPeriod("today")}
+              >
+                Today's Sales
               </a>
-              <a className="dropdown-item" href>
-                Another action
+              <a
+                className="dropdown-item"
+                href
+                onClick={() => setPeriod("lastWeek")}
+              >
+                Last Week's Sales
               </a>
-              <a className="dropdown-item" href>
-                Something else here
+              <a
+                className="dropdown-item"
+                href
+                onClick={() => setPeriod("lastMonth")}
+              >
+                Last Month's Sales
               </a>
-              <div role="separator" className="dropdown-divider"></div>
+              {/* <div role="separator" className="dropdown-divider"></div>
               <a className="dropdown-item" href>
                 Separated link
-              </a>
+              </a> */}
             </div>
           </div>
         </div>
@@ -162,128 +196,9 @@ function SalesReport() {
                     </tr>
                   </thead>
                   <tbody>
-                    <tr style={{ textAlign: "center" }}>
-                      <td className="w-10px align-middle">
-                        <div className="form-check">
-                          <input
-                            type="checkbox"
-                            className="form-check-input"
-                            id="product1"
-                          />
-                          <label className="form-check-label"></label>
-                        </div>
-                      </td>
-                      <td className="align-middle">
-                        <a href>0001</a>
-                      </td>
-                      <td className="align-middle">Thu 26 Nov, 12:23pm</td>
-                      <td
-                        className="align-middle"
-                        style={{ maxWidth: "fit-content" }}
-                      >
-                        Veggie Pizza,
-                        {/* <br /> */}
-                        Meat Pizza,
-                        {/* <br /> */}
-                        Coke
-                      </td>
-                      <td className="align-middle">Lee</td>
-                      <td className="align-middle">Completed</td>
-                      <td className="align-middle">Cash</td>
-                      <td className="align-middle">
-                        <span> Eat in</span>
-                      </td>
-                      <td className="align-middle">
-                        <span> £34.99</span>
-                      </td>
-                      <td className="align-middle">£0</td>
-                      <td className="align-middle">£2.99</td>
-                      <td className="align-middle">£34.99</td>
-                    </tr>
-
-                    <tr style={{ textAlign: "center" }}>
-                      <td className="w-10px align-middle">
-                        <div className="form-check">
-                          <input
-                            type="checkbox"
-                            className="form-check-input"
-                            id="product1"
-                          />
-                          <label className="form-check-label"></label>
-                        </div>
-                      </td>
-                      <td className="align-middle">
-                        <a href>0002</a>
-                      </td>
-                      <td className="align-middle">Thu 26 Nov, 12:23pm</td>
-                      <td className="align-middle"> Lee</td>
-                      <td>Online</td>
-                      <td className="py-1 align-middle">
-                        <span> Deliviero</span>
-                      </td>
-                      <td className="align-middle">
-                        <span> £34.99</span>
-                      </td>
-                      <td className="align-middle">£0</td>
-                      <td className="align-middle">£2.99</td>
-                      <td className="align-middle">£34.99</td>
-                    </tr>
-
-                    <tr style={{ textAlign: "center" }}>
-                      <td className="w-10px align-middle">
-                        <div className="form-check">
-                          <input
-                            type="checkbox"
-                            className="form-check-input"
-                            id="product1"
-                          />
-                          <label className="form-check-label"></label>
-                        </div>
-                      </td>
-                      <td className="align-middle">
-                        <a href>0003</a>
-                      </td>
-                      <td className="align-middle">Thu 26 Nov, 12:23pm</td>
-                      <td className="align-middle"> Lee</td>
-                      <td>Online</td>
-                      <td className="py-1 align-middle">
-                        <span> JustEat</span>
-                      </td>
-                      <td className="align-middle">
-                        <span> £34.99</span>
-                      </td>
-                      <td className="align-middle">£0</td>
-                      <td className="align-middle">£2.99</td>
-                      <td className="align-middle">£34.99</td>
-                    </tr>
-
-                    <tr style={{ textAlign: "center" }}>
-                      <td className="w-10px align-middle">
-                        <div className="form-check">
-                          <input
-                            type="checkbox"
-                            className="form-check-input"
-                            id="product1"
-                          />
-                          <label className="form-check-label"></label>
-                        </div>
-                      </td>
-                      <td className="align-middle">
-                        <a href>0004</a>
-                      </td>
-                      <td className="align-middle">Thu 26 Nov, 12:23pm</td>
-                      <td className="align-middle"> Lee</td>
-                      <td>Card</td>
-                      <td className="py-1 align-middle">
-                        <span> Take Away</span>
-                      </td>
-                      <td className="align-middle">
-                        <span> £34.99</span>
-                      </td>
-                      <td className="align-middle">£0</td>
-                      <td className="align-middle">£2.99</td>
-                      <td className="align-middle">£34.99</td>
-                    </tr>
+                    {allSales?.map((row, i) => (
+                      <SaleRow row={row} index={i} key={row._id} />
+                    ))}
                   </tbody>
                 </table>
               </div>
