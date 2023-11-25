@@ -180,7 +180,7 @@ function SalesReport() {
               <div className="table-responsive">
                 <table className="table table-hover text-nowrap">
                   <thead>
-                    <tr style={{ textAlign: "center" }}>
+                    <tr  style={{ textAlign: "center" }}>
                       <th className="border-top-0 pt-0 pb-2"></th>
                       <th className="border-top-0 pt-0 pb-2">Order#</th>
                       <th className="border-top-0 pt-0 pb-2">Date&Time</th>
