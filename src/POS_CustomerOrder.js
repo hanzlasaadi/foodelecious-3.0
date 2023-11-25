@@ -17,6 +17,10 @@ import Loader from "./components/loader";
 import PaymentModal from "./payment";
 import EditModal from "./components/editModal";
 import OrderSubmit from "./submit";
+import Override from "./components/override";
+import DiscountModal from "./components/discountModal";
+import VoucherModal from "./components/voucherModal";
+import WasteModal from "./components/wasteModal";
 
 
 function POS({ setOrderData }) {
@@ -45,7 +49,7 @@ function POS({ setOrderData }) {
 
   // commodity / newOrder Hook
   const [commodityList, setCommodityList] = useState([]);
-  const [typeOfOrder, setTypeOfOrder] = useState("eatin");
+  const [typeOfOrder, setTypeOfOrder] = useState("takeaway");
   const [tax, setTax] = useState(20);
   const [totalPriceCommodities, setTotalPriceCommodities] = useState(0);
 
@@ -233,6 +237,28 @@ function POS({ setOrderData }) {
                         <img src="../assets/img/pos/countryside.jpgg" alt="" />
                       </div>
                       <div className="">
+                        
+                        <button
+                          onClick={() => setTypeOfOrder("takeaway")}
+                          style={
+                            typeOfOrder === "takeaway"
+                              ? {
+
+                                borderRadius: "15px !important",
+                                marginRight: "5px",
+                                backgroundColor: "#fa8c41",
+                                color: "#fff",
+                              }
+                              : {
+                                borderRadius: "15px !important",
+                                marginRight: "5px",
+                              }
+                          }
+                          className="btn active"
+                        >
+                         Take Away
+                        </button>
+
                         <button
                           onClick={() => setTypeOfOrder("eatin")}
                           style={
@@ -240,7 +266,7 @@ function POS({ setOrderData }) {
                               ? {
                                 borderRadius: "15px !important",
                                 marginRight: "5px",
-                                backgroundColor: "#e57c35",
+                                backgroundColor: "#fa8c41",
                                 color: "#fff",
                               }
                               : {
@@ -251,26 +277,6 @@ function POS({ setOrderData }) {
                           className="btn active"
                         >
                           <span > Eat In</span>
-                        </button>
-                        <button
-                          onClick={() => setTypeOfOrder("takeaway")}
-                          style={
-                            typeOfOrder === "takeaway"
-                              ? {
-
-                                borderRadius: "15px !important",
-                                marginRight: "5px",
-                                backgroundColor: "#e57c35",
-                                color: "#fff",
-                              }
-                              : {
-                                borderRadius: "15px !important",
-                                marginRight: "5px",
-                              }
-                          }
-                          className="btn active"
-                        >
-                          <span style={{ color: 'white' }}></span>Take Away
                         </button>
                         {/* <button
                           style={{
@@ -306,10 +312,10 @@ function POS({ setOrderData }) {
                           <a
                             style={{ color: "grey" }}
                             className="nav-link"
-                            href="#"
+                            href=""
                             data-bs-toggle="tab"
-                            data-bs-target="#orderHistoryTab"
-                          >
+                            // data-bs-target="#orderHistoryTab"
+                            onClick={() => navigate('/SalesReport')}>
                             Order History
                           </a>
                         </li>
@@ -406,14 +412,25 @@ function POS({ setOrderData }) {
                       </div>
                       <div className="mt-3">
                         <div className="btn-group d-flex">
-                          <a
-                            href="#"
-                            className="btn btn-outline-default rounded-0 w-80px"
-                          >
-                            <i className="bi bi-bell fa-lg" />
-                            <br />
-                            <span className="small">Service</span>
-                          </a>
+                        <div className="dropdown">
+  <a
+    href=""
+    className="btn btn-outline-default rounded-0 w-80px dropdown-toggle"
+    data-bs-toggle="dropdown"
+  >
+    <i className="bi bi-bell fa-lg" />
+    <br />
+    <span className="small">Service</span>
+  </a>
+  <ul className="dropdown-menu">
+    <li><a className="dropdown-item" data-bs-toggle="modal" data-bs-target="#overridePaymentModal" >Override</a></li>
+    <li><a className="dropdown-item" data-bs-toggle="modal" data-bs-target="#discountModal">Discount</a></li>
+    <li><a className="dropdown-item" data-bs-toggle="modal" data-bs-target="#voucherModal">Voucher</a></li>  
+    <li><a className="dropdown-item" data-bs-toggle="modal" data-bs-target="#wasteOrderModal">Waste</a></li>
+
+  </ul>
+</div>
+
                           <a
                             href="trybkwasprint.html"
                             className="btn btn-outline-default rounded-0 w-80px"
@@ -498,9 +515,13 @@ function POS({ setOrderData }) {
           paymentType={paymentType}
           setPaymentType={setPaymentType}
         />
-      ) : null}
+      ) : null} 
       <Loader showLoader={false} />
       <OrderSubmit />
+      <Override/>
+      <DiscountModal/>
+      <VoucherModal/>
+      <WasteModal/>
     </>
   );
 }

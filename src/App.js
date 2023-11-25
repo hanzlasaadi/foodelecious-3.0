@@ -19,6 +19,11 @@ import CatogeryEdit from "./catogery";
 import Error404 from "./404";
 import Setting from "./setting";
 import ProfileModal from "./components/profileModal";
+import Calendar from "./components/calender";
+import Override from "./components/override";
+import DiscountModal from "./components/discountModal";
+import VoucherModal from "./components/voucherModal";
+import WasteModal from "./components/wasteModal";
 // import Receipt from "./billpay";
 
 import React from "react";
@@ -41,6 +46,18 @@ function App() {
         <Route path="/Error404" element={<Error404 />} />
         <Route path="/Setting" element={<Setting />} />
         <Route path="/ProfileModal" element={<ProfileModal />} />
+        <Route path="/Calendar" element={<Calendar />} />
+        <Route path="/Override" element={<Override />} />
+        <Route path="/DiscountModal" element={<DiscountModal />} />
+        <Route path="/VoucherModal" element={<VoucherModal />} />
+        <Route path="/WasteModal" element={<WasteModal />} />
+
+
+
+
+
+        
+
 
 
 

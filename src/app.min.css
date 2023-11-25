@@ -29703,4 +29703,57 @@ tfoot tr:first-child td:first-child, tfoot tr:first-child td:last-child {
   } */
 
 
+  /* Add your own styles for the calendar container */
+.custom-calendar {
+    font-family: 'Arial, sans-serif';
+    border: 1px solid #ccc;
+    padding: 10px;
+  }
   
+  /* Add your own styles for the highlighted date range */
+  .highlighted-range {
+    background-color: #4caf50 !important; /* Green for the highlighted range */
+    color: #fff !important;
+  }
+
+
+  
+.menu---main {
+    display: block;
+    position: absolute;
+  
+  
+    .dropservice {
+      display: inline-block;
+      position: relative;
+      cursor: pointer;
+      padding: 15px 20px;
+      background-color: #f8f9fa;
+      margin-right: -4px;  
+  
+      &:hover {
+        background-color: #f8f9fa;
+      }
+      &:hover .sub-menu {      
+        max-height: 300px;
+        visibility: visible;
+        bottom: 100%;  
+        transition: all 0.4s linear;
+      }
+    }
+    .sub-menu {
+      display: block;
+      visibility: hidden;
+      position: absolute;
+      left: 0;
+      box-shadow: none;
+      max-height: 0;
+      width: 150px;
+      
+      overflow: hidden;
+      
+     .dropservice {
+        display: block;
+      }
+    }
+  }

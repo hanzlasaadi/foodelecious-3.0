@@ -23,7 +23,7 @@ function SaleRow({ row, index }) {
       <td className="align-middle">
         {new Date(row.createdDate).toLocaleString("en-GB", options)}
       </td>
-      <td className="align-middle" style={{ maxWidth: "fit-content" }}>
+      <td className="align-middle" style={{ maxWidth: "200px",   overflow: 'hidden' }}>
         {row.commodityList.map((comm) => `${comm.name},`)}
       </td>
       <td className="align-middle">{row.workerId.name}</td>
