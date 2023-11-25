@@ -24,6 +24,7 @@ import Override from "./components/override";
 import DiscountModal from "./components/discountModal";
 import VoucherModal from "./components/voucherModal";
 import WasteModal from "./components/wasteModal";
+import UserManagement from "./usermanagement";
 // import Receipt from "./billpay";
 
 import React from "react";
@@ -35,7 +36,7 @@ function App() {
         <Route path="/POS" element={<POS setOrderData={setOrderData} />} />
         <Route path="/Login" element={<Login />} />
         <Route path="/Register" element={<Register />} />
-        <Route path="/" element={<HomePage />} />
+          <Route path="/" element={<HomePage />} />
         <Route path="/SalesReport" element={<SalesReport />} />
         <Route path="/ProductReport" element={<ProductReport />} />
         <Route path="/Stockis" element={<Stockis />} />
@@ -51,6 +52,8 @@ function App() {
         <Route path="/DiscountModal" element={<DiscountModal />} />
         <Route path="/VoucherModal" element={<VoucherModal />} />
         <Route path="/WasteModal" element={<WasteModal />} />
+        <Route path="/UserManagement" element={<UserManagement />} />
+
 
 
 

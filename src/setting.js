@@ -26,7 +26,7 @@ return (
           <div class="text-inverse text-opacity-50" style={{color:'#e57300'}}>Abdullah Aslam</div>
         </div>
         <div class="w-100px">
-          <a href="" data-bs-toggle="modal" data-bs-target="#exampleModalsetting"  class="btn btn-outline-default w-100px" >Edit</a>
+          <a href="" data-bs-toggle="modal" data-bs-target="#changeDetailsModal"  class="btn btn-outline-default w-100px" >Edit</a>
         </div>
       </div>
       <div class="list-group-item d-flex align-items-center">
@@ -35,25 +35,15 @@ return (
           <div class="text-inverse text-opacity-50"style={{color:'#e57300'}}>abdullah123</div>
         </div>
         <div>
-          <a href="" data-bs-toggle="modal" data-bs-target="#exampleModalsetting"  class="btn btn-outline-default w-100px">Edit</a>
         </div>
       </div> 
-      <div class="list-group-item d-flex align-items-center">
-        <div class="flex-1 text-break">
-          <div>Phone</div>
-          <div class="text-inverse text-opacity-50"style={{color:'#e57300'}}>+1-555-0183</div>
-        </div>
-        <div>
-          <a href="" data-bs-toggle="modal" data-bs-target="#exampleModalsetting" class="btn btn-outline-default w-100px">Edit</a>
-        </div>
-      </div>
+      
       <div class="list-group-item d-flex align-items-center">
         <div class="flex-1 text-break">
           <div>Email address</div>
           <div class="text-inverse text-opacity-50"style={{color:'#e57300'}}>abdullah@gmail.com</div>
         </div>
         <div>
-          <a href="" data-bs-toggle="modal" data-bs-target="#exampleModalsetting" class="btn btn-outline-default w-100px">Edit</a>
         </div>
       </div>
       <div class="list-group-item d-flex align-items-center">
@@ -61,7 +51,6 @@ return (
           <div>Password</div>
         </div>
         <div>
-          <a href="" data-bs-toggle="modal" data-bs-target="#exampleModalsetting" class="btn btn-outline-default w-100px">Edit</a>
         </div>
       </div>
     </div>
