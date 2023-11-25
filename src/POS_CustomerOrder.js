@@ -22,7 +22,6 @@ import DiscountModal from "./components/discountModal";
 import VoucherModal from "./components/voucherModal";
 import WasteModal from "./components/wasteModal";
 
-
 function POS({ setOrderData }) {
   const navigate = useNavigate();
 
@@ -123,6 +122,8 @@ function POS({ setOrderData }) {
       .then((res) => {
         console.log(res.data);
         setOrderData(res.data.data);
+        setCommodityList([]);
+        setTotalPriceCommodities(0);
         // setShowLoader(false);
       })
       .catch((err) => console.log("error=> ", err));
@@ -146,7 +147,7 @@ function POS({ setOrderData }) {
                 style={{ backgroundColor: "white", borderRadius: 15 }}
               >
                 <div className="logo">
-                  <a href="" onClick={() => navigate('/')}>
+                  <a href="" onClick={() => navigate("/")}>
                     <div className="logo-img">
                       <i
                         className="bi bi-x-diamond"
@@ -156,13 +157,13 @@ function POS({ setOrderData }) {
                     <div className="logo-text">Dashboard</div>
                   </a>
                 </div>
-                <div className="nav-container" style={{ overflow: 'auto', }}>
+                <div className="nav-container" style={{ overflow: "auto" }}>
                   <div
                     data-scrollbar="true"
                     data-height="100%"
                     data-skip-mobile="true"
                   >
-                    <ul className="nav nav-tabs " id="menuNav" >
+                    <ul className="nav nav-tabs " id="menuNav">
                       {productCategories.map((cat) => {
                         return (
                           <NavList
@@ -199,16 +200,16 @@ function POS({ setOrderData }) {
                   <div className="row gx-4" id="productCardsContainer">
                     {showProductCards
                       ? currentProducts.map((currentProduct, i) => {
-                        return (
-                          <ProductCard
-                            key={i}
-                            currentProduct={currentProduct}
-                            setProductClicked={setProductClicked}
-                            setShowModal={setShowModal}
-                            setSubcategoryClicked={setSubcategoryClicked}
-                          />
-                        );
-                      })
+                          return (
+                            <ProductCard
+                              key={i}
+                              currentProduct={currentProduct}
+                              setProductClicked={setProductClicked}
+                              setShowModal={setShowModal}
+                              setSubcategoryClicked={setSubcategoryClicked}
+                            />
+                          );
+                        })
                       : null}
                   </div>
                 </div>
@@ -244,19 +245,23 @@ function POS({ setOrderData }) {
                             typeOfOrder === "takeaway"
                               ? {
 
+
                                 borderRadius: "15px !important",
                                 marginRight: "5px",
                                 backgroundColor: "#fa8c41",
                                 color: "#fff",
                               }
+
                               : {
-                                borderRadius: "15px !important",
-                                marginRight: "5px",
-                              }
+                                  borderRadius: "15px !important",
+                                  marginRight: "5px",
+                                }
                           }
                           className="btn active"
                         >
+
                          Take Away
+
                         </button>
 
                         <button
@@ -264,19 +269,24 @@ function POS({ setOrderData }) {
                           style={
                             typeOfOrder === "eatin"
                               ? {
+
                                 borderRadius: "15px !important",
                                 marginRight: "5px",
                                 backgroundColor: "#fa8c41",
                                 color: "#fff",
                               }
+
                               : {
-                                borderRadius: "15px !important",
-                                marginRight: "5px",
-                              }
+                                  borderRadius: "15px !important",
+                                  marginRight: "5px",
+                                }
                           }
                           className="btn active"
                         >
+
+                            
                           <span > Eat In</span>
+
                         </button>
                         {/* <button
                           style={{
@@ -380,7 +390,7 @@ function POS({ setOrderData }) {
                           {Math.round(
                             (totalPriceCommodities -
                               (tax * totalPriceCommodities) / 100) *
-                            100
+                              100
                           ) / 100}
                         </div>
                       </div>
