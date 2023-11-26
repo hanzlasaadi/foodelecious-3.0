@@ -55,7 +55,8 @@ function MenuBar() {
                         <div class="dropdown-menu "   >
                             <a class="dropdown-item" href="" onClick={() => navigate('/SalesReport')}>Sales Report</a>
                             <a class="dropdown-item" href="" onClick={() => navigate('/ProductReport')}>Product Report</a>
-                        
+                            <a class="dropdown-item" href="" onClick={() => navigate('/CashDrawer')}>Cash Drawer</a>
+
                         </div>
                     </div>
 

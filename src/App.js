@@ -25,6 +25,7 @@ import DiscountModal from "./components/discountModal";
 import VoucherModal from "./components/voucherModal";
 import WasteModal from "./components/wasteModal";
 import UserManagement from "./usermanagement";
+import CashDrawer from "./cashDrawer";
 // import Receipt from "./billpay";
 
 import React from "react";
@@ -53,6 +54,8 @@ function App() {
         <Route path="/VoucherModal" element={<VoucherModal />} />
         <Route path="/WasteModal" element={<WasteModal />} />
         <Route path="/UserManagement" element={<UserManagement />} />
+        <Route path="/CashDrawer" element={<CashDrawer />} />
+
 
 
 

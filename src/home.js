@@ -1,6 +1,6 @@
 import MenuBar from "./menu";
 import Navbar from "./navbar";
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function HomePage() {
     const navigate = useNavigate();
@@ -21,13 +21,13 @@ function HomePage() {
 
                 <div class="row">
 
-                    <div class="col-xl-3 col-lg-6">
+                    <div class="col-xl-3 col-lg-6 ">
 
-                        <div class="card mb-3">
+                        <div class="card mb-3 " style={{border:'none'}}>
 
-                            <div class="card-body">
+                            <div class="card-body bg-white rounded">
 
-                                <div class="d-flex fw-bold small mb-3">
+                                <div class="d-flex fw-bold small mb-3 ">
                                     <span class="flex-grow-1">SITE VISITORS</span>
                                     <a href="#" data-toggle="card-expand" class="text-dark text-opacity-50 text-decoration-none"><i class="bi bi-fullscreen"></i></a>
                                 </div>
@@ -56,9 +56,9 @@ function HomePage() {
 
                     <div class="col-xl-3 col-lg-6">
 
-                        <div class="card mb-3">
+                        <div class="card mb-3 " style={{border:'none'}}>
 
-                            <div class="card-body">
+                            <div class="card-body bg-white rounded">
 
                                 <div class="d-flex fw-bold small mb-3">
                                     <span class="flex-grow-1">STORE SALES</span>
@@ -88,9 +88,9 @@ function HomePage() {
 
                     <div class="col-xl-3 col-lg-6">
 
-                        <div class="card mb-3">
+                        <div class="card mb-3 " style={{border:'none'}}>
 
-                            <div class="card-body">
+                            <div class="card-body bg-white rounded">
 
                                 <div class="d-flex fw-bold small mb-3">
                                     <span class="flex-grow-1">NEW MEMBERS</span>
@@ -118,19 +118,11 @@ function HomePage() {
                     </div>
 
 
-
-
-
-
-
-
-
-
                     <div class="col-xl-6">
 
-                        <div class="card mb-3">
+                        <div class="card mb-3 " style={{border:'none'}}>
 
-                            <div class="card-body">
+                            <div class="card-body bg-white rounded">
 
                                 <div class="d-flex fw-bold small mb-3">
                                     <span class="flex-grow-1">TOP PRODUCTS</span>
@@ -149,7 +141,7 @@ function HomePage() {
                                                 <td>
                                                     <div class="d-flex align-items-center">
                                                         <div class="position-relative">
-                                                            <div class="bg-center bg-cover bg-no-repeat w-80px h-60px" style={{backgroundImage: "url(./public/assets/img/pos/bbq.jpg)"}}>
+                                                            <div class="bg-center bg-cover bg-no-repeat w-80px h-60px" style={{ backgroundImage: "url(./public/assets/img/pos/bbq.jpg)" }}>
                                                             </div>
                                                             <div class="position-absolute top-0 start-0">
                                                                 <span class="badge bg-black bg-opacity-50 rounded-0 d-flex align-items-center justify-content-center w-20px h-20px">1</span>
@@ -163,7 +155,7 @@ function HomePage() {
                                                     </div>
                                                 </td>
                                                 <td>
-                                                    <table style={{lineHeight:'1px'}}>
+                                                    <table style={{ lineHeight: '1px' }}>
                                                         <tr>
                                                             <td class="pe-3">QTY:</td>
                                                             <td class="text-dark text-opacity-75 fw-500">50</td>
@@ -195,9 +187,9 @@ function HomePage() {
 
                     <div class="col-xl-6">
 
-                        <div class="card mb-3">
+                        <div class="card mb-3 " style={{border:'none'}} >
 
-                            <div class="card-body">
+                            <div class="card-body bg-white rounded" >
 
                                 <div class="d-flex fw-bold small mb-3">
                                     <span class="flex-grow-1">ACTIVITY LOG</span>
@@ -210,16 +202,16 @@ function HomePage() {
                                         <tbody>
                                             <tr>
                                                 <td>
-                                                    <span class="d-flex align-items-center"style={{color:'black'}}>
+                                                    <span class="d-flex align-items-center" style={{ color: 'black' }}>
                                                         <i class="bi bi-circle-fill fs-6px text-theme me-2"></i>
                                                         You have sold an item - $12
                                                     </span>
                                                 </td>
-                                                <td><small style={{color:'black'}}>just now</small></td>
-                                               
+                                                <td><small style={{ color: 'black' }}>just now</small></td>
+
                                                 <td><a href="#" class="text-decoration-none text-dark"><i class="bi bi-search"></i></a></td>
                                             </tr>
-                                           
+
 
                                         </tbody>
                                     </table>
