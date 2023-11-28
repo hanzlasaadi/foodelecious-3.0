@@ -2,12 +2,12 @@
 import Navbar from "./navbar";
 import { useNavigate } from "react-router-dom";
 
-function HomePage({ setIsLoggedIn, isLoggedIn }) {
+function HomePage({ setIsLoggedIn, worker }) {
   const navigate = useNavigate();
 
   return (
     <div id="app" className="app">
-      <Navbar setIsLoggedIn={setIsLoggedIn} />
+      <Navbar setIsLoggedIn={setIsLoggedIn} worker={worker} />
 
       <div id="sidebar" className="app-sidebar">
         <div
@@ -134,7 +134,7 @@ function HomePage({ setIsLoggedIn, isLoggedIn }) {
       <button
         className="app-sidebar-mobile-backdrop"
         data-toggle-target=".app"
-        data-toggle-className="app-sidebar-mobile-toggled"
+        data-toggle-class="app-sidebar-mobile-toggled"
       ></button>
 
       <div id="content" className="app-content">

@@ -20,8 +20,8 @@ function Login({ setIsLoggedIn, setWorker }) {
         // console.log(res.data);
         localStorage.setItem("token", res.data.token);
         localStorage.setItem("user", JSON.stringify(res.data.data));
-        // setIsLoggedIn(true);
-        setWorker(res.data.data);
+        setIsLoggedIn(true);
+        // setWorker(res.data.data);
         navigate("/");
       })
       .catch((err) => {

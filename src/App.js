@@ -47,7 +47,7 @@ function App() {
         console.log(res.data);
         setIsLoggedIn(true);
         // setToken(token);
-        // setWorker(res.data.data);
+        setWorker(res.data.data);
       })
       .catch((err) => {
         console.log("error: ", err);
@@ -55,7 +55,7 @@ function App() {
         // setWorker(null);
         // setToken("");
       });
-  }, [setWorker, worker]);
+  }, [isLoggedIn]);
 
   // getting item from localstorage
   const parsedUser = JSON.parse(localStorage.getItem("user"));
@@ -93,7 +93,7 @@ function App() {
           path="/"
           element={
             isLoggedIn ? (
-              <HomePage isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
+              <HomePage worker={worker} setIsLoggedIn={setIsLoggedIn} />
             ) : (
               <Error404 />
             )
