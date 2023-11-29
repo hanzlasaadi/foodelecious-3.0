@@ -4,13 +4,17 @@ import MenuBar from "./menu";
 import Navbar from "./navbar";
 import axios from "axios";
 import { apiUrl } from "./assets/utils/env";
-function SalesReport() {
+function SalesReport({ setIsLoggedIn, worker }) {
   const [allSales, setAllSales] = React.useState(null);
   const [period, setPeriod] = React.useState("today");
 
   function getSales(timeFrame) {
+    const token = localStorage.getItem("token");
+    const config = {
+      headers: { Authorization: `Bearer ${token}` },
+    };
     axios
-      .get(`${apiUrl}/api/v1/order/stats?period=${timeFrame}`)
+      .get(`${apiUrl}/api/v1/order/stats?period=${timeFrame}`, config)
       .then((res) => {
         console.log(res.data);
         setAllSales(res.data.orderData);
@@ -25,7 +29,7 @@ function SalesReport() {
   }, [period]);
   return (
     <div id="app" className="app">
-      <Navbar />
+      <Navbar setIsLoggedIn={setIsLoggedIn} worker={worker} />
 
       <MenuBar />
 
@@ -180,7 +184,7 @@ function SalesReport() {
               <div className="table-responsive">
                 <table className="table table-hover text-nowrap">
                   <thead>
-                    <tr  style={{ textAlign: "center" }}>
+                    <tr style={{ textAlign: "center" }}>
                       <th className="border-top-0 pt-0 pb-2"></th>
                       <th className="border-top-0 pt-0 pb-2">Order#</th>
                       <th className="border-top-0 pt-0 pb-2">Date&Time</th>

@@ -103,7 +103,7 @@ function App() {
           path="/SalesReport"
           element={
             isLoggedIn && ["admin", "workerVIP"].includes(parsedUser?.role) ? (
-              <SalesReport />
+              <SalesReport worker={worker} setIsLoggedIn={setIsLoggedIn} />
             ) : (
               <Error404 />
             )
@@ -123,7 +123,7 @@ function App() {
           path="/Stockis"
           element={
             isLoggedIn && ["admin", "workerVIP"].includes(parsedUser?.role) ? (
-              <Stockis />
+              <Stockis worker={worker} />
             ) : (
               <Error404 />
             )
