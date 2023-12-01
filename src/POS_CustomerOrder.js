@@ -83,7 +83,7 @@ function POS({ setOrderData }) {
   React.useEffect(() => {
     setTotalPriceCommodities(
       commodityList
-        .map((comm) => comm.productPrice)
+        .map((comm) => comm.productPrice * comm.unit)
         .reduce((prev, curr) => prev + curr, 0)
     );
   }, [commodityList]);

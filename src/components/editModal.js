@@ -158,7 +158,7 @@ function EditModal({
       barcode: "testBarcode",
       name: filteredProduct.name,
       subCategory: filteredSubCategory._id,
-      productPrice: stepsPrice,
+      productPrice: stepsPrice + filteredProduct.price,
       options: choosedOptions,
       unit: units,
     };
@@ -213,7 +213,7 @@ function EditModal({
                   </div>
                   <div className="d-flex mb-3">
                     <a
-                      href="/#"
+                      href
                       className="btn btn-outline-theme"
                       onClick={() => setUnits((u) => u - 1)}
                     >
@@ -226,7 +226,7 @@ function EditModal({
                       value={units}
                     />
                     <a
-                      href="/#"
+                      href
                       className="btn btn-outline-theme"
                       onClick={() => setUnits((u) => u + 1)}
                     >
