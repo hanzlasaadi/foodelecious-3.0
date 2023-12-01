@@ -31,6 +31,8 @@ function POS({ setOrderData }) {
   const [currentProductCategory, setCurrentProductCategory] = useState({});
   const [categoryId, setCategoryId] = useState("");
   const [productsList, setProductsList] = useState(dummyProductsList);
+  const [stepsList, setStepsList] = useState([]);
+  const [currentSteps, setCurrentSteps] = useState(null);
   const [productCategories, setProductCategories] =
     useState(dummyProductCategory);
   // const [pizzaList, setPizzaList] = useState([]);
@@ -66,6 +68,14 @@ function POS({ setOrderData }) {
       .then((res) => {
         console.log("Categories: ", res.data.data);
         setProductCategories(res.data.data);
+      })
+      .catch((err) => console.log(err));
+
+    axios
+      .get(`${apiUrl}/api/v1/step?limit=100`)
+      .then((res) => {
+        console.log("Steps List: ", res.data.data);
+        setStepsList(res.data.data);
       })
       .catch((err) => console.log(err));
   }, []);
@@ -127,6 +137,15 @@ function POS({ setOrderData }) {
         // setShowLoader(false);
       })
       .catch((err) => console.log("error=> ", err));
+  };
+
+  // handle product card click
+  const handleProductCardClick = (stepIdClicked) => {
+    const [filteredStep] = stepsList.filter(
+      (step) => step._id === stepIdClicked
+    );
+    setCurrentSteps(filteredStep?.stepsToChoose);
+    console.log(filteredStep);
   };
 
   return (
@@ -211,6 +230,7 @@ function POS({ setOrderData }) {
                               setProductClicked={setProductClicked}
                               setShowModal={setShowModal}
                               setSubcategoryClicked={setSubcategoryClicked}
+                              handleProductCardClick={handleProductCardClick}
                             />
                           );
                         })
@@ -340,6 +360,7 @@ function POS({ setOrderData }) {
                             setCommodityList={setCommodityList}
                             setShowEditModal={setShowEditModal}
                             setClickedEditProduct={setClickedEditProduct}
+                            handleProductCardClick={handleProductCardClick}
                             categoryId={categoryId}
                             key={i}
                           />
@@ -529,6 +550,7 @@ function POS({ setOrderData }) {
           subcategoryClicked={subcategoryClicked}
           setCommodityList={setCommodityList}
           setShowModal={setShowModal}
+          stepsToChoose={currentSteps}
         />
       ) : null}
       {showEditModal ? (
@@ -539,6 +561,7 @@ function POS({ setOrderData }) {
           clickedEditProduct={clickedEditProduct}
           productsList={productsList}
           categories={productCategories}
+          stepsToChoose={currentSteps}
         />
       ) : null}
       {showPaymentModal ? (

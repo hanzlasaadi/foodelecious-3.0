@@ -47,14 +47,11 @@ function Option({ options, stepName, setStepsPrice }) {
               <span className="option-price" style={{ color: "darkgrey" }}>
                 +{option.price}£
               </span>
-
             </label>
-
-
           </div>
         );
       })}
-      <div className="option">
+      {/* <div className="option">
         <input
           type="checkbox"
           value="add"
@@ -69,7 +66,7 @@ function Option({ options, stepName, setStepsPrice }) {
         </label>
 
 
-      </div>
+      </div> */}
     </>
   );
 }
