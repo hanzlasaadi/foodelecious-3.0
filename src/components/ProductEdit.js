@@ -184,6 +184,10 @@ function ProductEdit({ currentProduct, setCurrentProduct, refreshData }) {
   const copySubcategory = JSON.parse(JSON.stringify(currentProduct));
 
   const handleUpdateProduct = (itemId, updateObj) => {
+    const token = localStorage.getItem("token");
+    const config = {
+      headers: { Authorization: `Bearer ${token}` },
+    };
     setShowLoader(true);
     // Perform any update logic here
     console.log("update item: ", itemId);
@@ -202,7 +206,11 @@ function ProductEdit({ currentProduct, setCurrentProduct, refreshData }) {
     console.log("final: ", copySubcategory);
 
     axios
-      .patch(`${apiUrl}/api/v1/product/${copySubcategory._id}`, copySubcategory)
+      .patch(
+        `${apiUrl}/api/v1/product/${copySubcategory._id}`,
+        copySubcategory,
+        config
+      )
       .then((res) => {
         console.log(res.data.data);
         // setCurrentProduct(res.data.data);

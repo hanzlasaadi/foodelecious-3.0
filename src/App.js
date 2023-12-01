@@ -129,13 +129,22 @@ function App() {
             )
           }
         />
+        <Route
+          path="/Setting"
+          element={
+            isLoggedIn ? (
+              <Setting worker={worker} setIsLoggedIn={setIsLoggedIn} />
+            ) : (
+              <Error404 />
+            )
+          }
+        />
         <Route path="/ProfileModal" element={<ProfileModal />} />
         <Route path="/PaymentModal" element={<PaymentModal />} />
         <Route path="/OrderList" element={<OrderList />} />
         <Route path="/OrderSubmit" element={<OrderSubmit />} />
         <Route path="/CatogeryEdit" element={<CatogeryEdit />} />
         <Route path="/Error404" element={<Error404 />} />
-        <Route path="/Setting" element={<Setting />} />
         <Route path="/Calendar" element={<Calendar />} />
         <Route path="/Override" element={<Override />} />
         <Route path="/DiscountModal" element={<DiscountModal />} />
