@@ -23,6 +23,7 @@ function Login({ setIsLoggedIn, setWorker }) {
         setIsLoggedIn(true);
         // setWorker(res.data.data);
         navigate("/");
+        window.location.reload();
       })
       .catch((err) => {
         setShowLoader(false);

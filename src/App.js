@@ -95,7 +95,8 @@ function App() {
             isLoggedIn ? (
               <HomePage worker={worker} setIsLoggedIn={setIsLoggedIn} />
             ) : (
-              <Error404 />
+              // <Error404 />
+              <Login />
             )
           }
         />
