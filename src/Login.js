@@ -28,7 +28,8 @@ function Login({ setIsLoggedIn, setWorker }) {
       .catch((err) => {
         setShowLoader(false);
         console.log("error: ", err);
-        alert(err.message);
+        // alert(err.message);
+        window.location.reload();
         // console.log("errorObject ", err.response.data);
       });
   };
