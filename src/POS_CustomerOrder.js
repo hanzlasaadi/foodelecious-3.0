@@ -128,12 +128,12 @@ function POS({ setOrderData }) {
     };
     console.log(orderObj, "obj");
     axios
-      .post(`${apiUrl}/api/v1/order`, orderObj)
+      .post(`${apiUrl}/api/v1/hahaha`, orderObj)
       .then((res) => {
         console.log(res.data);
         setOrderData(res.data.data);
-        setCommodityList([]);
-        setTotalPriceCommodities(0);
+        // setCommodityList([]);
+        // setTotalPriceCommodities(0);
         // setShowLoader(false);
       })
       .catch((err) => console.log("error=> ", err));
@@ -575,7 +575,7 @@ function POS({ setOrderData }) {
         />
       ) : null}
       <Loader showLoader={false} />
-      <OrderSubmit />
+      <OrderSubmit commodityList={commodityList} />
       <Override />
       <DiscountModal />
       <VoucherModal />

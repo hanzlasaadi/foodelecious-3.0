@@ -8,6 +8,7 @@ export class ComponentToPrint extends React.PureComponent {
     super(props);
 
     // this.commodityList = props.commodityList;
+    this.list = this.props.commodityList;
     this.state = { checked: false };
   }
 
@@ -53,15 +54,28 @@ export class ComponentToPrint extends React.PureComponent {
             </tr>
           </thead>
           <tbody>
-            <tr className="commodity-row">
-              <td className="quantity">2.00</td>
-              <td className="description">
-                Veggie Delight <br /> - Size: 10" [$8.49] <br /> - Double
-                Cheese: Yes [$1.49] <br /> - Sauce Dip: Hot Chilli [$0]
-              </td>
-              <td className="price">$25.00</td>
-            </tr>
-            <tr className="commodity-row">
+            {this.props.commodityList?.map((li) => {
+              return (
+                <tr className="commodity-row">
+                  <td className="quantity">{li.unit}.00</td>
+                  <td className="description">
+                    {li.name}
+                    {li.options?.map((opt) => {
+                      return (
+                        <>
+                          <br /> - {opt.shortName}: {opt.type} [${opt.price}]
+                        </>
+                      );
+                    })}
+
+                    {/* <br /> - Size: 10" [$8.49] <br /> - Double
+                Cheese: Yes [$1.49] <br /> - Sauce Dip: Hot Chilli [$0] */}
+                  </td>
+                  <td className="price">${li.productPrice}</td>
+                </tr>
+              );
+            })}
+            {/* <tr className="commodity-row">
               <td className="quantity">2.00</td>
               <td className="description">JAVASCRIPT BOOK</td>
               <td className="price">$10.00</td>
@@ -75,13 +89,13 @@ export class ComponentToPrint extends React.PureComponent {
               <td className="quantity" />
               <td className="description">TOTAL</td>
               <td className="price">$55.00</td>
-            </tr>
+            </tr> */}
           </tbody>
         </table>
         <p className="centered">
           Thanks for your purchase!
           <br />
-          parzibyte.me/blog
+          Foodeleciousbristol.co.uk
         </p>
       </div>
     );

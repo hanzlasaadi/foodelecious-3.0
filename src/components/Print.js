@@ -56,7 +56,15 @@ const FunctionalComponent = ({ commodityList }) => {
     // return <button onClick={() => alert('This will not work')}>Print this out!</button>;
 
     // Good
-    return <button>Print using a Functional Component</button>;
+    return (
+      <button
+        type="button"
+        className="btn btn-success"
+        style={{ textAlign: "center" }}
+      >
+        Print Receipt
+      </button>
+    );
   }, []);
 
   return (
@@ -70,7 +78,7 @@ const FunctionalComponent = ({ commodityList }) => {
         removeAfterPrint
         trigger={reactToPrintTrigger}
       />
-      {loading && <p className="indicator">onBeforeGetContent: Loading...</p>}
+      {loading && <p className="indicator">Printing Receipt...</p>}
       <ComponentToPrint
         commodityList={commodityList}
         ref={componentRef}

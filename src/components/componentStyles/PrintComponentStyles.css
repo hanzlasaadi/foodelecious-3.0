@@ -49,6 +49,7 @@ img {
 
 .commodity-row {
   vertical-align: top;
+  border-top: 1px solid black;
 }
 
 @media screen {
