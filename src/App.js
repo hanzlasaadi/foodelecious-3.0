@@ -25,6 +25,7 @@ import DiscountModal from "./components/discountModal";
 import VoucherModal from "./components/voucherModal";
 import WasteModal from "./components/wasteModal";
 // import Receipt from "./billpay";
+import Print from "./components/Print";
 
 import React from "react";
 import axios from "axios";
@@ -63,6 +64,10 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
+        <Route
+          path="/print"
+          element={<Print commodityList={["hell", "heaven"]} />}
+        />
         <Route
           path="/Login"
           element={

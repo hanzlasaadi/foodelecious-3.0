@@ -1,0 +1,64 @@
+* {
+  font-size: 12px;
+  font-family: "Times New Roman";
+}
+
+td,
+th,
+tr,
+table {
+  border-top: 3px solid black;
+  border-collapse: collapse;
+}
+
+td.description,
+th.description {
+  width: 110px;
+  max-width: 110px;
+}
+
+td.quantity,
+th.quantity {
+  width: 32.5px;
+  max-width: 32.5px;
+  word-break: break-all;
+}
+
+td.price,
+th.price {
+  width: 37.5px;
+  max-width: 37.5px;
+  word-break: break-all;
+}
+
+.centered {
+  text-align: center;
+  align-content: center;
+}
+
+.ticket {
+  padding-left: 15px;
+  width: 200px;
+  max-width: 200px;
+}
+
+img {
+  max-width: inherit;
+  width: inherit;
+}
+
+.commodity-row {
+  vertical-align: top;
+}
+
+@media screen {
+  .hidden {
+    display: none !important;
+  }
+}
+
+@media print {
+  .hidden {
+    display: block !important;
+  }
+}
