@@ -15,7 +15,6 @@ function Setting({ worker, setIsLoggedIn }) {
           data-toggle-target=".app"
           data-toggle-class="app-sidebar-mobile-toggled"
         ></button>
-
         <div id="content" className="app-content">
           <div id="general" class="mb-5">
             <h4>

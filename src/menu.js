@@ -58,6 +58,46 @@ function MenuBar() {
                     </div>
                  
                 </div> */}
+                    </div>
+
+
+
+
+                    <div class="menu-item has-sub">
+                        <a href="#" class="menu-link" data-bs-toggle="dropdown">
+                            <span class="menu-icon"><i class="bi bi-collection"></i></span>
+                            <span class="menu-text">Reports</span>
+                            <span class="menu-caret"><b class="caret"></b></span>
+                        </a>
+                        <div class="dropdown-menu "   >
+                            <a class="dropdown-item" href="" onClick={() => navigate('/SalesReport')}>Sales Report</a>
+                            <a class="dropdown-item" href="" onClick={() => navigate('/ProductReport')}>Product Report</a>
+                            <a class="dropdown-item" href="" onClick={() => navigate('/CashDrawer')}>Cash Drawer</a>
+
+                        </div>
+                    </div>
+
+                    <div class="menu-item has-sub">
+                        <a href="#" class="menu-link" data-bs-toggle="dropdown">
+                            <span class="menu-icon"><i class="bi bi-collection"></i></span>
+                            <span class="menu-text"onClick={() => navigate('/Stockis')}>Products</span>
+                        </a>
+                    </div>
+
+                    <div class="menu-divider"></div>
+                    <div class="menu-header">Users</div>
+                   
+
+                    <div class="menu-item">
+                        <a href="" class="menu-link">
+                            <span class="menu-icon"><i class="bi bi-gear"></i></span>
+                            <span class="menu-text"onClick={() => navigate('/Setting')}>Settings</span>
+                        </a><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br>
+                    </div>
+
+
+
+                </div>
           </div>
 
           <div className="menu-item has-sub">

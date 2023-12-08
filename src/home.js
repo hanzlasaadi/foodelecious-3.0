@@ -87,7 +87,6 @@ function HomePage({ setIsLoggedIn, worker }) {
                 </a>
               </div>
             </div>
-
             <div className="menu-item has-sub">
               <a href className="menu-link" data-bs-toggle="dropdown">
                 <span className="menu-icon">
