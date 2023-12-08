@@ -31,6 +31,8 @@ function POS({ setOrderData }) {
   const [currentProductCategory, setCurrentProductCategory] = useState({});
   const [categoryId, setCategoryId] = useState("");
   const [productsList, setProductsList] = useState(dummyProductsList);
+  const [stepsList, setStepsList] = useState([]);
+  const [currentSteps, setCurrentSteps] = useState(null);
   const [productCategories, setProductCategories] =
     useState(dummyProductCategory);
   // const [pizzaList, setPizzaList] = useState([]);
@@ -68,12 +70,20 @@ function POS({ setOrderData }) {
         setProductCategories(res.data.data);
       })
       .catch((err) => console.log(err));
+
+    axios
+      .get(`${apiUrl}/api/v1/step?limit=100`)
+      .then((res) => {
+        console.log("Steps List: ", res.data.data);
+        setStepsList(res.data.data);
+      })
+      .catch((err) => console.log(err));
   }, []);
 
   React.useEffect(() => {
     setTotalPriceCommodities(
       commodityList
-        .map((comm) => comm.productPrice)
+        .map((comm) => comm.productPrice * comm.unit)
         .reduce((prev, curr) => prev + curr, 0)
     );
   }, [commodityList]);
@@ -118,15 +128,24 @@ function POS({ setOrderData }) {
     };
     console.log(orderObj, "obj");
     axios
-      .post(`${apiUrl}/api/v1/order`, orderObj)
+      .post(`${apiUrl}/api/v1/hahaha`, orderObj)
       .then((res) => {
         console.log(res.data);
         setOrderData(res.data.data);
-        setCommodityList([]);
-        setTotalPriceCommodities(0);
+        // setCommodityList([]);
+        // setTotalPriceCommodities(0);
         // setShowLoader(false);
       })
       .catch((err) => console.log("error=> ", err));
+  };
+
+  // handle product card click
+  const handleProductCardClick = (stepIdClicked) => {
+    const [filteredStep] = stepsList.filter(
+      (step) => step._id === stepIdClicked
+    );
+    setCurrentSteps(filteredStep?.stepsToChoose);
+    console.log(filteredStep);
   };
 
   return (
@@ -147,7 +166,11 @@ function POS({ setOrderData }) {
                 style={{ backgroundColor: "white", borderRadius: 15 }}
               >
                 <div className="logo">
-                  <a href="" onClick={() => navigate("/")}>
+                  <a
+                    href
+                    onClick={() => navigate("/")}
+                    style={{ cursor: "pointer" }}
+                  >
                     <div className="logo-img">
                       <i
                         className="bi bi-x-diamond"
@@ -207,6 +230,7 @@ function POS({ setOrderData }) {
                               setProductClicked={setProductClicked}
                               setShowModal={setShowModal}
                               setSubcategoryClicked={setSubcategoryClicked}
+                              handleProductCardClick={handleProductCardClick}
                             />
                           );
                         })
@@ -238,20 +262,16 @@ function POS({ setOrderData }) {
                         <img src="../assets/img/pos/countryside.jpgg" alt="" />
                       </div>
                       <div className="">
-                        
                         <button
                           onClick={() => setTypeOfOrder("takeaway")}
                           style={
                             typeOfOrder === "takeaway"
                               ? {
-
-
-                                borderRadius: "15px !important",
-                                marginRight: "5px",
-                                backgroundColor: "#fa8c41",
-                                color: "#fff",
-                              }
-
+                                  borderRadius: "15px !important",
+                                  marginRight: "5px",
+                                  backgroundColor: "#fa8c41",
+                                  color: "#fff",
+                                }
                               : {
                                   borderRadius: "15px !important",
                                   marginRight: "5px",
@@ -259,9 +279,7 @@ function POS({ setOrderData }) {
                           }
                           className="btn active"
                         >
-
-                         Take Away
-
+                          Take Away
                         </button>
 
                         <button
@@ -269,13 +287,11 @@ function POS({ setOrderData }) {
                           style={
                             typeOfOrder === "eatin"
                               ? {
-
-                                borderRadius: "15px !important",
-                                marginRight: "5px",
-                                backgroundColor: "#fa8c41",
-                                color: "#fff",
-                              }
-
+                                  borderRadius: "15px !important",
+                                  marginRight: "5px",
+                                  backgroundColor: "#fa8c41",
+                                  color: "#fff",
+                                }
                               : {
                                   borderRadius: "15px !important",
                                   marginRight: "5px",
@@ -283,10 +299,7 @@ function POS({ setOrderData }) {
                           }
                           className="btn active"
                         >
-
-                            
-                          <span > Eat In</span>
-
+                          <span> Eat In</span>
                         </button>
                         {/* <button
                           style={{
@@ -310,7 +323,7 @@ function POS({ setOrderData }) {
                         <li className="nav-item">
                           <a
                             className="nav-link active"
-                            href="#"
+                            href
                             data-bs-toggle="tab"
                             data-bs-target="#newOrderTab"
                             style={{ color: "grey" }}
@@ -322,10 +335,11 @@ function POS({ setOrderData }) {
                           <a
                             style={{ color: "grey" }}
                             className="nav-link"
-                            href=""
+                            href
                             data-bs-toggle="tab"
                             // data-bs-target="#orderHistoryTab"
-                            onClick={() => navigate('/SalesReport')}>
+                            onClick={() => navigate("/SalesReport")}
+                          >
                             Order History
                           </a>
                         </li>
@@ -346,6 +360,7 @@ function POS({ setOrderData }) {
                             setCommodityList={setCommodityList}
                             setShowEditModal={setShowEditModal}
                             setClickedEditProduct={setClickedEditProduct}
+                            handleProductCardClick={handleProductCardClick}
                             categoryId={categoryId}
                             key={i}
                           />
@@ -422,27 +437,58 @@ function POS({ setOrderData }) {
                       </div>
                       <div className="mt-3">
                         <div className="btn-group d-flex">
-                        <div className="dropdown">
-  <a
-    href=""
-    className="btn btn-outline-default rounded-0 w-80px dropdown-toggle"
-    data-bs-toggle="dropdown"
-  >
-    <i className="bi bi-bell fa-lg" />
-    <br />
-    <span className="small">Service</span>
-  </a>
-  <ul className="dropdown-menu">
-    <li><a className="dropdown-item" data-bs-toggle="modal" data-bs-target="#overridePaymentModal" >Override</a></li>
-    <li><a className="dropdown-item" data-bs-toggle="modal" data-bs-target="#discountModal">Discount</a></li>
-    <li><a className="dropdown-item" data-bs-toggle="modal" data-bs-target="#voucherModal">Voucher</a></li>  
-    <li><a className="dropdown-item" data-bs-toggle="modal" data-bs-target="#wasteOrderModal">Waste</a></li>
-
-  </ul>
-</div>
+                          <div className="dropdown">
+                            <a
+                              href
+                              className="btn btn-outline-default rounded-0 w-80px dropdown-toggle"
+                              data-bs-toggle="dropdown"
+                            >
+                              <i className="bi bi-bell fa-lg" />
+                              <br />
+                              <span className="small">Service</span>
+                            </a>
+                            <ul className="dropdown-menu">
+                              <li>
+                                <a
+                                  className="dropdown-item"
+                                  data-bs-toggle="modal"
+                                  data-bs-target="#overridePaymentModal"
+                                >
+                                  Override
+                                </a>
+                              </li>
+                              <li>
+                                <a
+                                  className="dropdown-item"
+                                  data-bs-toggle="modal"
+                                  data-bs-target="#discountModal"
+                                >
+                                  Discount
+                                </a>
+                              </li>
+                              <li>
+                                <a
+                                  className="dropdown-item"
+                                  data-bs-toggle="modal"
+                                  data-bs-target="#voucherModal"
+                                >
+                                  Voucher
+                                </a>
+                              </li>
+                              <li>
+                                <a
+                                  className="dropdown-item"
+                                  data-bs-toggle="modal"
+                                  data-bs-target="#wasteOrderModal"
+                                >
+                                  Waste
+                                </a>
+                              </li>
+                            </ul>
+                          </div>
 
                           <a
-                            href="trybkwasprint.html"
+                            href
                             className="btn btn-outline-default rounded-0 w-80px"
                           >
                             <i className="bi bi-receipt fa-fw fa-lg" />
@@ -483,7 +529,7 @@ function POS({ setOrderData }) {
             </div>
           </div>
           <a
-            href="#"
+            href
             className="pos-mobile-sidebar-toggler"
             data-toggle-class="pos-mobile-sidebar-toggled"
             data-toggle-target="#pos"
@@ -492,7 +538,7 @@ function POS({ setOrderData }) {
             <span className="badge">5</span>
           </a>
         </div>
-        <a href="#" data-toggle="scroll-to-top" className="btn-scroll-top fade">
+        <a href data-toggle="scroll-to-top" className="btn-scroll-top fade">
           <i className="fa fa-arrow-up" />
         </a>
       </div>
@@ -504,6 +550,7 @@ function POS({ setOrderData }) {
           subcategoryClicked={subcategoryClicked}
           setCommodityList={setCommodityList}
           setShowModal={setShowModal}
+          stepsToChoose={currentSteps}
         />
       ) : null}
       {showEditModal ? (
@@ -514,6 +561,7 @@ function POS({ setOrderData }) {
           clickedEditProduct={clickedEditProduct}
           productsList={productsList}
           categories={productCategories}
+          stepsToChoose={currentSteps}
         />
       ) : null}
       {showPaymentModal ? (
@@ -525,13 +573,13 @@ function POS({ setOrderData }) {
           paymentType={paymentType}
           setPaymentType={setPaymentType}
         />
-      ) : null} 
+      ) : null}
       <Loader showLoader={false} />
-      <OrderSubmit />
-      <Override/>
-      <DiscountModal/>
-      <VoucherModal/>
-      <WasteModal/>
+      <OrderSubmit commodityList={commodityList} />
+      <Override />
+      <DiscountModal />
+      <VoucherModal />
+      <WasteModal />
     </>
   );
 }

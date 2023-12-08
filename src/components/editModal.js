@@ -102,6 +102,7 @@ function EditModal({
   clickedEditProduct,
   productsList,
   categories,
+  stepsToChoose,
 }) {
   const [clickedCommodity] = commodityList.filter(
     (comm) => comm.name === clickedEditProduct
@@ -138,11 +139,12 @@ function EditModal({
     document
       .querySelectorAll("input[type=checkbox]:checked")
       .forEach((inp) => arrMain.push(inp.id));
-    filteredCategory.stepsToChoose.forEach((step) =>
+    stepsToChoose?.forEach((step) =>
       step.options.forEach((opt) => {
         if (arrMain.includes(opt._id)) {
           choosedOptions.push({
             stepName: step.stepName,
+            shortName: step.shortName,
             type: opt.type,
             price: opt.price,
             selected: true,
@@ -156,10 +158,12 @@ function EditModal({
       barcode: "testBarcode",
       name: filteredProduct.name,
       subCategory: filteredSubCategory._id,
-      productPrice: stepsPrice,
+      productPrice: stepsPrice + filteredProduct.price,
       options: choosedOptions,
       unit: units,
     };
+    if (filteredProduct.steps) tempCommodity.stepsId = filteredProduct.steps;
+
     const newCommodityList = commodityList.map((commie) => {
       if (commie.name !== clickedCommodity.name) return commie;
       return tempCommodity;
@@ -205,11 +209,11 @@ function EditModal({
                     className="h4 mb-3"
                     style={{ color: "#ff4a17" }}
                   >
-                    {(filteredProduct.price + stepsPrice)*units} £
+                    {(filteredProduct.price + stepsPrice) * units} £
                   </div>
                   <div className="d-flex mb-3">
                     <a
-                      href="/#"
+                      href
                       className="btn btn-outline-theme"
                       onClick={() => setUnits((u) => u - 1)}
                     >
@@ -222,7 +226,7 @@ function EditModal({
                       value={units}
                     />
                     <a
-                      href="/#"
+                      href
                       className="btn btn-outline-theme"
                       onClick={() => setUnits((u) => u + 1)}
                     >
@@ -231,7 +235,7 @@ function EditModal({
                   </div>
                   <hr className="mx-n4" />
                   <span id="modal-steps">
-                    {filteredProduct.custom
+                    {/* {filteredProduct.custom
                       ? filteredCategory.stepsToChoose.map((step) => {
                           return filteredProduct.customType ===
                             step.customType ? (
@@ -252,6 +256,16 @@ function EditModal({
                           key={step._id}
                         />
                       ) : null;
+                    })} */}
+                    {stepsToChoose?.map((step) => {
+                      return (
+                        <Step
+                          stepToChoose={step}
+                          setStepsPrice={setStepsPrice}
+                          selectedOptions={clickedCommodity.options}
+                          key={step._id}
+                        />
+                      );
                     })}
                   </span>
                   <hr className="mx-n4" />

@@ -26,8 +26,9 @@ function Card({ item, handleUpdateProduct }) {
           Name:
         </div>
         <div
-          className={`title text-truncate editable ${editMode ? "editable" : ""
-            }`}
+          className={`title text-truncate editable ${
+            editMode ? "editable" : ""
+          }`}
           onClick={handleEditClick}
         >
           {editMode ? (
@@ -101,13 +102,14 @@ function Card({ item, handleUpdateProduct }) {
           </div>
         </div>
 
-        <div>
+        {/* <div>
           <button
             className="btn btn-success d-block"
           >
             <i className="fa fa-pencil fa-fw text-white"></i> <span style={{ color: 'white' }}> Edit Catogery </span>
           </button>
-        </div><br></br>
+        </div> */}
+        {/* <br></br> */}
         <div className="d-flex align-items-center mb-3">
           <div className="w-100px" style={{ color: "black" }}>
             Availability:
@@ -145,14 +147,16 @@ function Card({ item, handleUpdateProduct }) {
                   });
                 }}
               >
-                <i className="fa fa-check fa-fw text-white"></i> <span style={{ color: 'white' }}> Update </span>
+                <i className="fa fa-check fa-fw text-white"></i>{" "}
+                <span style={{ color: "white" }}> Update </span>
               </button>
               &nbsp;&nbsp;
               <button
                 className="btn btn-default d-block"
                 onClick={handleCancelClick}
               >
-                <i className="fa fa-times fa-fw text-white"></i> <span style={{ color: 'white' }}>Cancel </span>
+                <i className="fa fa-times fa-fw text-white"></i>{" "}
+                <span style={{ color: "white" }}>Cancel </span>
               </button>
             </>
           ) : null}
@@ -163,7 +167,8 @@ function Card({ item, handleUpdateProduct }) {
               className="btn btn-default bg-dark d-block w-100"
               onClick={handleEditClick}
             >
-              <i className="fa fa-pencil fa-fw text-white"></i> <span style={{ color: 'white' }}> Edit </span>
+              <i className="fa fa-pencil fa-fw text-white"></i>{" "}
+              <span style={{ color: "white" }}> Edit </span>
             </button>
           ) : null}
         </div>
@@ -179,6 +184,10 @@ function ProductEdit({ currentProduct, setCurrentProduct, refreshData }) {
   const copySubcategory = JSON.parse(JSON.stringify(currentProduct));
 
   const handleUpdateProduct = (itemId, updateObj) => {
+    const token = localStorage.getItem("token");
+    const config = {
+      headers: { Authorization: `Bearer ${token}` },
+    };
     setShowLoader(true);
     // Perform any update logic here
     console.log("update item: ", itemId);
@@ -197,7 +206,11 @@ function ProductEdit({ currentProduct, setCurrentProduct, refreshData }) {
     console.log("final: ", copySubcategory);
 
     axios
-      .patch(`${apiUrl}/api/v1/product/${copySubcategory._id}`, copySubcategory)
+      .patch(
+        `${apiUrl}/api/v1/product/${copySubcategory._id}`,
+        copySubcategory,
+        config
+      )
       .then((res) => {
         console.log(res.data.data);
         // setCurrentProduct(res.data.data);
@@ -224,8 +237,6 @@ function ProductEdit({ currentProduct, setCurrentProduct, refreshData }) {
           </div>
         );
       })}
-
-
     </>
   );
 }

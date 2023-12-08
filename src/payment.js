@@ -61,18 +61,16 @@ function PaymentModal({
             ></button>
           </div>
           <div className="modal-body">
-            <div style={{marginLeft:"20%"}}>
-              <button className="btn btn-light"  >Cash</button>&nbsp;
-              <button className="btn btn-light" >Card</button>&nbsp;
-              <button className="btn btn-light"  >Online</button>&nbsp;
-              <button className="btn btn-light"  >Uber Eats</button>
-
-
+            <div style={{ marginLeft: "20%" }}>
+              <button className="btn btn-light">Cash</button>
+              <button className="btn btn-light">Card</button>
+              <button className="btn btn-light">Online</button>
+              <button className="btn btn-light">Uber Eats</button>
+              <button className="btn btn-light">Just Eat</button>
+              <button className="btn btn-light">Deliveroo</button>
             </div>
             <div className="d-flex">
-              <div style={{ textAlign: "center", }}>
-
-
+              <div style={{ textAlign: "center" }}>
                 {/* <div>
                   <label style={{ fontWeight: "bold", marginLeft: "80px" }}>
                     Paid=
@@ -97,10 +95,9 @@ function PaymentModal({
               </div>
             </div>
 
-
             {paymentType === "Credit" ? null : (
               <>
-                <div class="group-payment  " style={{ marginLeft: '20%' }} >
+                <div class="group-payment  " style={{ marginLeft: "20%" }}>
                   <div className="d-flex" style={{ marginTop: "3%" }}>
                     <label htmlFor="tenderAmount" style={{ marginLeft: "7%" }}>
                       Tendered
@@ -119,11 +116,13 @@ function PaymentModal({
                     <input
                       type="text"
                       className="form-control"
-                      style={{ backgroundColor: "white", width: '40%' }}
+                      style={{ backgroundColor: "white", width: "40%" }}
                       id="tenderAmount"
                       placeholder={0.0}
                       value={tenderedAmount}
-                      onChange={(e) => setTenderedAmount(Number(e.target.value))}
+                      onChange={(e) =>
+                        setTenderedAmount(Number(e.target.value))
+                      }
                     />
                     {/* Change */}
                     <input
@@ -132,17 +131,14 @@ function PaymentModal({
                       }
                       type="text"
                       className="form-control"
-                      style={{ backgroundColor: "lightgray", width: '40%' }}
+                      style={{ backgroundColor: "lightgray", width: "40%" }}
                       id="changeAmount"
                       placeholder={0.0}
                       readOnly
                     />
-
                   </div>
 
-                  <div className="d-flex" style={{ marginTop: "3%" }}>
-
-                  </div>
+                  <div className="d-flex" style={{ marginTop: "3%" }}></div>
 
                   <div>
                     <ul
@@ -150,16 +146,106 @@ function PaymentModal({
                       id="numpad"
                       style={{ width: "55%", marginLeft: "10%" }}
                     >
-                      <li value={1} onClick={(e) => setTenderedAmount(ten => Number(`${ten}${e.target.value}`))}>1</li>
-                      <li value={2} onClick={(e) => setTenderedAmount(ten => Number(`${ten}${e.target.value}`))}>2</li>
-                      <li value={3} onClick={(e) => setTenderedAmount(ten => Number(`${ten}${e.target.value}`))}>3</li>
-                      <li value={4} onClick={(e) => setTenderedAmount(ten => Number(`${ten}${e.target.value}`))}>4</li>
-                      <li value={5} onClick={(e) => setTenderedAmount(ten => Number(`${ten}${e.target.value}`))}>5</li>
-                      <li value={6} onClick={(e) => setTenderedAmount(ten => Number(`${ten}${e.target.value}`))}>6</li>
-                      <li value={7} onClick={(e) => setTenderedAmount(ten => Number(`${ten}${e.target.value}`))}>7</li>
-                      <li value={8} onClick={(e) => setTenderedAmount(ten => Number(`${ten}${e.target.value}`))}>8</li>
-                      <li value={9} onClick={(e) => setTenderedAmount(ten => Number(`${ten}${e.target.value}`))}>9</li>
-                      <li value={0} onClick={(e) => setTenderedAmount(ten => Number(`${ten}${e.target.value}`))}>0</li>
+                      <li
+                        value={1}
+                        onClick={(e) =>
+                          setTenderedAmount((ten) =>
+                            Number(`${ten}${e.target.value}`)
+                          )
+                        }
+                      >
+                        1
+                      </li>
+                      <li
+                        value={2}
+                        onClick={(e) =>
+                          setTenderedAmount((ten) =>
+                            Number(`${ten}${e.target.value}`)
+                          )
+                        }
+                      >
+                        2
+                      </li>
+                      <li
+                        value={3}
+                        onClick={(e) =>
+                          setTenderedAmount((ten) =>
+                            Number(`${ten}${e.target.value}`)
+                          )
+                        }
+                      >
+                        3
+                      </li>
+                      <li
+                        value={4}
+                        onClick={(e) =>
+                          setTenderedAmount((ten) =>
+                            Number(`${ten}${e.target.value}`)
+                          )
+                        }
+                      >
+                        4
+                      </li>
+                      <li
+                        value={5}
+                        onClick={(e) =>
+                          setTenderedAmount((ten) =>
+                            Number(`${ten}${e.target.value}`)
+                          )
+                        }
+                      >
+                        5
+                      </li>
+                      <li
+                        value={6}
+                        onClick={(e) =>
+                          setTenderedAmount((ten) =>
+                            Number(`${ten}${e.target.value}`)
+                          )
+                        }
+                      >
+                        6
+                      </li>
+                      <li
+                        value={7}
+                        onClick={(e) =>
+                          setTenderedAmount((ten) =>
+                            Number(`${ten}${e.target.value}`)
+                          )
+                        }
+                      >
+                        7
+                      </li>
+                      <li
+                        value={8}
+                        onClick={(e) =>
+                          setTenderedAmount((ten) =>
+                            Number(`${ten}${e.target.value}`)
+                          )
+                        }
+                      >
+                        8
+                      </li>
+                      <li
+                        value={9}
+                        onClick={(e) =>
+                          setTenderedAmount((ten) =>
+                            Number(`${ten}${e.target.value}`)
+                          )
+                        }
+                      >
+                        9
+                      </li>
+                      <li
+                        value={0}
+                        onClick={(e) =>
+                          setTenderedAmount((ten) =>
+                            Number(`${ten}${e.target.value}`)
+                          )
+                        }
+                      >
+                        0
+                      </li>
                       <li onClick={(e) => setTenderedAmount(0)}>C</li>
                       <li>E</li>
                     </ul>
@@ -168,26 +254,63 @@ function PaymentModal({
                   <div></div>
                 </div>
               </>
-
             )}
           </div>
-          <div class="my gap-2" style={{ marginLeft: '25%', }}>
-            <button className="btn btn-light" value={5} onClick={(e) => setTenderedAmount(Number(e.target.value))}>£ 5</button>&nbsp;
-            <button className="btn btn-light" value={10} onClick={(e) => setTenderedAmount(Number(e.target.value))}>£ 10</button>&nbsp;
-            <button className="btn btn-light" value={15} onClick={(e) => setTenderedAmount(Number(e.target.value))}>£ 15</button>&nbsp;
-            <button className="btn btn-light" value={20} onClick={(e) => setTenderedAmount(Number(e.target.value))}>£ 20</button>
-
+          <div class="my gap-2" style={{ marginLeft: "25%" }}>
+            <button
+              className="btn btn-light"
+              value={5}
+              onClick={(e) => setTenderedAmount(Number(e.target.value))}
+            >
+              £ 5
+            </button>
+            &nbsp;
+            <button
+              className="btn btn-light"
+              value={10}
+              onClick={(e) => setTenderedAmount(Number(e.target.value))}
+            >
+              £ 10
+            </button>
+            &nbsp;
+            <button
+              className="btn btn-light"
+              value={15}
+              onClick={(e) => setTenderedAmount(Number(e.target.value))}
+            >
+              £ 15
+            </button>
+            &nbsp;
+            <button
+              className="btn btn-light"
+              value={20}
+              onClick={(e) => setTenderedAmount(Number(e.target.value))}
+            >
+              £ 20
+            </button>
           </div>
 
           <div className="modal-footer">
-            <div style={{ border: "1px solid #ccc", marginRight: '30%', padding: "15px", borderRadius: "10px", boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)" }}>
-              <label
-                htmlFor="paymentMethod"
-                style={{ fontWeight: "bold", }}
-              >
+            <div
+              style={{
+                border: "1px solid #ccc",
+                marginRight: "30%",
+                padding: "15px",
+                borderRadius: "10px",
+                boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
+              }}
+            >
+              <label htmlFor="paymentMethod" style={{ fontWeight: "bold" }}>
                 Total:
               </label>
-              <label style={{ fontWeight: "bold", fontSize: '20px', color: "#e57300", marginLeft: "40px" }}>
+              <label
+                style={{
+                  fontWeight: "bold",
+                  fontSize: "20px",
+                  color: "#e57300",
+                  marginLeft: "40px",
+                }}
+              >
                 <span>£ {totalPrice}</span>
               </label>
             </div>
@@ -204,7 +327,8 @@ function PaymentModal({
                 handleSubmitOrder();
                 // window.open("http://localhost:3000/ReceiptBill");
               }}
-              data-bs-toggle="modal" data-bs-target="#exampleModalsubmit"
+              data-bs-toggle="modal"
+              data-bs-target="#exampleModalsubmit"
             >
               Pay
             </button>

@@ -5,6 +5,7 @@ function NewOrder({
   setCommodityList,
   setShowEditModal,
   setClickedEditProduct,
+  handleProductCardClick,
 }) {
   const [showRemoveItem, setShowRemoveItem] = React.useState(false);
   return (
@@ -20,7 +21,7 @@ function NewOrder({
                 <div>
                   <span style={{ color: "grey" }}>
                     {" "}
-                    {opt.stepName}: {opt.type}{" "}
+                    {opt.shortName}: {opt.type}{" "}
                   </span>{" "}
                   - £{opt.price}
                 </div>
@@ -40,17 +41,23 @@ function NewOrder({
             <a href="#/" className="btn btn-outline-theme btn-sm">
               <i className="fa fa-plus" />
             </a> */}
-            <p style={{fontSize:'13px',color:'black'}}>Qty(s) <span style={{color:'#e57300'}}>- {commodity.unit}</span></p>
+            <p style={{ fontSize: "13px", color: "black" }}>
+              Qty(s){" "}
+              <span style={{ color: "#e57300" }}>- {commodity.unit}</span>
+            </p>
           </div>
         </div>
       </div>
       <div className="pos-order-price d-flex flex-column">
         <div style={{ fontWeight: "bold" }}>
-          £{(Math.round(Number(commodity.productPrice) * 100) / 100)*commodity.unit}
+          £
+          {(Math.round(Number(commodity.productPrice) * 100) / 100) *
+            commodity.unit}
         </div>
         <div className="mt-auto d-flex flex-column gap-2">
           <button
             onClick={(e) => {
+              handleProductCardClick(commodity.stepsId);
               setClickedEditProduct(e.currentTarget.dataset.product);
               setShowEditModal(true);
             }}

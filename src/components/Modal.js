@@ -8,6 +8,7 @@ function Modal({
   subcategoryClicked,
   setCommodityList,
   setShowModal,
+  stepsToChoose,
 }) {
   // React States
   const [stepsPrice, setStepsPrice] = React.useState(0);
@@ -32,11 +33,12 @@ function Modal({
     document
       .querySelectorAll("input[type=checkbox]:checked")
       .forEach((inp) => arrMain.push(inp.id));
-    currentProductCategory.stepsToChoose.forEach((step) =>
+    stepsToChoose?.forEach((step) =>
       step.options.forEach((opt) => {
         if (arrMain.includes(opt._id)) {
           choosedOptions.push({
             stepName: step.stepName,
+            shortName: step.shortName,
             type: opt.type,
             price: opt.price,
             selected: true,
@@ -54,10 +56,12 @@ function Modal({
       barcode: "testBarcode",
       name: filteredProduct.name,
       subCategory: subcategoryClicked._id,
-      productPrice: stepsPrice,
+      productPrice: stepsPrice + filteredProduct.price,
       options: choosedOptions,
       unit: units,
     };
+    if (filteredProduct.steps) tempCommodity.stepsId = filteredProduct.steps;
+
     // console.log(tempCommodity);
     setCommodityList((comm) => [...comm, tempCommodity]);
     setShowModal(false);
@@ -102,10 +106,11 @@ function Modal({
                     className="h4 mb-3"
                     style={{ color: "#ff4a17" }}
                   >
-                    {(filteredProduct.price + stepsPrice)*units} £
+                    {(filteredProduct.price + stepsPrice) * units} £
                   </div>
                   <div className="d-flex mb-3">
                     <a
+                      href
                       className="btn btn-outline-theme"
                       onClick={() => setUnits((u) => u - 1)}
                     >
@@ -119,6 +124,7 @@ function Modal({
                       // defaultValue={units}
                     />
                     <a
+                      href
                       className="btn btn-outline-theme"
                       onClick={() => setUnits((u) => u + 1)}
                     >
@@ -127,7 +133,7 @@ function Modal({
                   </div>
                   <hr className="mx-n4" />
                   <span id="modal-steps">
-                    {filteredProduct.custom
+                    {/* {filteredProduct.custom
                       ? currentProductCategory.stepsToChoose.map((step) => {
                           return filteredProduct.customType ===
                             step.customType ? (
@@ -147,6 +153,15 @@ function Modal({
                           key={step._id}
                         />
                       ) : null;
+                    })} */}
+                    {stepsToChoose?.map((step) => {
+                      return (
+                        <Step
+                          stepToChoose={step}
+                          setStepsPrice={setStepsPrice}
+                          key={step._id}
+                        />
+                      );
                     })}
                     {/* <div className="mb-2">
                       <div className="fw-bold" style={{ color: "black" }}>

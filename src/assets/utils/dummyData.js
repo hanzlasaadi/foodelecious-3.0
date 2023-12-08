@@ -11,6 +11,7 @@ export const dummyProductsList = [
         stock: 0,
         discount: 0,
         _id: "65400276126a1145164b36ac",
+        steps: null,
       },
     ],
     available: true,
