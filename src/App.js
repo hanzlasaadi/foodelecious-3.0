@@ -32,6 +32,7 @@ import CashDrawer from "./cashDrawer";
 import React from "react";
 import axios from "axios";
 import { apiUrl } from "./assets/utils/env";
+import CategoryStock from "./components/CategoryStock";
 
 function App() {
   const [orderData, setOrderData] = React.useState(null);
@@ -128,6 +129,16 @@ function App() {
           }
         />
         <Route
+          path="/categoryStock"
+          element={
+            isLoggedIn && ["admin", "workerVIP"].includes(parsedUser?.role) ? (
+              <CategoryStock worker={worker} />
+            ) : (
+              <Error404 />
+            )
+          }
+        />
+        <Route
           path="/Stockis"
           element={
             isLoggedIn && ["admin", "workerVIP"].includes(parsedUser?.role) ? (
@@ -160,8 +171,6 @@ function App() {
         <Route path="/WasteModal" element={<WasteModal />} />
         <Route path="/UserManagement" element={<UserManagement />} />
         <Route path="/CashDrawer" element={<CashDrawer />} />
-
-
 
         {/* <Route path="/Receipt" element={<Receipt />} /> */}
 

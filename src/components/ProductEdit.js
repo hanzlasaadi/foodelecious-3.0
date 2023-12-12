@@ -110,6 +110,7 @@ function Card({ item, handleUpdateProduct }) {
           </button>
         </div> */}
         {/* <br></br> */}
+
         <div className="d-flex align-items-center mb-3">
           <div className="w-100px" style={{ color: "black" }}>
             Availability:
@@ -130,6 +131,25 @@ function Card({ item, handleUpdateProduct }) {
             )}
           </div>
         </div>
+
+        <div className="input-group py-3">
+          <input
+            type="file"
+            className="form-control "
+            id="inputGroupFile04"
+            aria-describedby="inputGroupFileAddon04"
+            aria-label="Upload"
+            style={{ backgroundColor: "#b8b8b8" }}
+          />
+          <button
+            className="btn bg-dark text-white"
+            type="button"
+            id="inputGroupFileAddon04"
+          >
+            upload
+          </button>
+        </div>
+
         <div className="d-flex">
           {editMode ? (
             <>

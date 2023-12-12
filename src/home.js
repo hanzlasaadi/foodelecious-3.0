@@ -94,6 +94,19 @@ function HomePage({ setIsLoggedIn, worker }) {
                 </span>
                 <span
                   className="menu-text"
+                  onClick={() => navigate("/categoryStock")}
+                >
+                  Category
+                </span>
+              </a>
+            </div>
+            <div className="menu-item has-sub">
+              <a href className="menu-link" data-bs-toggle="dropdown">
+                <span className="menu-icon">
+                  <i className="bi bi-collection"></i>
+                </span>
+                <span
+                  className="menu-text"
                   onClick={() => navigate("/Stockis")}
                 >
                   Products
