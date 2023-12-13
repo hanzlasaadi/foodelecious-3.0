@@ -8,10 +8,10 @@ function ProductCard({
   console.log(currentProduct, "currProduct Test");
   return (
     <>
-      <h2>{currentProduct.name}</h2>
+      <h1>{currentProduct.name}</h1>
       {currentProduct?.productsList?.map((curr) => {
         return (
-          <div
+          <div 
             className="col-xxl-3 col-xl-4 col-lg-6 col-md-4 col-sm-6 pb-4"
             data-type="meat"
             key={curr._id}
@@ -19,10 +19,11 @@ function ProductCard({
             <div className="card h-100">
               <div
                 className="card-body h-100 p-1"
-                style={{ cursor: "pointer" }}
+                style={{   cursor: "pointer" }}
               >
                 <a
-                  data-product-id={`${curr._id}`}
+                 style={{   fontWeight:'bolder' }}
+                data-product-id={`${curr._id}`}
                   onClick={(e) => {
                     setShowModal(true);
                     // const modalEl = document.getElementById("modalPosItem");
@@ -42,7 +43,7 @@ function ProductCard({
                   data-bs-target="#modalPosItem"
                 >
                   {/* <div
-                    className="img"
+                      className="img"
                     style={{
                       backgroundImage: "url(./assets/img/pos/countryside.jpg",
                     }}
