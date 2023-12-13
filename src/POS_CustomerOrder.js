@@ -163,7 +163,7 @@ function POS({ setOrderData }) {
             <div className="pos-container card-body">
               <div
                 className="pos-menu"
-                style={{ backgroundColor: "white", borderRadius: 15 }}
+                style={{ width:350, backgroundColor: "white", borderRadius:20 }}
               >
                 <div className="logo">
                   <a
@@ -174,10 +174,10 @@ function POS({ setOrderData }) {
                     <div className="logo-img">
                       <i
                         className="bi bi-x-diamond"
-                        style={{ fontSize: "2.1rem" }}
+                        style={{ fontSize: "3.5rem" }}
                       />
                     </div>
-                    <div className="logo-text">Dashboard</div>
+                    <div style={{ fontSize: "4.5rem" }} className="logo-text">Dashboard</div>
                   </a>
                 </div>
                 <div className="nav-container" style={{ overflow: "auto" }}>
@@ -212,9 +212,9 @@ function POS({ setOrderData }) {
                     <img
                       src="../assets/img/pos/logo.png"
                       style={{
-                        height: 30,
-                        width: 130,
-                        marginTop: "-5%",
+                        height: 90,
+                        width: 170,
+                        marginTop: "-1%",
                         marginLeft: "40%",
                       }}
                       alt=""
@@ -269,8 +269,10 @@ function POS({ setOrderData }) {
                               ? {
                                   borderRadius: "15px !important",
                                   marginRight: "5px",
-                                  backgroundColor: "#fa8c41",
-                                  color: "#fff",
+                                  fontSize:'25px',
+                                  fontWeight:'bolder',
+                                  backgroundColor:'',
+                                  color:"black",
                                 }
                               : {
                                   borderRadius: "15px !important",
@@ -279,7 +281,7 @@ function POS({ setOrderData }) {
                           }
                           className="btn active"
                         >
-                          Take Away
+                          <span style={{fontSize:'23px',fontWeight:'bolder' }}>Take Away</span>
                         </button>
 
                         <button
@@ -289,8 +291,9 @@ function POS({ setOrderData }) {
                               ? {
                                   borderRadius: "15px !important",
                                   marginRight: "5px",
-                                  backgroundColor: "#fa8c41",
-                                  color: "#fff",
+                                  
+                                  backgroundColor: "whitesmoke",
+                                  color: "darkred",
                                 }
                               : {
                                   borderRadius: "15px !important",
@@ -299,7 +302,7 @@ function POS({ setOrderData }) {
                           }
                           className="btn active"
                         >
-                          <span> Eat In</span>
+                          <span style={{fontSize:'23px',fontWeight:'bolder' }}> Eat In</span>
                         </button>
                         {/* <button
                           style={{
@@ -313,9 +316,9 @@ function POS({ setOrderData }) {
                       </div>
                       <div
                         className="order"
-                        style={{ marginLeft: "3%", color: "black" }}
+                        style={{ fontWeight:'bolder', marginLeft: "3%", color: "black" }}
                       >
-                        Order: <b>#0056</b>
+                        <b>Order: #0056</b>
                       </div>
                     </div>
                     <div className="pos-sidebar-nav">
@@ -326,14 +329,14 @@ function POS({ setOrderData }) {
                             href
                             data-bs-toggle="tab"
                             data-bs-target="#newOrderTab"
-                            style={{ color: "grey" }}
+                            style={{ fontSize:'20px',fontWeight:'bolder', color: "black" }}
                           >
                             New Order
                           </a>
                         </li>
                         <li className="nav-item">
                           <a
-                            style={{ color: "grey" }}
+                            style={{ fontSize:'20px',fontWeight:'bolder', color: "black"  }}
                             className="nav-link"
                             href
                             data-bs-toggle="tab"
@@ -395,10 +398,10 @@ function POS({ setOrderData }) {
                     </div>
                     <div className="pos-sidebar-footer">
                       <div className="d-flex align-items-center mb-2">
-                        <div style={{ color: "grey" }}>Subtotal</div>
+                        <div style={{ fontSize:'20px',fontWeight:'bolder', color: "black" }}>Subtotal</div>
                         <div
                           className="flex-1 text-end h6 mb-0"
-                          style={{ color: "#e57c35" }}
+                          style={{ fontSize:'20px',fontWeight:'bolder', color: "black"  }}
                           id="grandTotal"
                         >
                           £
@@ -410,10 +413,10 @@ function POS({ setOrderData }) {
                         </div>
                       </div>
                       <div className="d-flex align-items-center">
-                        <div style={{ color: "grey" }}>Taxes ({tax}%)</div>
+                        <div style={{ fontSize:'20px',fontWeight:'bolder', color: "black" }}>Taxes ({tax}%)</div>
                         <div
                           className="flex-1 text-end h6 mb-0"
-                          style={{ color: "#e57c35" }}
+                          style={{ fontSize:'20px',fontWeight:'bolder', color: "black" }}
                         >
                           {/* £{(tax * totalPriceCommodities) / 100} */}£
                           {Math.round(
@@ -424,10 +427,10 @@ function POS({ setOrderData }) {
                       </div>
                       <hr />
                       <div className="d-flex align-items-center mb-2">
-                        <div style={{ color: "grey" }}>Total</div>
+                        <div style={{fontSize:'20px',fontWeight:'bolder', color: "black"}}>Total</div>
                         <div
                           className="flex-1 text-end h4 mb-0"
-                          style={{ color: "#e57c35" }}
+                          style={{ fontSize:'20px',fontWeight:'bolder', color: "black" }}
                           id="grandTotal2"
                         >
                           £
@@ -443,9 +446,9 @@ function POS({ setOrderData }) {
                               className="btn btn-outline-default rounded-0 w-80px dropdown-toggle"
                               data-bs-toggle="dropdown"
                             >
-                              <i className="bi bi-bell fa-lg" />
+                              <i style={{color:'darkred', fontSize:'30px'}} className="bi bi-bell fa-lg" />
                               <br />
-                              <span className="small">Service</span>
+                              <span style={{fontSize:'15px',fontWeight:'bolder', color: "black"}} className="small">Service</span>
                             </a>
                             <ul className="dropdown-menu">
                               <li>
@@ -454,7 +457,7 @@ function POS({ setOrderData }) {
                                   data-bs-toggle="modal"
                                   data-bs-target="#overridePaymentModal"
                                 >
-                                  Override
+                                 <span style={{fontSize:'20px',color:'white'}}> Override</span> 
                                 </a>
                               </li>
                               <li>
@@ -463,8 +466,7 @@ function POS({ setOrderData }) {
                                   data-bs-toggle="modal"
                                   data-bs-target="#discountModal"
                                 >
-                                  Discount
-                                </a>
+                                <span style={{fontSize:'20px',color:'white'}} > Discount</span>                                 </a>
                               </li>
                               <li>
                                 <a
@@ -472,7 +474,7 @@ function POS({ setOrderData }) {
                                   data-bs-toggle="modal"
                                   data-bs-target="#voucherModal"
                                 >
-                                  Voucher
+                                <span style={{fontSize:'20px',color:'white'}}  >Voucher</span>  
                                 </a>
                               </li>
                               <li>
@@ -481,7 +483,7 @@ function POS({ setOrderData }) {
                                   data-bs-toggle="modal"
                                   data-bs-target="#wasteOrderModal"
                                 >
-                                  Waste
+                                <span style={{fontSize:'20px',color:'white'}}  >Waste </span>  
                                 </a>
                               </li>
                             </ul>
@@ -491,9 +493,9 @@ function POS({ setOrderData }) {
                             href
                             className="btn btn-outline-default rounded-0 w-80px"
                           >
-                            <i className="bi bi-receipt fa-fw fa-lg" />
+                            <i style={{color:'darkred', fontSize:'30px'}} className="bi bi-receipt fa-fw fa-lg" />
                             <br />
-                            <span className="small">Bill</span>
+                            <span style={{fontSize:'15px',fontWeight:'bolder', color: "black"}}  className="small">Bill</span>
                           </a>
                           <a
                             href
@@ -505,7 +507,7 @@ function POS({ setOrderData }) {
                               setShowPaymentModal(true);
                             }}
                           >
-                            <i
+                            <i style={{color:'darkred', fontSize:'30px'}}
                               className="bi bi-send-check fa-lg"
                               data-bs-toggle="modal"
                               data-bs-target="#exampleModalpayment"
@@ -513,6 +515,7 @@ function POS({ setOrderData }) {
                             <br />
 
                             <span
+                             style={{fontSize:'15px',fontWeight:'bolder', color: "black"}}
                               className="small"
                               data-bs-toggle="modal"
                               data-bs-target="#exampleModalpayment"
