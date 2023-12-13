@@ -42,17 +42,17 @@ function Override({
 
       <div class="modal fade" id="overridePaymentModal" tabindex="-1" role="dialog" aria-labelledby="overridePaymentModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
-          <div class="modal-content">
+          <div class="modal-content" style={{height:"70vh"}}>
             <div class="modal-header">
-              <h5 class="modal-title" id="overridePaymentModalLabel">Override Payment Amount</h5>
+              <h5 class="modal-title fs-3" id="overridePaymentModalLabel">Override Payment Amount</h5>
               <button type="button" class="btn-close" data-bs-dismiss="modal" style={{ backgroundColor: 'grey' }}></button>
 
             </div>
             <div class="modal-body">
               <form>
-                <div class="form-group">
-                  <label for="overrideAmount">Enter Amount:</label>
-                  <input type="text" class="form-control" id="tenderAmount"
+                <div class="form-group" style={{marginLeft:"100px"}}>
+                  <label for="overrideAmount  " className='fs-3'>Enter Amount:</label>
+                  <input type="text" class="form-control fs-3 w-75" id="tenderAmount"
                     placeholder={0.0}
                     value={tenderedAmount}
                     onChange={(e) => setTenderedAmount(Number(e.target.value))} />
@@ -66,27 +66,27 @@ function Override({
                   <ul
                     className="ulnum"
                     id="numpad"
-                    style={{ width: "50%", marginLeft: "10%" }}
+                    style={{ width: "50%", marginLeft: "28%" }}
                   >
-                    <li value={1} onClick={(e) => setTenderedAmount(ten => Number(`${ten}${e.target.value}`))}>1</li>
-                    <li value={2} onClick={(e) => setTenderedAmount(ten => Number(`${ten}${e.target.value}`))}>2</li>
-                    <li value={3} onClick={(e) => setTenderedAmount(ten => Number(`${ten}${e.target.value}`))}>3</li>
-                    <li value={4} onClick={(e) => setTenderedAmount(ten => Number(`${ten}${e.target.value}`))}>4</li>
-                    <li value={5} onClick={(e) => setTenderedAmount(ten => Number(`${ten}${e.target.value}`))}>5</li>
-                    <li value={6} onClick={(e) => setTenderedAmount(ten => Number(`${ten}${e.target.value}`))}>6</li>
-                    <li value={7} onClick={(e) => setTenderedAmount(ten => Number(`${ten}${e.target.value}`))}>7</li>
-                    <li value={8} onClick={(e) => setTenderedAmount(ten => Number(`${ten}${e.target.value}`))}>8</li>
-                    <li value={9} onClick={(e) => setTenderedAmount(ten => Number(`${ten}${e.target.value}`))}>9</li>
-                    <li value={0} onClick={(e) => setTenderedAmount(ten => Number(`${ten}${e.target.value}`))}>0</li>
-                    <li onClick={(e) => setTenderedAmount(0)}>C</li>
-                    <li>E</li>
+                    <li className='fs-3' value={1} onClick={(e) => setTenderedAmount(ten => Number(`${ten}${e.target.value}`))}>1</li>
+                    <li className='fs-3' value={2} onClick={(e) => setTenderedAmount(ten => Number(`${ten}${e.target.value}`))}>2</li>
+                    <li className='fs-3' value={3} onClick={(e) => setTenderedAmount(ten => Number(`${ten}${e.target.value}`))}>3</li>
+                    <li className='fs-3' value={4} onClick={(e) => setTenderedAmount(ten => Number(`${ten}${e.target.value}`))}>4</li>
+                    <li className='fs-3' value={5} onClick={(e) => setTenderedAmount(ten => Number(`${ten}${e.target.value}`))}>5</li>
+                    <li className='fs-3' value={6} onClick={(e) => setTenderedAmount(ten => Number(`${ten}${e.target.value}`))}>6</li>
+                    <li className='fs-3' value={7} onClick={(e) => setTenderedAmount(ten => Number(`${ten}${e.target.value}`))}>7</li>
+                    <li className='fs-3' value={8} onClick={(e) => setTenderedAmount(ten => Number(`${ten}${e.target.value}`))}>8</li>
+                    <li className='fs-3' value={9} onClick={(e) => setTenderedAmount(ten => Number(`${ten}${e.target.value}`))}>9</li>
+                    <li className='fs-3' value={0} onClick={(e) => setTenderedAmount(ten => Number(`${ten}${e.target.value}`))}>0</li>
+                    <li className='fs-3' onClick={(e) => setTenderedAmount(0)}>C</li>
+                    <li className='fs-3'>E</li>
                   </ul>
                 </div>
               </form>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-outline-default" data-bs-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-outline-theme" onclick="submitOverride()">Save changes</button>
+              <button type="button" class="btn btn-outline-default fs-3" data-bs-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-outline-theme fs-3" onclick="submitOverride()">Save changes</button>
             </div>
           </div>
         </div>
