@@ -167,7 +167,7 @@ function EditCategoryModal({
   );
 }
 
-function Stockis({ worker }) {
+function Stockis({ worker, setIsLoggedIn }) {
   //   const [editMode, setEditMode] = useState(true);
   //   const [name, setName] = useState("id");
   //   const [description, setDescription] = useState(
@@ -265,7 +265,7 @@ function Stockis({ worker }) {
   return (
     <>
       <div id="app" class="app">
-        <Navbar worker={worker} />
+        <Navbar worker={worker} setIsLoggedIn={setIsLoggedIn} />
 
         <MenuBar />
 

@@ -32,6 +32,7 @@ import CashDrawer from "./cashDrawer";
 import React from "react";
 import axios from "axios";
 import { apiUrl } from "./assets/utils/env";
+import CategoryStock from "./components/CategoryStock";
 
 function App() {
   const [orderData, setOrderData] = React.useState(null);
@@ -121,7 +122,17 @@ function App() {
           path="/ProductReport"
           element={
             isLoggedIn && ["admin", "workerVIP"].includes(parsedUser?.role) ? (
-              <ProductReport />
+              <ProductReport worker={worker} setIsLoggedIn={setIsLoggedIn} />
+            ) : (
+              <Error404 />
+            )
+          }
+        />
+        <Route
+          path="/categoryStock"
+          element={
+            isLoggedIn && ["admin", "workerVIP"].includes(parsedUser?.role) ? (
+              <CategoryStock worker={worker} setIsLoggedIn={setIsLoggedIn} />
             ) : (
               <Error404 />
             )
@@ -131,7 +142,7 @@ function App() {
           path="/Stockis"
           element={
             isLoggedIn && ["admin", "workerVIP"].includes(parsedUser?.role) ? (
-              <Stockis worker={worker} />
+              <Stockis worker={worker} setIsLoggedIn={setIsLoggedIn} />
             ) : (
               <Error404 />
             )
@@ -151,7 +162,12 @@ function App() {
         <Route path="/PaymentModal" element={<PaymentModal />} />
         <Route path="/OrderList" element={<OrderList />} />
         <Route path="/OrderSubmit" element={<OrderSubmit />} />
-        <Route path="/CatogeryEdit" element={<CatogeryEdit />} />
+        <Route
+          path="/CatogeryEdit"
+          element={
+            <CatogeryEdit worker={worker} setIsLoggedIn={setIsLoggedIn} />
+          }
+        />
         <Route path="/Error404" element={<Error404 />} />
         <Route path="/Calendar" element={<Calendar />} />
         <Route path="/Override" element={<Override />} />
@@ -160,8 +176,6 @@ function App() {
         <Route path="/WasteModal" element={<WasteModal />} />
         <Route path="/UserManagement" element={<UserManagement />} />
         <Route path="/CashDrawer" element={<CashDrawer />} />
-
-
 
         {/* <Route path="/Receipt" element={<Receipt />} /> */}
 
