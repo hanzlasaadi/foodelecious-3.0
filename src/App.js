@@ -1,5 +1,5 @@
-import ReactDOM from "react-dom/client";
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+// import ReactDOM from "react-dom/client";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 // import logo from './logo.svg';
 // import './App.css';
 // import Modal from "./Modal";
@@ -32,7 +32,9 @@ import CashDrawer from "./cashDrawer";
 import React from "react";
 import axios from "axios";
 import { apiUrl } from "./assets/utils/env";
-import CategoryStock from "./components/CategoryStock";
+// import CategoryStock from "./components/CategoryStock";
+import CategoryStock from "./components/CategoryStock"
+
 
 function App() {
   const [orderData, setOrderData] = React.useState(null);
