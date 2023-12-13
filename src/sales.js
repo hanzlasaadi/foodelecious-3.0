@@ -126,7 +126,7 @@ function SalesReport({ setIsLoggedIn, worker }) {
             </li>
             <li className="nav-item me-3">
               <a href className="nav-link px-2" data-bs-toggle="tab">
-                Sales type
+                Sales Type
               </a>
             </li>
           </ul>
@@ -354,7 +354,7 @@ function SalesReport({ setIsLoggedIn, worker }) {
                       <td className="align-middle"> Lee</td>
                       <td>Cash</td>
                       <td className="py-1 align-middle">
-                        <span> Eat in</span>
+                        <span> Delievery</span>
                       </td>
                       <td className="align-middle">
                         <span> £34.99</span>
