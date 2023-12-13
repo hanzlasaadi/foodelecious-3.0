@@ -1,9 +1,9 @@
 import React from "react";
-import SaleRow from "./components/SaleRow";
-import MenuBar from "./menu";
-import Navbar from "./navbar";
+import SaleRow from "./../components/SaleRow";
+import MenuBar from "./../menu";
+import Navbar from "./../navbar";
 import axios from "axios";
-import { apiUrl } from "./assets/utils/env";
+import { apiUrl } from "./../assets/utils/env";
 function SalesReport({ setIsLoggedIn, worker }) {
   const [allSales, setAllSales] = React.useState(null);
   const [period, setPeriod] = React.useState("today");
