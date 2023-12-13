@@ -27,7 +27,7 @@ function NavList({
         <div class="card" >
           <div 
             style={{ 
-               color:'darkblue',
+               color:'black',
               fontSize:'50px !important' }}
            
           class="card-body ">{category.name}</div>
