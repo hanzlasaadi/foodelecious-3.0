@@ -12,14 +12,16 @@ function NewOrder({
     <div className="pos-order">
       <div className="pos-order-product">
         <div className="flex-1">
-          <div className="h6 mb-1">{commodity.name}</div>
+          <div className="h6 mb-1" style={{ fontSize: "18px" }}>
+            {commodity.name}
+          </div>
           {/* <div className="small">£ {commodity.productPrice}</div> */}
           <div className="small mb-2">
             {commodity.options?.map((opt) => {
               if (opt.type == "no") return null;
               return (
-                <div>
-                  <span style={{ color: "grey" }}>
+                <div style={{ fontSize: "14px" }}>
+                  <span style={{ color: "grey", fontSize: "14px" }}>
                     {" "}
                     {opt.shortName}: {opt.type}{" "}
                   </span>{" "}
@@ -41,7 +43,7 @@ function NewOrder({
             <a href="#/" className="btn btn-outline-theme btn-sm">
               <i className="fa fa-plus" />
             </a> */}
-            <p style={{ fontSize: "13px", color: "black" }}>
+            <p style={{ fontSize: "14px", color: "black" }}>
               Qty(s){" "}
               <span style={{ color: "#e57300" }}>- {commodity.unit}</span>
             </p>
@@ -49,7 +51,7 @@ function NewOrder({
         </div>
       </div>
       <div className="pos-order-price d-flex flex-column">
-        <div style={{ fontWeight: "bold" }}>
+        <div style={{ fontWeight: "bold", fontSize: "18px" }}>
           £
           {(Math.round(Number(commodity.productPrice) * 100) / 100) *
             commodity.unit}

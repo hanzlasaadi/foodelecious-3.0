@@ -59,7 +59,7 @@ const FunctionalComponent = ({ commodityList }) => {
     return (
       <button
         type="button"
-        className="btn btn-success"
+        className="btn btn-success fs-3"
         style={{ textAlign: "center" }}
       >
         Print Receipt

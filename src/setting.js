@@ -33,7 +33,7 @@ function Setting({ worker, setIsLoggedIn }) {
                       class="text-inverse text-opacity-50"
                       style={{ color: "#e57300" }}
                     >
-                      Abdullah Aslam
+                      {worker.name || "User Name"}
                     </div>
                   </div>
                   <div class="w-100px">
@@ -47,7 +47,7 @@ function Setting({ worker, setIsLoggedIn }) {
                     </a>
                   </div>
                 </div>
-                <div class="list-group-item d-flex align-items-center">
+                {/* <div class="list-group-item d-flex align-items-center">
                   <div class="flex-1 text-break">
                     <div>Username</div>
                     <div
@@ -58,7 +58,7 @@ function Setting({ worker, setIsLoggedIn }) {
                     </div>
                   </div>
                   <div></div>
-                </div>
+                </div> */}
 
                 <div class="list-group-item d-flex align-items-center">
                   <div class="flex-1 text-break">
@@ -67,14 +67,20 @@ function Setting({ worker, setIsLoggedIn }) {
                       class="text-inverse text-opacity-50"
                       style={{ color: "#e57300" }}
                     >
-                      abdullah@gmail.com
+                      {worker.email || "worker email"}
                     </div>
                   </div>
                   <div></div>
                 </div>
                 <div class="list-group-item d-flex align-items-center">
                   <div class="flex-1 text-break">
-                    <div>Password</div>
+                    <div>Role</div>
+                    <div
+                      class="text-inverse text-opacity-50"
+                      style={{ color: "#e57300" }}
+                    >
+                      {worker.role || "worker role"}
+                    </div>
                   </div>
                   <div></div>
                 </div>

@@ -39,11 +39,15 @@ export class ComponentToPrint extends React.PureComponent {
       <div className="ticket hidden">
         {/* <img src="./logo.png" alt="Logo" /> */}
         <p className="centered">
-          RECEIPT EXAMPLE
+          FOODELICIOUS
           <br />
-          Address line 1
+          80 EAST STREET
           <br />
-          Address line 2
+          BEDMINSTER, BS3 4EY
+          <br />
+          TEL: 01170000000
+          <br />
+          VAT NO: ________
         </p>
         <table>
           <thead>
@@ -93,9 +97,11 @@ export class ComponentToPrint extends React.PureComponent {
           </tbody>
         </table>
         <p className="centered">
-          Thanks for your purchase!
+          Thanks for your order!
           <br />
-          Foodeleciousbristol.co.uk
+          Order online for exclusive prices & discounts.
+          <br />
+          www.foodeliciousbristol.co.uk
         </p>
       </div>
     );
