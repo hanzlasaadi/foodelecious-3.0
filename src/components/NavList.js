@@ -3,17 +3,21 @@ function NavList({
   category,
   setShowProductCards,
   handleNavItemClick,
+  activeNav,
 }) {
   return (
     <li
       className="nav-item "
-      style={{ 
-        minWidth: "max-content" }}
+      style={{
+        minWidth: "max-content",
+      }}
       data-categoryid={category._id}
     >
       <a
-      style={{ 
-        fontWeight:'bold !important' ,fontSize:'0px !important' }}
+        style={{
+          fontWeight: "bold !important",
+          fontSize: "0px !important",
+        }}
         className="nav-link"
         href="/"
         data-filter="all"
@@ -21,16 +25,25 @@ function NavList({
           e.preventDefault();
           handleNavItemClick(category._id);
           setShowProductCards(true);
-          
         }}
       >
-        <div class="card" >
-          <div 
-            style={{ 
-               color:'black',
-              fontSize:'50px !important' }}
-           
-          class="card-body ">{category.name}</div>
+        <div
+          class="card"
+          style={
+            activeNav === category._id
+              ? { backgroundColor: "rgb(229, 124, 53)" }
+              : {}
+          }
+        >
+          <div
+            style={{
+              color: "black",
+              fontSize: "50px !important",
+            }}
+            class="card-body "
+          >
+            {category.name}
+          </div>
         </div>
       </a>
     </li>

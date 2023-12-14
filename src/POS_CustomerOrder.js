@@ -37,6 +37,7 @@ function POS({ setOrderData, worker }) {
     useState(dummyProductCategory);
   // const [pizzaList, setPizzaList] = useState([]);
   const [subcategoryClicked, setSubcategoryClicked] = useState({});
+  const [activeNav, setActiveNav] = useState(null);
 
   // modal hooks
   const [showModal, setShowModal] = useState(false);
@@ -91,10 +92,10 @@ function POS({ setOrderData, worker }) {
     );
   }, [commodityList]);
 
-  React.useEffect(() => {
-    if (typeOfOrder === "eatin") setTax(20);
-    if (typeOfOrder === "takeaway") setTax(0);
-  }, [typeOfOrder]);
+  // React.useEffect(() => {
+  //   if (typeOfOrder === "eatin") setTax(20);
+  //   if (typeOfOrder === "takeaway") setTax(0);
+  // }, [typeOfOrder]);
 
   // Product Card Click
   const handleNavItemClick = (subcategoryId) => {
@@ -107,6 +108,7 @@ function POS({ setOrderData, worker }) {
     setCategoryId(subcategoryId);
     setCurrentProducts(filteredProducts);
     setCurrentProductCategory(filteredCategory);
+    setActiveNav(subcategoryId);
     // console.log("currentProducts", filteredProducts);
     // console.log("currentCategory", filteredCategory);
   };
@@ -211,6 +213,7 @@ function POS({ setOrderData, worker }) {
                             setShowProductCards={setShowProductCards}
                             // setCurrentProduct={setCurrentProducts}
                             handleNavItemClick={handleNavItemClick}
+                            activeNav={activeNav}
                           />
                         );
                       })}
@@ -287,7 +290,7 @@ function POS({ setOrderData, worker }) {
                                   marginRight: "5px",
                                   fontSize: "25px",
                                   fontWeight: "bolder",
-                                  backgroundColor: "",
+                                  backgroundColor: "rgb(229, 124, 53)",
                                   color: "black",
                                 }
                               : {
@@ -298,7 +301,18 @@ function POS({ setOrderData, worker }) {
                           className="btn active"
                         >
                           <span
-                            style={{ fontSize: "23px", fontWeight: "bolder" }}
+                            style={
+                              typeOfOrder === "takeaway"
+                                ? {
+                                    fontSize: "23px",
+                                    fontWeight: "bolder",
+                                    color: "white",
+                                  }
+                                : {
+                                    fontSize: "23px",
+                                    fontWeight: "bolder",
+                                  }
+                            }
                           >
                             Take Away
                           </span>
@@ -312,18 +326,29 @@ function POS({ setOrderData, worker }) {
                                   borderRadius: "15px !important",
                                   marginRight: "5px",
 
-                                  backgroundColor: "whitesmoke",
-                                  color: "darkred",
+                                  backgroundColor: "rgb(229, 124, 53)",
+                                  color: "black",
                                 }
                               : {
                                   borderRadius: "15px !important",
                                   marginRight: "5px",
                                 }
                           }
-                          className="btn active"
+                          className="btn"
                         >
                           <span
-                            style={{ fontSize: "23px", fontWeight: "bolder" }}
+                            style={
+                              typeOfOrder === "eatin"
+                                ? {
+                                    fontSize: "23px",
+                                    fontWeight: "bolder",
+                                    color: "white",
+                                  }
+                                : {
+                                    fontSize: "23px",
+                                    fontWeight: "bolder",
+                                  }
+                            }
                           >
                             {" "}
                             Eat In
@@ -469,7 +494,7 @@ function POS({ setOrderData, worker }) {
                             color: "black",
                           }}
                         >
-                          Taxes ({tax}%)
+                          Taxes (VAT)
                         </div>
                         <div
                           className="flex-1 text-end h6 mb-0"
