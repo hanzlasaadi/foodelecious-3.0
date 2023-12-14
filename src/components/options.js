@@ -28,23 +28,26 @@ function Option({ options, stepName, setStepsPrice }) {
     <>
       {options.map((option, i) => {
         return (
-          <div className="option">
+          <div className="option  ">
             <input
               type="checkbox"
               id={option._id}
               name={option.type}
               value={option._id}
-              className="option-input"
+              className="option-input "
               checked={selectedCheckboxes.includes(option._id)}
               onChange={() =>
                 handleCheckboxChange(option._id, stepName, option.price)
               }
             />
             <label className="option-label" htmlFor={option._id}>
-              <span className="option-text" style={{ color: "black" }}>
+              <span
+                className="option-text fs-2 fw-bold"
+                style={{ color: "black" }}
+              >
                 {option.type}
               </span>
-              <span className="option-price" style={{ color: "darkgrey" }}>
+              <span className="option-price fs-2" style={{ color: "darkgrey" }}>
                 +{option.price}£
               </span>
             </label>
@@ -74,10 +77,10 @@ function Option({ options, stepName, setStepsPrice }) {
 function Step({ stepToChoose, setStepsPrice }) {
   return (
     <div className="mb-2">
-      <div className="fw-bold" style={{ color: "black" }}>
+      <div className="fw-bold fs-2" style={{ color: "black" }}>
         {stepToChoose.stepName}:
       </div>
-      <div className="option-list">
+      <div className="option-list ">
         <Option
           options={stepToChoose.options}
           stepName={stepToChoose.stepName}

@@ -56,7 +56,6 @@ function Modal({
       barcode: "testBarcode",
       name: filteredProduct.name,
       subCategory: subcategoryClicked._id,
-      productId: filteredProduct._id,
       productPrice: stepsPrice + filteredProduct.price,
       options: choosedOptions,
       unit: units,
@@ -72,7 +71,7 @@ function Modal({
       <div className="modal-dialog modal-lg">
         <div
           className="modal-content border-0"
-          style={{ backgroundColor: "white" }}
+          style={{ backgroundColor: "white", height: "100" }}
         >
           <div className="card">
             <div className="card-body p-0">
@@ -91,20 +90,24 @@ function Modal({
 </div> */}
                 <div className="modal-pos-product-info">
                   <div
-                    className="h4 mb-2"
+                    className="h4 mb-2 fs-1"
                     id="modal-title"
                     style={{ color: "grey" }}
                   >
                     {filteredProduct.name}
                   </div>
-                  <div className="text-white text-opacity-50 mb-2">
-                    <p id="modal-description" style={{ color: "grey" }}>
+                  <div className="text-white text-opacity-50 mb-2 ">
+                    <p
+                      id="modal-description"
+                      className=" fs-3"
+                      style={{ color: "grey" }}
+                    >
                       {filteredProduct.description}
                     </p>
                   </div>
                   <div
                     id="modal-price"
-                    className="h4 mb-3"
+                    className="h4 mb-3 fs-1"
                     style={{ color: "#ff4a17" }}
                   >
                     {(filteredProduct.price + stepsPrice) * units} £
@@ -115,21 +118,21 @@ function Modal({
                       className="btn btn-outline-theme"
                       onClick={() => setUnits((u) => u - 1)}
                     >
-                      <i className="fa fa-minus" />
+                      <i className="fa fa-minus fa-3x" />
                     </a>
                     <input
                       type="text"
-                      className="form-control w-50px fw-bold mx-2 bg-grey border-0 text-center"
+                      className="form-control w-50px fw-bold mx-2 bg-grey border-0 text-center  fs-3 fw-bold"
                       name="qty"
                       value={units}
                       // defaultValue={units}
                     />
                     <a
                       href
-                      className="btn btn-outline-theme"
+                      className="btn btn-outline-theme "
                       onClick={() => setUnits((u) => u + 1)}
                     >
-                      <i className="fa fa-plus" />
+                      <i className="fa fa-plus fa-3x" />
                     </a>
                   </div>
                   <hr className="mx-n4" />
@@ -244,7 +247,7 @@ function Modal({
                     <div className="col-4">
                       <a
                         href
-                        className="btn btn-default h4 mb-0 d-block rounded-0 py-3"
+                        className="btn btn-default h4 mb-0 d-block rounded-0 py-3  fs-1"
                         data-bs-dismiss="modal"
                         onClick={() => setShowModal(false)}
                       >
@@ -255,7 +258,7 @@ function Modal({
                       <a
                         href
                         id="addToCart"
-                        className="btn btn-success d-flex justify-content-center align-items-center rounded-0 py-3 h4 m-0"
+                        className="btn btn-success d-flex justify-content-center align-items-center rounded-0 py-3 h4 m-0  fs-2"
                         onClick={handleAddToCart}
                         data-bs-dismiss="modal"
                       >
