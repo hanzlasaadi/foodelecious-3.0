@@ -42,13 +42,13 @@ function SalesReport({ setIsLoggedIn, worker }) {
       <div id="content" className="app-content">
         <div className="d-flex align-items-center mb-3">
           <div>
-            <ul className="breadcrumb">
-              <li className="breadcrumb-item">
+            {/* <ul className="breadcrumb"> */}
+            {/* <li className="breadcrumb-item">
                 <a href>PAGES</a>
-              </li>
-              {/* <li className="breadcrumb-item active">Sales</li> */}
-            </ul>
-            <h1 className="page-header mb-0">Sales</h1>
+              </li> */}
+            {/* <li className="breadcrumb-item active">Sales</li> */}
+            {/* </ul> */}
+            <h1 className="page-header mb-0">Sales & Past Orders</h1>
           </div>
           {/* <div className="ms-auto">
                         <a href className="btn btn-outline-theme"><i className="fa fa-plus-circle fa-fw me-1"></i> Create Orders</a>
@@ -69,7 +69,7 @@ function SalesReport({ setIsLoggedIn, worker }) {
               data-bs-toggle="dropdown"
               className="text-black text-decoration-none"
             >
-              Time Range
+              {`${period}'s sales`}
             </a>
             <div className="dropdown-menu">
               <a
@@ -114,21 +114,21 @@ function SalesReport({ setIsLoggedIn, worker }) {
                 Date Range
               </a>
             </li>
-            <li className="nav-item me-3">
+            {/* <li className="nav-item me-3">
               <a href className="nav-link px-2" data-bs-toggle="tab">
                 Payment Method
               </a>
-            </li>
-            <li className="nav-item me-3">
+            </li> */}
+            {/* <li className="nav-item me-3">
               <a href className="nav-link px-2" data-bs-toggle="tab">
                 Staff
               </a>
-            </li>
-            <li className="nav-item me-3">
+            </li> */}
+            {/* <li className="nav-item me-3">
               <a href className="nav-link px-2" data-bs-toggle="tab">
                 Sales type
               </a>
-            </li>
+            </li> */}
           </ul>
           <div className="tab-content p-4">
             <div className="tab-pane fade show active" id="dateTab">
