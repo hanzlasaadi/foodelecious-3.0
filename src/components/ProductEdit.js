@@ -253,13 +253,14 @@ function ProductEdit({ currentProduct, setCurrentProduct, refreshData }) {
     // console.log(itemToBeUpdated.querySelector("[data-name]"));
     copySubcategory.productsList = copySubcategory.productsList.map((p) => {
       if (p._id !== itemId) return p;
-      return {
-        name: updateObj.itemName,
-        description: updateObj.description,
-        price: updateObj.price,
-        stock: updateObj.stock,
-        available: updateObj.availability,
-      };
+      else {
+        p.name = updateObj.itemName;
+        p.description = updateObj.description;
+        p.price = updateObj.price;
+        p.stock = updateObj.stock;
+        p.available = updateObj.availability;
+        return p;
+      }
     });
     console.log("final: ", copySubcategory);
 

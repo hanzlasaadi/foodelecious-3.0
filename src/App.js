@@ -33,8 +33,7 @@ import React from "react";
 import axios from "axios";
 import { apiUrl } from "./assets/utils/env";
 // import CategoryStock from "./components/CategoryStock";
-import CategoryStock from "./components/CategoryStock"
-
+import CategoryStock from "./components/CategoryStock";
 
 function App() {
   const [orderData, setOrderData] = React.useState(null);
