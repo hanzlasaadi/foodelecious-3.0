@@ -3,7 +3,7 @@ import { useState } from "react";
 import { apiUrl } from "../assets/utils/env";
 import Loader from "./loader";
 
-function Card({ item, handleUpdateProduct }) {
+function Card({ item, handleUpdateProduct, subCategoryId }) {
   const [editMode, setEditMode] = useState(false);
   const [itemName, setItemName] = useState(item.name);
   const [description, setDescription] = useState(item.description);
@@ -18,6 +18,43 @@ function Card({ item, handleUpdateProduct }) {
   const handleCancelClick = () => {
     // Reset the fields to their original values
     setEditMode(false);
+  };
+
+  const [image, setImage] = useState({ preview: "", data: "" });
+  const [status, setStatus] = useState("");
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const token = localStorage.getItem("token");
+    const config = {
+      headers: { Authorization: `Bearer ${token}` },
+    };
+
+    let formData = new FormData();
+    formData.append("image", image.data);
+
+    axios
+      .post(
+        `${apiUrl}/api/v1/product/imageUpload?productId=${item._id}&subCategoryId=${subCategoryId}`,
+        formData,
+        config
+      )
+      .then((res) => {
+        console.log(res.data);
+        alert("successfully uploaded image!");
+        setStatus(res.statusText);
+      })
+      .catch((err) => {
+        console.log(err);
+        alert("Could not upload image. ", `${err.message || "server error"}`);
+      });
+  };
+
+  const handleFileChange = (e) => {
+    const img = {
+      preview: URL.createObjectURL(e.target.files[0]),
+      data: e.target.files[0],
+    };
+    setImage(img);
   };
   return (
     <div class="pos-product" data-item={item._id}>
@@ -139,11 +176,13 @@ function Card({ item, handleUpdateProduct }) {
             aria-describedby="inputGroupFileAddon04"
             aria-label="Upload"
             style={{ backgroundColor: "#b8b8b8" }}
+            onChange={handleFileChange}
           />
           <button
             className="btn bg-dark text-white"
             type="button"
             id="inputGroupFileAddon04"
+            onClick={handleSubmit}
           >
             upload
           </button>
@@ -251,7 +290,11 @@ function ProductEdit({ currentProduct, setCurrentProduct, refreshData }) {
         return (
           <div class="card " style={{ width: "250px" }} key={curr._id}>
             <div class="card-body p-1">
-              <Card item={curr} handleUpdateProduct={handleUpdateProduct} />
+              <Card
+                item={curr}
+                subCategoryId={copySubcategory._id}
+                handleUpdateProduct={handleUpdateProduct}
+              />
             </div>
           </div>
         );
