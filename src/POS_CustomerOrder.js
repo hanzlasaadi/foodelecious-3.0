@@ -423,6 +423,7 @@ function POS({ setOrderData, worker }) {
                           <NewOrder
                             commodity={commodity}
                             setCommodityList={setCommodityList}
+                            commodityList={commodityList}
                             setShowEditModal={setShowEditModal}
                             setClickedEditProduct={setClickedEditProduct}
                             handleProductCardClick={handleProductCardClick}

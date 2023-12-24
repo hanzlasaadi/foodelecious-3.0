@@ -3,11 +3,37 @@ import React from "react";
 function NewOrder({
   commodity,
   setCommodityList,
+  commodityList,
   setShowEditModal,
   setClickedEditProduct,
   handleProductCardClick,
 }) {
   const [showRemoveItem, setShowRemoveItem] = React.useState(false);
+  const [editPrice, setEditPrice] = React.useState(false);
+  const [updatedPrice, setUpdatedPrice] = React.useState(
+    (Math.round(Number(commodity.productPrice) * 100) / 100) * commodity.unit
+  );
+
+  const updateCommodity = () => {
+    try {
+      if (!Number(updatedPrice)) throw new Error("Enter a Number!");
+
+      const newCommodityList = commodityList.map((comm) => {
+        if (comm.name === commodity.name) {
+          commodity.productPrice = Number(updatedPrice);
+          return commodity;
+        }
+        return comm;
+      });
+
+      setCommodityList(newCommodityList);
+      setEditPrice(false);
+    } catch (error) {
+      console.log(error);
+      alert(`Error Occured ${error.message || "Null"}`);
+    }
+  };
+
   return (
     <div className="pos-order">
       <div className="pos-order-product">
@@ -51,32 +77,62 @@ function NewOrder({
         </div>
       </div>
       <div className="pos-order-price d-flex flex-column">
-        <div style={{ fontWeight: "bold", fontSize: "18px" }}>
-          £
-          {(Math.round(Number(commodity.productPrice) * 100) / 100) *
-            commodity.unit}
-        </div>
-        <div className="mt-auto d-flex flex-column gap-2">
-          <button
-            onClick={(e) => {
-              handleProductCardClick(commodity.stepsId);
-              setClickedEditProduct(e.currentTarget.dataset.product);
-              setShowEditModal(true);
-            }}
-            data-product={commodity.name}
-            className="btn btn-sm btn-outline-gray-500"
-            data-bs-toggle="modal"
-            data-bs-target="#modalCartItem"
-          >
-            <i className="fa fa-pencil" />
-          </button>
-          <button
-            className="btn btn-sm btn-outline-gray-500"
-            onClick={() => setShowRemoveItem(true)}
-          >
-            <i className="fa fa-trash" />
-          </button>
-        </div>
+        {editPrice ? (
+          <input
+            type="number"
+            min={0}
+            step={0.01}
+            style={{ minWidth: "fit-content" }}
+            value={`${updatedPrice}`}
+            onChange={(e) => setUpdatedPrice(Number(e.target.value))}
+          />
+        ) : (
+          <div style={{ fontWeight: "bold", fontSize: "18px" }}>
+            £{updatedPrice}
+          </div>
+        )}
+        {editPrice ? (
+          <div className="mt-auto d-flex flex-column gap-2">
+            <button
+              onClick={(e) => {
+                setEditPrice(false);
+              }}
+              data-product={commodity.name}
+              className="btn btn-sm btn-outline-gray-500"
+            >
+              <i className="fa fa-window-close" />
+            </button>
+            <button
+              className="btn btn-sm btn-outline-gray-500"
+              onClick={updateCommodity}
+            >
+              <i className="fa fa-check-square" />
+            </button>
+          </div>
+        ) : (
+          <div className="mt-auto d-flex flex-column gap-2">
+            <button
+              onClick={(e) => {
+                // handleProductCardClick(commodity.stepsId);
+                // setClickedEditProduct(e.currentTarget.dataset.product);
+                // setShowEditModal(true);
+                setEditPrice(true);
+              }}
+              data-product={commodity.name}
+              className="btn btn-sm btn-outline-gray-500"
+              // data-bs-toggle="modal"
+              // data-bs-target="#modalCartItem"
+            >
+              <i className="fa fa-pencil" />
+            </button>
+            <button
+              className="btn btn-sm btn-outline-gray-500"
+              onClick={() => setShowRemoveItem(true)}
+            >
+              <i className="fa fa-trash" />
+            </button>
+          </div>
+        )}
       </div>
       {showRemoveItem ? (
         <div className="pos-order-confirmation text-center d-flex flex-column justify-content-center">
