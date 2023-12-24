@@ -5,13 +5,16 @@ function ProductCard({
   setSubcategoryClicked,
   handleProductCardClick,
 }) {
-  console.log(currentProduct, "currProduct Test");
+  // console.log(currentProduct, "currProduct Test");
+  const availableProducts = currentProduct?.productsList?.filter(
+    (i) => i.available
+  );
   return (
     <>
       <h1>{currentProduct.name}</h1>
-      {currentProduct?.productsList?.map((curr) => {
+      {availableProducts?.map((curr) => {
         return (
-          <div 
+          <div
             className="col-xxl-3 col-xl-4 col-lg-6 col-md-4 col-sm-6 pb-4"
             data-type="meat"
             key={curr._id}
@@ -19,11 +22,11 @@ function ProductCard({
             <div className="card h-100">
               <div
                 className="card-body h-100 p-1"
-                style={{   cursor: "pointer" }}
+                style={{ cursor: "pointer" }}
               >
                 <a
-                 style={{   fontWeight:'bolder' }}
-                data-product-id={`${curr._id}`}
+                  style={{ fontWeight: "bolder" }}
+                  data-product-id={`${curr._id}`}
                   onClick={(e) => {
                     setShowModal(true);
                     // const modalEl = document.getElementById("modalPosItem");
