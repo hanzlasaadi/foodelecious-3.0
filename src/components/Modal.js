@@ -56,6 +56,7 @@ function Modal({
       barcode: "testBarcode",
       name: filteredProduct.name,
       subCategory: subcategoryClicked._id,
+      productId: filteredProduct._id,
       productPrice: stepsPrice + filteredProduct.price,
       options: choosedOptions,
       unit: units,
