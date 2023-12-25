@@ -266,6 +266,17 @@ function CategoryStock({ worker, setIsLoggedIn }) {
   const handleUpdateCategory = (obj) => {
     // axios.
   };
+  const [editMode, setEditMode] = useState(false);
+
+  const handleEditClick = () => {
+    setEditMode(true);
+  };
+
+  const handleCancelClick = () => {
+    // Reset the fields to their original values
+    setEditMode(false);
+  };
+
   return (
     <>
       <div id="app" class="app">
@@ -392,6 +403,84 @@ function CategoryStock({ worker, setIsLoggedIn }) {
                               </div>
                             );
                           })}
+
+                          <div class=" card p-3" style={{ width: "250px" }}>
+                            <div
+                              class="card-body info p-1"
+                              style={{ lineHeight: "2" }}
+                            >
+                              <div
+                                className="w-100px"
+                                style={{ color: "black" }}
+                              >
+                                Name:
+                              </div>
+                              <input
+                                type="text"
+                                className="form-control"
+                                placeholder="new category name"
+                                // value={itemName}
+                                data-name
+                                // onChange={(e) => setItemName(e.target.value)}
+                              />
+
+                              <p class="text-dark mb-2">Availability:</p>
+
+                              <input
+                                type="file"
+                                class="form-control "
+                                id="inputGroupFile04"
+                                name="image"
+                                aria-describedby="inputGroupFileAddon04"
+                                aria-label="Upload"
+                                style={{
+                                  backgroundColor: "rgb(184, 184, 184)",
+                                }}
+                              />
+                              <div class="d-flex">
+                                <button class="btn btn-default bg-dark d-block">
+                              
+                                  <span style={{color:"white"}}>upload </span>
+                                </button>
+                              </div>
+
+                              <div class="d-flex mt-5">
+                                <button class="btn btn-default bg-dark d-block w-100">
+                                  <i class="fa fa-plus fa-fw text-white"></i>{" "}
+                                  <span style={{color:"white"}}> Add New Category </span>
+                                </button>
+                              </div>
+
+                              {/* <div className="d-flex">
+          {editMode ? (
+            <>
+              <button
+                className="btn btn-success d-block"
+                data-product={item._id}
+                onClick={(e) => {
+                  setEditMode(false);
+                  handleUpdateProduct(item._id, {
+                    itemName,
+                    availability,
+                  });
+                }}
+              >
+                <i className="fa fa-check fa-fw text-white"></i>{" "}
+                <span style={{ color: "white" }}> Update </span>
+              </button>
+              &nbsp;&nbsp;
+              <button
+                className="btn btn-default d-block"
+                onClick={handleCancelClick}
+              >
+                <i className="fa fa-times fa-fw text-white"></i>{" "}
+                <span style={{ color: "white" }}>Cancel </span>
+              </button>
+            </>
+          ) : null}
+        </div> */}
+                            </div>
+                          </div>
                         </div>
                       </div>
                     </div>

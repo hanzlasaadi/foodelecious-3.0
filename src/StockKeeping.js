@@ -18,21 +18,24 @@ function Step({ stepToChoose }) {
       <div className="fw-bold" style={{ color: "black" }}>
         {stepToChoose.stepName}:
       </div>
-      <div className="option-list">
+      <div className="option-list col-lg-12">
         {stepToChoose.options.map((option, i) => {
           return (
             <div className="option">
               <div className="option-label">
+                
                 <input
                   value={option.type}
-                  className="option-text"
-                  style={{ color: "black" }}
+                  className="option-text p-1  col-lg-5 "
+                  style={{ color: "black", fontSize:14,   marginLeft:-88 }}
                 />
+               
                 <input
-                  className="option-price"
-                  style={{ color: "darkgrey" }}
+                  className="option-text  p-1 col-lg-3"
+                  style={{ color: "black",  fontSize:14, marginTop:-25, marginLeft:121}}
                   value={option.price}
                 />
+              
               </div>
             </div>
           );
@@ -381,6 +384,81 @@ function Stockis({ worker, setIsLoggedIn }) {
                               // setShowModal={setShowModal}
                             />
                           ) : null}
+                        </div>
+
+                        {/* add new product card  */}
+
+                        <div class=" card mt-3 p-3 mb-3" style={{ width: "250px" }}>
+                          <div
+                            class="card-body info p-1"
+                            style={{ lineHeight: "2" }}
+                          >
+                            <div className="w-100px" style={{ color: "black" }}>
+                              Name:
+                            </div>
+
+                            <input
+                              type="text"
+                              className="form-control"
+                              placeholder="new product name"
+                              data-name
+                            />
+
+                            <div className="w-100px" style={{ color: "black" }}>
+                              Description:
+                            </div>
+
+                            <input
+                              type="text"
+                              className="form-control"
+                              placeholder="enter description"
+                              data-name
+                            />
+
+                            <div className="w-100px mt-3" style={{ color: "black" }}>
+                              Price:
+                              <span>
+                                <input
+                                  style={{marginTop:-24, marginLeft:116}}
+                                  type="text"
+                                  className="form-control"
+                                  placeholder=""
+                                  data-name
+                                />
+                              </span>
+                            </div>
+
+                            <div className="w-100px mt-3" style={{ color: "black" }}>
+                              Stock:
+                              <span>
+                                <input
+                                  style={{marginTop:-24, marginLeft:116}}
+                                  type="text"
+                                  className="form-control"
+                                  placeholder=""
+                                  data-name
+                                />
+                              </span>
+                            </div>
+
+                            <p class="text-dark mt-3 mb-2">Availability:</p>
+
+                            <div class="input-group py-3">
+                              <input type="file" class="form-control " id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload" style={{backgroundColor: "rgb(184, 184, 184)"}}/>
+                              <button class="btn bg-dark text-white" type="button" id="inputGroupFileAddon04">upload</button>
+                              </div>
+                         
+
+                            <div class="d-flex">
+                              <button class="btn btn-default bg-dark d-block w-100">
+                                <i class="fa fa-plus fa-fw text-white"></i>{" "}
+                                <span style={{ color: "white" }}>
+                                  {" "}
+                                  Add New Product{" "}
+                                </span>
+                              </button>
+                            </div>
+                          </div>
                         </div>
                       </div>
                     </div>
