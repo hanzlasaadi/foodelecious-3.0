@@ -12,6 +12,41 @@ import {
 } from "./assets/utils/dummyData";
 import ProductEdit from "./components/ProductEdit";
 
+function Option({ option }) {
+  const [optionType, setOptionType] = useState(option.type);
+  const [optionPrice, setOptionPrice] = useState(option.price);
+
+  return (
+    <div
+      className="option unique-option-element"
+      data-option={option._id}
+      data-type={optionType}
+      data-price={optionPrice}
+    >
+      <div className="option-label">
+        <input
+          value={optionType}
+          onChange={(e) => setOptionType(e.target.value)}
+          className="option-text p-1  col-lg-5 "
+          style={{ color: "black", fontSize: 14, marginLeft: -88 }}
+        />
+
+        <input
+          className="option-text  p-1 col-lg-3"
+          style={{
+            color: "black",
+            fontSize: 14,
+            marginTop: -25,
+            marginLeft: 121,
+          }}
+          value={optionPrice}
+          onChange={(e) => setOptionPrice(e.target.value)}
+        />
+      </div>
+    </div>
+  );
+}
+
 function Step({ stepToChoose }) {
   return (
     <div className="mb-2">
@@ -20,30 +55,9 @@ function Step({ stepToChoose }) {
       </div>
       <div className="option-list col-lg-12">
         {stepToChoose.options.map((option, i) => {
-          return (
-            <div className="option">
-              <div className="option-label">
-                <input
-                  value={option.type}
-                  className="option-text p-1  col-lg-5 "
-                  style={{ color: "black", fontSize: 14, marginLeft: -88 }}
-                />
-
-                <input
-                  className="option-text  p-1 col-lg-3"
-                  style={{
-                    color: "black",
-                    fontSize: 14,
-                    marginTop: -25,
-                    marginLeft: 121,
-                  }}
-                  value={option.price}
-                />
-              </div>
-            </div>
-          );
+          return <Option option={option} />;
         })}
-        <div className="option">
+        {/* <div className="option">
           <input
             type="checkbox"
             value="add"
@@ -55,7 +69,7 @@ function Step({ stepToChoose }) {
               <i class="bi bi-plus-lg " style={{ fontSize: "20px" }}></i>{" "}
             </span>
           </label>
-        </div>
+        </div> */}
       </div>
     </div>
   );
@@ -63,14 +77,64 @@ function Step({ stepToChoose }) {
 
 function EditCategoryModal({
   // setShowEditCategoryModal,
-  categoryList,
-  currentCategory,
+  // categoryList,
+  // currentCategory,
   currentStep,
 }) {
-  const copyCurrentCategory = JSON.parse(JSON.stringify(currentCategory));
-  const handleUpdateCategory = (e) => {
-    console.log(e.currentTarget);
-    // setShowEditCategoryModal(false);
+  const handleUpdateOptions = (e) => {
+    // console.log(currentStep);
+    const allInputs = Array.from(
+      document.querySelectorAll(".unique-option-element")
+    ).map((p) => {
+      return {
+        option: p.dataset.option,
+        price: p.dataset.price,
+        type: p.dataset.type,
+      };
+    });
+
+    const modifiedStep = currentStep.stepsToChoose?.map(
+      ({ _id, stepName, shortName, options }) => {
+        return {
+          _id,
+          stepName,
+          shortName,
+          options: options.map((opt) => {
+            const [filteredInput] = allInputs.filter(
+              (inp) => inp.option === opt._id
+            );
+            return {
+              _id: opt._id,
+              image: opt.image,
+              price: Number(filteredInput.price),
+              type: filteredInput.type,
+            };
+          }),
+        };
+      }
+    );
+
+    // console.log("currentStep: ", currentStep);
+    // console.log("modifiedStep: ", modifiedStep);
+
+    const token = localStorage.getItem("token");
+    const config = {
+      headers: { Authorization: `Bearer ${token}` },
+    };
+    axios
+      .patch(
+        `${apiUrl}/api/v1/step/${currentStep._id}`,
+        { stepsToChoose: modifiedStep },
+        config
+      )
+      .then((res) => {
+        alert("successfully updated step!");
+        console.log(res.data);
+      })
+      .catch((err) => {
+        alert("Error occurred!");
+        console.log("error updating step: ", err);
+      });
   };
   return (
     <div className="modal modal-pos fade" id="modalEditCategory">
@@ -115,7 +179,7 @@ function EditCategoryModal({
                         href
                         id="addToCart"
                         className="btn btn-success d-flex justify-content-center align-items-center rounded-0 py-3 h4 m-0"
-                        onClick={handleUpdateCategory}
+                        onClick={handleUpdateOptions}
                         data-bs-dismiss="modal"
                       >
                         Update Category{" "}
@@ -373,8 +437,7 @@ function Stockis({ worker, setIsLoggedIn }) {
                         </div>
 
                         {/* add new product card  */}
-
-                        <div
+                        {/* <div
                           class=" card mt-3 p-3 mb-3"
                           style={{ width: "250px" }}
                         >
@@ -468,7 +531,7 @@ function Stockis({ worker, setIsLoggedIn }) {
                               </button>
                             </div>
                           </div>
-                        </div>
+                        </div> */}
                       </div>
                     </div>
                   </div>
