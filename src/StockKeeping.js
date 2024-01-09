@@ -23,19 +23,22 @@ function Step({ stepToChoose }) {
           return (
             <div className="option">
               <div className="option-label">
-                
                 <input
                   value={option.type}
                   className="option-text p-1  col-lg-5 "
-                  style={{ color: "black", fontSize:14,   marginLeft:-88 }}
+                  style={{ color: "black", fontSize: 14, marginLeft: -88 }}
                 />
-               
+
                 <input
                   className="option-text  p-1 col-lg-3"
-                  style={{ color: "black",  fontSize:14, marginTop:-25, marginLeft:121}}
+                  style={{
+                    color: "black",
+                    fontSize: 14,
+                    marginTop: -25,
+                    marginLeft: 121,
+                  }}
                   value={option.price}
                 />
-              
               </div>
             </div>
           );
@@ -59,14 +62,15 @@ function Step({ stepToChoose }) {
 }
 
 function EditCategoryModal({
-  setShowEditCategoryModal,
+  // setShowEditCategoryModal,
   categoryList,
   currentCategory,
+  currentStep,
 }) {
   const copyCurrentCategory = JSON.parse(JSON.stringify(currentCategory));
   const handleUpdateCategory = (e) => {
     console.log(e.currentTarget);
-    setShowEditCategoryModal(false);
+    // setShowEditCategoryModal(false);
   };
   return (
     <div className="modal modal-pos fade" id="modalEditCategory">
@@ -79,7 +83,7 @@ function EditCategoryModal({
             <div className="card-body p-0">
               <a
                 href
-                onClick={() => setShowEditCategoryModal(false)}
+                // onClick={() => setShowEditCategoryModal(false)}
                 data-bs-dismiss="modal"
                 className="btn-close position-absolute top-0 end-0 m-4"
                 style={{ backgroundColor: "black", cursor: "pointer" }}
@@ -89,49 +93,8 @@ function EditCategoryModal({
               </a>
               <div className="modal-pos-product">
                 <div className="modal-pos-product-info">
-                  {/* <div
-                    className="h4 mb-2"
-                    id="modal-title"
-                    style={{ color: "grey" }}
-                  >
-                    {currentCategory.name}
-                  </div> */}
-                  {/* <div className="text-white text-opacity-50 mb-2">
-                    <p id="modal-description" style={{ color: "grey" }}>
-                      description
-                    </p>
-                  </div> */}
-                  {/* <div
-                    id="modal-price"
-                    className="h4 mb-3"
-                    style={{ color: "#ff4a17" }}
-                  >
-                    69£
-                  </div>
-                  <div className="d-flex mb-3">
-                    <a
-                      className="btn btn-outline-theme"
-                      // onClick={() => setUnits((u) => u - 1)}
-                    >
-                      <i className="fa fa-minus" />
-                    </a>
-                    <input
-                      type="text"
-                      className="form-control w-50px fw-bold mx-2 bg-grey border-0 text-center"
-                      name="qty"
-                      // value={units}
-                      // defaultValue={units}
-                    />
-                    <a
-                      className="btn btn-outline-theme"
-                      // onClick={() => setUnits((u) => u + 1)}
-                    >
-                      <i className="fa fa-plus" />
-                    </a>
-                  </div>
-                  <hr className="mx-n4" /> */}
                   <span id="modal-steps">
-                    {copyCurrentCategory.stepsToChoose.map((step) => {
+                    {currentStep?.stepsToChoose?.map((step) => {
                       return <Step stepToChoose={step} key={step._id} />;
                     })}
                   </span>
@@ -142,7 +105,7 @@ function EditCategoryModal({
                         href
                         className="btn btn-default h4 mb-0 d-block rounded-0 py-3"
                         data-bs-dismiss="modal"
-                        onClick={() => setShowEditCategoryModal(false)}
+                        // onClick={() => setShowEditCategoryModal(false)}
                       >
                         Cancel
                       </a>
@@ -201,8 +164,10 @@ function Stockis({ worker, setIsLoggedIn }) {
   // const [currentProductCategory, setCurrentProductCategory] = useState({});
   const [productsList, setProductsList] = useState(dummyProductsList);
   const [categoryList, setCategoryList] = useState(dummyProductCategory);
+  const [stepsList, setStepsList] = useState([]);
+  const [currentStep, setCurrentStep] = useState(null);
   const [currentCategory, setCurrentCategory] = useState({});
-  const [showEditCategoryModal, setShowEditCategoryModal] = useState(false);
+  // const [showEditCategoryModal, setShowEditCategoryModal] = useState(false);
   const [showEditCategoryButton, setShowEditCategoryButton] = useState(false);
   // const [productCategories, setProductCategories] =
   //   useState(dummyProductCategory);
@@ -232,9 +197,22 @@ function Stockis({ worker, setIsLoggedIn }) {
       .catch((err) => console.log(err));
   }
 
+  function getStepsList() {
+    axios
+      .get(`${apiUrl}/api/v1/step?limit=500`)
+      .then((res) => {
+        console.log("Steps: ", res.data.data);
+        setStepsList(res.data.data);
+      })
+      .catch((err) => {
+        console.log("getting steps error: ", err);
+      });
+  }
+
   React.useEffect(() => {
     getProductsList();
     getSubcategoriesList();
+    getStepsList();
 
     // axios
     //   .get(`${apiUrl}/api/v1/productCategory?limit=100`)
@@ -265,6 +243,14 @@ function Stockis({ worker, setIsLoggedIn }) {
     setCurrentCategory(filteredCategory);
     setShowEditCategoryButton(true);
   };
+
+  const handleEditSteps = (stepsId) => {
+    const [filteredStep] = stepsList?.filter((st) => st._id === stepsId);
+
+    if (filteredStep) setCurrentStep(filteredStep);
+    else setCurrentStep(null);
+  };
+
   return (
     <>
       <div id="app" class="app">
@@ -324,7 +310,7 @@ function Stockis({ worker, setIsLoggedIn }) {
                       </a>
                     </div>
                   </div> */}
-                    <div
+                    {/* <div
                       class="d-flex justify-content-right gap-4"
                       style={{ color: "black" }}
                     >
@@ -342,8 +328,7 @@ function Stockis({ worker, setIsLoggedIn }) {
                           </span>
                         </button>
                       ) : null}
-                      {/* <button class="btn btn-dark text-white">Add New Products</button> */}
-                    </div>
+                    </div> */}
                   </div>
 
                   <div>
@@ -380,6 +365,7 @@ function Stockis({ worker, setIsLoggedIn }) {
                               currentProduct={currentProduct}
                               setCurrentProduct={setCurrentProduct}
                               refreshData={getProductsList}
+                              handleEditSteps={handleEditSteps}
                               // setProductClicked={setProductClicked}
                               // setShowModal={setShowModal}
                             />
@@ -388,7 +374,10 @@ function Stockis({ worker, setIsLoggedIn }) {
 
                         {/* add new product card  */}
 
-                        <div class=" card mt-3 p-3 mb-3" style={{ width: "250px" }}>
+                        <div
+                          class=" card mt-3 p-3 mb-3"
+                          style={{ width: "250px" }}
+                        >
                           <div
                             class="card-body info p-1"
                             style={{ lineHeight: "2" }}
@@ -415,11 +404,14 @@ function Stockis({ worker, setIsLoggedIn }) {
                               data-name
                             />
 
-                            <div className="w-100px mt-3" style={{ color: "black" }}>
+                            <div
+                              className="w-100px mt-3"
+                              style={{ color: "black" }}
+                            >
                               Price:
                               <span>
                                 <input
-                                  style={{marginTop:-24, marginLeft:116}}
+                                  style={{ marginTop: -24, marginLeft: 116 }}
                                   type="text"
                                   className="form-control"
                                   placeholder=""
@@ -428,11 +420,14 @@ function Stockis({ worker, setIsLoggedIn }) {
                               </span>
                             </div>
 
-                            <div className="w-100px mt-3" style={{ color: "black" }}>
+                            <div
+                              className="w-100px mt-3"
+                              style={{ color: "black" }}
+                            >
                               Stock:
                               <span>
                                 <input
-                                  style={{marginTop:-24, marginLeft:116}}
+                                  style={{ marginTop: -24, marginLeft: 116 }}
                                   type="text"
                                   className="form-control"
                                   placeholder=""
@@ -444,10 +439,24 @@ function Stockis({ worker, setIsLoggedIn }) {
                             <p class="text-dark mt-3 mb-2">Availability:</p>
 
                             <div class="input-group py-3">
-                              <input type="file" class="form-control " id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload" style={{backgroundColor: "rgb(184, 184, 184)"}}/>
-                              <button class="btn bg-dark text-white" type="button" id="inputGroupFileAddon04">upload</button>
-                              </div>
-                         
+                              <input
+                                type="file"
+                                class="form-control "
+                                id="inputGroupFile04"
+                                aria-describedby="inputGroupFileAddon04"
+                                aria-label="Upload"
+                                style={{
+                                  backgroundColor: "rgb(184, 184, 184)",
+                                }}
+                              />
+                              <button
+                                class="btn bg-dark text-white"
+                                type="button"
+                                id="inputGroupFileAddon04"
+                              >
+                                upload
+                              </button>
+                            </div>
 
                             <div class="d-flex">
                               <button class="btn btn-default bg-dark d-block w-100">
@@ -473,13 +482,14 @@ function Stockis({ worker, setIsLoggedIn }) {
           <i class="fa fa-arrow-up"></i>
         </a>
       </div>
-      {showEditCategoryModal ? (
-        <EditCategoryModal
-          setShowEditCategoryModal={setShowEditCategoryModal}
-          categoryList={categoryList}
-          currentCategory={currentCategory}
-        />
-      ) : null}
+      {/* {showEditCategoryModal ? ( */}
+      <EditCategoryModal
+        // setShowEditCategoryModal={setShowEditCategoryModal}
+        categoryList={categoryList}
+        currentCategory={currentCategory}
+        currentStep={currentStep}
+      />
+      {/* ) : null} */}
     </>
   );
 }

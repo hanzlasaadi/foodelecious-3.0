@@ -3,7 +3,7 @@ import { useState } from "react";
 import { apiUrl } from "../assets/utils/env";
 import Loader from "./loader";
 
-function Card({ item, handleUpdateProduct, subCategoryId }) {
+function Card({ item, handleUpdateProduct, subCategoryId, handleEditSteps }) {
   const [editMode, setEditMode] = useState(false);
   const [itemName, setItemName] = useState(item.name);
   const [description, setDescription] = useState(item.description);
@@ -139,13 +139,22 @@ function Card({ item, handleUpdateProduct, subCategoryId }) {
           </div>
         </div>
 
-        {/* <div>
-          <button
+        <div>
+          {/* <button
             className="btn btn-success d-block"
           >
             <i className="fa fa-pencil fa-fw text-white"></i> <span style={{ color: 'white' }}> Edit Catogery </span>
+          </button> */}
+          <button
+            className="btn btn-success d-block"
+            onClick={() => handleEditSteps(item.steps)}
+            data-bs-toggle="modal"
+            data-bs-target="#modalEditCategory"
+          >
+            <i className="fa fa-pencil fa-fw text-white"></i>{" "}
+            <span style={{ color: "white" }}> Edit Options </span>
           </button>
-        </div> */}
+        </div>
         {/* <br></br> */}
         <div className="d-flex align-items-center mb-3">
           <div className="w-100px" style={{ color: "black" }}>
@@ -235,7 +244,12 @@ function Card({ item, handleUpdateProduct, subCategoryId }) {
   );
 }
 
-function ProductEdit({ currentProduct, setCurrentProduct, refreshData }) {
+function ProductEdit({
+  currentProduct,
+  setCurrentProduct,
+  refreshData,
+  handleEditSteps,
+}) {
   const [showLoader, setShowLoader] = useState(false);
   // const [currentSubcatData, setCurrentSubcatData] = useState(currentProduct);
   // console.log(currentProduct, "currProduct Test");
@@ -295,6 +309,7 @@ function ProductEdit({ currentProduct, setCurrentProduct, refreshData }) {
                 item={curr}
                 subCategoryId={copySubcategory._id}
                 handleUpdateProduct={handleUpdateProduct}
+                handleEditSteps={handleEditSteps}
               />
             </div>
           </div>
