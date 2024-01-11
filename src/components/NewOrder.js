@@ -17,6 +17,7 @@ function NewOrder({
 
   const updateCommodity = () => {
     try {
+      Number(updatedPrice);
       if (!Number(updatedPrice)) throw new Error("Enter a Number!");
 
       const newCommodityList = commodityList.map((comm) => {
@@ -83,26 +84,138 @@ function NewOrder({
             id="special-input-div"
             style={{ border: "2px solid #ddd", display: "inline-flex" }}
           >
-            <button
-              onClick={() =>
-                setUpdatedPrice((num) => Math.round((num - 0.01) * 100) / 100)
-              }
-            ></button>
-            <input
-              type="number"
-              min={0}
-              step={0.01}
-              style={{ fontSize: "20px" }}
-              value={`${updatedPrice}`}
-              className="special-input"
-              onChange={(e) => setUpdatedPrice(Number(e.target.value))}
-            />
-            <button
-              onClick={() =>
-                setUpdatedPrice((num) => Math.round((num + 0.01) * 100) / 100)
-              }
-              class="plus"
-            ></button>
+            <div className="dropdown-div">
+              <button
+                onClick={() =>
+                  setUpdatedPrice((num) => {
+                    const newNum = Number(num);
+                    if (!newNum) return num;
+                    return Math.round((newNum - 0.01) * 100) / 100;
+                  })
+                }
+              ></button>
+              <input
+                type="text"
+                min={0}
+                step={0.01}
+                style={{ fontSize: "20px" }}
+                value={`${updatedPrice}`}
+                className="special-input"
+                onChange={(e) => setUpdatedPrice(Number(e.target.value))}
+              />
+              <button
+                onClick={() =>
+                  setUpdatedPrice((num) => {
+                    const newNum = Number(num);
+                    if (!newNum) return num;
+                    return Math.round((newNum + 0.01) * 100) / 100;
+                  })
+                }
+                className="plus"
+              ></button>
+              {/* <button className="dropbtn">Dropdown</button> */}
+              <div
+                className="dropdown-content-div"
+                style={{ flexWrap: "wrap", marginTop: "50px" }}
+              >
+                <a
+                  href
+                  onClick={(e) => {
+                    setUpdatedPrice((ten) => Number(`${ten}${1}`));
+                  }}
+                >
+                  1
+                </a>
+                <a
+                  href
+                  onClick={(e) => {
+                    setUpdatedPrice((ten) => Number(`${ten}${2}`));
+                  }}
+                >
+                  2
+                </a>
+                <a
+                  href
+                  onClick={(e) => {
+                    setUpdatedPrice((ten) => Number(`${ten}${3}`));
+                  }}
+                >
+                  3
+                </a>
+                <a
+                  href
+                  onClick={(e) => {
+                    setUpdatedPrice((ten) => Number(`${ten}${4}`));
+                  }}
+                >
+                  4
+                </a>
+                <a
+                  href
+                  onClick={(e) => {
+                    setUpdatedPrice((ten) => Number(`${ten}${5}`));
+                  }}
+                >
+                  5
+                </a>
+                <a
+                  href
+                  onClick={(e) => {
+                    setUpdatedPrice((ten) => Number(`${ten}${6}`));
+                  }}
+                >
+                  6
+                </a>
+                <a
+                  href
+                  onClick={(e) => {
+                    setUpdatedPrice((ten) => Number(`${ten}${7}`));
+                  }}
+                >
+                  7
+                </a>
+                <a
+                  href
+                  onClick={(e) => {
+                    setUpdatedPrice((ten) => Number(`${ten}${8}`));
+                  }}
+                >
+                  8
+                </a>
+                <a
+                  href
+                  onClick={(e) => {
+                    setUpdatedPrice((ten) => Number(`${ten}${9}`));
+                  }}
+                >
+                  9
+                </a>
+                <a
+                  href
+                  onClick={(e) => {
+                    setUpdatedPrice((ten) => `${ten}0`);
+                  }}
+                >
+                  0
+                </a>
+                <a
+                  href
+                  onClick={(e) => {
+                    setUpdatedPrice((ten) => `${ten}.`);
+                  }}
+                >
+                  .
+                </a>
+                <a
+                  href
+                  onClick={(e) => {
+                    setUpdatedPrice((ten) => Number(`${ten}`.slice(0, -1)));
+                  }}
+                >
+                  X
+                </a>
+              </div>
+            </div>
           </div>
         ) : (
           <div style={{ fontWeight: "bold", fontSize: "18px" }}>
@@ -110,7 +223,7 @@ function NewOrder({
           </div>
         )}
         {editPrice ? (
-          <div className="mt-auto d-flex flex-row gap-5">
+          <div className="d-flex flex-row gap-5" style={{ marginTop: "5px" }}>
             <button
               onClick={(e) => {
                 setEditPrice(false);

@@ -42,7 +42,7 @@
   transform: translate(-50%, -50%) rotate(90deg);
 }
 
-#special-input-div input[type="number"] {
+#special-input-div input[type="text"] {
   font-family: sans-serif;
   width: 80px;
   padding: 0rem;
@@ -52,4 +52,49 @@
   height: 3rem;
   font-weight: bold;
   text-align: center;
+}
+
+.dropbtn {
+  background-color: #4caf50 !important;
+  color: white !important;
+  padding: 16px !important;
+  font-size: 16px !important;
+  border: none !important;
+  cursor: pointer !important;
+}
+
+.dropdown-div {
+  position: relative !important;
+  display: inline-block !important;
+}
+
+.dropdown-content-div {
+  display: none !important;
+  position: absolute !important;
+  background-color: #f9f9f9 !important;
+  min-width: 140px !important;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2) !important;
+  z-index: 1 !important;
+}
+
+.dropdown-content-div a {
+  font-size: 26px;
+  font-weight: bold;
+  color: black !important;
+  padding: 12px 12px !important;
+  text-decoration: none !important;
+  display: block !important;
+  cursor: pointer;
+}
+
+.dropdown-content-div a:hover {
+  background-color: #f1f1f1 !important;
+}
+
+.dropdown-div .dropdown-content-div {
+  display: flex !important;
+}
+
+.dropdown-div:hover .dropbtn {
+  background-color: #3e8e41 !important;
 }
