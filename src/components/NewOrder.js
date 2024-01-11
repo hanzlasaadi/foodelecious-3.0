@@ -1,4 +1,5 @@
 import React from "react";
+import "./componentStyles/special-styles.css";
 
 function NewOrder({
   commodity,
@@ -78,21 +79,36 @@ function NewOrder({
       </div>
       <div className="pos-order-price d-flex flex-column">
         {editPrice ? (
-          <input
-            type="number"
-            min={0}
-            step={0.01}
-            style={{ minWidth: "fit-content" }}
-            value={`${updatedPrice}`}
-            onChange={(e) => setUpdatedPrice(Number(e.target.value))}
-          />
+          <div
+            id="special-input-div"
+            style={{ border: "2px solid #ddd", display: "inline-flex" }}
+          >
+            <button
+              onclick={() =>
+                document.querySelector(".special-input").stepDown()
+              }
+            ></button>
+            <input
+              type="number"
+              min={0}
+              step={0.01}
+              style={{ width: "100px", fontSize: "20px" }}
+              value={`${updatedPrice}`}
+              className="special-input"
+              onChange={(e) => setUpdatedPrice(Number(e.target.value))}
+            />
+            <button
+              onclick={() => document.querySelector(".special-input").stepUp()}
+              class="plus"
+            ></button>
+          </div>
         ) : (
           <div style={{ fontWeight: "bold", fontSize: "18px" }}>
             £{updatedPrice}
           </div>
         )}
         {editPrice ? (
-          <div className="mt-auto d-flex flex-column gap-2">
+          <div className="mt-auto d-flex flex-row gap-2">
             <button
               onClick={(e) => {
                 setEditPrice(false);
@@ -100,13 +116,13 @@ function NewOrder({
               data-product={commodity.name}
               className="btn btn-sm btn-outline-gray-500"
             >
-              <i className="fa fa-window-close" />
+              <i style={{ fontSize: "20px" }} className="fa fa-window-close" />
             </button>
             <button
               className="btn btn-sm btn-outline-gray-500"
               onClick={updateCommodity}
             >
-              <i className="fa fa-check-square" />
+              <i style={{ fontSize: "20px" }} className="fa fa-check-square" />
             </button>
           </div>
         ) : (
@@ -123,13 +139,13 @@ function NewOrder({
               // data-bs-toggle="modal"
               // data-bs-target="#modalCartItem"
             >
-              <i className="fa fa-pencil" />
+              <i style={{ fontSize: "20px" }} className="fa fa-pencil" />
             </button>
             <button
               className="btn btn-sm btn-outline-gray-500"
               onClick={() => setShowRemoveItem(true)}
             >
-              <i className="fa fa-trash" />
+              <i style={{ fontSize: "18px" }} className="fa fa-trash" />
             </button>
           </div>
         )}
