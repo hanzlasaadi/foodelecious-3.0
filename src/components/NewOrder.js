@@ -84,21 +84,23 @@ function NewOrder({
             style={{ border: "2px solid #ddd", display: "inline-flex" }}
           >
             <button
-              onclick={() =>
-                document.querySelector(".special-input").stepDown()
+              onClick={() =>
+                setUpdatedPrice((num) => Math.round((num - 0.01) * 100) / 100)
               }
             ></button>
             <input
               type="number"
               min={0}
               step={0.01}
-              style={{ width: "100px", fontSize: "20px" }}
+              style={{ fontSize: "20px" }}
               value={`${updatedPrice}`}
               className="special-input"
               onChange={(e) => setUpdatedPrice(Number(e.target.value))}
             />
             <button
-              onclick={() => document.querySelector(".special-input").stepUp()}
+              onClick={() =>
+                setUpdatedPrice((num) => Math.round((num + 0.01) * 100) / 100)
+              }
               class="plus"
             ></button>
           </div>
@@ -108,7 +110,7 @@ function NewOrder({
           </div>
         )}
         {editPrice ? (
-          <div className="mt-auto d-flex flex-row gap-2">
+          <div className="mt-auto d-flex flex-row gap-5">
             <button
               onClick={(e) => {
                 setEditPrice(false);
@@ -116,13 +118,13 @@ function NewOrder({
               data-product={commodity.name}
               className="btn btn-sm btn-outline-gray-500"
             >
-              <i style={{ fontSize: "20px" }} className="fa fa-window-close" />
+              <i style={{ fontSize: "28px" }} className="fa fa-window-close" />
             </button>
             <button
               className="btn btn-sm btn-outline-gray-500"
               onClick={updateCommodity}
             >
-              <i style={{ fontSize: "20px" }} className="fa fa-check-square" />
+              <i style={{ fontSize: "28px" }} className="fa fa-check-square" />
             </button>
           </div>
         ) : (

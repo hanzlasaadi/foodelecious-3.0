@@ -44,8 +44,8 @@
 
 #special-input-div input[type="number"] {
   font-family: sans-serif;
-  max-width: 5rem;
-  padding: 0.5rem;
+  width: 80px;
+  padding: 0rem;
   border: solid #ddd;
   border-width: 0 2px;
   font-size: 2rem;
